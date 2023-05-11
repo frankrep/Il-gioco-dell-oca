@@ -1,0 +1,98 @@
+RECORD giocatore
+nome_giocatore, il nome scelto dal giocatore,Array di caratteri con carattere di terminazione FINE_STRINGA
+posizione, la posizione in cui si trova il giocatore nel percorso, Intero, >0
+simbolo, il simbolo scelto dal giocatore per rappresentarsi nel percorso, carattere
+lanci_effettuati, lanci effettuati dal giocatore, Intero
+autorizzazione, permesso di tirare i dadi quando è uguale a 0 o meno quando è diversa da 0, Intero
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+FUNZIONI DI ACCESSO TIPO DI DATO GIOCATORE:
+
+scrivere_nome_giocatore
+DATI DI INPUT
+giocatore_attuale, il giocatore a cui attribuire il nome_giocatore, giocatore
+nome, il nome da attrubuire a giocatore_attuale, Array di caratteri con carattere di terminazione FINE_STRINGA
+DATI DI OUTPUT
+giocatore_attuale, giocatore_attuale con nome_giocatore aggiornato, giocatore
+ALGORITMO
+Valore del campo nome_giocatore di giocatore_attuale = nome
+
+leggere_nome_giocatore
+DATI DI INPUT
+giocatore_attuale, il giocatore di cui leggere nome_giocatore, giocatore 
+DATI DI OUTPUT
+nome, il nome_giocatore di giocatore_attuale, Array di caratteri con carattere di terminazione FINE_STRINGA 
+ALGORITMO
+nome = Valore del campo nome_giocatore di giocatore_attuale
+
+scrivere_posizione_giocatore
+DATI DI INPUT
+giocatore_attuale, il giocatore a cui attribuire la posizione, giocatore
+posizione, la posizione da attribuire a giocatore_attuale, Intero, <=DIM_MASSIMO_PERCORSO e >=DIM_MINIMO_PERCORSO
+DATI DI OUTPUT
+giocatore_attuale, la posizione aggiornata di giocatore_attuale, giocatore
+ALGORITMO
+Valore del campo posizione di giocatore_attuale = posizione
+
+leggere_posizione_giocatore
+DATI DI INPUT
+giocatore_attuale, il giocatore di cui leggere la posizione, giocatore 
+DATI DI OUTPUT
+posizione, la posizione di giocatore_attuale, Intero, <=DIM_MASSIMO_PERCORSO e >=DIM_MINIMO_PERCORSO
+ALGORITMO
+posizione = Valore del campo posizione di giocatore_attuale
+
+scrivere_simbolo
+DATI DI INPUT
+giocatore_attuale, il giocatore a cui attribuire il simbolo , giocatore 
+simbolo, simbolo di giocatore_attuale nel percorso, carattere
+DATI DI OUTPUT
+giocatore_attuale, il giocatore_attuale con il simbolo aggiornato, giocatore  
+ALGORITMO
+Valore del campo simbolo di giocatore_attuale = simbolo
+
+leggere_simbolo
+DATI DI INPUT
+giocatore_attuale, il giocatore di cui leggere il simbolo, giocatore
+DATI DI OUTPUT
+simbolo, il simbolo di giocatore_attuale, carattere
+ALGORITMO
+simbolo = Valore del campo simbolo di giocatore_attuale
+
+scrivere_lanci_effettuati
+DATI DI INPUT
+giocatore_attuale, il giocatore a cui attribuire i lanci_effettuati, giocatore
+lanci, i lanci_effettuati da attrubuire a giocatore_attuale, Intero
+DATI DI OUTPUT
+lanci, i lanci_effettuati di giocatore_attuale aggiornati, giocatore  
+ALGORITMO
+Valore del campo lanci_effettuati di giocatore_attuale = lanci
+
+leggere_lanci_effettuati
+DATI DI INPUT
+giocatore_attuale, il giocatore di cui leggere i lanci_effettuati, giocatore
+DATI DI OUTPUT
+lanci, i lanci_effettuati di giocatore_attuale , Intero
+ALGORITMO
+lanci_effettuati = Valore del campo lanci_effettuati di giocatore_attuale
+
+scrivere_autorizzazione
+DATI DI INPUT
+giocatore_attuale, il giocatore a cui attribuire se autorizzato o meno a lanciare i dadi, giocatore
+autorizzazione, permesso di tirare i dadi quando è uguale a 0 o meno quando è diversa da 0, Intero
+DATI DI OUTPUT
+autorizzazione, permesso di tirare i dadi di giocatore_attuale aggiornato, Intero
+ALGORITMO
+Valore del campo autorizzazione di giocatore_attuale = autorizzazione
+
+leggere_autorizzazione
+DATI DI INPUT
+giocatore_attuale, il giocatore di cui leggere autorizzazione, giocatore
+DATI DI OUTPUT
+autorizzazione, l’autorizzazione di giocatore_attuale a lanciare il dado, Intero
+ALGORITMO
+autorizzazione = Valore del campo autorizzazione di giocatore_attuale
+
+//////////////////////////////////////////////////////////////////////////////////////////////

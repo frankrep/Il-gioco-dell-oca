@@ -1,0 +1,60 @@
+//chiedere le dimensioni del nome e della descrizione all'interfacer
+
+RECORD casella 
+nome_casella, il nome attribuito a casella, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+numero_casella, la posizione di casella lungo il percorso, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
+descrizione, la descrizione relativa alla casella, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+simbolo, glifo rappresentante la casella nel percorso, array a una dimensione (NUMERO_MASSIMO_CARATTERI_SIMBOLO) di caratteri (terminante con FINE_STRINGA)
+
+____________________________________________________________________________________________________________________________________________
+
+scrivere_nome_casella
+DATI DI INPUT
+nome_da_inserire, il nome da attribuire a casella, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+casella_attuale, la casella di cui inserire il nome, record di tipo casella 
+DATI DI OUTPUT
+casella_attuale, la casella con il nome inzerito, record di tipo casella 
+ALGORITMO
+Valore del campo nome di casella_attuale = nome_da_inserire
+
+leggere_nome_casella
+DATI DI INPUT
+casella_attuale, la casella di cui leggere il nome, record di tipo casella
+DATI DI OUTPUT
+nome_letto, il nome che indentifica casella_attuale, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+ALGORITMO
+nome_letto = Valore del campo nome di casella_attuale
+
+scrivere_numero_casella
+DATI DI INPUT
+casella_attuale, la casella di cui inserire il numero rappresentativo, record di tipo casella
+numero_casella_da_inserire, la posizione di casella_attuale lungo il percorso, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
+DATI DI OUTPUT
+casella_attuale, la casella con il suo numero rappresentativo inserito, record di tipo casella
+ALGORITMO
+Valore del campo numero_casella di casella_attuale = numero_casella_da_inserire
+
+leggere_numero_casella
+DATI DI INPUT
+casella_attuale, casella di cui leggere il numero rappresentativo all'interno del percorso, record di tipo casella 
+DATI DI OUTPUT
+numero_casella_letto, numero di casella_attuale lungo il percorso, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
+ALGORITMO
+numero_casella_letto = Valore del campo numero_casella di casella_attuale
+
+scrivere_descrizione
+DATI DI INPUT
+casella_attuale, la casella_attuale in cui inserire descrizione_casella, record di tipo casella
+descrizione_casella, la descrizione da inserire in casella_attuale, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+DATI DI OUTPUT
+casella_attuale, la casella_attuale con la descrizione inserita, record di tipo casella
+ALGORITMO
+Valore del campo descrizione di casella_attuale = descrizione_casella
+
+leggere_descrizione
+DATI DI INPUT
+casella_attuale, la casella_attuale di cui leggere la descrizione, record di tipo casella
+DATI DI OUTPUT
+descrizione_casella, la descrizione di casella_attuale letta, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+ALGORITMO
+descrizione_casella = Valore del campo descrizione di casella_attuale

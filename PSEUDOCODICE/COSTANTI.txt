@@ -1,0 +1,58 @@
+DIMENSIONE_MASSIMA_PERCORSO, la dimensione massima che il percorso può assumere, Intero, = 90
+DIMENSIONE_MINIMA_PERCORSO, la dimensione minima che il percorso può assumere, Intero, = 50
+NUMERO_MASSIMO_GIOCATORI, il numero massimo di giocatori che possono prendere parte alla partita, Intero, = 4
+NUMERO_MINIMO_GIOCATORI, il numero minimo di giocatori che possono prendere parte alla partita, Intero, = 2
+FACCIA_MINIMA_DADO, il numero minimo presente sulle facce di un dado, Intero, = 1
+FACCIA_MASSIMA_DADO, il numero massimo presente sulle facce di un dado, Intero, = 6
+NUMERO_DADI, il numero di dadi da utilizzare durante la partita, Intero, = 2
+
+//forse
+PRIMO_DADO, la posizione del dado numero 1 nel campo ultimo_lancio del record partita, Intero, = 1
+
+NOME_OCA, il nome della casella oca, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "OCA\0"
+NOME_PRIGIONE, il nome della casella prigione, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "PRIGIONE\0"
+NOME_PONTE, il nome della casella ponte, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "PONTE\0"
+NOME_LABIRINTO, il nome della casella labirinto, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "LABIRINTO\0"
+NOME_LOCANDA, il nome della casella locanda, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "LOCANDA\0"
+NOME_POZZO, il nome della casella pozzo, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "POZZO\0"
+NOME_SCHELETRO, il nome della casella scheletro, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "SCHELETRO\0"
+NOME_VITTORIA, il nome della casella vittoria, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "VITTORIA\0"
+NUMERO_MASSIMO_CARATTERI_SIMBOLO, numero di caratteri massimo concessi per il simbolo rappresentante una casella, intero, = 5
+
+//forse
+ALTEZZA_DISEGNO, il numero di stati in cui è suddiviso il disegno della casella, Intero, = 4
+STRATO_1_A, posizione nell'array disegno dello strato 1A del disegno di casella, Intero, = 0
+STRATO_2_A, posizione nell'array disegno dello strato 2A del disegno di casella, Intero, = 1
+STRATO_3_A, posizione nell'array disegno dello strato 3A del disegno di casella, Intero, = 2
+STRATO_3_B, posizione nell'array disegno dello strato 3B del disegno di casella, Intero, = 3
+STRATO_4_A, posizione nell'array disegno dello strato 4A del disegno di casella, Intero, = 4
+
+//aggiungere campo a casella per il simbolo
+POSIZIONE_NOMI_CASELLE, la posizione dell'array in cui sono presenti i nomi delle caselle speciali, Intero, = 1
+POSIZIONE_SIMBOLI_CASELLE, la posizione dell'array in cui sono presenti i simboli associati ai rispettivi nomi delle caselle speciali, Intero, = 2
+
+
+PRIMO_LANCIO_3_6, indica la casella su cui si sposterà il giocatore nel momento in cui arriverà su una casella oca con un 3 e un 6 ottenuto dal primo lancio dei dadi, intero, = 38
+PRIMO_LANCIO_4_5, indica la casella su cui si sposterà il giocatore nel momento in cui arriverà su una casella oca con un 4 e un 5 ottenuto dal primo lancio dei dadi, intero, = 76
+DADO_MINORE_PRIMO_LANCIO, faccia minore del primo lancio risultante nove, intero, = 3
+DADO_MAGGIORE_PRIMO_LANCIO, faccia maggiore del primo lancio risultante nove, intero, = 6
+TURNI_ATTESA_LOCANDA, numero di turni da attendere in seguito all'arrivo sulla casella "locanda", intero, = 3
+CASELLA_ARRIVO_LABIRINTO, numero di casella di arrivo nel percorso composto da 90 caselle sul quale il giocatore verrà spostato in seguito all'arrivo sulla casella "labirinto", intero, = 33
+CASELLA_ARRIVO_SCHELETRO, numero di casella sul quale il giocatore verrà spostato in seguito all'arrivo sulla casella "scheletro", intero, = 1
+DADO_MINORE_USCITA_PRIGIONE, la prima faccia di dado che consente l'uscita dalla prigione, Intero, = 5
+DADO_MAGGIORE_USCITA_PRIGIONE, la seconda faccia di dado che consente l'uscita dalla prigione, Intero, = 7
+
+//chiedere all'interfacer
+DIMENSIONE_MINIMA_NOME_PARTITA, la dimensione minima che il nome della partita può avere, Intero, = 1
+DIMENSIONE_MASSIMA_NOME_PARTITA, la dimensione massima che il nome della partita può avere, Intero, = 30
+DIMENSIONE_MINIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, Intero, = 3
+DIMENSIONE_MASSIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, Intero, = 20
+
+FINE_STRINGA, il carattere utilizzato come fine stringa, Carattere, = '\0'
+CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
+FINE_FILE,  simbolo che indica la fine del file, carattere, = ‘EOF’ 
+NUMERO_MASSIMO_PARTITE, il numero massimo di partite salvabili, Intero, = 5
+NUMERO_MASSIMO_CLASSIFICATI, numero massimo di giocatori di cui è composta la classifica, intero, = 10
+MOLTIPLICATORE, elemento moltiplicatore della funzione, intero, = 1664525
+INCREMENTO, valore (primo) incrementale della funzione coprimo con DIVISORE, intero, = 1013904223
+DIVISORE, divisore dell'operazione di modulo , intero, = 4294367296
