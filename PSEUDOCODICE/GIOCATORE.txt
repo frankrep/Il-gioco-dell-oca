@@ -1,98 +1,95 @@
+//chiedere le dimensione del nome all'interfacer
+
 RECORD giocatore
-nome_giocatore, il nome scelto dal giocatore,Array di caratteri con carattere di terminazione FINE_STRINGA
-posizione, la posizione in cui si trova il giocatore nel percorso, Intero, >0
-simbolo, il simbolo scelto dal giocatore per rappresentarsi nel percorso, carattere
-lanci_effettuati, lanci effettuati dal giocatore, Intero
-autorizzazione, permesso di tirare i dadi quando è uguale a 0 o meno quando è diversa da 0, Intero
+nome_giocatore, il nome scelto dal giocatore , Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+posizione_giocatore, la posizione in cui si trova il giocatore nel percorso, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
+pedina_giocatore, il simbolo scelto dal giocatore per rappresentarsi nel percorso, carattere
+lanci_effettuati, numero lanci effettuati dal giocatore in partita, Intero, >= 0
+autorizzazione, indica se il giocatore è bloccato o ha dei turni di attesa residui, intero, = 0 (il giocatore non è bloccato), > 0 (il giocatore deve scontare dei turni di attesa o è bloccato)
 
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-FUNZIONI DI ACCESSO TIPO DI DATO GIOCATORE:
+_________________________________________________________________________________________________________________________________________________
 
 scrivere_nome_giocatore
 DATI DI INPUT
-giocatore_attuale, il giocatore a cui attribuire il nome_giocatore, giocatore
-nome, il nome da attrubuire a giocatore_attuale, Array di caratteri con carattere di terminazione FINE_STRINGA
+giocatore_attuale, il giocatore di cui inseriri il nome, record di tipo giocatore
+nome, il nome da inserire in giocatore_attuale, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
 DATI DI OUTPUT
-giocatore_attuale, giocatore_attuale con nome_giocatore aggiornato, giocatore
+giocatore_attuale, giocatore_attuale con nome inserito, record di tipo giocatore
 ALGORITMO
 Valore del campo nome_giocatore di giocatore_attuale = nome
 
 leggere_nome_giocatore
 DATI DI INPUT
-giocatore_attuale, il giocatore di cui leggere nome_giocatore, giocatore 
+giocatore_attuale, il giocatore di cui leggere il nome, record di tipo giocatore 
 DATI DI OUTPUT
-nome, il nome_giocatore di giocatore_attuale, Array di caratteri con carattere di terminazione FINE_STRINGA 
+nome, il nome di giocatore_attuale letto, Array a una dimensione () di caratteri (terminante con FINE_STRINGA) 
 ALGORITMO
 nome = Valore del campo nome_giocatore di giocatore_attuale
 
 scrivere_posizione_giocatore
 DATI DI INPUT
-giocatore_attuale, il giocatore a cui attribuire la posizione, giocatore
-posizione, la posizione da attribuire a giocatore_attuale, Intero, <=DIM_MASSIMO_PERCORSO e >=DIM_MINIMO_PERCORSO
+giocatore_attuale, il giocatore del quale inserire la posizione, record di tipo giocatore
+posizione, la posizione da inserire in giocatore_attuale, Intero, <= DIMEMNSIONE_MASSIMA_PERCORSO, >= DIMENSIONE_MINIMA_PERCORSO
 DATI DI OUTPUT
-giocatore_attuale, la posizione aggiornata di giocatore_attuale, giocatore
+giocatore_attuale, record con la posizione inserita, record di tipo giocatore
 ALGORITMO
-Valore del campo posizione di giocatore_attuale = posizione
+Valore del campo posizione_giocatore di giocatore_attuale = posizione
 
 leggere_posizione_giocatore
 DATI DI INPUT
-giocatore_attuale, il giocatore di cui leggere la posizione, giocatore 
+giocatore_attuale, il giocatore di cui leggere la posizione, record di tipo giocatore 
 DATI DI OUTPUT
-posizione, la posizione di giocatore_attuale, Intero, <=DIM_MASSIMO_PERCORSO e >=DIM_MINIMO_PERCORSO
+posizione, la posizione di giocatore_attuale letta, Intero, <= DIM_MASSIMO_PERCORSO, >= DIM_MINIMO_PERCORSO
 ALGORITMO
-posizione = Valore del campo posizione di giocatore_attuale
+posizione = Valore del campo posizione_giocatore di giocatore_attuale
 
-scrivere_simbolo
+scrivere_pedina_giocatore
 DATI DI INPUT
-giocatore_attuale, il giocatore a cui attribuire il simbolo , giocatore 
-simbolo, simbolo di giocatore_attuale nel percorso, carattere
+giocatore_attuale, il giocatore di cui inserire la pedina, record di tipo giocatore 
+pedina, il simbolo rappresentativo di giocatore_attuale nel percorso da inserire, carattere
 DATI DI OUTPUT
-giocatore_attuale, il giocatore_attuale con il simbolo aggiornato, giocatore  
+giocatore_attuale, il giocatore_attuale con il simbolo inserito, record di tipo giocatore  
 ALGORITMO
-Valore del campo simbolo di giocatore_attuale = simbolo
+Valore del campo pedina_giocatore di giocatore_attuale = pedina
 
-leggere_simbolo
+leggere_pedina_giocatore
 DATI DI INPUT
-giocatore_attuale, il giocatore di cui leggere il simbolo, giocatore
+giocatore_attuale, il giocatore di cui leggere la pedina, record di tipo giocatore
 DATI DI OUTPUT
-simbolo, il simbolo di giocatore_attuale, carattere
+pedina, il simbolo di giocatore_attuale rappresentativo nel percorso, carattere
 ALGORITMO
-simbolo = Valore del campo simbolo di giocatore_attuale
+pedina = Valore del campo pedina_giocatore di giocatore_attuale
 
 scrivere_lanci_effettuati
 DATI DI INPUT
-giocatore_attuale, il giocatore a cui attribuire i lanci_effettuati, giocatore
-lanci, i lanci_effettuati da attrubuire a giocatore_attuale, Intero
+giocatore_attuale, il giocatore del quale inserire i lanci effettuati, record di tipo giocatore
+lanci, i lanci effettuati da inserire a giocatore_attuale, Intero, >= 0
 DATI DI OUTPUT
-lanci, i lanci_effettuati di giocatore_attuale aggiornati, giocatore  
+giocatore_attuale, i lanci_effettuati di giocatore_attuale inseriti, record di tipo giocatore
 ALGORITMO
 Valore del campo lanci_effettuati di giocatore_attuale = lanci
 
 leggere_lanci_effettuati
 DATI DI INPUT
-giocatore_attuale, il giocatore di cui leggere i lanci_effettuati, giocatore
+giocatore_attuale, il giocatore di cui leggere i lanci effettuati, record di tipo giocatore
 DATI DI OUTPUT
-lanci, i lanci_effettuati di giocatore_attuale , Intero
+lanci, i lanci_effettuati da giocatore_attuale, Intero, >= 0
 ALGORITMO
-lanci_effettuati = Valore del campo lanci_effettuati di giocatore_attuale
+lanci = Valore del campo lanci_effettuati di giocatore_attuale
 
 scrivere_autorizzazione
 DATI DI INPUT
-giocatore_attuale, il giocatore a cui attribuire se autorizzato o meno a lanciare i dadi, giocatore
-autorizzazione, permesso di tirare i dadi quando è uguale a 0 o meno quando è diversa da 0, Intero
+giocatore_attuale, il giocatore a cui attribuire se autorizzato o meno a lanciare i dadi, record di tipo giocatore
+autorizzazione_da_inserire, indica che giocatore_attuale è bloccato o ha dei turni di attesa residui, intero, = 0 (il giocatore non è bloccato), > 0 (il giocatore deve scontare dei turni di attesa o è bloccato)
 DATI DI OUTPUT
-autorizzazione, permesso di tirare i dadi di giocatore_attuale aggiornato, Intero
+giocatore_attuale, record con il blocco o i turni di attesa inseriti, record di tipo giocatore
 ALGORITMO
-Valore del campo autorizzazione di giocatore_attuale = autorizzazione
+Valore del campo autorizzazione di giocatore_attuale = autorizzazione_da_inserire
 
 leggere_autorizzazione
 DATI DI INPUT
-giocatore_attuale, il giocatore di cui leggere autorizzazione, giocatore
+giocatore_attuale, il giocatore di cui leggere autorizzazione, record di tipo giocatore
 DATI DI OUTPUT
-autorizzazione, l’autorizzazione di giocatore_attuale a lanciare il dado, Intero
+autorizzazione_letta, indica se giocatore_attuale è bloccato o ha dei turni di attesa residui, intero, = 0 (il giocatore non è bloccato), > 0 (il giocatore deve scontare dei turni di attesa o è bloccato)
 ALGORITMO
-autorizzazione = Valore del campo autorizzazione di giocatore_attuale
-
-//////////////////////////////////////////////////////////////////////////////////////////////
+autorizzazione_letta = Valore del campo autorizzazione di giocatore_attuale

@@ -10,12 +10,12 @@ ________________________________________________________________________________
 
 scrivere_nome_casella
 DATI DI INPUT
-nome_da_inserire, il nome da attribuire a casella, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
 casella_attuale, la casella di cui inserire il nome, record di tipo casella 
+nome_da_inserire, il nome da inserire in casella_attuale, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
 DATI DI OUTPUT
-casella_attuale, la casella con il nome inzerito, record di tipo casella 
+casella_attuale, la casella con il nome inserito, record di tipo casella 
 ALGORITMO
-Valore del campo nome di casella_attuale = nome_da_inserire
+Valore del campo nome_casella di casella_attuale = nome_da_inserire
 
 leggere_nome_casella
 DATI DI INPUT
@@ -23,7 +23,7 @@ casella_attuale, la casella di cui leggere il nome, record di tipo casella
 DATI DI OUTPUT
 nome_letto, il nome che indentifica casella_attuale, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
 ALGORITMO
-nome_letto = Valore del campo nome di casella_attuale
+nome_letto = Valore del campo nome_casella di casella_attuale
 
 scrivere_numero_casella
 DATI DI INPUT
@@ -58,3 +58,20 @@ DATI DI OUTPUT
 descrizione_casella, la descrizione di casella_attuale letta, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
 ALGORITMO
 descrizione_casella = Valore del campo descrizione di casella_attuale
+
+scrivere_simbolo
+DATI DI INPUT
+casella_attuale, la casella in cui inserire il simbolo, record di tipo casella 
+simbolo_da_inserire, il simbolo da inserire in casella_attuale, Array a una dimensione (NUMERO_MASSIMO_CARATTERI_SIMBOLO) di caratteri (terminante con FINE_STRINGA)
+DATI DI OUTPUT
+casella_attuale, la casella con il simbolo inserito, record di tipo casella
+ALGORITMO
+Valore del campo simbolo di casella_attuale = simbolo_da_inserire
+
+leggere_simbolo
+DATI DI INPUT
+casella_attuale, la casella di cui leggere il simbolo rappresentativo della stessa, record di tipo casella
+DATI DI OUTPUT
+simbolo_letto, il glifo che indentifica casella_attuale, Array a una dimensione (NUMERO_MASSIMO_CARATTERI_SIMBOLO) di caratteri (terminante con FINE_STRINGA)
+ALGORITMO
+simbolo_letto = Valore del campo simbolo di casella_attuale
