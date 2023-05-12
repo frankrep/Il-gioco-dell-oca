@@ -1,0 +1,175 @@
+//chiedere la dimensione del nome della partita all'interfaccer (anche per le funzioni di accesso al nome)
+
+
+RECORD partita
+nome_partita, il nome assegnato e distintivo della partita, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+numero_giocatori, numero dei giocatori che partecipano alla partita, Intero, >= NUMERO_MINIMO_GIOCATORI, <= NUMERO_MASSIMO_GIOCATORI
+numero_caselle, numero delle caselle che compongono il percorso della partita, Intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO
+
+//chiedere se il NOME_FINE_PERCORSO sussiste ancora o no
+percorso, campo da gioco dove sono posizionate le caselle su cui si muoveranno i giocatori, Array a una dimensione (numero_caselle) di casella con CASELLA di terminazione avente nome NOME_FINE_PERCORSO
+
+giocatori, contiene le informazioni relative ai giocatori partecipanti alla partita, Array a una dimensione (numero_giocatori) di giocatore
+
+//chiedere se individua la posizione del giocatore di turno all'interno dell'array
+turno, indica il giocatore attualmente di turno, Intero, > 0, <= numero_giocatori
+
+ultimo_lancio, il numero dell’ultimo lancio effettuato con ciascun dado, Array a una dimensione (NUMERO_DADI) di Interi (>= FACCIA_MINIMA_DADO, <= FACCIA_MASSIMA_DADO)
+
+_________________________________________________________________________________________________________________________________________________
+
+scrivere_nome_partita
+DATI DI INPUT
+partita_attuale, la partita della quale si vuole inserire il nome, record di tipo partita
+nome, il nome inserire all'intero di partita_attuale, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+DATI DI OUTPUT
+partita_attuale, record con il nome relativo alla partita inserito, record di tipo partita  
+ALGORITMO
+Valore del campo nome_partita di partita_attuale = nome
+
+leggere_nome_partita
+DATI DI INPUT
+partita_attuale, la partita di cui leggere il nome, record di tipo partita
+DATI DI OUTPUT
+nome, il nome indentificativo di partita_attuale letto, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+ALGORITMO
+nome = Valore del campo nome_partita di partita_attuale
+
+scrivere_numero_giocatori
+DATI DI INPUT
+partita_attuale, la partita nella quale vogliamo inserire il numero dei giocatori, record di tipo partita
+numero_partecipanti, il numero di giocatori che partecipano a partita_attuale, Intero,  >= NUMERO_MINIMO_GIOCATORI, <= NUMERO_MASSIMO_GIOCATORI
+DATI DI OUTPUT
+partita_attuale, record con il numero dei partecipanti alla partita inserito, record di tipo partita  
+ALGORITMO
+Valore del campo numero_giocatori di partita_attuale= numero_partecipanti
+
+leggere_numero_giocatori
+DATI DI INPUT
+partita_attuale, record del quale leggere il numero dei partecipanti, record di tipo partita
+DATI DI OUTPUT
+numero_partecipanti, il numero dei giocatori partecipanti a partita_attuale, Intero,  >= NUMERO_MINIMO_GIOCATORI, <= NUMERO_MASSIMO_GIOCATORI
+ALGORITMO
+numero_partecipanti = Valore del campo numero_giocatori di partita_attuale
+
+scrivere_numero_caselle
+DATI DI INPUT
+partita_attuale, record di cui inserire il numero di caselle che compongono il percorso, record di tipo partita
+dimensione_caselle, il numero di caselle che compongono il percorso di partita_attuale, Intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO
+DATI DI OUTPUT
+partita_attuale, record con il numero di caselle che compongono il percorso inserito, record di tipo partita
+ALGORITMO
+Valore del campo numero_caselle di partita_attuale = dimensione_caselle
+
+leggere_numero_caselle
+DATI DI INPUT
+partita_attuale, record del quale leggere il numero di caselle, record di tipo partita
+DATI DI OUTPUT
+dimensione_caselle, il numero di caselle che compongono il percorso di partita_attuale, Intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO
+ALGORITMO
+dimensione_caselle = Valore del campo numero_caselle di partita_attuale
+
+scrivere_casella_percorso
+DATI DI INPUT
+partita_attuale, record in cui inserire casella_attuale, record di tipo partita
+casella_attuale, la casella da inserire nel percorso di partita_attuale nella data posizione, record di tipo casella
+posizione_casella, la posizione in cui inserire casella_attuale all'interno del percorso di partita_attuale, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
+DATI DI OUTPUT
+partita_attuale, record on la casella inserita all'interno del percorso nella posizione data, record di tipo partita
+ALGORITMO
+Elemento in posizione posizione_casella del campo percorso di partita_attuale = casella_attuale
+
+leggere_casella_percorso
+DATI DI INPUT
+partita_attuale, record di cui leggere la casella presente nel percorso nella posizione indicata, record di tipo partita
+posizione_casella, la posizione della casella da leggere all'interno del percorso di partita_attuale, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
+DATI DI OUTPUT
+casella_attuale, la casella presente allìinterno del percorso di partita_attuale nella posizione indicata, record di tipo casella
+ALGORITMO
+casella_attuale = Elemento in posizione posizione_casella del campo percorso di partita_attuale
+
+scrivere_turno
+DATI DI INPUT
+
+//da chiedere
+partita_attuale, record  in cui inserire il numero del giocatore di turno, record di tipo partita
+turno_attuale, numero corrispondente al giocatore di turno da inserire in partita_attuale, Intero, > 0, <= Valore del campo numero_giocatori di partita_attuale
+DATI DI OUTPUT
+partita_attuale, record con il campo relativo al turno inserito, record di tipo partita
+ALGORITMO
+Valore del campo turno di partita_attuale = turno_attuale
+
+leggere_turno
+DATI DI INPUT
+
+//da chiedere
+partita_attuale, partita della quale vogliamo leggere chi è attualmente il giocatoe di turno, record di tipo partita
+
+DATI DI OUTPUT
+turno_attuale, il numero identificativo del giocatore di turno all'interno dell'elenco dei giocatori, Intero, > 0, <= Valore del campo numero_giocatori di partita_attuale
+ALGORITMO
+turno_attuale = Valore del campo turno di partita_attuale
+
+
+
+//chiedere spiegazione dell'utilità e dello scopo della funzione
+scrivere_ultimo_lancio
+DATI DI INPUT
+partita_attuale, la partita a cui attribuire il turno, record di tipo partita
+dado, il dado di cui aggiornare l’ultimo lancio, Intero
+lancio, l’ultimo_lancio di dado in partita_attuale, Intero
+DATI DI OUTPUT
+partita_attuale, partita_attuale con ultimo_lancio aggiornato, partita  
+ALGORITMO
+Elemento in posizione dado del campo ultimo_lancio di partita_attuale = lancio
+
+leggere_ultimo_lancio
+DATI DI INPUT
+partita_attuale, la partita di cui leggere ultimo_lancio, record di tipo partita
+dado, il dado di cui leggere il lancio, Intero
+DATI DI OUTPUT
+lancio, l’ultimo_lancio di dado in partita_attuale, Intero
+ALGORITMO
+lancio = Elemento in posizione dado del campo ultimo_lancio di partita_attuale
+//chiedere spiegazione dell'utilità e dello scopo della funzione
+
+
+
+scrivere_giocatori
+DATI DI INPUT
+partita_attuale, record al cui inetrno inserire la scheda del giocatore contenente le sue informazioni, record di tipo partita
+giocatore_attuale, giocatore da inserire all'interno dell'elenco dei giocatori partecipanti a partita_attuale, record di tipo giocatore
+posizione_elenco_giocatori, posizione all'interno dell'elenco dei giocatori in cui inserire giocatore_attuale, Intero, > 0, <= leggere_numero_giocatori (partita_attuale)
+DATI DI OUTPUT
+partita_attuale, record con il giocatore inserito all'interno dell'elenco dei giocatori partecipanti alla partita, recor di tipo partita
+ALGORITMO
+Elemento in posizione posizione_elenco_giocatori del campo giocatore di partita_attuale = giocatore_attuale
+
+leggere_giocatori
+DATI DI INPUT
+partita_attuale, record da cui leggere il giocatore presente nell'elenco dei giocatori nella posizione indicata, record di tipo partita
+posizione_elenco_giocatori, la posizione del giocatore da leggere nell'elenco dei giocatori di partita_attuale, Intero,  > 0, <= leggere_numero_giocatori (partita_attuale)
+DATI DI OUTPUT
+giocatore_attuale, il giocatore presente nell'elenco dei giocatori di partita_attuale nella posizione indicata, record di tipo giocatore
+ALGORITMO
+giocatore_attuale = Elemento in posizione posizione_elenco_giocatori del campo giocatore di partita_attuale
+
+
+
+//da chiedere come descrivere i dati
+scrivere_terminata
+DATI DI INPUT
+partita_attuale, la partita a cui attribuire il valore di terminata, record di tipo partita
+termine, indica se la partita è terminata o meno, Booleano
+DATI DI OUTPUT
+partita_attuale, la partita_attuale con il valore terminata aggiornato, partita
+ALGORITMO
+Valore del campo terminata di partita_attuale = termine
+
+leggere_terminata
+DATI DI INPUT
+partita_attuale, la partita di cui leggere se è terminata o meno, record di tipo partita
+DATI DI OUTPUT
+termine, il valore di terminata in partita_attuale, Booleano
+ALGORITMO
+termine = Valore del campo terminata di partita_attuale
