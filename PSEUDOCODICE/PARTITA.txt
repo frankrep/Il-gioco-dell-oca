@@ -135,7 +135,7 @@ lancio = Elemento in posizione dado del campo ultimo_lancio di partita_attuale
 
 
 
-scrivere_giocatori
+scrivere_giocatore
 DATI DI INPUT
 partita_attuale, record al cui inetrno inserire la scheda del giocatore contenente le sue informazioni, record di tipo partita
 giocatore_attuale, giocatore da inserire all'interno dell'elenco dei giocatori partecipanti a partita_attuale, record di tipo giocatore
@@ -145,7 +145,7 @@ partita_attuale, record con il giocatore inserito all'interno dell'elenco dei gi
 ALGORITMO
 Elemento in posizione posizione_elenco_giocatori del campo giocatore di partita_attuale = giocatore_attuale
 
-leggere_giocatori
+leggere_giocatore
 DATI DI INPUT
 partita_attuale, record da cui leggere il giocatore presente nell'elenco dei giocatori nella posizione indicata, record di tipo partita
 posizione_elenco_giocatori, la posizione del giocatore da leggere nell'elenco dei giocatori di partita_attuale, Intero,  > 0, <= leggere_numero_giocatori (partita_attuale)
