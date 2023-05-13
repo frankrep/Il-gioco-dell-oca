@@ -6,12 +6,14 @@ nome_partita, il nome assegnato e distintivo della partita, Array a una dimensio
 numero_giocatori, numero dei giocatori che partecipano alla partita, Intero, >= NUMERO_MINIMO_GIOCATORI, <= NUMERO_MASSIMO_GIOCATORI
 numero_caselle, numero delle caselle che compongono il percorso della partita, Intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO
 
-//chiedere se il NOME_FINE_PERCORSO sussiste ancora o no
+//chiedere se il NOME_FINE_PERCORSO sussiste ancora o no 
+//è attualmente utilizzato per capire se il giocatore è giunto o no alla fine del percorso e anche per stabilire la "casella di terminazione" nell'array delle caselle speciali, in modo da non dover portare dietro la cardinalità dell'array
 percorso, campo da gioco dove sono posizionate le caselle su cui si muoveranno i giocatori, Array a una dimensione (numero_caselle) di casella con CASELLA di terminazione avente nome NOME_FINE_PERCORSO
 
 giocatori, contiene le informazioni relative ai giocatori partecipanti alla partita, Array a una dimensione (numero_giocatori) di giocatore
 
 //chiedere se individua la posizione del giocatore di turno all'interno dell'array
+//esatto, individua la posizione all'interno dell'array giocatori del record partita
 turno, indica il giocatore attualmente di turno, Intero, > 0, <= numero_giocatori
 
 ultimo_lancio, il numero dell’ultimo lancio effettuato con ciascun dado, Array a una dimensione (NUMERO_DADI) di Interi (>= FACCIA_MINIMA_DADO, <= FACCIA_MASSIMA_DADO)
@@ -113,6 +115,7 @@ turno_attuale = Valore del campo turno di partita_attuale
 
 
 //chiedere spiegazione dell'utilità e dello scopo della funzione
+//praticamente quando un giocatore lancia i dadi questo campo viene aggiornato con i valori del lancio
 scrivere_ultimo_lancio
 DATI DI INPUT
 partita_attuale, la partita a cui attribuire il turno, record di tipo partita
@@ -157,6 +160,7 @@ giocatore_attuale = Elemento in posizione posizione_elenco_giocatori del campo g
 
 
 //da chiedere come descrivere i dati
+//questa come effettivamente notavamo potrebbe essere tolta, ma andrebbero modificate alcune funzioni, e forse ci conviene tenerla per poter utilizzare al meglio il sistema di anti-cheat/replay ideato dall'interfacer
 scrivere_terminata
 DATI DI INPUT
 partita_attuale, la partita a cui attribuire il valore di terminata, record di tipo partita
