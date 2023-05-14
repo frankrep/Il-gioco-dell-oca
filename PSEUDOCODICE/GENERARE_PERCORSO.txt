@@ -4,16 +4,14 @@
 generare_percorso
 
 DATI DI INPUT
-caselle_speciali, l'elenco di caselle speciali, Array di CASELLA con CASELLA di terminazione avente nome NOME_FINE_PERCORSO
-lunghezza_percorso, la lunghezza del percorso scelta dall'utente, Intero, >=50 e <=90
-oche, la distanza tra le oche, Intero, >0
+partita_attuale, record di cui inizializzare il percorso con le relative caselle, record di tipo partita
 
 DATI DI OUTPUT
-percorso, il percorso di CASELLA generato, Array di CASELLA
+partita_attuale, la partita con il percorso generato e inserito, record di tipo partita
 
 ALGORITMO
 partita_attuale = creare_percorso_con_oche(partita_attuale)
-partita_attuale = posizionare_caselle_speciali(partita_attuale) 
+partita_attuale = posizionare_caselle_speciali(partita_attuale)
 
 
 
@@ -78,7 +76,6 @@ casella_attuale = scrivere_numero_casella(casella_attuale, indice_partita)
 
 
 
-
 //inserire una casella speciale inserita nel file per indicare la casella speciale di fine percorso con simbolo "W"
 
 
@@ -91,10 +88,10 @@ posizione_originale, la posizione di una casella relativa a DIMENSIONE_MASSIMA_P
 DIMENSIONE_MASSIMA_PERCORSO, la dimensione massima che il percorso può assumere, Intero, = 90 
 
 DATI DI OUTPUT
-posizione_ricavata, la posizione ricavata dalla proporzione, Intero, >0
+posizione_ricavata, numero di casella relativo al numero di caselle che compongono il percorso di partita_attuale ricavata dalla proporzione con il percorso da DIMENSIONE_MASSIMA_PERCORSO, Intero, > 0
 
 DATI DI LAVORO
-valore_proporzione, il valore assunto dal calcolo della proporzione, Reale
+valore_proporzione, contiene il risultato della proporzione relativa al numero della casella da calcolare, Reale, > 0
 
 ALGORITMO
 valore_proporzione = ((leggere_lunghezza_percorso(partita_attuale) * posizione_originale) / DIMENSIONE_MASSIMA_PERCORSO)
@@ -105,52 +102,105 @@ posizione_ricavata = calcolare_parte_intera(valore_proporzione)
 posizionare_caselle_speciali
 
 DATI DI INPUT
-
+partita_attuale, la partita in cui posizionare le caselle speciali, record di tipo partita
+NUMERO_CASELLE_SPECIALI, il numero di caselle speciali presenti nella partita, Intero, = 7
 
 DATI DI OUTPUT
-
+partita_attuale, la partita con le caselle speciali posizionate, record di tipo partita
 
 DATI DI LAVORO
-
+indice_speciali, la posizione raggiunta in caselle_speciali, Intero, > 0
+caselle_speciali, le caselle speciali da inseire nel percorso in partita_attuale, Array ad una dimensione (NUMERO_CASELLE_SPECIALI) di casella
 
 ALGORITMO
-caselle_speciali = leggere_da_file(casella, NUMERO_CASELLE_SPECIALI, file_caselle_speciali)
-caselle_speciali = pro()
+caselle_speciali = proporzionare_caselle_speciali(partita_attuale)
 indice_speciali = 1
 MENTRE (indice_speciali <= NUMERO_CASELLE_SPECIALI)
-
-
+   partita_attuale = scrivere_casella_percorso(partita_attuale, Elemento in posizione indice_speciali di caselle_speciali, indice_speciali)
    indice_speciali = indice_speciali + 1
 FINE
 
 
 
-posizionare_speciali
+proporzionare_caselle_speciali
+
 DATI DI INPUT
-speciali, le caselle speciali da inserire nel percorso, Array di CASELLA con CASELLA di terminazione avente nome NOME_FINE_PERCORSO
-lunghezza_percorso, la lunghezza del percorso, Intero
-percorso, il percorso del gioco dell’oca, Array di CASELLA con CASELLA di terminazione avente nome NOME_FINE_PERCORSO
+partita_attuale, la partita in cui calcolare la proporzione delle casella, record di tipo partita
+NUMERO_CASELLE_SPECIALI, il numero di caselle speciali presenti nella partita, Intero, = 7
+file_caselle_speciali, il file contenente record di tipo casella relativi alle caselle speciali, file di tipo binario
 
 DATI DI OUTPUT
-percorso, il percorso con le oche posizionate, Array di CASELLA con CASELLA di terminazione avente nome NOME_FINE_PERCORSO
-
-DATI DI LAVORO
-pos_s, la posizione raggiunta nell'array di speciali, Intero, >0
-nuova_posizione, la posizione ricavata dalla proporzione, Intero
+caselle_speciali, le caselle speciali con il relativo numero identificativo proporzionate alla lunghezza del percorso di partita_attuale, Array ad una dimensione (NUMERO_CASELLE_SPECIALI) di casella
 
 ALGORITMO
-pos_s = 1
-MENTRE ((ConfrontareStringhe(LeggereNome(Elemento in posizione pos di speciali), NOME_FINE_PERCORSO) = 0) AND (pos_s < lunghezza_percorso))
-	nuova_posizione = CacolareProporzione(lunghezza_percorso, LeggerePosizione(Elemento in posizione pos di speciali))
-	SE (ConfrontareStringhe(LeggereNome(Elemento in posizione nuova_posizione di percorso), FINE_STRINGA) = 1)
-	ALLORA
-    	Elemento in posizione nuova_posizione di percorso = Elemento in posizione pos_s di speciali
-	ALTRIMENTI
-    	nuova_posizione = nuova_posizione - 1
-    	SE (nuova_posizione > 0)
-    	ALLORA
-        	Elemento in posizione nuova_posizione di percorso = Elemento in posizione pos_s di speciali
-    	FINE
-	FINE
-	pos_s = pos_s + 1
+caselle_speciali = leggere_da_file(casella, NUMERO_CASELLE_SPECIALI, file_caselle_speciali)
+indice_speciali = 1
+MENTRE (indice_speciali <= NUMERO_CASELLE_SPECIALI)
+   Elemento in posizione indice_speciali di caselle_speciali = scrivere_numero_casella (Elemento in posizione indice_speciali di caselle_speciali, calcolare_proporzione (partita_attuale, leggere_numero_casella (Elemento in posizione indice_speciali di caselle_speciali) ) )
+   indice_speciali = indice_speciali + 1
+FINE
+
+
+
+calcolare_parte_intera
+
+INPUT
+valore_reale, numero del quale vogliamo calcolare il primo intero più piccolo, reale, > 0.0
+BASE, la base numerica della funzione di parte intera, Intero, = 10
+
+OUTPUT
+parte_intera_numero, risultato dell'operazione di floor di valore_reale, intero, >= 0
+
+DATI DI LAVORO
+numero, contiene la copia di valore_reale, reale, > 0.0
+divisore, divisore massimo di numero e multiplo di BASE, intero, > 0
+parte_intera_cifra, contiene il risultato della funzione parte intera realtivo alla singola cifra, intero, >= 0 
+
+ALGORITMO
+numero = valore_reale
+parte_intera_numero = 0
+divisore = trovare_divisore_decimale(numero)
+MENTRE (divisore >= 1)
+   parte_intera_cifra = calcolare_parte_intera_unita(numero, divisore)
+   parte_intera_numero = parte_intera_numero + (parte_intera_cifra * divisore)
+   numero = numero - (parte_intera_cifra * divisore)
+   divisore = divisore / BASE
+FINE
+
+
+
+trovare_divisore_decimale
+
+DATI DI INPUT
+numero, il numero di cui trovare il divisore massimo nella base numerica BASE, reale, > 0.0
+BASE, la base numerica della funzione di parte intera, Intero, = 10
+
+DATI DI OUTPUT
+divisore, il divisore più alto di numero nella base numerica BASE, Intero, > 0
+
+ALGORITMO
+divisore = 1
+MENTRE ((numero/divisore) >= BASE)
+   divisore = divisore * BASE
+FINE
+
+
+
+calcolare_parte_intera_unita
+
+DATI DI INPUT
+numero, il numero di cui calcolare la parte intera della cifra, Reale, >= 0.0
+divisore, la posizione della cifra di cui si desidera calcolare la parte intera, Intero, > 0
+
+DATI DI OUTPUT
+parte_intera, la parte intera di numero nella posizione decimale data dal divisore, Intero, >= 0
+
+DATI DI LAVORO
+cifra_del_numero, la cifra del numero individuata dal divisore, Reale, >= 0.0
+
+ALGORITMO
+cifra_del_numero = numero/divisore
+MENTRE (cifra_del_numero >= UNITA')
+	cifra_del_numero = cifra_del_numero - UNITA'
+	parte_intera = parte_intera + UNITA'
 FINE

@@ -43,7 +43,7 @@ numero_partecipanti, il numero dei giocatori partecipanti a partita_attuale, Int
 ALGORITMO
 numero_partecipanti = Valore del campo numero_giocatori di partita_attuale
 
-lunghezza_percorso
+scrivere_lunghezza_percorso
 DATI DI INPUT
 partita_attuale, record di cui inserire il numero di caselle che compongono il percorso, record di tipo partita
 dimensione_caselle, il numero di caselle che compongono il percorso di partita_attuale, Intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO
@@ -52,7 +52,7 @@ partita_attuale, record con il numero di caselle che compongono il percorso inse
 ALGORITMO
 Valore del campo lunghezza_percorso di partita_attuale = dimensione_caselle
 
-lunghezza_percorso
+leggere_lunghezza_percorso
 DATI DI INPUT
 partita_attuale, record del quale leggere il numero di caselle, record di tipo partita
 DATI DI OUTPUT

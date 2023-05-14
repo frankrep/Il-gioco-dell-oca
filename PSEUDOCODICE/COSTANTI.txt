@@ -6,6 +6,7 @@ FACCIA_MINIMA_DADO, il numero minimo presente sulle facce di un dado, Intero, = 
 FACCIA_MASSIMA_DADO, il numero massimo presente sulle facce di un dado, Intero, = 6
 NUMERO_DADI, il numero di dadi da utilizzare durante la partita, Intero, = 2
 DISTANZA_OCHE, la distanza nel percorso tra le oche, Intero, = 9
+NUMERO_CASELLE_SPECIALI, il numero di caselle speciali presenti nella partita, Intero, = 7
 
 //da chiedere
 PRIMO_DADO, la posizione del dado numero 1 nel campo ultimo_lancio del record partita, Intero, = 1
@@ -39,11 +40,11 @@ DADO_MINORE_USCITA_PRIGIONE, la prima faccia di dado che consente l'uscita dalla
 DADO_MAGGIORE_USCITA_PRIGIONE, la seconda faccia di dado che consente l'uscita dalla prigione, Intero, = 7
 
 //chiedere all'interfacer
-DIMENSIONE_MINIMA_NOME_PARTITA, la dimensione minima che il nome della partita può avere, Intero, = 1
-DIMENSIONE_MASSIMA_NOME_PARTITA, la dimensione massima che il nome della partita può avere, Intero, = 30
+DIMENSIONE_MINIMA_NOME_PARTITA, la dimensione minima che il nome della partita può avere, Intero, = 3
+DIMENSIONE_MASSIMA_NOME_PARTITA, la dimensione massima che il nome della partita può avere, Intero, = 20
 DIMENSIONE_MINIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, Intero, = 3
 DIMENSIONE_MASSIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, Intero, = 20
-DIMEMNSIONE_MASSIMA_NOME_CASELLA, la dimensione massima che il nome della casella può avere, Intero, = 15
+DIMEMNSIONE_MASSIMA_NOME_CASELLA, la dimensione massima che il nome della casella può avere, Intero, = 
 
 FINE_STRINGA, il carattere utilizzato come fine stringa, Carattere, = '\0'
 CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
@@ -53,3 +54,4 @@ NUMERO_MASSIMO_CLASSIFICATI, numero massimo di giocatori di cui è composta la c
 MOLTIPLICATORE, elemento moltiplicatore della funzione, intero, = 1664525
 INCREMENTO, valore (primo) incrementale della funzione coprimo con DIVISORE, intero, = 1013904223
 DIVISORE, divisore dell'operazione di modulo , intero, = 4294367296
+BASE, la base numerica della funzione di parte intera, Intero, = 10
