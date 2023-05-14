@@ -1,29 +1,18 @@
-//chiedere la dimensione del nome della partita all'interfaccer (anche per le funzioni di accesso al nome)
-
-
 RECORD partita
-nome_partita, il nome assegnato e distintivo della partita, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+nome_partita, il nome assegnato e distintivo della partita, Array a una dimensione (DIMENSIONE_MASSIMA_NOME_PARTITA) di caratteri (terminante con FINE_STRINGA)
 numero_giocatori, numero dei giocatori che partecipano alla partita, Intero, >= NUMERO_MINIMO_GIOCATORI, <= NUMERO_MASSIMO_GIOCATORI
 numero_caselle, numero delle caselle che compongono il percorso della partita, Intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO
-
-//chiedere se il NOME_FINE_PERCORSO sussiste ancora o no 
-//è attualmente utilizzato per capire se il giocatore è giunto o no alla fine del percorso e anche per stabilire la "casella di terminazione" nell'array delle caselle speciali, in modo da non dover portare dietro la cardinalità dell'array
 percorso, campo da gioco dove sono posizionate le caselle su cui si muoveranno i giocatori, Array a una dimensione (numero_caselle) di casella con CASELLA di terminazione avente nome NOME_FINE_PERCORSO
-
 giocatori, contiene le informazioni relative ai giocatori partecipanti alla partita, Array a una dimensione (numero_giocatori) di giocatore
-
-//chiedere se individua la posizione del giocatore di turno all'interno dell'array
-//esatto, individua la posizione all'interno dell'array giocatori del record partita
-turno, indica il giocatore attualmente di turno, Intero, > 0, <= numero_giocatori
-
-ultimo_lancio, il numero dell’ultimo lancio effettuato con ciascun dado, Array a una dimensione (NUMERO_DADI) di Interi (>= FACCIA_MINIMA_DADO, <= FACCIA_MASSIMA_DADO)
+turno, indica il giocatore attualmente di turno, Intero, >= 0 (= 0 la partita non è ancora cominciata), <= numero_giocatori
+dadi, il numero dell’ultimo lancio effettuato con ciascun dado, Array a una dimensione (NUMERO_DADI) di Interi (>= FACCIA_MINIMA_DADO, <= FACCIA_MASSIMA_DADO)
 
 _________________________________________________________________________________________________________________________________________________
 
 scrivere_nome_partita
 DATI DI INPUT
 partita_attuale, la partita della quale si vuole inserire il nome, record di tipo partita
-nome, il nome inserire all'intero di partita_attuale, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+nome, il nome inserire all'intero di partita_attuale, Array a una dimensione (DIMENSIONE_MASSIMA_NOME_PARTITA) di caratteri (terminante con FINE_STRINGA)
 DATI DI OUTPUT
 partita_attuale, record con il nome relativo alla partita inserito, record di tipo partita  
 ALGORITMO
@@ -33,7 +22,7 @@ leggere_nome_partita
 DATI DI INPUT
 partita_attuale, la partita di cui leggere il nome, record di tipo partita
 DATI DI OUTPUT
-nome, il nome indentificativo di partita_attuale letto, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+nome, il nome indentificativo di partita_attuale letto, Array a una dimensione (DIMENSIONE_MASSIMA_NOME_PARTITA) di caratteri (terminante con FINE_STRINGA)
 ALGORITMO
 nome = Valore del campo nome_partita di partita_attuale
 
@@ -92,51 +81,39 @@ casella_attuale = Elemento in posizione posizione_casella del campo percorso di 
 
 scrivere_turno
 DATI DI INPUT
-
-//da chiedere
 partita_attuale, record  in cui inserire il numero del giocatore di turno, record di tipo partita
-turno_attuale, numero corrispondente al giocatore di turno da inserire in partita_attuale, Intero, > 0, <= Valore del campo numero_giocatori di partita_attuale
+turno_attuale, numero corrispondente al giocatore di turno da inserire in partita_attuale, Intero, >= 0 (= 0 la partita non è ancora cominciata), <= Valore del campo numero_giocatori di partita_attuale
 DATI DI OUTPUT
-partita_attuale, record con il campo relativo al turno inserito, record di tipo partita
+partita_attuale, record con il numero del giocatore di turno inserito, record di tipo partita
 ALGORITMO
 Valore del campo turno di partita_attuale = turno_attuale
 
 leggere_turno
 DATI DI INPUT
-
-//da chiedere
 partita_attuale, partita della quale vogliamo leggere chi è attualmente il giocatoe di turno, record di tipo partita
-
 DATI DI OUTPUT
-turno_attuale, il numero identificativo del giocatore di turno all'interno dell'elenco dei giocatori, Intero, > 0, <= Valore del campo numero_giocatori di partita_attuale
+turno_attuale, il numero identificativo del giocatore di turno all'interno dell'elenco dei giocatori, Intero, >= 0 (= 0 la partita non è ancora cominciata), <= Valore del campo numero_giocatori di partita_attuale
 ALGORITMO
 turno_attuale = Valore del campo turno di partita_attuale
 
-
-
-//chiedere spiegazione dell'utilità e dello scopo della funzione
-//praticamente quando un giocatore lancia i dadi questo campo viene aggiornato con i valori del lancio
-scrivere_ultimo_lancio
+scrivere_dadi
 DATI DI INPUT
-partita_attuale, la partita a cui attribuire il turno, record di tipo partita
-dado, il dado di cui aggiornare l’ultimo lancio, Intero
-lancio, l’ultimo_lancio di dado in partita_attuale, Intero
+partita_attuale, partita di cui inserire il lancio dei dadi del giocatore di turno, record di tipo partita
+faccia_dado, l'ultima faccia risultante dal lancio del dado, Intero, >= FACCIA_MINIMA_DADO, <= FACCIA_MASSIMA_DADO
+posizione_dado, indica la posizione del dado di cui aggiornare l’ultima faccia risultatnte, Intero, > 0, <= NUMERO_DADI
 DATI DI OUTPUT
 partita_attuale, partita_attuale con ultimo_lancio aggiornato, partita  
 ALGORITMO
-Elemento in posizione dado del campo ultimo_lancio di partita_attuale = lancio
+Elemento in posizione posizione_dado del campo dadi di partita_attuale = faccia_dado
 
-leggere_ultimo_lancio
+leggere_dadi
 DATI DI INPUT
-partita_attuale, la partita di cui leggere ultimo_lancio, record di tipo partita
-dado, il dado di cui leggere il lancio, Intero
+partita_attuale, la partita di cui leggere l'ultima faccia risultante dal lancio dei dadi, record di tipo partita
+posizione_dado, indica la posizione del dado di cui leggere l'ultima faccia risultante, Intero, > 0, <= NUMERO_DADI
 DATI DI OUTPUT
-lancio, l’ultimo_lancio di dado in partita_attuale, Intero
+faccia_dado, la faccia risultante dal lancio del dado in posizione_dado in partita_attuale, Intero, >= FACCIA_MINIMA_DADO, <= FACCIA_MASSIMA_DADO
 ALGORITMO
-lancio = Elemento in posizione dado del campo ultimo_lancio di partita_attuale
-//chiedere spiegazione dell'utilità e dello scopo della funzione
-
-
+faccia_dado = Elemento in posizione posizione_dado del campo dadi di partita_attuale
 
 scrivere_giocatore
 DATI DI INPUT
@@ -156,24 +133,3 @@ DATI DI OUTPUT
 giocatore_attuale, il giocatore presente nell'elenco dei giocatori di partita_attuale nella posizione indicata, record di tipo giocatore
 ALGORITMO
 giocatore_attuale = Elemento in posizione posizione_elenco_giocatori del campo giocatore di partita_attuale
-
-
-
-//da chiedere come descrivere i dati
-//questa come effettivamente notavamo potrebbe essere tolta, ma andrebbero modificate alcune funzioni, e forse ci conviene tenerla per poter utilizzare al meglio il sistema di anti-cheat/replay ideato dall'interfacer
-scrivere_terminata
-DATI DI INPUT
-partita_attuale, la partita a cui attribuire il valore di terminata, record di tipo partita
-termine, indica se la partita è terminata o meno, Booleano
-DATI DI OUTPUT
-partita_attuale, la partita_attuale con il valore terminata aggiornato, partita
-ALGORITMO
-Valore del campo terminata di partita_attuale = termine
-
-leggere_terminata
-DATI DI INPUT
-partita_attuale, la partita di cui leggere se è terminata o meno, record di tipo partita
-DATI DI OUTPUT
-termine, il valore di terminata in partita_attuale, Booleano
-ALGORITMO
-termine = Valore del campo terminata di partita_attuale

@@ -1,7 +1,7 @@
 //chiedere le dimensione del nome all'interfacer
 
 RECORD giocatore
-nome_giocatore, il nome scelto dal giocatore , Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+nome_giocatore, il nome scelto dal giocatore , Array a una dimensione (DIMENSIONE_MASSIMA_NOME_GIOCATORE) di caratteri (terminante con FINE_STRINGA)
 posizione_giocatore, la posizione in cui si trova il giocatore nel percorso, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
 pedina_giocatore, il simbolo scelto dal giocatore per rappresentarsi nel percorso, carattere
 lanci_effettuati, numero lanci effettuati dal giocatore in partita, Intero, >= 0
@@ -12,7 +12,7 @@ ________________________________________________________________________________
 scrivere_nome_giocatore
 DATI DI INPUT
 giocatore_attuale, il giocatore di cui inseriri il nome, record di tipo giocatore
-nome, il nome da inserire in giocatore_attuale, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+nome, il nome da inserire in giocatore_attuale, Array a una dimensione (DIMENSIONE_MASSIMA_NOME_GIOCATORE) di caratteri (terminante con FINE_STRINGA)
 DATI DI OUTPUT
 giocatore_attuale, giocatore_attuale con nome inserito, record di tipo giocatore
 ALGORITMO
@@ -22,7 +22,7 @@ leggere_nome_giocatore
 DATI DI INPUT
 giocatore_attuale, il giocatore di cui leggere il nome, record di tipo giocatore 
 DATI DI OUTPUT
-nome, il nome di giocatore_attuale letto, Array a una dimensione () di caratteri (terminante con FINE_STRINGA) 
+nome, il nome di giocatore_attuale letto, Array a una dimensione (DIMENSIONE_MASSIMA_NOME_GIOCATORE) di caratteri (terminante con FINE_STRINGA) 
 ALGORITMO
 nome = Valore del campo nome_giocatore di giocatore_attuale
 
