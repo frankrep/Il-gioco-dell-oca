@@ -128,32 +128,6 @@ FINE
 
 
 
-trovare_posizione_massimo
-DATI DI INPUT
-estrazioni, i valori ottenuti dal lancio dei dadi per ciascun giocatore, Array di Interi
-dimensione, cardinalità di estrazioni, Intero
-
-DATI DI OUTPUT
-posizione_massimo, la posizione dell' ultimo massimo ovvero dell'ultimo giocatore ad aver effettuato il lancio più alto, Intero
-
-DATI DI LAVORO
-massimo, il massimo in estrazioni, Intero
-pos, posizione raggiunta nella lettura di estrazioni, Intero
-
-ALGORITMO
-massimo = trovare_posizione_massimo(estrazioni, dimensione)
-posizione_massimo = 1
-pos = 1
-MENTRE(pos <= dimensione)
-    SE(massimo = Elemento in posizione pos di estrazioni)
-    ALLORA
-        posizione_massimo = pos
-    FINE
-    pos = pos + 1
-FINE
-
-
-
 lanciare_dadi
 DATI DI INPUT
 partita_attuale, la partita in cui lanciare i dadi, partita
