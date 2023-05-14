@@ -3,7 +3,7 @@
 RECORD casella 
 nome_casella, il nome attribuito a casella, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
 numero_casella, la posizione di casella lungo il percorso, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
-descrizione, la descrizione relativa alla casella, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+percorso_file, nome del file contenente la descrizione e l'immagine rappresentativa della casella, Array a una dimensione (NUMERO_MASSIMO_CARATTERI_PERCORSO) di caratteri (terminante con FINE_STRINGA)
 simbolo, glifo rappresentante la casella nel percorso, array a una dimensione (NUMERO_MASSIMO_CARATTERI_SIMBOLO) di caratteri (terminante con FINE_STRINGA)
 
 ____________________________________________________________________________________________________________________________________________
@@ -42,22 +42,22 @@ numero_casella_letto, numero di casella_attuale lungo il percorso, Intero, > 0, 
 ALGORITMO
 numero_casella_letto = Valore del campo numero_casella di casella_attuale
 
-scrivere_descrizione
+scrivere_percorso_file
 DATI DI INPUT
-casella_attuale, la casella_attuale in cui inserire descrizione_casella, record di tipo casella
-descrizione_casella, la descrizione da inserire in casella_attuale, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+casella_attuale, la casella_attuale in cui inserire percorso_file_generale, record di tipo casella
+percorso_file_generale, la descrizione da inserire in casella_attuale, Array a una dimensione (NUMERO_MASSIMO_CARATTERI_PERCORSO) di caratteri (terminante con FINE_STRINGA)
 DATI DI OUTPUT
-casella_attuale, la casella_attuale con la descrizione inserita, record di tipo casella
+casella_attuale, la casella_attuale con il percorso del file inserito, record di tipo casella
 ALGORITMO
-Valore del campo descrizione di casella_attuale = descrizione_casella
+Valore del campo percorso_file di casella_attuale = percorso_file_generale
 
-leggere_descrizione
+leggere_percorso_file
 DATI DI INPUT
 casella_attuale, la casella_attuale di cui leggere la descrizione, record di tipo casella
 DATI DI OUTPUT
-descrizione_casella, la descrizione di casella_attuale letta, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+percorso_file_generale, il percorso del file di casella_attuale letta, Array a una dimensione (NUMERO_MASSIMO_CARATTERI_PERCORSO) di caratteri (terminante con FINE_STRINGA)
 ALGORITMO
-descrizione_casella = Valore del campo descrizione di casella_attuale
+percorso_file_generale = Valore del campo percorso_file di casella_attuale
 
 scrivere_simbolo
 DATI DI INPUT

@@ -69,14 +69,9 @@ ALLORA
    casella_attuale = leggere_da_file(casella, 1, file_oca)
 ALTRIMENTI
    casella_attuale = scrivere_nome_casella(casella_attuale, FINE_STRINGA)
-   casella_attuale = scrivere_descrizione(casella_attuale, FINE_STRINGA)
    casella_attuale = scrivere_simbolo(casella_attuale, FINE_STRINGA)
 FINE
 casella_attuale = scrivere_numero_casella(casella_attuale, indice_partita)
-
-
-
-//inserire una casella speciale inserita nel file per indicare la casella speciale di fine percorso con simbolo "W"
 
 
 

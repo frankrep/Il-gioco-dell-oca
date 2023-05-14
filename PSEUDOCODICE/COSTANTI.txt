@@ -55,3 +55,4 @@ MOLTIPLICATORE, elemento moltiplicatore della funzione, intero, = 1664525
 INCREMENTO, valore (primo) incrementale della funzione coprimo con DIVISORE, intero, = 1013904223
 DIVISORE, divisore dell'operazione di modulo , intero, = 4294367296
 BASE, la base numerica della funzione di parte intera, Intero, = 10
+NUMERO_MASSIMO_CARATTERI_PERCORSO, il numero massimo di caratteri di un percorso relativo ad un file, Intero, = 256
