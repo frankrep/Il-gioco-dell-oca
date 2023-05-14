@@ -1,8 +1,8 @@
 RECORD partita
 nome_partita, il nome assegnato e distintivo della partita, Array a una dimensione (DIMENSIONE_MASSIMA_NOME_PARTITA) di caratteri (terminante con FINE_STRINGA)
 numero_giocatori, numero dei giocatori che partecipano alla partita, Intero, >= NUMERO_MINIMO_GIOCATORI, <= NUMERO_MASSIMO_GIOCATORI
-numero_caselle, numero delle caselle che compongono il percorso della partita, Intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO
-percorso, campo da gioco dove sono posizionate le caselle su cui si muoveranno i giocatori, Array a una dimensione (numero_caselle) di casella con CASELLA di terminazione avente nome NOME_FINE_PERCORSO
+lunghezza_percorso, numero delle caselle che compongono il percorso della partita, Intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO
+percorso, campo da gioco dove sono posizionate le caselle su cui si muoveranno i giocatori, Array a una dimensione (lunghezza_percorso) di casella
 giocatori, contiene le informazioni relative ai giocatori partecipanti alla partita, Array a una dimensione (numero_giocatori) di giocatore
 turno, indica il giocatore attualmente di turno, Intero, >= 0 (= 0 la partita non è ancora cominciata), <= numero_giocatori
 dadi, il numero dell’ultimo lancio effettuato con ciascun dado, Array a una dimensione (NUMERO_DADI) di Interi (>= FACCIA_MINIMA_DADO, <= FACCIA_MASSIMA_DADO)
@@ -43,22 +43,22 @@ numero_partecipanti, il numero dei giocatori partecipanti a partita_attuale, Int
 ALGORITMO
 numero_partecipanti = Valore del campo numero_giocatori di partita_attuale
 
-scrivere_numero_caselle
+lunghezza_percorso
 DATI DI INPUT
 partita_attuale, record di cui inserire il numero di caselle che compongono il percorso, record di tipo partita
 dimensione_caselle, il numero di caselle che compongono il percorso di partita_attuale, Intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO
 DATI DI OUTPUT
 partita_attuale, record con il numero di caselle che compongono il percorso inserito, record di tipo partita
 ALGORITMO
-Valore del campo numero_caselle di partita_attuale = dimensione_caselle
+Valore del campo lunghezza_percorso di partita_attuale = dimensione_caselle
 
-leggere_numero_caselle
+lunghezza_percorso
 DATI DI INPUT
 partita_attuale, record del quale leggere il numero di caselle, record di tipo partita
 DATI DI OUTPUT
 dimensione_caselle, il numero di caselle che compongono il percorso di partita_attuale, Intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO
 ALGORITMO
-dimensione_caselle = Valore del campo numero_caselle di partita_attuale
+dimensione_caselle = Valore del campo lunghezza_percorso di partita_attuale
 
 scrivere_casella_percorso
 DATI DI INPUT

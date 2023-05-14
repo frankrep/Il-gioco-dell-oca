@@ -1,0 +1,156 @@
+
+
+
+generare_percorso
+
+DATI DI INPUT
+caselle_speciali, l'elenco di caselle speciali, Array di CASELLA con CASELLA di terminazione avente nome NOME_FINE_PERCORSO
+lunghezza_percorso, la lunghezza del percorso scelta dall'utente, Intero, >=50 e <=90
+oche, la distanza tra le oche, Intero, >0
+
+DATI DI OUTPUT
+percorso, il percorso di CASELLA generato, Array di CASELLA
+
+ALGORITMO
+partita_attuale = creare_percorso_con_oche(partita_attuale)
+partita_attuale = posizionare_caselle_speciali(partita_attuale) 
+
+
+
+creare_percorso_con_oche
+
+DATI DI INPUT
+partita_attuale, la partita di cui creare il percorso con le oche posizionate, record di tipo partita
+
+DATI DI OUTPUT
+partita_attuale, record con il percorso su cui si svolgerà la partita inserito, record di tipo partita
+
+DATI DI LAVORO
+indice_percorso, la posizione raggiunta all'interno del percorso di partita_attuale, Intero, > 0
+
+ALGORITMO
+indice_percorso = 1
+MENTRE (indice_percorso < leggere_numero_caselle(partita_attuale))
+   partita_attuale = inserire_casella (partita_attuale, indice_percorso)
+   indice_percorso = indice_percorso + 1
+FINE
+
+
+
+inserire_casella
+
+DATI DI INPUT
+partita_attuale, la partita , record di tipo partita
+posizione_percorso, indica dove inserire casella_attuale all'interno del percorso di partita_attuale, intero, > 0, <= leggere_lunghezza_percorso (partita_attuale)
+
+DATI DI OUTPUT
+partita_attuale, record con la casella_attuale di tipo partita
+
+DATI DI LAVORO
+casella_attuale, contiene le informazioni già inserite della casella da inserire nel percorso di partita_attuale, record di tipo casella
+
+casella_attuale = creare_casella(posizione_percorso)
+partita_attuale = scrivere_casella_percorso (partita_attuale, casella_attuale, posizione_percorso)
+
+
+
+creare_casella
+
+DATI DI INPUT
+posizione_percorso, la posizione della casella all'interno del percorso, Intero, >= 0, <= DIMENSIONE_MASSIMA_PERCORSO
+file_oca, contiene un record di tipo casella "oca", file di tipo binario
+DISTANZA_OCHE, la distanza nel percorso tra le oche, Intero, = 9
+FINE_STRINGA, il carattere utilizzato come fine stringa, Carattere, = '\0'
+
+DATI DI OUTPUT
+casella_attuale, la casella con la posizione inserita e i campi nome descrizione e simbolo inizializzati, record di tipo casella
+
+ALGORITMO
+SE (calcolare_resto(indice_partita, DISTANZA_OCHE) = 0)
+ALLORA
+   casella_attuale = leggere_da_file(casella, 1, file_oca)
+ALTRIMENTI
+   casella_attuale = scrivere_nome_casella(casella_attuale, FINE_STRINGA)
+   casella_attuale = scrivere_descrizione(casella_attuale, FINE_STRINGA)
+   casella_attuale = scrivere_simbolo(casella_attuale, FINE_STRINGA)
+FINE
+casella_attuale = scrivere_numero_casella(casella_attuale, indice_partita)
+
+
+
+
+//inserire una casella speciale inserita nel file per indicare la casella speciale di fine percorso con simbolo "W"
+
+
+
+calcolare_proporzione
+
+DATI DI INPUT
+partita_attuale, la partita di cui calcolare la proporzione della casella individuata dalla posizione data, record di tipo partita
+posizione_originale, la posizione di una casella relativa a DIMENSIONE_MASSIMA_PERCORSO, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
+DIMENSIONE_MASSIMA_PERCORSO, la dimensione massima che il percorso può assumere, Intero, = 90 
+
+DATI DI OUTPUT
+posizione_ricavata, la posizione ricavata dalla proporzione, Intero, >0
+
+DATI DI LAVORO
+valore_proporzione, il valore assunto dal calcolo della proporzione, Reale
+
+ALGORITMO
+valore_proporzione = ((leggere_lunghezza_percorso(partita_attuale) * posizione_originale) / DIMENSIONE_MASSIMA_PERCORSO)
+posizione_ricavata = calcolare_parte_intera(valore_proporzione)
+
+
+
+posizionare_caselle_speciali
+
+DATI DI INPUT
+
+
+DATI DI OUTPUT
+
+
+DATI DI LAVORO
+
+
+ALGORITMO
+caselle_speciali = leggere_da_file(casella, NUMERO_CASELLE_SPECIALI, file_caselle_speciali)
+caselle_speciali = pro()
+indice_speciali = 1
+MENTRE (indice_speciali <= NUMERO_CASELLE_SPECIALI)
+
+
+   indice_speciali = indice_speciali + 1
+FINE
+
+
+
+posizionare_speciali
+DATI DI INPUT
+speciali, le caselle speciali da inserire nel percorso, Array di CASELLA con CASELLA di terminazione avente nome NOME_FINE_PERCORSO
+lunghezza_percorso, la lunghezza del percorso, Intero
+percorso, il percorso del gioco dell’oca, Array di CASELLA con CASELLA di terminazione avente nome NOME_FINE_PERCORSO
+
+DATI DI OUTPUT
+percorso, il percorso con le oche posizionate, Array di CASELLA con CASELLA di terminazione avente nome NOME_FINE_PERCORSO
+
+DATI DI LAVORO
+pos_s, la posizione raggiunta nell'array di speciali, Intero, >0
+nuova_posizione, la posizione ricavata dalla proporzione, Intero
+
+ALGORITMO
+pos_s = 1
+MENTRE ((ConfrontareStringhe(LeggereNome(Elemento in posizione pos di speciali), NOME_FINE_PERCORSO) = 0) AND (pos_s < lunghezza_percorso))
+	nuova_posizione = CacolareProporzione(lunghezza_percorso, LeggerePosizione(Elemento in posizione pos di speciali))
+	SE (ConfrontareStringhe(LeggereNome(Elemento in posizione nuova_posizione di percorso), FINE_STRINGA) = 1)
+	ALLORA
+    	Elemento in posizione nuova_posizione di percorso = Elemento in posizione pos_s di speciali
+	ALTRIMENTI
+    	nuova_posizione = nuova_posizione - 1
+    	SE (nuova_posizione > 0)
+    	ALLORA
+        	Elemento in posizione nuova_posizione di percorso = Elemento in posizione pos_s di speciali
+    	FINE
+	FINE
+	pos_s = pos_s + 1
+FINE

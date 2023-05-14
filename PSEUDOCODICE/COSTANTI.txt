@@ -5,8 +5,9 @@ NUMERO_MINIMO_GIOCATORI, il numero minimo di giocatori che possono prendere part
 FACCIA_MINIMA_DADO, il numero minimo presente sulle facce di un dado, Intero, = 1
 FACCIA_MASSIMA_DADO, il numero massimo presente sulle facce di un dado, Intero, = 6
 NUMERO_DADI, il numero di dadi da utilizzare durante la partita, Intero, = 2
+DISTANZA_OCHE, la distanza nel percorso tra le oche, Intero, = 9
 
-//forse
+//da chiedere
 PRIMO_DADO, la posizione del dado numero 1 nel campo ultimo_lancio del record partita, Intero, = 1
 
 NOME_OCA, il nome della casella oca, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "OCA\0"
@@ -27,11 +28,6 @@ STRATO_3_A, posizione nell'array disegno dello strato 3A del disegno di casella,
 STRATO_3_B, posizione nell'array disegno dello strato 3B del disegno di casella, Intero, = 3
 STRATO_4_A, posizione nell'array disegno dello strato 4A del disegno di casella, Intero, = 4
 
-//aggiungere campo a casella per il simbolo
-POSIZIONE_NOMI_CASELLE, la posizione dell'array in cui sono presenti i nomi delle caselle speciali, Intero, = 1
-POSIZIONE_SIMBOLI_CASELLE, la posizione dell'array in cui sono presenti i simboli associati ai rispettivi nomi delle caselle speciali, Intero, = 2
-
-
 PRIMO_LANCIO_3_6, indica la casella su cui si sposterà il giocatore nel momento in cui arriverà su una casella oca con un 3 e un 6 ottenuto dal primo lancio dei dadi, intero, = 38
 PRIMO_LANCIO_4_5, indica la casella su cui si sposterà il giocatore nel momento in cui arriverà su una casella oca con un 4 e un 5 ottenuto dal primo lancio dei dadi, intero, = 76
 DADO_MINORE_PRIMO_LANCIO, faccia minore del primo lancio risultante nove, intero, = 3
@@ -47,6 +43,7 @@ DIMENSIONE_MINIMA_NOME_PARTITA, la dimensione minima che il nome della partita p
 DIMENSIONE_MASSIMA_NOME_PARTITA, la dimensione massima che il nome della partita può avere, Intero, = 30
 DIMENSIONE_MINIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, Intero, = 3
 DIMENSIONE_MASSIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, Intero, = 20
+DIMEMNSIONE_MASSIMA_NOME_CASELLA, la dimensione massima che il nome della casella può avere, Intero, = 15
 
 FINE_STRINGA, il carattere utilizzato come fine stringa, Carattere, = '\0'
 CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’

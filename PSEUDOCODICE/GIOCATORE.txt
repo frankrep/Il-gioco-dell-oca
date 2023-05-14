@@ -1,5 +1,3 @@
-//chiedere le dimensione del nome all'interfacer
-
 RECORD giocatore
 nome_giocatore, il nome scelto dal giocatore , Array a una dimensione (DIMENSIONE_MASSIMA_NOME_GIOCATORE) di caratteri (terminante con FINE_STRINGA)
 posizione_giocatore, la posizione in cui si trova il giocatore nel percorso, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
