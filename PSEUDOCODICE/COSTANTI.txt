@@ -56,3 +56,4 @@ INCREMENTO, valore (primo) incrementale della funzione coprimo con DIVISORE, int
 DIVISORE, divisore dell'operazione di modulo , intero, = 4294367296
 BASE, la base numerica della funzione di parte intera, Intero, = 10
 NUMERO_MASSIMO_CARATTERI_PERCORSO, il numero massimo di caratteri di un percorso relativo ad un file, Intero, = 256
+PEDINE_DISPONIBILI, i simboli utilizzati per rappresentare i giocatori nella stampa del percorso, Array a una dimensione (NUMERO_MASSIMO_GIOCATORI) di caratteri (terminante con FINE_STRINGA), = "#$%&"

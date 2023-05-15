@@ -97,7 +97,7 @@ FINE_FILE,  simbolo che indica la fine del file, carattere, = ‘EOF’
 CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
 
 DATI DI OUTPUT
-stringa, sequenza di caratteri inizializzata, array a una dimensione (dimensione_massima_stringa) di caratteri (con carattere FINE_STRINGA come ultimo carattere)
+stringa, sequenza di caratteri inizializzata, Array a una dimensione (dimensione_massima_stringa) di caratteri (terminante con FINE_STRINGA)
 
 DATI DI LAVORO
 indice_stringa, indica lo spostamento all’interno di stringa, intero, >= 1, < dimensione_massimo_stringa
@@ -110,14 +110,16 @@ terminato = 0
 MENTRE ( (indice_stringa < dimensione_massima_stringa) AND (terminato = 0) AND (indice_stringa < dimensione_minima_stringa) )
 carattere = leggere_da_tastiera()
 SE (carattere != CARATTERE_A_CAPO)
-ALLORA 	elemento in posizione indice_stringa di stringa = carattere
- 	      	 		indice_stringa = indice_stringa + 1
-ALTRIMENTI SE (indice_stringa <= dimensione_minima_stringa)	
-			ALLORA stampare_a_video (“Il minimo di caratteri richiesto è “)
-     stampare_a_video (dimensione_minima_stringa)
-     stampare_a_video (“, inserire ulteriori caratteri.”)
-ALTRIMENTI terminato = 1	
-FINE
+ALLORA 	
+	elemento in posizione indice_stringa di stringa = carattere
+ 	indice_stringa = indice_stringa + 1
+ALTRIMENTI 
+	SE (indice_stringa <= dimensione_minima_stringa)	
+	ALLORA 
+		//stampare messaggio errore minimo caratteri richiesti
+	ALTRIMENTI 
+		terminato = 1	
+	FINE
 FINE
 elemento di stringa in posizione indice_stringa= "FINE_STRINGA"
 
@@ -126,21 +128,18 @@ elemento di stringa in posizione indice_stringa= "FINE_STRINGA"
 inizializzare_pedine_giocatori
 
 DATI DI INPUT
-pedine_disponibili, elenco dei simboli delle pedine, Array a una dimensione (NUMERO_MASSIMO_GIOCATORI) di caratteri
 partita_attuale, la partita di cui inizializzare le pedine, record di tipo PARTITA
-FINE_STRINGA, il carattere utilizzato come fine stringa, carattere, = '\0'
-NUMERO_MASSIMO_GIOCATORI , numero delle pedine in pedine, intero, = 4
+PEDINE_DISPONIBILI, elenco dei simboli delle pedine, Array a una dimensione (NUMERO_MASSIMO_GIOCATORI) di caratteri
 
 DATI DI OUTPUT
-partita_attuale, la partita con le pedine dei partecipanti alla partita inserite, record di tipo PARTITA
+partita_attuale, la partita con le pedine dei partecipanti alla partita inserite, record di tipo partita
 
 DATI DI LAVORO
-indice_pedine, indica lo spostamento in pedine, intero, > 0, <= NUMERO_MASSIMO_GIOCATORI
+indice_pedine, indica lo spostamento in PEDINE_DISPONIBILI, intero, > 0, <= NUMERO_MASSIMO_GIOCATORI
 
 ALGORITMO
 indice_pedine = 1
 ESEGUI		
 	partita_attuale = scrivere_giocatori( partita_attuale, scrivere_pedina ( leggere_giocatore (partita_attuale, indice_pedine), elemento di pedine_disponibili in posizione indice_pedine ) , indice_pedine )
-
 	indice_pedine = indice_pedine + 1
 FINCHE' (indice_pedine <= leggere_numero_giocatori (partita_attuale) )
