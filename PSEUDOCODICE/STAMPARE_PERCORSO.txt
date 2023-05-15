@@ -156,3 +156,56 @@ ALLORA
 ALTRIMENTI
     stampare_a_video(LeggerePosizione(casella))
 FINE
+
+
+
+///////VEDI FRAAA//////////
+calcolare_lunghezza
+DATI DI INPUT
+sequenza, la sequenza di caratteri di cui calcolare la lunghezza, Array di caratteri con carattere di terminazione FINE_STRINGA
+DATI DI OUTPUT
+lunghezza, il numero di caratteri di sequenza, Intero
+ALGORITMO
+lunghezza = 1
+MENTRE(Elemento in posizione lunghezza di sequenza != FINE_STRINGA)
+    lunghezza = lunghezza + 1
+FINE
+lunghezza = lunghezza - 1
+
+
+
+caricare_disegno
+DATI DI INPUT
+disegno_casella, i caratteri rappresentanti il disegno di CASELLA, Array di Array di Caratteri con carattere terminale FINE_STRINGA
+DATI DI OUTPUT
+disegno_casella, il disegno della casella suddiviso in strati, Array di Array di Caratteri con carattere terminale FINE_STRINGA
+ALGORITMO
+Elemento in posizione STRATO_1_A di disegno_casella = CopiareStringa(Elemento in posizione STRATO_1_A di disegno_casella, " ______  ")
+Elemento in posizione STRATO_1_A di disegno_casella = CopiareStringa(Elemento in posizione STRATO_2_A di disegno_casella, "|  	| ")
+Elemento in posizione STRATO_1_A di disegno_casella = CopiareStringa(Elemento in posizione STRATO_3_A di disegno_casella, "|")
+Elemento in posizione STRATO_1_A di disegno_casella = CopiareStringa(Elemento in posizione STRATO_3_B di disegno_casella, "| ")
+Elemento in posizione STRATO_1_A di disegno_casella = CopiareStringa(Elemento in posizione STRATO_4_A di disegno_casella, "|______| ")
+
+cercare_simbolo
+DATI DI INPUT
+simboli_caselle, i simboli associati alle caselle speciali, Array a 2 dimensioni di NUMERO_CASELLE_SPECIALI x 2 di Array di caratteri con carattere di terminazione FINE_STRINGA 
+casella, la casella di cui trovare il simbolo, CASELLA
+DATI DI OUTPUT
+simbolo, sequenza di caratteri rappresentante la casella, Array di caratteri con carattere di terminazione FINE_STRINGA
+DATI DI LAVORO
+pos, l'elemento attualmente analizzato, Intero, >0
+uguali, indica se le sequenze di caratteri passate in input sono uguali VERO oppure no FALSO, Booleano
+trovato, indica se il simbolo è stato trovato VERO oppure no FALSO
+ALGORITMO
+pos = 1
+trovato = FALSO
+MENTRE ((pos <= NUMERO_CASELLE_SPECIALI) AND (trovato = FALSE))
+    uguali = ConfrontareStringhe(Elemento in posizione pos e POSIZIONE_NOMI_CASELLE di simboli_caselle, LeggereNome(casella))
+    SE (uguali = VERO)
+    ALLORA
+        simbolo = CopiareStringa(simbolo, Elemento in posizione pos e POSIZIONE_SIMBOLI_CASELLE di simboli_caselle)
+    ALTRIMENTI
+        simbolo = FINE_STRINGA
+    FINE
+    pos = pos + 1
+FINE

@@ -3,7 +3,7 @@
 RECORD casella 
 nome_casella, il nome attribuito a casella, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
 numero_casella, la posizione di casella lungo il percorso, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
-percorso_file, nome del file contenente la descrizione e l'immagine rappresentativa della casella, Array a una dimensione (NUMERO_MASSIMO_CARATTERI_PERCORSO) di caratteri (terminante con FINE_STRINGA)
+file_interfaccia, il file contenente la descrizione e l'immagine rappresentativa della casella, file di testo
 simbolo, glifo rappresentante la casella nel percorso, array a una dimensione (NUMERO_MASSIMO_CARATTERI_SIMBOLO) di caratteri (terminante con FINE_STRINGA)
 
 ____________________________________________________________________________________________________________________________________________
@@ -42,22 +42,22 @@ numero_casella_letto, numero di casella_attuale lungo il percorso, Intero, > 0, 
 ALGORITMO
 numero_casella_letto = Valore del campo numero_casella di casella_attuale
 
-scrivere_percorso_file
+scrivere_file_interfaccia
 DATI DI INPUT
 casella_attuale, la casella_attuale in cui inserire percorso_file_generale, record di tipo casella
-percorso_file_generale, la descrizione da inserire in casella_attuale, Array a una dimensione (NUMERO_MASSIMO_CARATTERI_PERCORSO) di caratteri (terminante con FINE_STRINGA)
+file, il file da inserire in casella_attuale, file di testo
 DATI DI OUTPUT
-casella_attuale, la casella_attuale con il percorso del file inserito, record di tipo casella
+casella_attuale, la casella_attuale con il file inserito, record di tipo casella
 ALGORITMO
-Valore del campo percorso_file di casella_attuale = percorso_file_generale
+Valore del campo file_interfaccia di casella_attuale = file
 
-leggere_percorso_file
+leggere_file_interfaccia
 DATI DI INPUT
 casella_attuale, la casella_attuale di cui leggere la descrizione, record di tipo casella
 DATI DI OUTPUT
-percorso_file_generale, il percorso del file di casella_attuale letta, Array a una dimensione (NUMERO_MASSIMO_CARATTERI_PERCORSO) di caratteri (terminante con FINE_STRINGA)
+file, il percorso del file di casella_attuale letta, file di testo
 ALGORITMO
-percorso_file_generale = Valore del campo percorso_file di casella_attuale
+file = Valore del campo file_interfaccia di casella_attuale
 
 scrivere_simbolo
 DATI DI INPUT

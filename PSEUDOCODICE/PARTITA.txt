@@ -123,7 +123,7 @@ posizione_elenco_giocatori, posizione all'interno dell'elenco dei giocatori in c
 DATI DI OUTPUT
 partita_attuale, record con il giocatore inserito all'interno dell'elenco dei giocatori partecipanti alla partita, recor di tipo partita
 ALGORITMO
-Elemento in posizione posizione_elenco_giocatori del campo giocatore di partita_attuale = giocatore_attuale
+Elemento in posizione posizione_elenco_giocatori del campo giocatori di partita_attuale = giocatore_attuale
 
 leggere_giocatore
 DATI DI INPUT
@@ -132,4 +132,4 @@ posizione_elenco_giocatori, la posizione del giocatore da leggere nell'elenco de
 DATI DI OUTPUT
 giocatore_attuale, il giocatore presente nell'elenco dei giocatori di partita_attuale nella posizione indicata, record di tipo giocatore
 ALGORITMO
-giocatore_attuale = Elemento in posizione posizione_elenco_giocatori del campo giocatore di partita_attuale
+giocatore_attuale = Elemento in posizione posizione_elenco_giocatori del campo giocatori di partita_attuale

@@ -41,10 +41,10 @@ DADO_MAGGIORE_USCITA_PRIGIONE, la seconda faccia di dado che consente l'uscita d
 
 //chiedere all'interfacer
 DIMENSIONE_MINIMA_NOME_PARTITA, la dimensione minima che il nome della partita può avere, Intero, = 3
-DIMENSIONE_MASSIMA_NOME_PARTITA, la dimensione massima che il nome della partita può avere, Intero, = 20
+DIMENSIONE_MASSIMA_NOME_PARTITA, la dimensione massima che il nome della partita può avere, Intero, = 12
 DIMENSIONE_MINIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, Intero, = 3
-DIMENSIONE_MASSIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, Intero, = 20
-DIMEMNSIONE_MASSIMA_NOME_CASELLA, la dimensione massima che il nome della casella può avere, Intero, = 
+DIMENSIONE_MASSIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, Intero, = 18
+DIMENSIONE_MASSIMA_NOME_CASELLA, la dimensione massima che il nome della casella può avere, Intero, = 9
 
 FINE_STRINGA, il carattere utilizzato come fine stringa, Carattere, = '\0'
 CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’

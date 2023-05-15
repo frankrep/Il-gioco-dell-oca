@@ -14,7 +14,8 @@ ALLORA
     partita_attuale = scegliere_giocatore(partita_attuale)
 FINE
 ESEGUI
-    partita_attuale = variare_turno(partita_attuale)
+    partita_attuale = cambiare_turno(partita_attuale)
+    //stampa per il giocatore di turno
     SE (leggere_autorizzazione(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))) > 0)
     ALLORA
         partita_attuale = gestire_autorizzazione(partita_attuale)
@@ -24,7 +25,7 @@ ESEGUI
         partita_attuale = verificare_casella(partita_attuale)
     FINE
 FINCHE' (leggere_posizione_giocatore (leggere_giocatore (partita_attuale, leggere_turno (partita_attuale))) != leggere_lunghezza_percorso (partita_attuale))
-vincitore_partita = copiare_vincitore(partita_attuale)
+vincitore_partita = inizializzare_vincitore(partita_attuale)
 
 
 
@@ -53,16 +54,15 @@ partita_attuale = scrivere_turno(partita_attuale, trovare_posizione_massimo(estr
 
 
 
-copiare_vincitore
+inizializzare_vincitore
 
 DATI DI INPUT
-partita_attuale, la partita da cui ottenere il vincitore, record di tipo partita 
+partita_attuale, la partita da cui ottenere le informazioni relative al vincitore, record di tipo partita 
 
 DATI DI OUTPUT
 vincitore_partita, il vincitore di partita_attuale, record di tipo vincitore
 
 ALGORITMO
-leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
 vincitore_partita = scrivere_nome_vincitore(vincitore_partita, leggere_nome_giocatore(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))))
 vincitore_partita = scrivere_pedina_vincitore(vincitore_partita, leggere_pedina_giocatore(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))))
 vincitore_partita = scrivere_lanci_vincitore(vincitore_partita, leggere_lanci_effettuati(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))))
@@ -145,39 +145,56 @@ FINE
 
 
 
-lanciare_dadi
+cambiare_turno
+
 DATI DI INPUT
-partita_attuale, la partita in cui lanciare i dadi, partita
-FACCIA_MINIMA_DADO, il numero minimo presente sulle facce di un dado, Intero, Costante
-FACCIA_MASSIMA_DADO, il numero massimo presente sulle facce di un dado, Intero, Costante
-NUMERO_DADI, il numero di dadi da utilizzare durante la partita, Intero, Costante
+partita_attuale, record di cui stabilire il giocatore di turno , record di tipo partita
 
 DATI DI OUTPUT
-partita_attuale, la partita con ultimo_lancio aggiornato, partita
-
-DATI DI LAVORO
-lancio, il lancio di un singolo dado, Intero
-pos, il dado che si sta tirando, Intero
+partita_attuale, record con il numero del giocatore di turno inserito, record di tipo partita
 
 ALGORITMO
-pos = 1
-MENTRE (pos <= NUMERO_DADI)
+partita_attuale = scrivere_turno (partita_attuale, leggere_turno (partita_attuale) + 1)
+SE (leggere_turno(partita_attuale) > leggere_numero_giocatori (partita_attuale))
+ALLORA 
+    partita_attuale = scrivere_turno(partita_attuale, 1)
+FINE
+
+
+
+lanciare_dadi
+DATI DI INPUT
+partita_attuale, la partita in cui si desidera lanciare i dadi, record di tipo partita
+FACCIA_MINIMA_DADO, il numero minimo presente sulle facce di un dado, Intero, = 1
+FACCIA_MASSIMA_DADO, il numero massimo presente sulle facce di un dado, Intero, = 6
+NUMERO_DADI, il numero di dadi da utilizzare durante la partita, Intero, = 2
+
+DATI DI OUTPUT
+partita_attuale, la partita con il lancio dei dadi inserito, record di tipo partita
+
+DATI DI LAVORO
+lancio, contiene il lancio di un singolo dado, Intero, >= FACCIA_MINIMA_DADO, <= FACCIA_MASSIMA_DADO
+indice_dado, il dado che si sta tirando, Intero, > 0, <= NUMERO_DADI
+
+ALGORITMO
+indice_dado = 1
+MENTRE (indice_dado <= NUMERO_DADI)
     lancio = generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO)
-    partita_attuale = scrivere_dadi(partita_attuale, pos, lancio)
-    pos = pos + 1
+    partita_attuale = scrivere_dadi(partita_attuale, indice_dado, lancio)
+    indice_dado = indice_dado + 1
 FINE
 
 
 
 incrementare_lanci_effettuati
 DATI DI INPUT
-partita_attuale, la partita di cui incrementare lanci_effettuati, partita
+partita_attuale, la partita di cui incrementare lanci_effettuati, record di tipo partita
 
 DATI DI OUTPUT
-partita_attuale, la partita con lanci_effettuati incrementati, partita
+partita_attuale, la partita con lanci_effettuati incrementati, record di tipo partita
 
 DATI DI LAVORO
-giocatore_attuale, il giocatore a cui incrementare il numero di lanci_effettuati, giocatore
+giocatore_attuale, il giocatore a cui incrementare il numero di lanci_effettuati, record di tipo giocatore
 lanci_effettuati, i lanci di giocatore_attuale, Intero
 
 ALGORITMO
@@ -212,111 +229,132 @@ partita_attuale = scrivere_turno(partita_attuale, turno)
 
 spostare_giocatore
 DATI DI INPUT
-partita_attuale, la partita in cui muovere il giocatore, partita
+partita_attuale, la partita in cui aggiornare la posizione del giocatore di turno in seguito al lancio dei dadi, record di tipo partita
 
 DATI DI OUTPUT
-partita_attuale, la partita con il giocatore avente posizione aggiornata, partita
-
-DATI DI LAVORO
-giocatore_attuale, il giocatore da spostare, giocatore
-posizione, la posizione di giocatore_attuale, Intero
-surplus, il surplus della posizione rispetto alla lunghezza del percorso, Intero
+partita_attuale, la partita con la posizione del giocatore di turno aggiornata, record di tipo partita
 
 ALGORITMO
-giocatore_attuale = leggere_giocatore(partita_attuale, leggereTurno(partita_attuale))
-posizione = leggere_posizione_giocatore(giocatore)
-posizione = posizione + sommare_dadi(partita_attuale)
-SE (posizione > leggere_lunghezza_percorso(partita_attuale))
+partita_attuale = sommare_lancio_posizione (partita_attuale)
+SE (indice_giocatore > leggere_lunghezza_percorso(partita_attuale))
 ALLORA
-    surplus = posizione - leggere_lunghezza_percorso(partita_attuale)
-    posizione = posizione - surplus
+    partita_attuale = calcolare_caselle_eccesso (partita_attuale)
 FINE
-giocatore = scrivere_posizione_giocatore(giocatore, posizione)
-partita_attuale = scrivere_giocatori(partita_attuale, giocatore, leggereTurno(partita_attuale))
+
+
+
+sommare_lancio_posizione
+
+DATI DI INPUT
+partita_attuale, la partita in cui aggiornare la posizione del giocatore di turno in base all'ultimo lancio di dadi, record di tipo partita
+
+DATI DI OUTPUT
+partita_attuale, la partita con la posizione del giocatore aggiornata in base all'ultimo lancio dei dadi, record di tipo partita
+
+DATI DI LAVORO
+giocatore_attuale, il giocatore di turno di cui calcolare la nuova posizione, record di tipo giocatore
+
+ALGORITMO
+giocatore_attuale = leggere_posizione_giocatore(leggere_giocatore(partita_attuale), leggere_turno(partita_attuale)) + sommare_dadi(partita_attuale)
+partita_attuale = scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
+
+
+
+calcolare_caselle_eccesso
+
+DATI DI INPUT
+partita_attuale, partita di cui calcolare le caselle in eccesso derivanti dallo spostamento del giocatore di turno, record di tipo partita
+
+DATI DI OUTPUT
+partita_attuale, partita con la posizione del giocatore di turno ricalcolata secondo l'eccesso derivante dal lancio dei dadi, record di tipo partita
+
+DATI DI LAVORO
+giocatore_attuale, contiene il giocatore di cui calcolare le caselle in eccesso e di cui ricalcolare la posizione, record di tipo giocatore
+
+ALGORITMO
+eccesso = leggere_posizione_giocatore (leggere_giocatore (partita_attuale, leggere_turno (partita_attuale))) - leggere_lunghezza_percorso (partita_attuale)
+giocatore_attuale = leggere_giocatore (partita_attuale, leggere_turno (partita_attuale))
+partita_attuale = scrivere_giocatore (partita_attuale, scrivere_posizione_giocatore (giocatore_attuale, leggere_posizione_giocatore (giocatore_attuale ) - eccesso), leggere_turno (partita_attuale))
 
 
 
 sommare_dadi
 DATI DI INPUT
-partita_attuale, la partita di cui calcolare la somma dei dadi, partita
-NUMERO_DADI, il numero di dadi da utilizzare durante la partita, Intero, Costante
+partita_attuale, la partita di cui calcolare la somma del risultato del lancio dei dadi, record di tipo partita
+NUMERO_DADI, il numero di dadi da utilizzare durante la partita, Intero, = 2
 
 DATI DI OUTPUT
-somma_dadi, la somma dei dadi in ultimo_lancio di partita_attuale, Intero
+somma_dadi, la somma del lancio dei dadi di partita_attuale, Intero, >= FACCIA_MINIMA_DADO + FACCIA_MINIMA_DADO, <= FACCIA_MASSIMA_DADO + FACCIA_MASSIMA_DADO
 
 DATI DI LAVORO
-pos, la posizione del dado, Intero
+indice_dado, indica lo spostamento all'interno del'elenco delle facce risultanti dal l'ultimo lancio dei dadi, Intero, > 0, <= NUMERO_DADI
 
 ALGORITMO
 somma_dadi = 0
-pos = 1
-MENTRE (pos <= NUMERO_DADI)
-    somma_dadi = somma_dadi + scrivere_dadi(partita_attuale, pos)
+indice_dado = 1
+MENTRE (indice_dado <= NUMERO_DADI)
+    somma_dadi = somma_dadi + leggere_dadi(partita_attuale, indice_dado)
 FINE
 
 
 
 gestire_casella
 DATI DI INPUT
-partita_attuale, la partita in cui verificare la casella, partita
-NOME_OCA, il nome della casella oca, Array di caratteri con carattere di terminazione FINE_STRINGA, Costante ="OCA\0"
-NOME_PRIGIONE, il nome della casella prigione, Array di caratteri con carattere di terminazione FINE_STRINGA, Costante ="PRIGIONE\0"
-NOME_PONTE, il nome della casella ponte, Array di caratteri con carattere di terminazione FINE_STRINGA, Costante ="PONTE\0"
-NOME_LABIRINTO, il nome della casella labirinto, Array di caratteri con carattere di terminazione FINE_STRINGA, Costante ="LABIRINTO\0"
-NOME_LOCANDA, il nome della casella locanda, Array di caratteri con carattere di terminazione FINE_STRINGA, Costante ="LOCANDA\0"
-NOME_POZZO, il nome della casella pozzo, Array di caratteri con carattere di terminazione FINE_STRINGA, Costante ="POZZO\0"
-NOME_SCHELETRO, il nome della casella scheletro, Array di caratteri con carattere di terminazione FINE_STRINGA, Costante ="SCHELETRO\0"
-NOME_FINE_PERCORSO, l'array di caratteri utilizzato per rappresentare la casella finale del percorso, Array di caratteri con carattere di terminazione FINE_STRINGA, Costante ="FINE\0"
-CASELLA_ARRIVO_LABIRINTO, la posizione in cui spostare il giocatore che giunge sulla casella avente come nome NOME_LABIRINTO, Intero, Costante = 33
-CASELLA_ARRIVO_SCHELETRO, la posizione in cui spostare il giocatore che giunge sulla casella avente come nome NOME_SCHELETRO, Intero, Costante = 1
+partita_attuale, partita di cui verificare se il tipo di casella, record di tipo partita
+NOME_OCA, il nome della casella oca, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "OCA\0"
+NOME_PRIGIONE, il nome della casella prigione, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "PRIGIONE\0"
+NOME_PONTE, il nome della casella ponte, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "PONTE\0"
+NOME_LABIRINTO, il nome della casella labirinto, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "LABIRINTO\0"
+NOME_LOCANDA, il nome della casella locanda, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "LOCANDA\0"
+NOME_POZZO, il nome della casella pozzo, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "POZZO\0"
+NOME_SCHELETRO, il nome della casella scheletro, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "SCHELETRO\0"
+NOME_VITTORIA, il nome della casella vittoria, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "VITTORIA\0"CASELLA_ARRIVO_LABIRINTO, la posizione in cui spostare il giocatore che giunge sulla casella avente come nome NOME_LABIRINTO, Intero, Costante = 33
+CASELLA_ARRIVO_SCHELETRO, la posizione in cui spostare il giocatore che giunge sulla casella avente come nome NOME_SCHELETRO, Intero, = 1
 
 DATI DI OUTPUT
-partita_attuale, la partita con l'effetto della casella applicato, partita
+partita_attuale, la partita con l'effetto della casella applicato al giocatore di turno, record di tipo partita
 
 DATI DI LAVORO
-giocatore_attuale, il giocatore a cui applicare l'effetto, giocatore
-nome, il nome della cella nella quale si trova giocatore_attuale, Array di caratteri con carattere di terminazione FINE_STRINGA
+giocatore_attuale, il giocatore a cui applicare l'effetto, record di tipo giocatore
+nome, il nome della cella nella quale si trova giocatore_attuale, Array a una dimensione di caratteri (terminante con FINE_STRINGA)
 
 ALGORITMO
-giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
-nome = leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale)))
-SE (confrontare_stringhe(nome, NOME_OCA) = 1)
-ALLORA
-    partita_attuale = gestire_oca(partita_attuale)
-ALTRIMENTI
-    SE (confrontare_stringhe(nome, NOME_PONTE) = 1)
+ESEGUI
+    giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
+    nome = leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale)))
+    SE (confrontare_stringhe(nome, NOME_OCA) = VERO)
     ALLORA
-        partita_attuale = spostare_giocatore(partita_attuale)
-        partita_attuale = gestire_casella(partita_attuale)
+        partita_attuale = gestire_oca(partita_attuale)
     ALTRIMENTI
-        SE (confrontare_stringhe(nome, NOME_LOCANDA) = 1)
+        SE (confrontare_stringhe(nome, NOME_PONTE) = VERO)
         ALLORA
-            giocatore_attuale = scrivere_autorizzazione(giocatore_attuale, TURNI_ATTESA_LOCANDA)
-            partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
+            partita_attuale = spostare_giocatore(partita_attuale)
         ALTRIMENTI
-            SE (confrontare_stringhe(nome, NOME_POZZO) = 1)
+            SE (confrontare_stringhe(nome, NOME_LOCANDA) = VERO)
             ALLORA
-                partita_attuale = impostare_autorizzazioni(partita_attuale, NOME_POZZO)
+                giocatore_attuale = scrivere_autorizzazione(giocatore_attuale, TURNI_ATTESA_LOCANDA)
+                partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
             ALTRIMENTI
-                SE (confrontare_stringhe(nome, NOME_PRIGIONE) = 1)
+                SE (confrontare_stringhe(nome, NOME_POZZO) = VERO)
                 ALLORA
-                    partita_attuale = impostare_autorizzazioni(partita_attuale, NOME_PRIGIONE)
+                    partita_attuale = impostare_autorizzazioni(partita_attuale, NOME_POZZO)
                 ALTRIMENTI
-                    SE (confrontare_stringhe(nome, NOME_LABIRINTO) = 1)
+                    SE (confrontare_stringhe(nome, NOME_PRIGIONE) = VERO)
                     ALLORA
-                        giocatore_attuale = scrivere_posizione_giocatore(giocatore_attuale, calcolare_proporzione(leggere_lunghezza_percorso(partita_attuale), CASELLA_ARRIVO_LABIRINTO))
-                        partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
-                        partita_attuale = gestire_casella(partita_attuale)
+                        partita_attuale = impostare_autorizzazioni(partita_attuale, NOME_PRIGIONE)
                     ALTRIMENTI
-                        SE (confrontare_stringhe(nome, NOME_SCHELETRO) = 1)
+                        SE (confrontare_stringhe(nome, NOME_LABIRINTO) = VERO)
                         ALLORA
-                            giocatore_attuale = scrivere_posizione_giocatore(giocatore_attuale, CASELLA_ARRIVO_SCHELETRO)
+                            giocatore_attuale = scrivere_posizione_giocatore(giocatore_attuale, calcolare_proporzione(leggere_lunghezza_percorso(partita_attuale), CASELLA_ARRIVO_LABIRINTO))
+                            MENTRE (confrontare_stringhe(leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale))), FINE_STRINGA) = FALSO)
+                                giocatore_attuale = scrivere_posizione_giocatore(giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1)
+                            FINE
                             partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
-                            partita_attuale = gestire_casella(partita_attuale)
                         ALTRIMENTI
-                            SE (confrontare_stringhe(nome, NOME_FINE_PERCORSO) = 1)
+                            SE (confrontare_stringhe(nome, NOME_SCHELETRO) = VERO)
                             ALLORA
-                                partita_attuale = scrivere_terminata(partita_attuale, 1)
+                                giocatore_attuale = scrivere_posizione_giocatore(giocatore_attuale, CASELLA_ARRIVO_SCHELETRO)
+                                partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
                             FINE
                         FINE
                     FINE
@@ -324,73 +362,68 @@ ALTRIMENTI
             FINE
         FINE
     FINE
-FINE
+FINCHE' (leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale))) != FINE_STRINGA)
 
 
 
 gestire_oca
 DATI DI INPUT
-partita_attuale, la partita in cui gestire la casella oca, record di tipo partita
-PRIMO_LANCIO_3_6, la posizione della casella dado per il lancio di dadi 3+6, Intero, Costante
-PRIMO_LANCIO_4_5, la posizione della casella dado per il lancio di dadi 4+5, Intero, Costante
-DADO_MINORE_PRIMO_LANCIO, il primo dado del primo lancio per saltare a PRIMO_LANCIO_3_6 , Intero, Costante
-DADO_MAGGIORE_PRIMO_LANCIO, il secondo dado del primo lancio per saltare a PRIMO_LANCIO_3_6, Intero, Costante
-DADO_1_CASELLA_DADO_, il primo dado del primo lancio per saltare a PRIMO_LANCIO_4_5, Intero, Costante
-DADO_2_CASELLA_DADO_, il secondo dado del primo lancio per saltare a PRIMO_LANCIO_4_5, Intero, Costante
+partita_attuale, la partita in cui gestire l'arrivo del giocatore di turno sulla casella oca, record di tipo partita
+PRIMO_LANCIO_3_6, indica la casella su cui si sposterà il giocatore nel momento in cui arriverà su una casella oca con un 3 e un 6 ottenuto dal primo lancio dei dadi, intero, = 38
+PRIMO_LANCIO_4_5, indica la casella su cui si sposterà il giocatore nel momento in cui arriverà su una casella oca con un 4 e un 5 ottenuto dal primo lancio dei dadi, intero, = 76
+DADO_MINORE_PRIMO_LANCIO, faccia minore del primo lancio risultante nove, intero, = 3
+DADO_MAGGIORE_PRIMO_LANCIO, faccia maggiore del primo lancio risultante nove, intero, = 6
+PRIMO_DADO, la posizione del dado numero 1 nel campo ultimo_lancio del record partita, Intero, = 1
+FINE_STRINGA, il carattere utilizzato come fine stringa, Carattere, = '\0'
 
 DATI DI OUTPUT
-partita_attuale, la partita con la casella oca gestita, partita
+partita_attuale, la partita con l'effetto della casella oca applicata al giocatore di turno, record di tipo partita
 
 DATI DI LAVORO
-giocatore_attuale, il giocatore a cui applicare l'effetto della casella oca, giocatore
-dado, il valore del primo dado di ultimo_lancio di partita_attuale, Intero
+giocatore_attuale, il giocatore di turno a cui applicare l'effetto della casella oca, record di tipo giocatore
 
 ALGORITMO
 giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
 SE (leggere_lanci_effettuati(giocatore_attuale) = 1)
 ALLORA
-    dado = scrivere_dadi(partita_attuale, PRIMO_DADO)
-    SE ((dado = DADO_MINORE_PRIMO_LANCIO) OR (dado = DADO_MAGGIORE_PRIMO_LANCIO))
+    SE ((leggere_dadi(partita_attuale, PRIMO_DADO) = DADO_MINORE_PRIMO_LANCIO)) OR ((leggere_dadi(partita_attuale, PRIMO_DADO) = DADO_MAGGIORE_PRIMO_LANCIO))
     ALLORA
         giocatore_attuale = scrivere_posizione_giocatore(giocatore_attuale, calcolare_proporzione(leggere_lunghezza_percorso(partita_attuale), PRIMO_LANCIO_3_6))
     ALTRIMENTI
-        SE ((dado = DADO_1_CASELLA_DADO_) OR (dado = DADO_2_CASELLA_DADO_))
-        ALLORA
-            giocatore_attuale = scrivere_posizione_giocatore(giocatore_attuale, calcolare_proporzione(leggere_lunghezza_percorso(partita_attuale), PRIMO_LANCIO_4_5))
-        FINE
+        giocatore_attuale = scrivere_posizione_giocatore(giocatore_attuale, calcolare_proporzione(leggere_lunghezza_percorso(partita_attuale), PRIMO_LANCIO_4_5))
+    FINE
+    MENTRE (confrontare_stringhe(leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale))), FINE_STRINGA) = FALSO)
+        giocatore_attuale = scrivere_posizione_giocatore(giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1)
     FINE
     partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
 ALTRIMENTI
     partita_attuale = spostare_giocatore(partita_attuale)
-    partita_attuale = gestire_casella(partita_attuale)
 FINE
 
 
 
 impostare_autorizzazioni
 DATI DI INPUT
-partita_attuale, la partita in cui gestire la casella pozzo, partita
-nome_casella_attuale, il nome della casella in cui impostare le autorizzazioni dei giocatori di partita_attuale, Array di caratteri con carattere di terminazione FINE_STRINGA
+partita_attuale, la partita in cui gestire la casella speciale su cui è arrivato il giocatore di turno, record di tipo partita
+nome_casella_attuale, il nome della casella per cui impostare le autorizzazioni del giocatore di turno di partita_attuale, Array a una dimensione (DIMENSIONE_MASSIMA_NOME_CASELLA) di caratteri (terminante con FINE_STRINGA)
 
 DATI DI OUTPUT
-partita_attuale, la partita con la casella pozzo gestita, partita
+partita_attuale, la partita con l'effetto della casella speciale su cui è arrivato il giocatore di turno applicato, record di tipo partita
 
 DATI DI LAVORO
-giocatore_attuale, il giocatore che si sta analizzando, giocatore
-nome, il nome della casella sulla quale si trova il giocatore analizzato, Array di caratteri con carattere di terminazione FINE_STRINGA
-pos, la posizione del giocatore analizzato, Intero
+giocatore_attuale, il giocatore di turno di cui impostare l'autorizzazione in base alla casella speciale di arrivo, record di tipo giocatore
+indice_giocatore, la posizione del giocatore analizzato, Intero, > 0
 
 ALGORITMO
-pos = 1
-MENTRE (pos <= leggere_numero_giocatori(partita_attuale))
-    giocatore_attuale = leggere_giocatore(partita_attuale, pos)
-    nome = leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale)))
-    SE (confrontare_stringhe(nome, nome_casella_attuale) = 1)
+indice_giocatore = 1
+MENTRE (indice_giocatore <= leggere_numero_giocatori(partita_attuale))
+    giocatore_attuale = leggere_giocatore(partita_attuale, indice_giocatore)
+    SE (confrontare_stringhe (leggere_nome_casella (leggere_percorso (partita_attuale, leggere_posizione_giocatore(giocatore_attuale))), nome_casella_attuale) = VERO)
     ALLORA
         giocatore_attuale = scrivere_autorizzazione(giocatore_attuale, 0)
-        partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, pos)
+        partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, indice_giocatore)
     FINE
-    pos = pos + 1
+    indice_giocatore = indice_giocatore + 1
 FINE
 giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
 giocatore_attuale = scrivere_autorizzazione(giocatore_attuale, 1)
@@ -401,56 +434,57 @@ partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere
 gestire_autorizzazione
 DATI DI INPUT
 partita_attuale, la partita in cui gestire l'autorizzazione, record di tipo partita
+NOME_LOCANDA, il nome della casella locanda, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "LOCANDA\0"
+NOME_PRIGIONE, il nome della casella prigione, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "PRIGIONE\0"
+DADO_MINORE_USCITA_PRIGIONE, la prima faccia di dado che consente l'uscita dalla prigione, Intero, = 5
+DADO_MAGGIORE_USCITA_PRIGIONE, la seconda faccia di dado che consente l'uscita dalla prigione, Intero, = 7
 
 DATI DI OUTPUT
 partita_attuale, la partita con l'autorizzazione gestita, record di tipo partita
 
 DATI DI LAVORO
 giocatore_attuale, il giocatore di cui gestire l'autorizzazione, record di tipo giocatore
-nome, il nome della cella nella quale si trova giocatore_attuale, Array di caratteri con carattere di terminazione FINE_STRINGA
-autorizzazione, l'autorizzazione di giocatore_attuale, Intero
 
 ALGORITMO
 giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
-nome = leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale)))
 autorizzazione = leggere_autorizzazione(giocatore_attuale)
-SE (confrontare_stringhe(nome, NOME_LOCANDA) = 1)
+SE (confrontare_stringhe(leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale))), NOME_LOCANDA) = VERO)
 ALLORA
-    autorizzazione = autorizzazione - 1
-    giocatore_attuale = scrivere_autorizzazione(giocatore, autorizzazione)
+    giocatore_attuale = scrivere_autorizzazione(giocatore, leggere_autorizzazione(giocatore_attuale) - 1)
 ALTRIMENTI
-    SE (confrontare_stringhe(nome, NOME_PRIGIONE) = 1)
+    SE (confrontare_stringhe(leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale))), NOME_PRIGIONE) = VERO)
     ALLORA
         partita_attuale = lanciare_dadi(partita_attuale)
     ALTRIMENTI
         SE ((sommare_dadi(partita_attuale) = DADO_MINORE_USCITA_PRIGIONE) OR (sommare_dadi(partita_attuale) = DADO_MAGGIORE_USCITA_PRIGIONE))
         ALLORA
-            autorizzazione = 0
+            giocatore_attuale = scrivere_autorizzazione(giocatore, 0)
         FINE
     FINE
 FINE
+partita_attuale = scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
 
 
 
 confrontare_stringhe
 DATI DI INPUT
-stringa_1, prima sequenza di caratteri, Array di caratteri con carattere FINE_STRINGA come ultimo carattere
-stringa_2, seconda sequenza di caratteri, Array di caratteri con carattere FINE_STRINGA come ultimo carattere
-FINE_STRINGA, il carattere utilizzato come fine stringa, Carattere, Costante
+stringa_1, prima sequenza di caratteri da confrontare, Array a una dimensione di caratteri (terminante con FINE_STRINGA)
+stringa_2, seconda sequenza di caratteri da confrontare, Array a una dimensione di caratteri (terminante con FINE_STRINGA)
+FINE_STRINGA, il carattere utilizzato come fine stringa, Carattere, Costante = '\0'
 
 DATI DI OUTPUT
-esito, ha valore falso(0) se le stringhe sono diverse o ha valore vero(1) se le stringhe sono uguali, Booleano
+esito, indica se le stringhe in input sono uguali o no, booleano, = FALSO (le stringhe sono diverse), = VERO (le stringhe sono uguali)
 
 DATI DI LAVORO
-i, contatore per spostamento in stringa_1, Intero
+indice_stringa, contatore per spostamento in stringa_1, Intero, > 0
 
 ALGORITMO
-i = 1
-esito = 1
-MENTRE(Elemento in posizione i di stringa_1 != FINE_STRINGA)
-    SE(Elemento in posizione i di stringa_1 != Elemento in posizione i di stringa_2)
+indice_stringa = 1
+esito = VERO
+MENTRE(Elemento in posizione indice_stringa di stringa_1 != FINE_STRINGA)
+    SE(Elemento in posizione indice_stringa di stringa_1 != Elemento in posizione indice_stringa di stringa_2)
     ALLORA
-        esito = 0
+        esito = FALSO
     FINE
-    i = i + 1
+    indice_stringa = indice_stringa + 1
 FINE

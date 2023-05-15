@@ -1,0 +1,146 @@
+
+
+
+inizializzare_giocatori
+
+DATI DI INPUT
+partita_attuale, partita di cui si vogliono inizializzare i giocatori con le relative informazioni e il numero di caselle, record di tipo partita
+
+DATI DI OUTPUT
+partita_attuale, record con le informazioni (numero, nomi e pedine) dei giocatori e il numero di caselle del percorso inserite, record di tipo partita
+
+ALGORITMO
+partita_attuale = richiedere_numero_caselle (partita_attuale)
+partita_attuale = inzializzare_numero_giocatori (partita_attuale)
+partita_attuale = inizializzare_nome_giocatori (partita_attuale)
+partita_attuale = inizializzare_pedine_giocatori (partita_attuale)
+
+
+
+richiedere_numero_caselle
+
+DATI DI INPUT
+partita_attuale, la partita di cui inserire il numero delle caselle richieste all'utente, record di tipo partita
+dimensione_percorso, la dimensione del percorso scelta dall'utente, intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO 
+DIMENSIONE_MASSIMA_PERCORSO, la dimensione massima che il percorso può assumere, Intero, = 90
+DIMENSIONE_MINIMA_PERCORSO, la dimensione minima che il percorso può assumere, Intero, = 50
+
+DATI DI OUTPUT
+partita_attuale, la partita con il numero delle caselle inizializzate, record di tipo partita
+
+ALGORITMO
+//stampare richiesta
+ESEGUI
+	dimensione_percorso = leggere_da_tastiera()
+	SE ( (dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO ) OR (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO) )
+	ALLORA 
+		//stampare messsagio errore
+	FINE	
+FINCHE’ ( (dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) OR (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO)  )
+partita_attuale = scrivere_lunghezza_percorso(partita_attuale, dimensione_percorso)
+
+
+
+inizializzare_numero_giocatori
+
+DATI DI INPUT
+partita_attuale, la partita in cui inserire il numero dei giocatori, record di tipo partita
+numero_partecipanti, numero di giocatori che parteciperanno alla partita, intero, >= NUMERO_MINIMO_GIOCATORI, <= NUMERO_MASSIMO_GIOCATORI
+NUMERO_MINIMO_GIOCATORI, il numero minimo di giocatori che possono prendere parte alla partita, Intero, = 2
+NUMERO_MASSIMO_GIOCATORI, il numero massimo di giocatori che possono prendere parte alla partita, Intero, = 4
+
+DATI DI OUTPUT
+partita_attuale, record con il numero dei giocatori inserito, record di tipo partita
+
+ALGORITMO
+//stampare messaggio richiesta
+ESEGUI
+	numero_partecipanti = leggere_da_tastiera ()
+	SE (numero_partecipanti < NUMERO_MINIMO_GIOCATORI) OR (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI)
+	      //stampare messaggio errore
+	FINE
+FINCHE’ ( (numero_partecipanti < NUMERO_MINIMO_GIOCATORI) OR (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI) )
+partita_attuale = scrivere_numero_giocatori (partita_attuale, numero_partecipanti)
+
+
+
+inizializzare_nomi_giocatori
+
+DATI DI INPUT
+partita_attuale, la partita in cui inizializzare il nome dei giocatori,r ecord di tipo partita
+CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
+DIMENSIONE_MINIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, intero, = 3
+DIMENSIONE_MASSIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, intero, = 20
+
+DATI DI OUTPUT
+partita_attuale, la partita in cui sono stati inseriti i nomi dei giocatori, record di tipo partita
+
+DATI DI LAVORO
+indice_giocatore, indica lo spostamento all'interno dell'elenco dei giocatori, intero, > 0, <= NUMERO_MASSIMO_GIOCATORI
+
+ALGORITMO
+indice_giocatori = 1
+MENTRE (indice_giocatori <= leggere_numero_giocatori (partita_attuale) )
+	//stampare richiesta
+	partita_attuale = scrivere_giocatori (partita_attuale, scrivere_nome_giocatore (leggere_giocatori(partita_attuale, indice_giocatori) , inserire_stringa (DIMENSIONE_MINIMA_NOME_GIOCATORE , DIMENSIONE_MASSIMA_NOME_GIOCATORE) ), indice_giocatori) 
+	indice_giocatori = indice_giocatori + 1
+FINE
+
+
+
+inserire_stringa
+
+DATI DI INPUT
+dimensione_massima_stringa, numero massimo di caratteri consentito all'interno di stringa, intero, > 0
+dimensione_minima_stringa, numero minimo di caratteri consentito all'interno di stringa, intero, > 0
+FINE_FILE,  simbolo che indica la fine del file, carattere, = ‘EOF’ 
+CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
+
+DATI DI OUTPUT
+stringa, sequenza di caratteri inizializzata, array a una dimensione (dimensione_massima_stringa) di caratteri (con carattere FINE_STRINGA come ultimo carattere)
+
+DATI DI LAVORO
+indice_stringa, indica lo spostamento all’interno di stringa, intero, >= 1, < dimensione_massimo_stringa
+glifo, simbolo inserito da tastiera scelto dall’utente, carattere
+terminato, indica la volontà da parte dell’utente di non voler utilizzare il numero massimo di caratteri consentiti, intero, = 0 (l’utente ha usato tutti i caratteri), = 1 (l’utente non ha usato il numero massimo di caratteri consentiti)
+
+ALGORITMO
+indice_stringa = 1
+terminato = 0
+MENTRE ( (indice_stringa < dimensione_massima_stringa) AND (terminato = 0) AND (indice_stringa < dimensione_minima_stringa) )
+carattere = leggere_da_tastiera()
+SE (carattere != CARATTERE_A_CAPO)
+ALLORA 	elemento in posizione indice_stringa di stringa = carattere
+ 	      	 		indice_stringa = indice_stringa + 1
+ALTRIMENTI SE (indice_stringa <= dimensione_minima_stringa)	
+			ALLORA stampare_a_video (“Il minimo di caratteri richiesto è “)
+     stampare_a_video (dimensione_minima_stringa)
+     stampare_a_video (“, inserire ulteriori caratteri.”)
+ALTRIMENTI terminato = 1	
+FINE
+FINE
+elemento di stringa in posizione indice_stringa= "FINE_STRINGA"
+
+
+
+inizializzare_pedine_giocatori
+
+DATI DI INPUT
+pedine_disponibili, elenco dei simboli delle pedine, Array a una dimensione (NUMERO_MASSIMO_GIOCATORI) di caratteri
+partita_attuale, la partita di cui inizializzare le pedine, record di tipo PARTITA
+FINE_STRINGA, il carattere utilizzato come fine stringa, carattere, = '\0'
+NUMERO_MASSIMO_GIOCATORI , numero delle pedine in pedine, intero, = 4
+
+DATI DI OUTPUT
+partita_attuale, la partita con le pedine dei partecipanti alla partita inserite, record di tipo PARTITA
+
+DATI DI LAVORO
+indice_pedine, indica lo spostamento in pedine, intero, > 0, <= NUMERO_MASSIMO_GIOCATORI
+
+ALGORITMO
+indice_pedine = 1
+ESEGUI		
+	partita_attuale = scrivere_giocatori( partita_attuale, scrivere_pedina ( leggere_giocatore (partita_attuale, indice_pedine), elemento di pedine_disponibili in posizione indice_pedine ) , indice_pedine )
+
+	indice_pedine = indice_pedine + 1
+FINCHE' (indice_pedine <= leggere_numero_giocatori (partita_attuale) )
