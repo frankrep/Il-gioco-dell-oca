@@ -1,0 +1,24 @@
+<IL GIOCO DELL'OCA>
+ _____________________________________________
+|.'',                                     ,''.|<CASELLA SPECIALE LABIRINTO>
+|.'.'',            <CNOSSO>             ,''.'.|
+|.'.'.'',                             ,''.'.'.|Sei capitato sulla casella
+|.'.'.'.'',                         ,''.'.'.'.|speciale labirinto, mentre
+|.'.'.'.'.|                         |.'.'.'.'.|gironzolavi per i boschi in
+|.'.'.'.'.|===;                 ;===|.'.'.'.'.|cerca di qualche fiorellino per
+|.'.'.'.'.|:::|',             ,'|:::|.'.'.'.'.|la tua collezione di margherite,
+|.'.'.'.'.|---|'.|, _______ ,|.'|---|.'.'.'.'.|ti sei imbattuto davanti a 
+|.'.'.'.'.|:::|'.|'|???????|'|.'|:::|.'.'.'.'.|queste imponenti mura... dopo
+|,',',',',|---|',|'|???????|'|,'|---|,',',',',|un po' che le osservavi ti si
+|.'.'.'.'.|:::|'.|'|???????|'|.'|:::|.'.'.'.'.|pone davanti un enorme minotauro
+|.'.'.'.'.|---|','   /%%%\   ','|---|.'.'.'.'.|preso dalla paura decidi di
+|.'.'.'.'.|===:'    /%%%%%\    ':===|.'.'.'.'.|fuggire indietreggiando, 
+|.'.'.'.'.|%%%%%%%%%%%%%%%%%%%%%%%%%|.'.'.'.'.|perdendo terreno sui
+|.'.'.'.','       /%%%%%%%%%\       ','.'.'.'.|tuoi avversari.
+|.'.'.','        /%%%%%%%%%%%\        ','.'.'.|
+|.'.','         /%%%%%%%%%%%%%\         ','.'.|<CHE FIFONE! :(
+|.','          /%%%%%%%%%%%%%%%\          ','.|
+|;            /%%%%%%%%%%%%%%%%%\            ;|
+|_____________________________________________|
+
+<Premere un tasto per proseguire:__

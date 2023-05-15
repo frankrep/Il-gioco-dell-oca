@@ -1,42 +1,4 @@
-scegliere_aiuto
-DATI DI INPUT
-file_menu_aiuto, file da cui stampare il menu aiuto, file di testo
-CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
-DATI DI OUTPUT
-opzioni_scelta, opzioni tra cui puo scegliere il giocatore, intero, >= 0, <= 2
-ALGORITMO
-stampare_da_file (file_menu_aiuto)
-ESEGUI 
-	opzione_scelta = leggere_da_tastiera ()
-	SE ( (opzioni_scelta < 0) OR (opzioni_scelta > 2) )
-		stampare_a_video (“ Il valore inserito non e’ valido, riprova inserendo:”)
-		stampare_a_video (“ CARATTERE_A_CAPO”)
-		stampare_a_video (“ CARATTERE_A_CAPO”)
-		stampare_da_file (file_menu_aiuto)
-	FINE
-FINCHE’ ( (opzioni_scelta < 0) OR (opzioni_scelta > 2) )
 
-
-
-chiedere_aiuto
-DATI DI INPUT
-file_regole, file contenente le regole del gioco, file di testo
-file_manuale, file contenente il manuale di gioco, file di testo
-opzione_scelta, scelta effettuata dal giocatore, intero, >= 0, <=2
-DATI DI OUTPUT
-nessuno, è una stampa
-ALGORITMO
-opzione_scelta = scegliere_aiuto ()
-SE (opzione_scelta = 1)
-ALLORA	
-stampare_da_file(file_regole)
-ALTRIMENTI SE (opzione_scelta = 2)
-				ALLORA	
-stampare_da_file(file_manuale)
-	FINE
-FINE
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-FUNZIONI MENU AIUTO
 stampare_da_file
 DATI DI INPUT
 testo, sequenza di caratteri da stampare, file di testo

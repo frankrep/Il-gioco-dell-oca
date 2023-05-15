@@ -1,0 +1,23 @@
+<IL GIOCO DELL'OCA>
+__________________________________
+|================================|<CASELLA SPECIALE PRIGIONE>
+| ||     ||     ||     ||     || |
+| ||     ||     ||     ||     || |Siete capitati sulla casella speciale
+| ||     ||     ||     ||     || |prigione, un gruppo di soldati del remoto
+| ||     ||     ||     ||     || |regno di Uniba, erano in ricerca di un noto
+| ||     ||     ||     ||     || |criminale locale, sarai trattenuto qui per
+| ||     ||<(.)>||<(.)>||     || |essere sottoposto ad un interrogatorio
+| ||    _||     ||     ||_    || |finchè qualcuno non prenderà il tuo posto,
+| ||   (__D     ||     C__)   || |oppure puoi sperare nella sorte! Sai il gran
+| ||   (__D     ||     C__)   || |generale maggiore è un gran appassionato 
+| ||   (__D     ||     C__)   || |del gioco dei dadi, potresti provare a
+| ||   (__D     ||     C__)   || |sfidarlo, ho sentito dire che se i tuoi dadi
+| ||     ||     ||     ||     || |avranno un valore uguale a 5 o a 7,
+| ||     ||     ||     ||     || |allora sarai libero!
+| ||     ||     ||     ||     || |
+| ||     ||     ||     ||     || |<CHE LA FORTUNA TI ASSISTA! :(
+| ||     ||     ||     ||     || |
+| ||     ||     ||     ||     || |
+| ||     ||     ||     ||     || |
+|================================|
+|________________________________|<Premere un tasto per proseguire:__

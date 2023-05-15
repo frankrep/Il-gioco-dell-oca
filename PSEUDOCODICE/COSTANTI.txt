@@ -45,7 +45,6 @@ DIMENSIONE_MASSIMA_NOME_PARTITA, la dimensione massima che il nome della partita
 DIMENSIONE_MINIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, Intero, = 3
 DIMENSIONE_MASSIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, Intero, = 18
 DIMENSIONE_MASSIMA_NOME_CASELLA, la dimensione massima che il nome della casella può avere, Intero, = 9
-
 FINE_STRINGA, il carattere utilizzato come fine stringa, Carattere, = '\0'
 CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
 FINE_FILE,  simbolo che indica la fine del file, carattere, = ‘EOF’ 

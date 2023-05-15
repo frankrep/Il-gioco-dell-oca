@@ -123,12 +123,12 @@ stampare_casella((ultima_casella_stampata - contatore), strato)
 stampare_inferiore_sinistra
 
 DATI DI INPUT
-numero_colonne, indica il numero di colonne 
-contatore
-strato
+numero_colonne, indica quante colonne verranno stampate nella parte destra, intero, > 0, <= LARGHEZZA_TABELLONE
+contatore, indica quale delle colonne viene stampata al momento, intero, > 0, <= LARGHEZZA_TABELLONE
+strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO_TABELLA
 
 DATI DI OUTPUT
-ultima_casella_stampata
+ultima_casella_stampata, ultimo numero di casella stampato, intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
 
 ALGORITMO
 ultima_casella_stampata = ((LARGHEZZA_TABELLONE - (1 + (2 * (numero_colonne - contatore - 1)))) * 2)  + ((ALTEZZA_TABELLONE - (1 + (2 * (numero_colonne - contatore - 1)))) * 2)
@@ -143,13 +143,13 @@ stampare_casella((ultima_casella_stampata  - (ALTEZZA_TABELLONE - (2 * (numero_c
 stampare_parte_destra
 
 DATI DI INPUT
-numero_colonne
-numero_iniziale
-contatore
-strato
+numero_colonne, indica quante colonne verranno stampate nella parte destra, intero, > 0, <= LARGHEZZA_TABELLONE
+contatore, indica quale delle colonne viene stampata al momento, intero, > 0, <= LARGHEZZA_TABELLONE
+strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO_TABELLA
+numero_iniziale,  il numero raggiunto nell'ultima stampa effettuata,Intero
 
 DATI DI OUTPUT
-ultima_casella_stampata
+ultima_casella_stampata, ultimo numero di casella stampato, intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
 
 ALGORITMO
 ultima_casella_stampata = numero_iniziale
@@ -164,12 +164,13 @@ FINE
 stampare_parte_centrale_incremento
 
 DATI DI INPUT
-numero_iniziale
-numero_colonne
-strato
+numero_iniziale,  il numero raggiunto nell'ultima stampa effettuata,Intero
+numero_colonne, indica quante colonne verranno stampate nella parte destra, intero, > 0, <= LARGHEZZA_TABELLONE
+strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO_TABELLA
+
 
 DATI DI OUTPUT
-ultima_casella_stampata
+ultima_casella_stampata, ultimo numero di casella stampato, intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
 
 ALGORITMO
 ultima_casella_stampata = numero_iniziale
@@ -185,12 +186,12 @@ FINE
 stampare_parte_centrale_decremento
 
 DATI DI INPUT
-numero_iniziale
-numero_colonne
-strato
+numero_iniziale,  il numero raggiunto nell'ultima stampa effettuata,Intero
+numero_colonne, indica quante colonne verranno stampate nella parte destra, intero, > 0, <= LARGHEZZA_TABELLONE
+strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO_TABELLA
 
 DATI DI OUTPUT
-ultima_casella_stampata
+ultima_casella_stampata, ultimo numero di casella stampato, intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
 
 ALGORITMO
 ultima_casella_stampata = numero_iniziale
@@ -206,8 +207,8 @@ FINE
 stampare_casella
 
 DATI DI INPUT
-partita_attuale
-numero_casella
+partita_attuale, la partita di cui stampare casella, record di tipo partita
+numero_casella, il numero della casella da stampare, Intero, >0
 strato, lo strato del disegno da stampare, Intero, > 0
 
 DATI DI OUTPUT
@@ -221,7 +222,7 @@ ALTRIMENTI
     SE (strato = 2)
     ALLORA
         stampare_a_video(CONTORNO_LATERALE_CASELLA)
-        stampare_giocatori_superiori_casella(partita_attuale)
+        stampare_giocatori_superiori_casella(partita_attuale) //da fare
         stampare_a_video(CONTORNO_LATERALE_CASELLA)
     ALTRIMENTI
         SE (strato = 3)
@@ -233,7 +234,7 @@ ALTRIMENTI
             SE (strato = 4)
             ALLORA
                 stampare_a_video(CONTORNO_LATERALE_CASELLA)
-                stampare_giocatori_inferiori_casella(partita_attuale)
+                stampare_giocatori_inferiori_casella(partita_attuale) //da fare
                 stampare_a_video(CONTORNO_LATERALE_CASELLA)
             FINE
         FINE
@@ -245,8 +246,8 @@ FINE
 stampare_contenuto
 
 DATI DI INPUT
-partita_attuale
-numero_casella
+partita_attuale, la partita di cui stampare la casella, record di tipo partita
+numero_casella, il numero della casella da stampare, Intero, > 0
 
 DATI DI OUTPUT
 nessuno, sarà una stampa
@@ -254,33 +255,9 @@ nessuno, sarà una stampa
 ALGORITMO
 SE (confrontare_stringhe(leggere_simbolo(leggere_casella_percorso(partita_attuale, numero_casella)), FINE_STRINGA) = VERO)
 ALLORA
-    
+    stampare_a_video(CARATTERE_SPAZIO)
+    stampare_a_video(leggere_numero_casella(leggere_casella_percorso(partita_attuale, numero_casella)))
+    stampare_a_video(CARATTERE_SPAZIO)
 ALTRIMENTI
-    
-FINE
-stampare_a_video(CARATTERE_SPAZIO)
-stampare_a_video(leggere_numero_casella(leggere_casella_percorso(partita_attuale, numero_casella)))
-stampare_a_video(CARATTERE_SPAZIO)
-
-
-
-stampare_giocatori_superiori_casella
-
-DATI DI INPUT
-
-
-DATI DI OUTPUT
-
-
-ALGORITMO
- 
-SE (leggere)
-ALLORA
-    
-ALTRIMENTI
-    
-FINE
-MENTRE (indice_larghezza_disegno <= LARGHEZZA_DISEGNO_CASELLA)
-    
-    indice_larghezza_disegno
+    stampare_a_video(leggere_simbolo(leggere_casella_percorso(partita_attuale, numero_casella)))
 FINE
