@@ -1,0 +1,77 @@
+RECORD vincitore
+nome_vincitore, il nome del giocatore che ha vinto la partita, Array a una dimensione (DIMENSIONE_MASSIMA_NOME_GIOCATORE) di caratteri (terminante con FINE_STRINGA)
+pedina_vincitore, il simbolo scelto dal giocatore per rappresentarsi nel percorso, carattere
+lanci_vincitore, numero lanci effettuati dal giocatore in partita, Intero, >= 0
+lunghezza_percorso_vincitore, numero delle caselle che compongono il percorso della partita vinta dal vincitore, Intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MINIMA_PERCORSO
+
+_____________________________________________________________________________________________________________________________________________________________
+
+scrivere_nome_vincitore
+DATI DI INPUT
+nome, il nome del vincitore della partita, Array a una dimensione (DIMENSIONE_MASSIMA_NOME_GIOCATORE) di caratteri (terminante con FINE_STRINGA)
+vincitore_attuale, il vincitore della partita con il relativo nome da inserire, record di tipo vincitore
+DATI DI OUTPUT
+vincitore_attuale, il vincitore della partita il proprio nome inserito, record di tipo vincitore
+ALGORITMO
+Elemento del campo nome_vincitore di vincitore_attuale = nome
+
+leggere_nome_vincitore
+DATI DI INPUT
+vincitore_attuale, il vincitore del quale leggere il nome, record di tipo vincitore
+DATI DI OUTPUT
+nome, il nome del vincitore della partita, Array a una dimensione (DIMENSIONE_MASSIMA_NOME_GIOCATORE) di caratteri (terminante con FINE_STRINGA)
+ALGORITMO
+nome = Elemento del campo nome_vincitore di vincitore_attuale
+
+scrivere_pedina_vincitore
+DATI DI INPUT
+pedina, la pedina del vincitore della partita da scrivere, carattere
+vincitore_attuale, vincitore della partita di cui inserire la relativa pedina, record di tipo vincitore
+DATI DI OUTPUT
+vincitore_attuale, vincitore della partita con la relativa pedina inserita, record di tipo vincitore
+ALGORITMO
+Elemento del campo pedina_vincitore di vincitore_attuale = pedina
+
+
+leggere_pedina_vincitore
+DATI DI INPUT
+vincitore_attuale, vincitore della partita da cui leggere la pedina, record di tipo vincitore
+DATI DI OUTPUT
+pedina, pedina di vincitore_attuale letta, carattere
+ALGORITMO
+pedina = Elemento del campo pedina_vincitore di vincitore_attuale
+
+
+scrivere_lunghezza_percorso_vincitore
+DATI DI INPUT
+vincitore_attuale, il vincitore della partita con la lunghezza del percorso su cui ha vinto da inserire, record di tipo vincitore
+lunghezza, lunghezza del percorso relativa alla partita vinta da vincitore_attuale, Intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO
+DATI DI OUTPUT
+vincitore_attuale, il vincitore della partita con il numero di caselle del percorso relativo alla partita vinta inserito, record di tipo vincitore
+ALGORITMO
+Elemento del campo lunghezza_percorso_vincitore di vincitore_attuale = lunghezza
+
+leggere_lunghezza_percorso_vincitore
+DATI DI INPUT
+vincitore_attuale, il vincitore dal quale leggere la lunghezza del percorso relativa alla partita vinta, record di tipo vincitore
+DATI DI OUTPUT
+lunghezza, la lunghezza del percorso relativa alla partita di vincitore_attuale, Intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO
+ALGORITMO
+lunghezza = Elemento del campo lunghezza_percorso_vincitore di vincitore_attuale
+
+scrivere_lanci_vincitore
+DATI DI INPUT
+vincitore_attuale, il vincitore di cui inserire il numero di lanci effettuati per vincere la partita, record di tipo vincitore
+lanci, il numero dei lanci effettuati da vincitore_attuale per vincere la partita, Intero, > 0
+DATI DI OUTPUT
+vincitore_attuale, il vincitore della partita con il numero di lanci inserito, record di tipo vincitore
+ALGORITMO
+Elemento del campo lanci_vincitore di vincitore_attuale = lanci
+
+leggere_lanci_vincitore
+DATI DI INPUT
+vincitore_attuale, il vincitore dal quale leggere il numero di lanci effettuati per vincere la partita, record di tipo vincitore
+DATI DI OUTPUT
+lanci, numero dei lanci effettuati da vincitore_attuale, Intero, > 0
+ALGORITMO
+lanci = Elemento del campo lanci_vincitore di vincitore_attuale

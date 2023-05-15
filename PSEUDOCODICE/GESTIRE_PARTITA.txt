@@ -13,21 +13,18 @@ SE (leggere_turno(partita_attuale) = 0)
 ALLORA
     partita_attuale = scegliere_giocatore(partita_attuale)
 FINE
-MENTRE (leggere_terminata(partita_attuale) = 0)
-    SE (leggere_autorizzazione(leggere_giocatori(partita_attuale, leggere_turno(partita_attuale))) > 0)
+ESEGUI
+    partita_attuale = variare_turno(partita_attuale)
+    SE (leggere_autorizzazione(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))) > 0)
     ALLORA
         partita_attuale = gestire_autorizzazione(partita_attuale)
     ALTRIMENTI
         partita_attuale = lanciare_dadi(partita_attuale)
         partita_attuale = spostare_giocatore(partita_attuale)
         partita_attuale = verificare_casella(partita_attuale)
-        SE (leggere_terminata(partita_attuale) = 0)
-        ALLORA
-            partita_attuale = variare_turno(partita_attuale)
-        FINE
     FINE
-FINE
-vincitore = leggere_giocatori(partita_attuale, leggere_turno(partita_attuale))
+FINCHE' (leggere_posizione_giocatore (leggere_giocatore (partita_attuale, leggere_turno (partita_attuale))) != leggere_lunghezza_percorso (partita_attuale))
+vincitore_partita = copiare_vincitore(partita_attuale)
 
 
 
@@ -46,21 +43,41 @@ indice_giocatori, indica lo spostamento all'interno dell'elenco dei giocatori pr
 ALGORITMO
 indice_giocatori = 1
 MENTRE (indice_giocatori <= leggere_numero_giocatori(partita_attuale))
+    //stampare la schermata con i dadi per la scelta del primo giocatore
+    //prendere in input la lettura da tasiera per il lancio
     Elemento in posizione indice_giocatori di estrazioni = generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO)
+    //stampa del dado risultante
     indice_giocatori = indice_giocatori + 1
 FINE
-partita_attuale = scrivere_turno(partita_attuale, trovare_posizione_massimo(estrazioni, leggere_numero_giocatori(partita_attuale)))
+partita_attuale = scrivere_turno(partita_attuale, trovare_posizione_massimo(estrazioni, leggere_numero_giocatori(partita_attuale)) - 1)
+
+
+
+copiare_vincitore
+
+DATI DI INPUT
+partita_attuale, la partita da cui ottenere il vincitore, record di tipo partita 
+
+DATI DI OUTPUT
+vincitore_partita, il vincitore di partita_attuale, record di tipo vincitore
+
+ALGORITMO
+leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
+vincitore_partita = scrivere_nome_vincitore(vincitore_partita, leggere_nome_giocatore(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))))
+vincitore_partita = scrivere_pedina_vincitore(vincitore_partita, leggere_pedina_giocatore(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))))
+vincitore_partita = scrivere_lanci_vincitore(vincitore_partita, leggere_lanci_effettuati(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))))
+vincitore_partita = scrivere_lunghezza_percorso_vincitore(vincitore_partita, leggere_lunghezza_percorso(partita_attuale))
 
 
 
 generare_numero
 
-INPUT
+DATI DI INPUT
 file_seme, contiene il seme da cui generare il numero casuale, file di tipo binario
 numero_massimo, il numero massimo che si vuole generare, Intero, > 0
 numero_minimo, il numero minimo che si vuole generare, Intero, > 0
 
-OUTPUT
+DATI DI OUTPUT
 numero_casuale, numero risultato della funzione di generazione, intero, > 0, <= FACCIA_MASSIMA_DADO
 
 DATI DI LAVORO
@@ -76,10 +93,10 @@ numero_casuale = generare_casuale (seme, numero_massimo, numero_minimo)
 
 generare_seme
 
-INPUT
+DATI DI INPUT
 seme, contiene il seme dal quale generare il nuovo seme, intero, > 0
 
-OUTPUT
+DATI DI OUTPUT
 nuovo_seme, contiene il nuovo seme risultato dalle operazioni eseguite sul seme vecchio, intero, > 0
 
 ALGORITMO
@@ -89,12 +106,12 @@ seme = (MOLTIPLICATORE * seme + INCREMENTO) % DIVISORE
 
 generare_casuale
 
-INPUT
+DATI DI INPUT
 seme, contiene il seme dal quale generare il numero casuale, intero, > 0
 numero_massimo, il numero massimo che si vuole generare, Intero, > 0
 numero_minimo, il numero minimo che si vuole generare, Intero, > 0
 
-OUTPUT
+DATI DI OUTPUT
 numero_casuale, numero risultato della funzione di generazione, intero, > 0, <= FACCIA_MASSIMA_DADO
 
 ALGORITMO
@@ -154,7 +171,7 @@ FINE
 
 incrementare_lanci_effettuati
 DATI DI INPUT
-partita_attuale, la partita in cui incrementare lanci_effettuati, partita
+partita_attuale, la partita di cui incrementare lanci_effettuati, partita
 
 DATI DI OUTPUT
 partita_attuale, la partita con lanci_effettuati incrementati, partita
@@ -164,7 +181,7 @@ giocatore_attuale, il giocatore a cui incrementare il numero di lanci_effettuati
 lanci_effettuati, i lanci di giocatore_attuale, Intero
 
 ALGORITMO
-giocatore = leggere_giocatori(partita_attuale, leggere_turno(partita_attuale))
+giocatore = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
 lanci_effettuati = leggere_lanci_effettuati(giocatore)
 lanci_effettuati = lanci_effettuati + 1
 giocatore = scrivere_lanci_effettuati(giocatore, lanci_effettuati)
@@ -206,7 +223,7 @@ posizione, la posizione di giocatore_attuale, Intero
 surplus, il surplus della posizione rispetto alla lunghezza del percorso, Intero
 
 ALGORITMO
-giocatore_attuale = leggere_giocatori(partita_attuale, leggereTurno(partita_attuale))
+giocatore_attuale = leggere_giocatore(partita_attuale, leggereTurno(partita_attuale))
 posizione = leggere_posizione_giocatore(giocatore)
 posizione = posizione + sommare_dadi(partita_attuale)
 SE (posizione > leggere_lunghezza_percorso(partita_attuale))
@@ -261,7 +278,7 @@ giocatore_attuale, il giocatore a cui applicare l'effetto, giocatore
 nome, il nome della cella nella quale si trova giocatore_attuale, Array di caratteri con carattere di terminazione FINE_STRINGA
 
 ALGORITMO
-giocatore_attuale = leggere_giocatori(partita_attuale, leggere_turno(partita_attuale))
+giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
 nome = leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale)))
 SE (confrontare_stringhe(nome, NOME_OCA) = 1)
 ALLORA
@@ -313,7 +330,7 @@ FINE
 
 gestire_oca
 DATI DI INPUT
-partita_attuale, la partita in cui gestire la casella oca, partita
+partita_attuale, la partita in cui gestire la casella oca, record di tipo partita
 PRIMO_LANCIO_3_6, la posizione della casella dado per il lancio di dadi 3+6, Intero, Costante
 PRIMO_LANCIO_4_5, la posizione della casella dado per il lancio di dadi 4+5, Intero, Costante
 DADO_MINORE_PRIMO_LANCIO, il primo dado del primo lancio per saltare a PRIMO_LANCIO_3_6 , Intero, Costante
@@ -329,7 +346,7 @@ giocatore_attuale, il giocatore a cui applicare l'effetto della casella oca, gio
 dado, il valore del primo dado di ultimo_lancio di partita_attuale, Intero
 
 ALGORITMO
-giocatore_attuale = leggere_giocatori(partita_attuale, leggere_turno(partita_attuale))
+giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
 SE (leggere_lanci_effettuati(giocatore_attuale) = 1)
 ALLORA
     dado = scrivere_dadi(partita_attuale, PRIMO_DADO)
@@ -366,7 +383,7 @@ pos, la posizione del giocatore analizzato, Intero
 ALGORITMO
 pos = 1
 MENTRE (pos <= leggere_numero_giocatori(partita_attuale))
-    giocatore_attuale = leggere_giocatori(partita_attuale, pos)
+    giocatore_attuale = leggere_giocatore(partita_attuale, pos)
     nome = leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale)))
     SE (confrontare_stringhe(nome, nome_casella_attuale) = 1)
     ALLORA
@@ -375,7 +392,7 @@ MENTRE (pos <= leggere_numero_giocatori(partita_attuale))
     FINE
     pos = pos + 1
 FINE
-giocatore_attuale = leggere_giocatori(partita_attuale, leggere_turno(partita_attuale))
+giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
 giocatore_attuale = scrivere_autorizzazione(giocatore_attuale, 1)
 partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
 
@@ -383,18 +400,18 @@ partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere
 
 gestire_autorizzazione
 DATI DI INPUT
-partita_attuale, la partita in cui gestire l'autorizzazione, partita
+partita_attuale, la partita in cui gestire l'autorizzazione, record di tipo partita
 
 DATI DI OUTPUT
-partita_attuale, la partita con l'autorizzazione gestita, partita
+partita_attuale, la partita con l'autorizzazione gestita, record di tipo partita
 
 DATI DI LAVORO
-giocatore_attuale, il giocatore di cui gestire l'autorizzazione, giocatore
+giocatore_attuale, il giocatore di cui gestire l'autorizzazione, record di tipo giocatore
 nome, il nome della cella nella quale si trova giocatore_attuale, Array di caratteri con carattere di terminazione FINE_STRINGA
 autorizzazione, l'autorizzazione di giocatore_attuale, Intero
 
 ALGORITMO
-giocatore_attuale = leggere_giocatori(partita_attuale, leggere_turno(partita_attuale))
+giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
 nome = leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale)))
 autorizzazione = leggere_autorizzazione(giocatore_attuale)
 SE (confrontare_stringhe(nome, NOME_LOCANDA) = 1)

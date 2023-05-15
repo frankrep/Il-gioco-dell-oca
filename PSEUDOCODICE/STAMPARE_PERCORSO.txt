@@ -1,0 +1,158 @@
+stampare_superiore_sinistra
+
+DATI DI INPUT
+numero_colonne, indica quante colonne verranno stampate nella parte destra, intero, > 0, <= LARGHEZZA_TABELLONE
+contatore, indica quale delle colonne viene stampata al momento, intero, > 0, <= LARGHEZZA_TABELLONE
+strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO
+LARGHEZZA_TABELLONE, , Intero, = 15
+ALTEZZA_TABELLONE, , Intero, = 6
+
+DATI DI OUTPUT
+ultima_casella_stampata, ultimo numero di casella stampato, intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
+
+ALGORITMO
+ultima_casella_stampata = ((LARGHEZZA_TABELLONE - (1 + (2 * (numero_colonne - contatore - 1)))) * 2)  + ((ALTEZZA_TABELLONE - (1 + (2 * (numero_colonne - contatore - 1)))) * 2)
+SE ((numero_colonne - contatore) > 1)
+ALLORA
+    ultima_casella_stampata = ultima_casella_stampata + stampare_superiore_sinistra(numero_colonne, contatore + 1, strato)
+FINE
+stampare_casella((ultima_casella_stampata - contatore), strato)
+
+
+
+stampare_inferiore_sinistra
+
+DATI DI INPUT
+numero_colonne, indica
+contatore
+strato
+
+DATI DI OUTPUT
+ultima_casella_stampata
+
+ALGORITMO
+ultima_casella_stampata = ((LARGHEZZA_TABELLONE - (1 + (2 * (numero_colonne - contatore - 1)))) * 2)  + ((ALTEZZA_TABELLONE - (1 + (2 * (numero_colonne - contatore - 1)))) * 2)
+SE ((numero_colonne - contatore) > 1)
+ALLORA
+    ultima_casella_stampata = ultima_casella_stampata + stampare_inferiore_sinistra(numero_colonne, contatore + 1)
+FINE
+stampare_casella((ultima_casella_stampata  - (ALTEZZA_TABELLONE - (2 * (numero_colonne - contatore))) + contatore), strato)
+
+
+
+stampare_parte_destra
+
+DATI DI INPUT
+numero_colonne
+numero_iniziale
+contatore
+strato
+
+DATI DI OUTPUT
+ultima_casella_stampata
+
+ALGORITMO
+ultima_casella_stampata = numero_iniziale
+MENTRE (contatore < numero_colonne)
+    ultima_casella_stampata = ultima_casella_stampata - (((LARGHEZZA_TABELLONE + ALTEZZA_TABELLONE) * 2) - (3 * 2) - (4 * 2 * (numero_colonne - contatore - 1)))
+    stampare_casella((ultima_casella_stampata + contatore + 1), strato)
+    contatore = contatore + 1
+FINE
+
+
+
+stampare_parte_centrale_incremento
+
+DATI DI INPUT
+numero_iniziale
+numero_colonne
+strato
+
+DATI DI OUTPUT
+ultima_casella_stampata
+
+ALGORITMO
+ultima_casella_stampata = numero_iniziale
+indice_colonna = 0
+MENTRE (indice_colonna < numero_colonne)
+    ultima_casella_stampata = ultima_casella_stampata + 1
+    stampare_casella(ultima_casella_stampata)
+    indice_colonna = indice_colonna + 1
+FINE
+
+
+
+stampare_parte_centrale_decremento
+
+DATI DI INPUT
+numero_iniziale
+numero_colonne
+strato
+
+DATI DI OUTPUT
+ultima_casella_stampata
+
+ALGORITMO
+ultima_casella_stampata = numero_iniziale
+indice_colonna = 0
+MENTRE (indice_colonna <= numero_colonne)
+    ultima_casella_stampata = ultima_casella_stampata - 1
+    stampare_casella(ultima_casella_stampata, strato)
+    indice_colonna = indice_colonna + 1
+FINE
+
+
+
+stampare_casella
+DATI DI INPUT
+strato, lo strato del disegno da stampare, Intero, >0
+casella, la casella da rappresentare, CASELLA
+
+DATI DI OUTPUT
+nessuno, sarà una stampa
+
+DATI DI LAVORO
+disegno_casella, i caratteri rappresentanti il disegno di CASELLA, Array di Array di Caratteri con carattere terminale FINE_STRINGA
+ALGORITMO
+disegno_casella = caricare_disegno(disegno_casella)
+SE (strato = 1)
+ALLORA
+    stampare_a_video(Elemento in posizione STRATO_1_A di disegno_casella)
+ALTRIMENTI
+    SE (strato = 2)
+    ALLORA
+       stampare_a_video(Elemento in posizione STRATO_2_A di disegno_casella)
+    ALTRIMENTI
+        SE (strato = 3)
+        ALLORA
+           	stampare_a_video(Elemento in posizione STRATO_3_A di disegno_casella)
+            stampare_contenuto(casella)
+            stampare_a_video(Elemento in posizione STRATO_3_B di disegno_casella)
+        ALTRIMENTI
+            SE (strato = 4)
+            ALLORA
+                stampare_a_video(Elemento in posizione STRATO_4_A di disegno_casella)
+            FINE
+        FINE
+    FINE
+FINE
+
+
+
+stampare_contenuto
+DATI DI INPUT
+numero_spazi, il numero di caratteri disponibili, Intero
+casella, la casella di cui rappresentare il contenuto, record di casella
+DATI DI OUTPUT
+nessuno, sarà una stampa
+
+DATI DI LAVORO
+simbolo, il simbolo da rappresentare nel disegno della casella, Array di Caratteri con carattere di terminazione FINE_STRINGA
+ALGORITMO
+simbolo = cercare_simbolo(simboli_caselle, casella)
+SE (CalcolareLunghezza(simbolo) > 0)
+ALLORA
+    stampare_a_video(simbolo)
+ALTRIMENTI
+    stampare_a_video(LeggerePosizione(casella))
+FINE
