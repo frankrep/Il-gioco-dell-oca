@@ -1,6 +1,3 @@
-
-
-
 gestire_partita
 DATI DI INPUT
 partita_attuale, la partita da gestire, record di tipo partita
@@ -11,17 +8,22 @@ vincitore_partita, il giocatore vincitore di partita_attuale, record di tipo vin
 ALGORITMO
 SE (leggere_turno(partita_attuale) = 0)
 ALLORA
+    //scelta giocatore iniziale
     partita_attuale = scegliere_giocatore(partita_attuale)
 FINE
 ESEGUI
     partita_attuale = cambiare_turno(partita_attuale)
-    //stampa per il giocatore di turno
     SE (leggere_autorizzazione(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))) > 0)
     ALLORA
         partita_attuale = gestire_autorizzazione(partita_attuale)
-    ALTRIMENTI
+    FINE
+    SE (leggere_autorizzazione(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))) > 0)
+    ALLORA
+        //stampare percorso con l'attesa con l'attesa dell'input
         partita_attuale = lanciare_dadi(partita_attuale)
+        //stampare percorso con i dadi aggiornati e attendere l'input
         partita_attuale = spostare_giocatore(partita_attuale)
+        //stampare percorso con input utente per proseguire con l'effetto
         partita_attuale = verificare_casella(partita_attuale)
     FINE
 FINCHE' (leggere_posizione_giocatore (leggere_giocatore (partita_attuale, leggere_turno (partita_attuale))) != leggere_lunghezza_percorso (partita_attuale))
@@ -44,10 +46,11 @@ indice_giocatori, indica lo spostamento all'interno dell'elenco dei giocatori pr
 ALGORITMO
 indice_giocatori = 1
 MENTRE (indice_giocatori <= leggere_numero_giocatori(partita_attuale))
-    //stampare la schermata con i dadi per la scelta del primo giocatore
-    //prendere in input la lettura da tasiera per il lancio
+    //stampare scelta_g_iniziale
+    //prendere in input la lettura da tastiera per il lancio
     Elemento in posizione indice_giocatori di estrazioni = generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO)
     //stampa del dado risultante
+    //aspetta input da tastiera
     indice_giocatori = indice_giocatori + 1
 FINE
 partita_attuale = scrivere_turno(partita_attuale, trovare_posizione_massimo(estrazioni, leggere_numero_giocatori(partita_attuale)) - 1)
@@ -183,6 +186,7 @@ MENTRE (indice_dado <= NUMERO_DADI)
     partita_attuale = scrivere_dadi(partita_attuale, indice_dado, lancio)
     indice_dado = indice_dado + 1
 FINE
+
 
 
 
@@ -324,27 +328,33 @@ ESEGUI
     nome = leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale)))
     SE (confrontare_stringhe(nome, NOME_OCA) = VERO)
     ALLORA
+        //stampare schermata_oca e aspettare input
         partita_attuale = gestire_oca(partita_attuale)
     ALTRIMENTI
         SE (confrontare_stringhe(nome, NOME_PONTE) = VERO)
         ALLORA
+            //schermata_ponte e aspettare input
             partita_attuale = spostare_giocatore(partita_attuale)
         ALTRIMENTI
             SE (confrontare_stringhe(nome, NOME_LOCANDA) = VERO)
             ALLORA
+                //stampare schermata_locanda e aspettare input
                 giocatore_attuale = scrivere_autorizzazione(giocatore_attuale, TURNI_ATTESA_LOCANDA)
                 partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
             ALTRIMENTI
                 SE (confrontare_stringhe(nome, NOME_POZZO) = VERO)
                 ALLORA
+                    //stampare schermata_pozzo e aspettare input
                     partita_attuale = impostare_autorizzazioni(partita_attuale, NOME_POZZO)
                 ALTRIMENTI
                     SE (confrontare_stringhe(nome, NOME_PRIGIONE) = VERO)
                     ALLORA
+                        //stampare schermata_prigione e aspettare input
                         partita_attuale = impostare_autorizzazioni(partita_attuale, NOME_PRIGIONE)
                     ALTRIMENTI
                         SE (confrontare_stringhe(nome, NOME_LABIRINTO) = VERO)
                         ALLORA
+                            //stampare schermata_labirinto e aspettare input
                             giocatore_attuale = scrivere_posizione_giocatore(giocatore_attuale, calcolare_proporzione(leggere_lunghezza_percorso(partita_attuale), CASELLA_ARRIVO_LABIRINTO))
                             MENTRE (confrontare_stringhe(leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale))), FINE_STRINGA) = FALSO)
                                 giocatore_attuale = scrivere_posizione_giocatore(giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1)
@@ -353,6 +363,7 @@ ESEGUI
                         ALTRIMENTI
                             SE (confrontare_stringhe(nome, NOME_SCHELETRO) = VERO)
                             ALLORA
+                                //stampare schermata_scheletro e aspettare input
                                 giocatore_attuale = scrivere_posizione_giocatore(giocatore_attuale, CASELLA_ARRIVO_SCHELETRO)
                                 partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
                             FINE
@@ -362,6 +373,7 @@ ESEGUI
             FINE
         FINE
     FINE
+    //stampare percorso e aspettare input 
 FINCHE' (leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale))) != FINE_STRINGA)
 
 
@@ -420,6 +432,7 @@ MENTRE (indice_giocatore <= leggere_numero_giocatori(partita_attuale))
     giocatore_attuale = leggere_giocatore(partita_attuale, indice_giocatore)
     SE (confrontare_stringhe (leggere_nome_casella (leggere_percorso (partita_attuale, leggere_posizione_giocatore(giocatore_attuale))), nome_casella_attuale) = VERO)
     ALLORA
+        //stampare schermata_liberato e attendere input
         giocatore_attuale = scrivere_autorizzazione(giocatore_attuale, 0)
         partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, indice_giocatore)
     FINE
@@ -451,11 +464,13 @@ autorizzazione = leggere_autorizzazione(giocatore_attuale)
 SE (confrontare_stringhe(leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale))), NOME_LOCANDA) = VERO)
 ALLORA
     giocatore_attuale = scrivere_autorizzazione(giocatore, leggere_autorizzazione(giocatore_attuale) - 1)
+    //stampare schermata_locanda_turno_passato e attende input
 ALTRIMENTI
     SE (confrontare_stringhe(leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale))), NOME_PRIGIONE) = VERO)
     ALLORA
+        //stampare schermata_lancio_dadi_prigione e richiedere input
         partita_attuale = lanciare_dadi(partita_attuale)
-    ALTRIMENTI
+        //stampare schermata_lancio_dadi_prigione con lancio effettuato e richiedere input
         SE ((sommare_dadi(partita_attuale) = DADO_MINORE_USCITA_PRIGIONE) OR (sommare_dadi(partita_attuale) = DADO_MAGGIORE_USCITA_PRIGIONE))
         ALLORA
             giocatore_attuale = scrivere_autorizzazione(giocatore, 0)

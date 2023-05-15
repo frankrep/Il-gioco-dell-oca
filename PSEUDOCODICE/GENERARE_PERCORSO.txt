@@ -1,6 +1,3 @@
-
-
-
 generare_percorso
 
 DATI DI INPUT

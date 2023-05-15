@@ -8,7 +8,6 @@ NUMERO_DADI, il numero di dadi da utilizzare durante la partita, Intero, = 2
 DISTANZA_OCHE, la distanza nel percorso tra le oche, Intero, = 9
 NUMERO_CASELLE_SPECIALI, il numero di caselle speciali presenti nella partita, Intero, = 7
 
-//da chiedere
 PRIMO_DADO, la posizione del dado numero 1 nel campo ultimo_lancio del record partita, Intero, = 1
 
 NOME_OCA, il nome della casella oca, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "OCA\0"
@@ -21,13 +20,15 @@ NOME_SCHELETRO, il nome della casella scheletro, Array a una dimensione di carat
 NOME_VITTORIA, il nome della casella vittoria, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "VITTORIA\0"
 NUMERO_MASSIMO_CARATTERI_SIMBOLO, numero di caratteri massimo concessi per il simbolo rappresentante una casella, intero, = 5
 
-//forse
-ALTEZZA_DISEGNO, il numero di stati in cui è suddiviso il disegno della casella, Intero, = 4
-STRATO_1_A, posizione nell'array disegno dello strato 1A del disegno di casella, Intero, = 0
-STRATO_2_A, posizione nell'array disegno dello strato 2A del disegno di casella, Intero, = 1
-STRATO_3_A, posizione nell'array disegno dello strato 3A del disegno di casella, Intero, = 2
-STRATO_3_B, posizione nell'array disegno dello strato 3B del disegno di casella, Intero, = 3
-STRATO_4_A, posizione nell'array disegno dello strato 4A del disegno di casella, Intero, = 4
+ALTEZZA_DISEGNO_CASELLA, il numero di strati in cui è suddiviso il disegno della casella, Intero, = 4
+LARGHEZZA_DISEGNO_CASELLA, il numero di caratteri che forma una casella, Intero, = 5
+SPAZIO_DISPONIBILE_CASELLA, il numero di spazi compresi tra un margine laterale ed un altro nel disegno della casella, Intero, = 4
+
+CONTORNO_LATERALE_CASELLA, il simbolo da utilizzare come contorno laterale della casella, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "|\0"
+CONTORNO_SUPERIORE_CASELLA, il simbolo da utilizzare come contorno superiore della casella, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "_\0"
+CONTORNO_INFERIORE_CASELLA, il simbolo da utilizzare come contorno inferiore della casella, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "_\0"
+LARGHEZZA_TABELLONE, il numero di caselle da stampare in una riga del tabellone, Intero, = 15
+ALTEZZA_TABELLONE, il numero di caselle da stampare in una colonna del tabellone, Intero, = 6
 
 PRIMO_LANCIO_3_6, indica la casella su cui si sposterà il giocatore nel momento in cui arriverà su una casella oca con un 3 e un 6 ottenuto dal primo lancio dei dadi, intero, = 38
 PRIMO_LANCIO_4_5, indica la casella su cui si sposterà il giocatore nel momento in cui arriverà su una casella oca con un 4 e un 5 ottenuto dal primo lancio dei dadi, intero, = 76
@@ -39,7 +40,6 @@ CASELLA_ARRIVO_SCHELETRO, numero di casella sul quale il giocatore verrà sposta
 DADO_MINORE_USCITA_PRIGIONE, la prima faccia di dado che consente l'uscita dalla prigione, Intero, = 5
 DADO_MAGGIORE_USCITA_PRIGIONE, la seconda faccia di dado che consente l'uscita dalla prigione, Intero, = 7
 
-//chiedere all'interfacer
 DIMENSIONE_MINIMA_NOME_PARTITA, la dimensione minima che il nome della partita può avere, Intero, = 3
 DIMENSIONE_MASSIMA_NOME_PARTITA, la dimensione massima che il nome della partita può avere, Intero, = 12
 DIMENSIONE_MINIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, Intero, = 3
@@ -56,4 +56,6 @@ INCREMENTO, valore (primo) incrementale della funzione coprimo con DIVISORE, int
 DIVISORE, divisore dell'operazione di modulo , intero, = 4294367296
 BASE, la base numerica della funzione di parte intera, Intero, = 10
 NUMERO_MASSIMO_CARATTERI_PERCORSO, il numero massimo di caratteri di un percorso relativo ad un file, Intero, = 256
-PEDINE_DISPONIBILI, i simboli utilizzati per rappresentare i giocatori nella stampa del percorso, Array a una dimensione (NUMERO_MASSIMO_GIOCATORI) di caratteri (terminante con FINE_STRINGA), = "#$%&"
+PEDINE_DISPONIBILI, i simboli utilizzati per rappresentare i giocatori nella stampa del percorso, Array a una dimensione (NUMERO_MASSIMO_GIOCATORI) di caratteri (terminante con FINE_STRINGA), = "# $ % &"
+CARATTERE_SPAZIO, simbolo indicante uno spazio vuoto tra elementi, carattere, = " "
+NUMERO_MASSIMO_OPZIONI_PRINCIPALE, numero di opzioni disponibili all'interno del menù principale, intero, = 5

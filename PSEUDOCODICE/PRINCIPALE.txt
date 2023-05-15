@@ -1,0 +1,48 @@
+gioco_dell'oca
+
+INPUT
+opzione, contiene l'opzione desiderata dall'utente, intero, > 0, <= NUMERO_MASSIMO_OPZIONI
+
+OUTPUT
+nessuno
+
+DATI DI LAVORO
+uscita, indica la conferma della volontà da parte dell'utente di uscire dal gioco, carattere, = 'Y' o 'y' (indica la conferma dell'uscita dal gioco), = 'N' o 'n' (indica la volontà di non uscire dal gioco)
+
+uscita = 'n'
+ESEGUI
+	opzione = scegliere_opzione_menu (opzione)
+	SE (opzione = 1)
+		ALLORA	iniziare_nuova_partita (partite_salvate)
+		ALTRIMENTI SE (opzione = 2)
+				ALLORA caricare_partita (partite_salvate)
+				ALTRIMENTI SE (opzione = 3)
+						ALLORA stampare_classifica (classifica_lanci)
+						ALTRIMENTI SE (opzione = 4)
+								ALLORA chiedere_aiuto (regole, comandi)
+								ALTRIMENTI uscita = confermare_uscita (uscita)
+						   	   FINE
+					   FINE
+			   FINE
+	FINE
+FINCHE' (uscita != 'Y') AND (uscita != 'y')
+
+
+
+scegliere_opzione_menu
+
+INPUT
+opzione, scelta che l'utente deve effettuare scegliendo tra le opzioni offerte nella stampa del menu, intero, > 0, <= NUMERO_MASSIMO_OPZIONI
+NUMERO_MASSIMO_OPZIONI_PRINCIPALE, numero di opzioni disponibili all'interno del menù principale, intero, = 5
+
+OUTPUT
+opzione, scelta effettuata dall'utente relativa all'opzione desiderata, intero, > 0, <= NUMERO_MASSIMO_OPZIONI
+
+//stampare a video il menù principale
+ESEGUI
+	opzione = leggeredatastiera()
+	SE (opzione < 1) OR (opzione > NUMERO_MASSIMO_OPZIONI)
+		//stampare messaggio errore
+	FINE
+FINCHE' (opzione < 1) OR (opzione > NUMERO_MASSIMO_OPZIONI)
+

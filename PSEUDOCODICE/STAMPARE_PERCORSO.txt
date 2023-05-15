@@ -1,11 +1,111 @@
+stampare_percorso
+
+DATI DI INPUT
+LARGHEZZA_TABELLONE, il numero di caselle da stampare in una riga del tabellone, Intero, = 15
+ALTEZZA_TABELLONE, il numero di caselle da stampare in una colonna del tabellone, Intero, = 6
+
+DATI DI OUTPUT
+
+
+DATI DI LAVORO
+
+
+ALGORITMO
+MENTRE (indice_riga_superiore <= LARGHEZZA_TABELLONE)
+
+    indice_altezza_disegno = 1
+    stampare_primo_livello()
+    indice_altezza_disegno = indice_altezza_disgno + 1
+
+    MENTRE (indice_altezza_disegno <= ALTEZZA_DISEGNO_TABELLA)
+        
+            SE (colonne_parte_sinistra > 0)
+        ALLORA
+            SE (indice_riga_superiore < (meta_righe + 1))
+            ALLORA
+                ultima_casella_stampata = stampare_superiore_sinistra(colonne_parte_sinistra, 0)
+            ALTRIMENTI
+                ultima_casella_stampata = stampare_inferiore_sinistra(colonne_parte_sinistra, 0)
+            FINE
+        FINE
+
+        SE (indice_riga_superiore <= (meta_righe - 1))
+        ALLORA
+            ultima_casella_stampata = stampare_parte_centrale_incremento(ultima_casella_stampata, (LARGHEZZA_TABELLONE - colonne_parte_destra - colonne_parte_sinistra))
+        ALTRIMENTI
+            ultima_casella_stampata = stampare_parte_centrale_decremento(ultima_casella_stampata - (ALTEZZA_TABELLONE - (2 * (colonne_parte_sinistra))), (LARGHEZZA_TABELLONE - colonne_parte_destra - colonne_parte_sinistra))
+        FINE
+
+        SE (colonne_parte_destra > 0)
+        ALLORA
+            SE (indice_riga_superiore <= (meta_righe - 1))
+            ALLORA
+                stampare_parte_destra(colonne_parte_destra, ultima_casella_stampata, 0)
+            ALTRIMENTI
+                stampare_parte_destra(colonne_parte_destra - 1, ultima_casella_stampata, 0)
+            FINE
+        FINE
+
+        SE (indice_riga_superiore < (indice_riga_inferiore - 1))
+        ALLORA
+            colonne_parte_sinistra = colonne_parte_sinistra + 1;
+            colonne_parte_destra = colonne_parte_destra + 1;
+        ALTRIMENTI
+            SE (indice_riga_superiore > (indice_riga_inferiore - 1))
+            ALLORA
+                colonne_parte_sinistra = colonne_parte_sinistra - 1
+                colonne_parte_destra = colonne_parte_destra - 1
+            FINE
+        FINE
+
+        stampare_a_video (CARATTERE_A_CAPO)
+        indice_riga_superiore = indice_riga_superiore + 1
+        indice_riga_inferiore = indice_riga_inferiore - 1
+
+        indice_altezza_disegno = indice_altezza_disegno + 1
+    FINE
+
+FINE
+
+
+
+stampare_primo_livello
+
+DATI DI INPUT
+LARGHEZZA_DISEGNO_CASELLA, il numero di caratteri che forma una casella, Intero, = 5
+CONTORNO_SUPERIORE_CASELLA, il simbolo da utilizzare come contorno superiore della casella, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "_\0"
+CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
+CARATTERE_SPAZIO, simbolo indicante uno spazio vuoto tra elementi, carattere, = " "
+
+DATI DI OUTPUT
+nessuno, sarà una stampa
+
+DATI DI LAVORO
+indice_caselle_disegnate, indica il numero di volte per cui viene stampato il lato superiore delle caselle in una riga del percorso, intero, > 0, <= DIMENSIONE_LATO_SCACCHIERA
+
+ALGORITMO
+indice_caselle_disegnate = 1
+MENTRE (indice_caselle_disegnate <= LARGHEZZA_TABELLONE)
+    stampare_a_video (CARATTERE_SPAZIO)
+    MENTRE (indice_larghezza_disegno <= SPAZIO_DISPONIBILE_CASELLA)
+        stampare_a_video (CONTORNO_SUPERIORE_CASELLA)
+        indice_larghezza_disegno = indice_larghezza_disegno + 1
+    FINE
+    stampare_a_video (CARATTERE_SPAZIO)
+	indice_caselle_disgnate = indice_caselle_disegnate + 1
+FINE
+stampare_a_video (CARATTERE_A_CAPO)
+
+
+
 stampare_superiore_sinistra
 
 DATI DI INPUT
 numero_colonne, indica quante colonne verranno stampate nella parte destra, intero, > 0, <= LARGHEZZA_TABELLONE
 contatore, indica quale delle colonne viene stampata al momento, intero, > 0, <= LARGHEZZA_TABELLONE
-strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO
-LARGHEZZA_TABELLONE, , Intero, = 15
-ALTEZZA_TABELLONE, , Intero, = 6
+strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO_TABELLA
+LARGHEZZA_TABELLONE, il numero di caselle da stampare in una riga del tabellone, Intero, = 15
+ALTEZZA_TABELLONE, il numero di caselle da stampare in una colonna del tabellone, Intero, = 6
 
 DATI DI OUTPUT
 ultima_casella_stampata, ultimo numero di casella stampato, intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
@@ -23,7 +123,7 @@ stampare_casella((ultima_casella_stampata - contatore), strato)
 stampare_inferiore_sinistra
 
 DATI DI INPUT
-numero_colonne, indica
+numero_colonne, indica il numero di colonne 
 contatore
 strato
 
@@ -104,34 +204,37 @@ FINE
 
 
 stampare_casella
+
 DATI DI INPUT
-strato, lo strato del disegno da stampare, Intero, >0
-casella, la casella da rappresentare, CASELLA
+partita_attuale
+numero_casella
+strato, lo strato del disegno da stampare, Intero, > 0
 
 DATI DI OUTPUT
 nessuno, sarà una stampa
 
 DATI DI LAVORO
 disegno_casella, i caratteri rappresentanti il disegno di CASELLA, Array di Array di Caratteri con carattere terminale FINE_STRINGA
+
 ALGORITMO
-disegno_casella = caricare_disegno(disegno_casella)
-SE (strato = 1)
-ALLORA
-    stampare_a_video(Elemento in posizione STRATO_1_A di disegno_casella)
 ALTRIMENTI
     SE (strato = 2)
     ALLORA
-       stampare_a_video(Elemento in posizione STRATO_2_A di disegno_casella)
+        stampare_a_video(CONTORNO_LATERALE_CASELLA)
+        stampare_giocatori_superiori_casella(partita_attuale)
+        stampare_a_video(CONTORNO_LATERALE_CASELLA)
     ALTRIMENTI
         SE (strato = 3)
         ALLORA
-           	stampare_a_video(Elemento in posizione STRATO_3_A di disegno_casella)
-            stampare_contenuto(casella)
-            stampare_a_video(Elemento in posizione STRATO_3_B di disegno_casella)
+           	stampare_a_video(CONTORNO_LATERALE_CASELLA)
+            stampare_contenuto_casella(partita_attuale)
+            stampare_a_video(CONTORNO_LATERALE_CASELLA)
         ALTRIMENTI
             SE (strato = 4)
             ALLORA
-                stampare_a_video(Elemento in posizione STRATO_4_A di disegno_casella)
+                stampare_a_video(CONTORNO_LATERALE_CASELLA)
+                stampare_giocatori_inferiori_casella(partita_attuale)
+                stampare_a_video(CONTORNO_LATERALE_CASELLA)
             FINE
         FINE
     FINE
@@ -140,72 +243,44 @@ FINE
 
 
 stampare_contenuto
+
 DATI DI INPUT
-numero_spazi, il numero di caratteri disponibili, Intero
-casella, la casella di cui rappresentare il contenuto, record di casella
+partita_attuale
+numero_casella
+
 DATI DI OUTPUT
 nessuno, sarà una stampa
 
-DATI DI LAVORO
-simbolo, il simbolo da rappresentare nel disegno della casella, Array di Caratteri con carattere di terminazione FINE_STRINGA
 ALGORITMO
-simbolo = cercare_simbolo(simboli_caselle, casella)
-SE (CalcolareLunghezza(simbolo) > 0)
+SE (confrontare_stringhe(leggere_simbolo(leggere_casella_percorso(partita_attuale, numero_casella)), FINE_STRINGA) = VERO)
 ALLORA
-    stampare_a_video(simbolo)
+    
 ALTRIMENTI
-    stampare_a_video(LeggerePosizione(casella))
+    
 FINE
+stampare_a_video(CARATTERE_SPAZIO)
+stampare_a_video(leggere_numero_casella(leggere_casella_percorso(partita_attuale, numero_casella)))
+stampare_a_video(CARATTERE_SPAZIO)
 
 
 
-///////VEDI FRAAA//////////
-calcolare_lunghezza
+stampare_giocatori_superiori_casella
+
 DATI DI INPUT
-sequenza, la sequenza di caratteri di cui calcolare la lunghezza, Array di caratteri con carattere di terminazione FINE_STRINGA
+
+
 DATI DI OUTPUT
-lunghezza, il numero di caratteri di sequenza, Intero
+
+
 ALGORITMO
-lunghezza = 1
-MENTRE(Elemento in posizione lunghezza di sequenza != FINE_STRINGA)
-    lunghezza = lunghezza + 1
+ 
+SE (leggere)
+ALLORA
+    
+ALTRIMENTI
+    
 FINE
-lunghezza = lunghezza - 1
-
-
-
-caricare_disegno
-DATI DI INPUT
-disegno_casella, i caratteri rappresentanti il disegno di CASELLA, Array di Array di Caratteri con carattere terminale FINE_STRINGA
-DATI DI OUTPUT
-disegno_casella, il disegno della casella suddiviso in strati, Array di Array di Caratteri con carattere terminale FINE_STRINGA
-ALGORITMO
-Elemento in posizione STRATO_1_A di disegno_casella = CopiareStringa(Elemento in posizione STRATO_1_A di disegno_casella, " ______  ")
-Elemento in posizione STRATO_1_A di disegno_casella = CopiareStringa(Elemento in posizione STRATO_2_A di disegno_casella, "|  	| ")
-Elemento in posizione STRATO_1_A di disegno_casella = CopiareStringa(Elemento in posizione STRATO_3_A di disegno_casella, "|")
-Elemento in posizione STRATO_1_A di disegno_casella = CopiareStringa(Elemento in posizione STRATO_3_B di disegno_casella, "| ")
-Elemento in posizione STRATO_1_A di disegno_casella = CopiareStringa(Elemento in posizione STRATO_4_A di disegno_casella, "|______| ")
-
-cercare_simbolo
-DATI DI INPUT
-simboli_caselle, i simboli associati alle caselle speciali, Array a 2 dimensioni di NUMERO_CASELLE_SPECIALI x 2 di Array di caratteri con carattere di terminazione FINE_STRINGA 
-casella, la casella di cui trovare il simbolo, CASELLA
-DATI DI OUTPUT
-simbolo, sequenza di caratteri rappresentante la casella, Array di caratteri con carattere di terminazione FINE_STRINGA
-DATI DI LAVORO
-pos, l'elemento attualmente analizzato, Intero, >0
-uguali, indica se le sequenze di caratteri passate in input sono uguali VERO oppure no FALSO, Booleano
-trovato, indica se il simbolo è stato trovato VERO oppure no FALSO
-ALGORITMO
-pos = 1
-trovato = FALSO
-MENTRE ((pos <= NUMERO_CASELLE_SPECIALI) AND (trovato = FALSE))
-    uguali = ConfrontareStringhe(Elemento in posizione pos e POSIZIONE_NOMI_CASELLE di simboli_caselle, LeggereNome(casella))
-    SE (uguali = VERO)
-    ALLORA
-        simbolo = CopiareStringa(simbolo, Elemento in posizione pos e POSIZIONE_SIMBOLI_CASELLE di simboli_caselle)
-    ALTRIMENTI
-        simbolo = FINE_STRINGA
-    FINE
-    pos = pos + 1
+MENTRE (indice_larghezza_disegno <= LARGHEZZA_DISEGNO_CASELLA)
+    
+    indice_larghezza_disegno
 FINE

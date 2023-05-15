@@ -1,0 +1,126 @@
+caricare_partite
+
+DATI DI INPUT
+file_salvataggio, contiene record di tipo partita per un massimo NUMERO_MASSIMO_PARTITE, file di tipo binario
+NUMERO_MASSIMO_PARTITE, il numero massimo delle partite salvabili, Intero, = 5
+
+DATI DI OUTPUT
+elenco_partite, le partite presenti in file_salvataggio, Array a una dimensione (NUMERO_MASSIMO_PARTITE) di partita
+
+ALGORITMO
+elenco_partite = leggere_file_binario(partita, NUMERO_MASSIMO_PARTITE, file_salvataggio)
+
+
+
+salvare_partita
+
+DATI DI INPUT
+partita_attuale, partita da salvare all'interno di file_salvataggio, record di tipo partita
+file_salvataggio, contiene record di tipo partita per un massimo NUMERO_MASSIMO_PARTITE, file di tipo binario
+slot_scelto, la posizione in cui salvare partita_attuale, Intero, > 0, <= NUMERO_MASSIMO_PARTITE
+NUMERO_MASSIMO_PARTITE, il numero massimo delle partite salvabili, Intero, = 5
+
+DATI DI OUTPUT
+file_salvataggio, il file con partita_attuale inserita in file_salvataggio, file di tipo binario
+
+DATI DI LAVORO
+elenco_partite, elenco di partite salvate caricate da file_salvataggio, Array a una dimensione (NUMERO_MASSIMO_PARTITE) di partita
+salvato, indica se la partita è stata scritta o meno, intero, = 0 (la partita non è stata salvata), = 1 (la partita non è stata salvata)
+
+ALGORITMO
+salvato = 0
+elenco_partite = caricare_partite()
+ESEGUI
+    slot_scelto = selezionare_slot (elenco_partite)
+    partita_attuale = scrivere_nome_partita(partita_attuale, inserire_stringa(DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA))
+    SE (confrontare_stringhe(leggere_nome_partita(Elemento in posizione slot_scelto di elenco_partite), FINE_STRINGA) = 1)
+    ALLORA
+        Elemento in posizione slot_scelto di elenco_partite = partita_attuale
+        file_partite = scrivere_su_file (file_salvataggio, partita, NUMERO_MASSIMO_PARTITE, elenco_partite)
+        salvato = 1
+    ALTRIMENTI
+        //stampare messaggio richiesta sovrascrittura
+        sovrascrivere = richiedere_booleano()
+        SE (sovrascrivere = 1)
+        ALLORA
+            Elemento in posizione slot_scelto di elenco_partite = partita_attuale
+            file_partite = scrivere_su_file (file_salvataggio, partita, NUMERO_MASSIMO_PARTITE, elenco_partite)
+            salvato = 1
+        FINE
+    FINE
+FINCHE' (salvato != 1)
+
+
+
+stampare_partite_salvate
+
+DATI DI INPUT
+elenco_partite, l'elenco delle partite di cui stampare il nome, Array ad una dimensione (NUMERO_MASSIMO_PARTITE) di partita
+NUMERO_MASSIMO_PARTITE, il numero massimo delle partite salvabili, Intero, = 5
+
+DATI DI OUTPUT
+nessuno, sarà una stampa
+
+DATI DI LAVORO
+indice_partita, la posizione raggiunta in elenco_partite, Intero, > 0, <= NUMERO_MASSIMO_PARTITE
+
+ALGORITMO
+indice_partita = 1
+MENTRE (indice_partita <= NUMERO_MASSIMO_PARTITE)
+    nome = leggere_nome_partita(Elemento in posizione indice_partita di elenco_partite)
+    SE (confrontare_stringhe(nome, FINE_STRINGA) = VERO)
+    ALLORA
+        //stampare il nome dello slot con il simbolo vuoto
+    ALTRIMENTI
+        //stampare il nome relativo alla partita salvata nella posizione individuata dallo slot
+    FINE
+FINE
+
+
+
+selezionare_slot
+
+DATI DI INPUT
+elenco_partite, elenco di partite salvate caricate da file_salvataggio, Array a una dimensione (NUMERO_MASSIMO_PARTITE) di partita
+NUMERO_MASSIMO_PARTITE, il numero massimo delle partite salvabili, Intero, = 5
+
+DATI DI OUTPUT
+slot_scelto, indica lo slot inserito dall'utente in cui salvare la partita, Intero, > 0, <= NUMERO_MASSIMO_PARTITE
+
+ALGORITMO
+ESEGUI
+    stampare_partite_salvate (elenco_partite)
+	slot_scelto = leggere_da_tastiera()
+	SE ((slot_scelto < 0) OR (slot_scelto > NUMERO_MASSIMO_PARTITE))
+	ALLORA
+        //stampare messaggio errore
+	FINE
+FINCHE’ ((slot_scelto < 1) OR (slot_scelto > NUMERO_MASSIMO_PARTITE))
+
+
+
+richiedere_booleano
+
+DATI DI INPUT
+scelta, il carattere corrispondente alla scelta dell'utente, Carattere
+SI, il carattere indicante la scelta affermativa da parte dell'utente, Carattere, = S
+NO, il carattere indicante la scelta negativa da parte dell'utente, Carattere, = N
+
+DATI DI OUTPUT
+scelta, la scelta effettuata dall'utente, Booleano, = VERO (indica la conferma da parte dell'utente), = FALSO (indica il dissenso da parte dell'utente)
+
+ALGORITMO
+ESEGUI
+    carattere = leggere_carattere_da_tastiera()
+    SE (carattere = SI)
+    ALLORA
+        scelta = VERO
+    ALTRIMENTI
+        SE (carattere = NO)
+        ALLORA
+            scelta = FALSO
+        ALTRIMENTI
+            //stampare messaggio errore
+        FINE
+    FINE
+FINCHE’ ((carattere != NO) AND (scelta != SI))

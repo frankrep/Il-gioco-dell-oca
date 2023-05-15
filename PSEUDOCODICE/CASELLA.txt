@@ -1,5 +1,3 @@
-//chiedere le dimensioni del nome e della descrizione all'interfacer
-
 RECORD casella 
 nome_casella, il nome attribuito a casella, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
 numero_casella, la posizione di casella lungo il percorso, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
