@@ -1,9 +1,9 @@
 gioco_dell'oca
 
-INPUT
+DATI DI INPUT
 opzione, contiene l'opzione desiderata dall'utente, intero, > 0, <= NUMERO_MASSIMO_OPZIONI
 
-OUTPUT
+DATI DI OUTPUT
 nessuno
 
 DATI DI LAVORO
@@ -13,13 +13,14 @@ uscita = 'n'
 ESEGUI
 	opzione = scegliere_opzione_menu (opzione)
 	SE (opzione = 1)
-		ALLORA	iniziare_nuova_partita (partite_salvate)
+		ALLORA	vincitore_partita = iniziare_nuova_partita (vincitore_partita)
+                aggiornare_classifica_top_10 (vincitore)
 		ALTRIMENTI SE (opzione = 2)
-				ALLORA caricare_partita (partite_salvate)
+				ALLORA caricare_partita ()
 				ALTRIMENTI SE (opzione = 3)
-						ALLORA stampare_classifica (classifica_lanci)
+						ALLORA stampare_classifica ()
 						ALTRIMENTI SE (opzione = 4)
-								ALLORA chiedere_aiuto (regole, comandi)
+								ALLORA chiedere_aiuto ()
 								ALTRIMENTI uscita = confermare_uscita (uscita)
 						   	   FINE
 					   FINE
@@ -31,18 +32,32 @@ FINCHE' (uscita != 'Y') AND (uscita != 'y')
 
 scegliere_opzione_menu
 
-INPUT
-opzione, scelta che l'utente deve effettuare scegliendo tra le opzioni offerte nella stampa del menu, intero, > 0, <= NUMERO_MASSIMO_OPZIONI
+DAATI DI INPUT
+opzione, scelta che l'utente deve effettuare scegliendo tra le opzioni offerte nella stampa del menu, intero, > 0, <= NUMERO_MASSIMO_OPZIONI_PRINCIPALE
 NUMERO_MASSIMO_OPZIONI_PRINCIPALE, numero di opzioni disponibili all'interno del menù principale, intero, = 5
-
-OUTPUT
-opzione, scelta effettuata dall'utente relativa all'opzione desiderata, intero, > 0, <= NUMERO_MASSIMO_OPZIONI
+opzione, scelta effettuata dall'utente relativa all'opzione desiderata, intero, > 0, <= NUMERO_MASSIMO_OPZIONI_PRINCIPALE
 
 //stampare a video il menù principale
 ESEGUI
 	opzione = leggeredatastiera()
-	SE (opzione < 1) OR (opzione > NUMERO_MASSIMO_OPZIONI)
-		//stampare messaggio errore
+	SE (opzione < 1) OR (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE)
+		//stampare messaggio errore 
 	FINE
-FINCHE' (opzione < 1) OR (opzione > NUMERO_MASSIMO_OPZIONI)
+FINCHE' (opzione < 1) OR (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE)
 
+
+
+iniziare_nuova_partita
+
+DATI DI INPUT
+vincitore_partita, record che conterrà le informazioni del vincitore della partita, record di tipo vincitore
+
+DATI DI OUTPUT
+vincitore_partita, contiene le informazioni relative al vincitore di partita_attuale, record di tipo vincitore
+
+DATI DI LAVORO
+partita_attuale, conterrà le informazioni relative al percorso e ai giocatori, record di tipo partita
+
+partita_attuale = inizializzare_partita (partita_attuale)
+partita_attuale = generare_percorso (partita_attuale)
+vincitore_partita = gestire_partita (partita_attuale)

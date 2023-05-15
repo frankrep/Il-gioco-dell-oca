@@ -5,10 +5,14 @@ LARGHEZZA_TABELLONE, il numero di caselle da stampare in una riga del tabellone,
 ALTEZZA_TABELLONE, il numero di caselle da stampare in una colonna del tabellone, Intero, = 6
 
 DATI DI OUTPUT
-
+nessuno, sarà una stampa
 
 DATI DI LAVORO
-
+indice_riga_superiore, l'indice della riga partendo dalla parte superiore, Intero
+indice_riga_inferiore, l'indice della riga partendo dalla parte inferiore, Intero
+indice_altezza_disegno, l'indice dell'altezza del disegno, Intero
+colonne_parte_sinistra, il numero di caselle da stampare nella parte sinistra, Intero
+colonne_parte_destra, il numero di caselle da stampare nella parte destra, Intero
 
 ALGORITMO
 MENTRE (indice_riga_superiore <= LARGHEZZA_TABELLONE)

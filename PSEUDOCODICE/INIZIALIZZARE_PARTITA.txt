@@ -1,6 +1,3 @@
-
-
-
 inizializzare_giocatori
 
 DATI DI INPUT
