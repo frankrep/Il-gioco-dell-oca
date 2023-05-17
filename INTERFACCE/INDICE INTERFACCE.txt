@@ -1,0 +1,72 @@
+INDICE FILE INTERFACCE:
+
+<CLASSIFICA>
+file_classifica(il file contenente la classifica)
+
+<AIUTO>
+file_menu_aiuto (file contenente il primo menu della schermata di aiuto)
+file_manuale (file contenente il manuale)
+file_menu_regolamento (file contenente il menu della schermata del regolamento per scegliere se vedere il percorso o le regole)
+file_percorso(file che mostra il percorso da 90 e la schermata di gioco in toto)
+file_regole (file che mostra le regole del gioco)
+
+<CARICARE PARTITA>
+file_menu_carica_partita (file contenente le partite tra cui l'utente puo selezione quale caricare E' UN MENU')
+
+<SALVARE PARTITA>
+file_scelta_nome_partita (file contenente la richiesta del nome da assegnare alla partita)
+file_scelta_slot_salvare_partita (file contenente gli slot tra cui il giocatore puo scegliere quello in cui salvare la partita)
+
+<INIZIALIZZARE PARTITA>
+file_scelta_g_iniziale (file contenente la schermata per scegliere il giocatore iniziale)
+file_scelta_lung_perco (file contenente la schermata per scegliere la lunghezza del percorso)
+file_scelta_n_giocatori (file contenente la schermata per scegliere il numero dei giocatori)
+file_scelta_nomi_giocatori (file contenente la schermata per scegliere i nomi dei giocatori)
+
+<MENU PRINCIPALE>
+file_menu_principale (file contenente la schermata del menu principale)
+
+<VITTORIA>
+file_vittoria_nomi (file contenente la prima schermata quando si vince con il nome del vincitore nella coppa)
+file_dettagli_partita (file conte la seconda schermata di quando si vince con i dettagli della partita)
+
+<SCHERMATA INIZIALE>
+file_intro (file contenente la schermata iniziale del gioco)
+
+<EASTER EGG>
+file_easteregg1 (file contenente la prima schermata che esce quando si sblocca l'easter egg)
+file_easteregg2 (file contenente la seconda schermata che esce quando si sblocca l'easter egg)
+
+<CASELLE SPECIALI>
+file_schermata_labirinto (file contenente la schermata che viene mostrata quando arrivi sulla casella)
+file_schermata_lancio_dadi_prigione (file contenente la schermata che viene mostrata quando lanci i dadi in pigione per tentare la fuga)
+file_schermata_liberato (file contenente la schermata che viene mostrata quando esci di prigione)
+file_schermata_locanda(file contenente la schermata che viene mostrata quando arrivi sulla casella)
+file_schermata_locanda_turno_passato (file contenente la schermata che viene mostrata quando passa un turno nella locanda e ricorda quanti turni mancano)
+file_schermata_oca(file contenente la schermata che viene mostrata quando arrivi sulla casella)
+file_schermata_perm_pozzo (file contenente la schermata che viene mostrata ogni turno nel pozzo)
+file_schermata_ponte(file contenente la schermata che viene mostrata quando arrivi sulla casella)
+file_schermata_pozzo(file contenente la schermata che viene mostrata quando arrivi sulla casella)
+file_schermata_prigione(file contenente la schermata che viene mostrata quando arrivi sulla casella)
+file_schermata_scheletro(file contenente la schermata che viene mostrata quando arrivi sulla casella)
+
+<CONFERMA>
+file_richiesta_c_inserimento (file che richiede se si vuole confermare l'inserimento)
+file_conferma_inserimento (file che mostra che l'inserimento è avvenuto con successo)
+file_richiesta_c_salvataggio (file che richiede se si vuole confermare il salvataggio)
+file_conferma_salvataggio (file che mostra che il salvataggio è avvenuto con successo)
+
+<ERRORE>
+file_errore (file che mostra una schermata di errore all'utente)
+
+
+
+
+
+
+
+
+
+
+
+

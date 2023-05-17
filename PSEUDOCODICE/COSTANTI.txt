@@ -20,7 +20,7 @@ NOME_SCHELETRO, il nome della casella scheletro, Array a una dimensione di carat
 NOME_VITTORIA, il nome della casella vittoria, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "VITTORIA\0"
 NUMERO_MASSIMO_CARATTERI_SIMBOLO, numero di caratteri massimo concessi per il simbolo rappresentante una casella, intero, = 5
 
-ALTEZZA_DISEGNO_CASELLA, il numero di strati in cui è suddiviso il disegno della casella, Intero, = 4
+ALTEZZA_DISEGNO_CASELLA, il numero di strati in cui è suddiviso il disegno della casella, Intero, = 3
 LARGHEZZA_DISEGNO_CASELLA, il numero di caratteri che forma una casella, Intero, = 5
 SPAZIO_DISPONIBILE_CASELLA, il numero di spazi compresi tra un margine laterale ed un altro nel disegno della casella, Intero, = 4
 
@@ -58,3 +58,14 @@ NUMERO_MASSIMO_CARATTERI_PERCORSO, il numero massimo di caratteri di un percorso
 PEDINE_DISPONIBILI, i simboli utilizzati per rappresentare i giocatori nella stampa del percorso, Array a una dimensione (NUMERO_MASSIMO_GIOCATORI) di caratteri (terminante con FINE_STRINGA), = "# $ % &"
 CARATTERE_SPAZIO, simbolo indicante uno spazio vuoto tra elementi, carattere, = " "
 NUMERO_MASSIMO_OPZIONI_PRINCIPALE, numero di opzioni disponibili all'interno del menù principale, intero, = 5
+
+
+
+
+//Nuove variabili dopo consegna del 15/05/2023 messe qui in modo da poter essere controllate
+
+POSIZIONE_GIOCATORE_1, la posizione del primo giocatore all'interno dell'array giocatori del record partita, Intero, = 1
+POSIZIONE_GIOCATORE_2, la posizione del secondo giocatore all'interno dell'array giocatori del record partita, Intero, = 2
+POSIZIONE_GIOCATORE_3, la posizione del terzo giocatore all'interno dell'array giocatori del record partita, Intero, = 3
+POSIZIONE_GIOCATORE_4, la posizione del quarto giocatore all'interno dell'array giocatori del record partita, Intero, = 4
+NUMERO_GIOCATORI_STRATO_CASELLA, il numero massimo di giocatori rappresentabili in uno strato del disegno della casella, Intero, = 2
