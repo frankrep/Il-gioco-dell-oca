@@ -7,8 +7,14 @@ NUMERO_MASSIMO_PARTITE, il numero massimo delle partite salvabili, Intero, = 5
 DATI DI OUTPUT
 elenco_partite, le partite presenti in file_salvataggio, Array a una dimensione (NUMERO_MASSIMO_PARTITE) di partita
 
+DATI DI LAVORO
+indice_partita, indica lo spostamento all'interno di elenco_partite, intero, > 0, <= NUMERO_MASSIMO_PARTITE
+
 ALGORITMO
-elenco_partite = leggere_file_binario(partita, NUMERO_MASSIMO_PARTITE, file_salvataggio)
+indice_partita = 1
+MENTRE (indice_partita <= NUMERO_MASSIMO_PARTITE)
+    Elemento in posizione indice_partita di elenco_partite = leggere_da_file(file_salvataggio)
+FINE
 
 
 
@@ -26,6 +32,7 @@ file_salvataggio, il file con partita_attuale inserita in file_salvataggio, file
 DATI DI LAVORO
 elenco_partite, elenco di partite salvate caricate da file_salvataggio, Array a una dimensione (NUMERO_MASSIMO_PARTITE) di partita
 salvato, indica se la partita è stata scritta o meno, intero, = 0 (la partita non è stata salvata), = 1 (la partita non è stata salvata)
+indice_partita, indica lo spostamento all'interno di elenco_partite, Intero, > 0, <= NUMERO_MASSIMO_PARTITE
 
 ALGORITMO
 salvato = 0
@@ -36,7 +43,12 @@ ESEGUI
     SE (confrontare_stringhe(leggere_nome_partita(Elemento in posizione slot_scelto di elenco_partite), FINE_STRINGA) = 1)
     ALLORA
         Elemento in posizione slot_scelto di elenco_partite = partita_attuale
-        file_partite = scrivere_su_file (file_salvataggio, partita, NUMERO_MASSIMO_PARTITE, elenco_partite)
+
+        indice_partita  = 1
+        MENTRE (indice_partita <= NUMERO_MASSIMO_PARTITE)
+            file_salvataggio = scrivere_su_file (file_salvataggio, Elemento in posizione indice_partita di elenco_partite)
+            indice_partita = indice_partita + 1
+        FINE
         salvato = 1
     ALTRIMENTI
         //stampare messaggio richiesta sovrascrittura
@@ -44,7 +56,11 @@ ESEGUI
         SE (sovrascrivere = 1)
         ALLORA
             Elemento in posizione slot_scelto di elenco_partite = partita_attuale
-            file_partite = scrivere_su_file (file_salvataggio, partita, NUMERO_MASSIMO_PARTITE, elenco_partite)
+            indice_partita  = 1
+            MENTRE (indice_partita <= NUMERO_MASSIMO_PARTITE)
+                file_salvataggio = scrivere_su_file (file_salvataggio, Elemento in posizione indice_partita di elenco_partite)
+                indice_partita = indice_partita + 1
+            FINE
             salvato = 1
         FINE
     FINE

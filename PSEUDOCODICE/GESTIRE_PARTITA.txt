@@ -87,9 +87,9 @@ DATI DI LAVORO
 seme, contiene il seme dal quale generare il numero pseudo_casuale, intero, > 0
 
 ALGORITMO
-seme = leggere_da_file (intero, 1, file_seme)
+seme = leggere_da_file (file_seme)
 seme = generare_seme (seme)
-file_seme = scrivere_su_file (intero, 1, seme)
+file_seme = scrivere_su_file (file_seme, seme)
 numero_casuale = generare_casuale (seme, numero_massimo, numero_minimo)
 
 
