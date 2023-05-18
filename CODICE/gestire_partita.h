@@ -21,4 +21,4 @@ partita* gestore_oca(partita* partita_attuale,int PRIMO_LANCIO_3_6,int PRIMO_LAN
 partita* impostare_autorizzazioni(partita* partita_attuale, char nome_casella_attuale[]);
 partita* gestire_autorizzazione(partita* partita_attuale, char NOME_LOCANDA[], char NOME_PRIGIONE[], int DADO_MINORE_USCITA_PRIGIONE, int DADO_MAGGIORE_USCITA_PRIGIONE);
 int confrontare_stringhe(char stringa_1[],char stringa_2[],char FINE_STRINGA);
-#endif /* CASELLA_H_ */
+#endif /* GESTIRE_PARTITA_H_ */

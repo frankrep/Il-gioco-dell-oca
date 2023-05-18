@@ -236,7 +236,7 @@ partita* impostare_autorizzazioni(partita* partita_attuale, char nome_casella_at
     *giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale));
     *giocatore_attuale = scrivere_autorizzazione(giocatore_attuale, 1);
     *partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale));
-    return partita_attuale
+    return partita_attuale;
 }
 partita* gestire_autorizzazione(partita* partita_attuale, char NOME_LOCANDA[], char NOME_PRIGIONE[], int DADO_MINORE_USCITA_PRIGIONE, int DADO_MAGGIORE_USCITA_PRIGIONE){
     giocatore* giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale));
@@ -249,7 +249,7 @@ partita* gestire_autorizzazione(partita* partita_attuale, char NOME_LOCANDA[], c
         //stampare schermata_lancio_dadi_prigione e richiedere input
         *partita_attuale = lanciare_dadi(partita_attuale)
         //stampare schermata_lancio_dadi_prigione con lancio effettuato e richiedere input
-        if((sommare_dadi(partita_attauel) == DADO_MINORE_USCITA_PRIGIONE) || (sommare_dadi(partita_attuale) == DADO_MAGGIORE_USCITAPRIGIONE)){
+        if((sommare_dadi(partita_attuale) == DADO_MINORE_USCITA_PRIGIONE) || (sommare_dadi(partita_attuale) == DADO_MAGGIORE_USCITAPRIGIONE)){
             *giocatore_attuale = scrivere_autorizzazione(giocatore_attuale, 0);
         }
     }
