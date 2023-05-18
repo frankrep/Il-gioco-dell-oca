@@ -1,4 +1,5 @@
 #include "vincitore.h"
+#include <stlib.h>
 void scrivere_nome_vincitore(vincitore* vincitore_attuale, char* nome){
     vincitore_attuale->nome_vincitore= nome;
 }

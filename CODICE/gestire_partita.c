@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <stlib.h>
 #include "casella.h"
 #include "giocatore.h"
 #include "partita.h"

@@ -1,4 +1,5 @@
 #include "partita.h"
+#include <stlib.h>
 void scrivere_nome_partita(partita* partita_attuale, char* nome){
     partita_attuale->nome_partita = nome;
 }

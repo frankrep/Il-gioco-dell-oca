@@ -1,4 +1,5 @@
 #include "casella.h"
+#include <stlib.h>
 void scrivere_nome_casella(casellla* casella_attuale,char* nome_da_inserire){
     casella_attuale->nome_casella=nome_da_inserire;
 }

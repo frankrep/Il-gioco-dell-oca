@@ -1,4 +1,5 @@
 #include "giocatore.h"
+#include <stlib.h>
 void scrivere_nome_giocatore(giocatore* giocatore_attuale,char* nome){
     giocatore_attuale->nome_giocatore=nome;
 }
