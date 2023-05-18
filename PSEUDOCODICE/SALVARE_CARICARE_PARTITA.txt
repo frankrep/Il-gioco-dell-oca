@@ -14,6 +14,7 @@ ALGORITMO
 indice_partita = 1
 MENTRE (indice_partita <= NUMERO_MASSIMO_PARTITE)
     Elemento in posizione indice_partita di elenco_partite = leggere_da_file(file_salvataggio)
+    indice_partita = indice_partita + 1
 FINE
 
 

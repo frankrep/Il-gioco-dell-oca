@@ -4,7 +4,7 @@ DATI DI INPUT
 opzione, contiene l'opzione desiderata dall'utente, intero, > 0, <= NUMERO_MASSIMO_OPZIONI
 
 DATI DI OUTPUT
-nessuno
+//inserire gli output delle varie funzioni
 
 DATI DI LAVORO
 uscita, indica la conferma della volontà da parte dell'utente di uscire dal gioco, carattere, = 'Y' o 'y' (indica la conferma dell'uscita dal gioco), = 'N' o 'n' (indica la volontà di non uscire dal gioco)
