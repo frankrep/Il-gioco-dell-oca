@@ -46,4 +46,5 @@ void scrivere_giocatore(partita* partita_attuale, giocatore* giocatore_attuale,i
 }
 giocatore* leggere_giocatore(partita* partita_attuale,int posizione_elenco_giocatori){
     giocatore* giocatore_attuale= partita_attuale->giocatori[posizione_elenco_giocatori];
+    return giocatore_attuale;
 }
