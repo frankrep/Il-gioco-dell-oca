@@ -16,7 +16,7 @@ ESEGUI
 		ALLORA	vincitore_partita = iniziare_nuova_partita (vincitore_partita)
                 aggiornare_classifica_top_10 (vincitore)
 		ALTRIMENTI SE (opzione = 2)
-				ALLORA caricare_partita ()
+				ALLORA vincitore_partita = riprendere_partita ()
 				ALTRIMENTI SE (opzione = 3)
 						ALLORA stampare_classifica ()
 						ALTRIMENTI SE (opzione = 4)
