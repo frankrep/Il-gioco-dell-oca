@@ -132,6 +132,7 @@ posizione_massimo, la posizione del valore più grande presente in valori, Inter
 
 DATI DI LAVORO
 indice_valori, indica lo spostamento all’interno di valori, Intero, > 0, < dimensione_valori
+massimo, il valore massimo tra gli elementi nell'elenco valori, Intero
 
 ALGORITMO
 indice_valori = 1
@@ -202,11 +203,11 @@ giocatore_attuale, il giocatore a cui incrementare il numero di lanci_effettuati
 lanci_effettuati, i lanci di giocatore_attuale, Intero
 
 ALGORITMO
-giocatore = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
-lanci_effettuati = leggere_lanci_effettuati(giocatore)
+giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
+lanci_effettuati = leggere_lanci_effettuati(giocatore_attuale)
 lanci_effettuati = lanci_effettuati + 1
-giocatore = scrivere_lanci_effettuati(giocatore, lanci_effettuati)
-partita_attuale = scrivere_giocatori(partita_attuale, giocatore, leggere_turno(partita_attuale))
+giocatore_attuale = scrivere_lanci_effettuati(giocatore_attuale, lanci_effettuati)
+partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
 
 
 
@@ -240,7 +241,7 @@ partita_attuale, la partita con la posizione del giocatore di turno aggiornata, 
 
 ALGORITMO
 partita_attuale = sommare_lancio_posizione (partita_attuale)
-SE (indice_giocatore > leggere_lunghezza_percorso(partita_attuale))
+SE ( leggere_posizione_giocatore (leggere_giocatore (partita_attuale, leggere_turno (partita_attuale))) > leggere_lunghezza_percorso(partita_attuale))
 ALLORA
     partita_attuale = calcolare_caselle_eccesso (partita_attuale)
 FINE
@@ -274,6 +275,7 @@ partita_attuale, partita con la posizione del giocatore di turno ricalcolata sec
 
 DATI DI LAVORO
 giocatore_attuale, contiene il giocatore di cui calcolare le caselle in eccesso e di cui ricalcolare la posizione, record di tipo giocatore
+eccesso, il numero di caselle in più rispetto alla lunghezza del percorso, Intero, > 0
 
 ALGORITMO
 eccesso = leggere_posizione_giocatore (leggere_giocatore (partita_attuale, leggere_turno (partita_attuale))) - leggere_lunghezza_percorso (partita_attuale)
@@ -298,6 +300,7 @@ somma_dadi = 0
 indice_dado = 1
 MENTRE (indice_dado <= NUMERO_DADI)
     somma_dadi = somma_dadi + leggere_dadi(partita_attuale, indice_dado)
+    indice_dado = indice_dado + 1
 FINE
 
 
@@ -460,7 +463,6 @@ giocatore_attuale, il giocatore di cui gestire l'autorizzazione, record di tipo 
 
 ALGORITMO
 giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))
-autorizzazione = leggere_autorizzazione(giocatore_attuale)
 SE (confrontare_stringhe(leggere_nome_casella(leggere_percorso(partita_attuale, leggere_posizione_giocatore(giocatore_attuale))), NOME_LOCANDA) = VERO)
 ALLORA
     giocatore_attuale = scrivere_autorizzazione(giocatore, leggere_autorizzazione(giocatore_attuale) - 1)
