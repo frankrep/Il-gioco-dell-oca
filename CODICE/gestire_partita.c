@@ -5,6 +5,7 @@
 #include "partita.h"
 #include "vincitore.h"
 #include "costanti.h"
+#include "gestire_partita.h"
 vincitore* gestire_partita(partita* partita_attuale){
     if(leggere_turno(partita_attuale) == 0){
         //scelta giocatore iniziale
@@ -50,7 +51,6 @@ vincitore* inizializzare_vincitore(partita* partita_attuale){
     *vincitore_partita = scrivere_lunghezza_percorso_vincitore(vincitore_partita, leggere_lunghezza_percorso(partita_attuale));
     return vincitore_partita;
 }
-
 int generare_numero(FILE* file_seme,int numero_massimo,int numero_minimo){
     int seme;
     seme = leggere_da_file(int,1,file_seme);
@@ -257,7 +257,7 @@ partita* gestire_autorizzazione(partita* partita_attuale, char NOME_LOCANDA[], c
     *partita_attuale = scrivere_giocatore(partita_attuale,giocatore_attuale,leggere_turno(partita_attuale));
     return partita_attuale;
 }
-nt confrontare_stringhe(char stringa_1[],char stringa_2[],char FINE_STRINGA){
+int confrontare_stringhe(char stringa_1[],char stringa_2[],char FINE_STRINGA){
     int indice_stringa = 0;
     int esito = 1;
     while(stringa_1[indice_stringa] != FINE_STRINGA){
