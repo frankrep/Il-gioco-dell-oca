@@ -321,9 +321,13 @@ POSIZIONE_GIOCATORE_3, la posizione del terzo giocatore all'interno dell'array g
 POSIZIONE_GIOCATORE_4, la posizione del quarto giocatore all'interno dell'array giocatori del record partita, Intero, = 4
 NUMERO_GIOCATORI_STRATO_CASELLA, il numero massimo di giocatori rappresentabili in uno strato del disegno della casella, Intero, = 2
 CONTORNO_INFERIORE_CASELLA, il simbolo da utilizzare come contorno inferiore della casella, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "_\0"
+SPAZIO_DISPONIBILE_CASELLA, il numero di spazi compresi tra un margine laterale ed un altro nel disegno della casella, Intero, = 4
 
 DATI DI OUTPUT
 nessuno, sarà una stampa
+
+DATI DI LAVORO
+indice_spazio, indica il numero di spazi rimanente all'interno della riga stampata, Intero, > 0
 
 ALGORITMO
 SE (confrontare_stringhe(leggere_pedina_giocatore(leggere_giocatore(partita_attuale, POSIZIONE_GIOCATORE_3)), FINE_STRINGA) = VERO)

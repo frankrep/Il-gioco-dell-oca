@@ -4,39 +4,44 @@ gioco_dell'oca
 
 DATI DI INPUT
 opzione, contiene l'opzione desiderata dall'utente, intero, > 0, <= NUMERO_MASSIMO_OPZIONI
+file_classifica_top_10, file della classifica eventualmente aggiornato con l'inserimento di vincitore_partita, file di tipo binario
 
 DATI DI OUTPUT
 //inserire gli output delle varie funzioni
 
 DATI DI LAVORO
 uscita, indica la conferma della volontà da parte dell'utente di uscire dal gioco, carattere, = 'Y' o 'y' (indica la conferma dell'uscita dal gioco), = 'N' o 'n' (indica la volontà di non uscire dal gioco)
+vincitore_partita, contiene le informazioni del vincitore di una partita avviata o caricata, record di tipo vincitore
 
+ALGORITMO
 uscita = 'n'
 ESEGUI
-	opzione = scegliere_opzione_menu (opzione)
+	opzione = scegliere_opzione_menu ()
 	SE (opzione = 1)
-		ALLORA	vincitore_partita = iniziare_nuova_partita (vincitore_partita)
-                aggiornare_classifica_top_10 (vincitore)
-		ALTRIMENTI SE (opzione = 2)
-				ALLORA vincitore_partita = riprendere_partita ()
-				ALTRIMENTI SE (opzione = 3)
-						ALLORA stampare_classifica ()
-						ALTRIMENTI SE (opzione = 4)
-								ALLORA chiedere_aiuto ()
-								ALTRIMENTI uscita = confermare_uscita (uscita)
-						   	   FINE
-					   FINE
-			   FINE
+		ALLORA	vincitore_partita = iniziare_nuova_partita ()
+                file_classifica_top_10 = aggiornare_classifica_top_10 (vincitore)
+		ALTRIMENTI 	SE (opzione = 2)
+						ALLORA vincitore_partita = riprendere_partita ()
+						ALTRIMENTI 	SE (opzione = 3)
+										ALLORA stampare_classifica ()
+										ALTRIMENTI 	SE (opzione = 4)
+														ALLORA chiedere_aiuto ()
+														ALTRIMENTI uscita = confermare_uscita (uscita)
+													FINE
+						   	   		FINE
+					FINE
 	FINE
 FINCHE' (uscita != 'Y') AND (uscita != 'y')
 
 
-
+  
 scegliere_opzione_menu
 
 DAATI DI INPUT
 opzione, scelta che l'utente deve effettuare scegliendo tra le opzioni offerte nella stampa del menu, intero, > 0, <= NUMERO_MASSIMO_OPZIONI_PRINCIPALE
 NUMERO_MASSIMO_OPZIONI_PRINCIPALE, numero di opzioni disponibili all'interno del menù principale, intero, = 5
+
+DATI DI OUTPUT
 opzione, scelta effettuata dall'utente relativa all'opzione desiderata, intero, > 0, <= NUMERO_MASSIMO_OPZIONI_PRINCIPALE
 
 //stampare a video il menù principale
@@ -60,9 +65,10 @@ vincitore_partita, contiene le informazioni relative al vincitore di partita_att
 DATI DI LAVORO
 partita_attuale, conterrà le informazioni relative al percorso e ai giocatori, record di tipo partita
 
-partita_attuale = inizializzare_partita (partita_attuale)
+ALGORITMO
+partita_attuale = inizializzare_giocatori ()
 partita_attuale = generare_percorso (partita_attuale)
-vincitore_partita = gestire_partita (partita_attuale)
+vincitore_partita = giocare_partita (partita_attuale)
 
 
 

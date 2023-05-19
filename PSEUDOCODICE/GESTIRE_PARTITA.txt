@@ -1,4 +1,4 @@
-gestire_partita
+giocare_partita
 DATI DI INPUT
 partita_attuale, la partita da gestire, record di tipo partita
 

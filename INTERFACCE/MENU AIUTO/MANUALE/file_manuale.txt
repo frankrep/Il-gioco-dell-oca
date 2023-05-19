@@ -1,25 +1,36 @@
-				<IL GIOCO DELL'OCA>
-<MENU PRINCIPALE>, digitare: 1) se si vuole iniziare una nuova partita;
-2) se si vuole caricare una partita; 3) se si cerca aiuto; 
-4) per visualizzare la classifica; 0) se si vuole chiudere il gioco.
-<NUOVA PARTITA>, L'utente dovra inserire: 1) il numero dei giocatori (MIN 2 
-MAX 4) o 0 per tornare al menu principale; 2) i nomi dei giocatori (MAX 20 
-caratteri) o 0 per tornare al menu principale; 3) la lunghezza del percorso 
-desiderata (MIN 50 MAX 90) o 0 per tornare al menu principale.
-<COME SI GIOCA> Durante il proprio turno il giocatore potrà digitare: L) per 
-lanciare i dadi; A) per far avanzare la pedina nel percorso in base al lancio;
-M) per abbandonare la partita e tornare al menù principale (SENZA SALVARE); 
-S) per salvare la partita e tornare al menu.
+                        <IL GIOCO DELL'OCA>                                    
+<MENU PRINCIPALE>, digitare: 1) se si vuole iniziare una nuova partita;        
+2) se si vuole caricare una partita; 3) se si cerca aiuto;                     
+4) per visualizzare la classifica; 0) se si vuole chiudere il gioco.           
+<NUOVA PARTITA>, L'utente dovra inserire: 1) il numero dei giocatori (MIN 2    
+MAX 4) o 0 per tornare al menu principale; 2) i nomi dei giocatori (MAX 20     
+caratteri) o 0 per tornare al menu principale; 3) la lunghezza del percorso    
+desiderata (MIN 50 MAX 90) o 0 per tornare al menu principale.                 
+<COME SI GIOCA> Durante il proprio turno il giocatore potrà digitare: L) per   
+lanciare i dadi; A) per far avanzare la pedina nel percorso in base al lancio; 
+M) per abbandonare la partita e tornare al menù principale (SENZA SALVARE);    
+S) per salvare la partita e tornare al menu.                                   
 <SALVATAGGIO> Digitato il tasto "S" l'utente potrà decidere se: 1)sovrascrivere
-una partita già salvata; 2) selezionare uno slot vuoto, per poi scegliere il 
-nome della partita (MAX 20 CARATTERI); 0) per tornare indietro.
-<CARICA PARTITA>, permette all'utente di caricare una partita salvata per 
-continuare a giocarla, digitando: 1) un numero da 1 a 5 per caricare una 
-partita salvata in base alla lista visualizzata; 2)digitare 0 per tornare ind.
-<AIUTO>, mostra all'utente 3 opzioni, digitare: 1) se si vuole visionare le 
-regole del gioco; 2) per visualizzare il manuale di gioco; 0) per tornare 
-indietro.
+una partita già salvata; 2) selezionare uno slot vuoto, per poi scegliere il   
+nome della partita (MAX 20 CARATTERI); 0) per tornare indietro.                
+<CARICA PARTITA>, permette all'utente di caricare una partita salvata per      
+continuare a giocarla, digitando: 1) un numero da 1 a 5 per caricare una       
+partita salvata in base alla lista visualizzata; 2)digitare 0 per tornare ind. 
+<AIUTO>, mostra all'utente 3 opzioni, digitare: 1) se si vuole visionare le    
+regole del gioco; 2) per visualizzare il manuale di gioco; 0) per tornare      
+indietro.                                                                      
 <CLASSIFICA>, permette di visualizzare la classifica dei giocatori 10 migliori 
-giocatori in base al rapporto NL/LP; digitare "0" per tornare indietro.
-0) Torna Indietro
-<Inserisci la tua scelta:__
+giocatori in base al rapporto NL/LP; digitare "0" per tornare indietro.        
+<Inserisci 0 per tornare indietro:                                             
+                                                                               
+
+
+
+
+
+24 //riga input
+35 //colonna input
+25 //riga errore
+1 //colonna errore
+1 //codice messaggio
+
