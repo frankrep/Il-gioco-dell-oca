@@ -82,16 +82,17 @@ FINE
 stampare_parte_superiore_casella
 
 DATI DI INPUT
-LARGHEZZA_DISEGNO_CASELLA, il numero di caratteri che forma una casella, Intero, = 5
-CONTORNO_SUPERIORE_CASELLA, il simbolo da utilizzare come contorno superiore della casella, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "_\0"
-CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
+LARGHEZZA_TABELLONE, il numero di caselle da stampare in una riga del tabellone, Intero, = 15
 CARATTERE_SPAZIO, simbolo indicante uno spazio vuoto tra elementi, carattere, = " "
+SPAZIO_DISPONIBILE_CASELLA, il numero di spazi compresi tra un margine laterale ed un altro nel disegno della casella, Intero, = 4
+CONTORNO_SUPERIORE_CASELLA, il simbolo da utilizzare come contorno superiore della casella, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "_\0"
 
 DATI DI OUTPUT
 nessuno, sarà una stampa
 
 DATI DI LAVORO
 indice_caselle_disegnate, indica il numero di volte per cui viene stampato il lato superiore delle caselle in una riga del percorso, intero, > 0, <= DIMENSIONE_LATO_SCACCHIERA
+indice_larghezza_disegno, indica la posizione raggiunta nel 
 
 ALGORITMO
 indice_caselle_disegnate = 1
@@ -102,7 +103,7 @@ MENTRE (indice_caselle_disegnate <= LARGHEZZA_TABELLONE)
         indice_larghezza_disegno = indice_larghezza_disegno + 1
     FINE
     stampare_a_video (CARATTERE_SPAZIO)
-	indice_caselle_disgnate = indice_caselle_disegnate + 1
+	indice_caselle_disegnate = indice_caselle_disegnate + 1
 FINE
 stampare_a_video (CARATTERE_A_CAPO)
 
@@ -136,6 +137,8 @@ DATI DI INPUT
 numero_colonne, indica quante colonne verranno stampate nella parte destra, intero, > 0, <= LARGHEZZA_TABELLONE
 contatore, indica quale delle colonne viene stampata al momento, intero, > 0, <= LARGHEZZA_TABELLONE
 strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO_TABELLA
+LARGHEZZA_TABELLONE, il numero di caselle da stampare in una riga del tabellone, Intero, = 15
+ALTEZZA_TABELLONE, il numero di caselle da stampare in una colonna del tabellone, Intero, = 6
 
 DATI DI OUTPUT
 ultima_casella_stampata, ultimo numero di casella stampato, intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
@@ -157,6 +160,8 @@ numero_colonne, indica quante colonne verranno stampate nella parte destra, inte
 contatore, indica quale delle colonne viene stampata al momento, intero, > 0, <= LARGHEZZA_TABELLONE
 strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO_TABELLA
 numero_iniziale,  il numero raggiunto nell'ultima stampa effettuata,Intero
+LARGHEZZA_TABELLONE, il numero di caselle da stampare in una riga del tabellone, Intero, = 15
+ALTEZZA_TABELLONE, il numero di caselle da stampare in una colonna del tabellone, Intero, = 6
 
 DATI DI OUTPUT
 ultima_casella_stampata, ultimo numero di casella stampato, intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
@@ -219,6 +224,7 @@ DATI DI INPUT
 partita_attuale, la partita di cui stampare casella, record di tipo partita
 numero_casella, il numero della casella da stampare, Intero, >0
 strato, lo strato del disegno da stampare, Intero, > 0
+CONTORNO_LATERALE_CASELLA, il simbolo da utilizzare come contorno laterale della casella, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "|\0"
 
 DATI DI OUTPUT
 nessuno, sarà una stampa
@@ -257,6 +263,8 @@ stampare_contenuto
 DATI DI INPUT
 partita_attuale, la partita di cui stampare la casella, record di tipo partita
 numero_casella, il numero della casella da stampare, Intero, > 0
+FINE_STRINGA, il carattere utilizzato come fine stringa, Carattere, = '\0'
+CARATTERE_SPAZIO, simbolo indicante uno spazio vuoto tra elementi, carattere, = " "
 
 DATI DI OUTPUT
 nessuno, sarà una stampa
@@ -279,10 +287,15 @@ DATI DI INPUT
 POSIZIONE_GIOCATORE_1, la posizione del primo giocatore all'interno dell'array giocatori del record partita, Intero, = 1
 POSIZIONE_GIOCATORE_2, la posizione del secondo giocatore all'interno dell'array giocatori del record partita, Intero, = 2
 NUMERO_GIOCATORI_STRATO_CASELLA, il numero massimo di giocatori rappresentabili in uno strato del disegno della casella, Intero, = 2
-numero_casella
+SPAZIO_DISPONIBILE_CASELLA, il numero di spazi compresi tra un margine laterale ed un altro nel disegno della casella, Intero, = 4
+CARATTERE_SPAZIO, simbolo indicante uno spazio vuoto tra elementi, carattere, = " "
+numero_casella, il numero della casella da stampare, Intero, > 0
 
 DATI DI OUTPUT
+nessuno, sarà una stampa
 
+DATI DI LAVORO
+indice_spazio, indica il numero di spazi rimanente all'interno della riga stampata, Intero, > 0
 
 ALGORITMO
 SE (leggere_posizione_giocatore(leggere_giocatore(partita_attuale, POSIZIONE_GIOCATORE_1)) = numero_casella)
@@ -310,7 +323,7 @@ NUMERO_GIOCATORI_STRATO_CASELLA, il numero massimo di giocatori rappresentabili 
 CONTORNO_INFERIORE_CASELLA, il simbolo da utilizzare come contorno inferiore della casella, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "_\0"
 
 DATI DI OUTPUT
-
+nessuno, sarà una stampa
 
 ALGORITMO
 SE (confrontare_stringhe(leggere_pedina_giocatore(leggere_giocatore(partita_attuale, POSIZIONE_GIOCATORE_3)), FINE_STRINGA) = VERO)

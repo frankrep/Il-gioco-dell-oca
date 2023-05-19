@@ -69,3 +69,5 @@ POSIZIONE_GIOCATORE_2, la posizione del secondo giocatore all'interno dell'array
 POSIZIONE_GIOCATORE_3, la posizione del terzo giocatore all'interno dell'array giocatori del record partita, Intero, = 3
 POSIZIONE_GIOCATORE_4, la posizione del quarto giocatore all'interno dell'array giocatori del record partita, Intero, = 4
 NUMERO_GIOCATORI_STRATO_CASELLA, il numero massimo di giocatori rappresentabili in uno strato del disegno della casella, Intero, = 2
+LUNGHEZZA_SCHERMATA, il numero di caratteri rappresentabili in una riga dello schermo, Intero, = 80
+ALTEZZA_SCHERMATA, il numero di caratteri rappresentabili in una colonna dello schermo, Intero, = 25

@@ -1,3 +1,5 @@
+
+
 gioco_dell'oca
 
 DATI DI INPUT
@@ -61,3 +63,29 @@ partita_attuale, conterrà le informazioni relative al percorso e ai giocatori, 
 partita_attuale = inizializzare_partita (partita_attuale)
 partita_attuale = generare_percorso (partita_attuale)
 vincitore_partita = gestire_partita (partita_attuale)
+
+
+
+stampare_testo
+
+DATI DI INPUT
+testo, elenco di caratteri da stampare, file di testo
+ALTEZZA_SCHERMATA, il numero di caratteri rappresentabili in una colonna dello schermo, Intero, = 25
+CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
+
+DATI DI OUTPUT
+nessuno, sarà una stampa
+
+DATI DI LAVORO
+indice_nuova_riga, indica il numero di righe stampate, Intero, > 0
+simbolo_letto, contiene l'ultimo elemento letto presente in testo, carattere
+
+ALGORITMO
+indice_nuova_riga = 1
+MENTRE (indice_nuova_riga < ALTEZZA_SCHERMATA)
+	simbolo_letto = leggere_da_file (testo)
+	stampare_a_video (simbolo_letto) 
+	SE (simbolo_letto = CARATTERE_A_CAPO)
+		ALLORA	indice_nuova_riga = indice_nuova_riga + 1
+	FINE
+FINE
