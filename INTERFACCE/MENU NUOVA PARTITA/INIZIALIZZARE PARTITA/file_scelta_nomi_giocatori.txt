@@ -23,3 +23,14 @@ giocatore N inserisci il tuo nome:__                  |____S...S___80_)$$$_|
                                                       |____S...S_______$$$$|
                                                       |____S...S_______$$$$|
                                                       |____________________|
+
+
+
+
+
+23 //riga input
+53 //colonna input
+
+24 //riga errore
+25 //colonna errore
+2 //codice messaggio                                                       
