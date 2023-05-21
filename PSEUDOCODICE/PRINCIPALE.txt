@@ -10,7 +10,7 @@ DATI DI OUTPUT
 //inserire gli output delle varie funzioni
 
 DATI DI LAVORO
-uscita, indica la conferma della volontà da parte dell'utente di uscire dal gioco, carattere, = 'Y' o 'y' (indica la conferma dell'uscita dal gioco), = 'N' o 'n' (indica la volontà di non uscire dal gioco)
+uscita, indica la conferma della volontà da parte dell'utente di uscire dal gioco, carattere, = 'S' o 's' (indica la conferma dell'uscita dal gioco), = 'N' o 'n' (indica la volontà di non uscire dal gioco)
 vincitore_partita, contiene le informazioni del vincitore di una partita avviata o caricata, record di tipo vincitore
 
 ALGORITMO
@@ -19,9 +19,13 @@ ESEGUI
 	opzione = scegliere_opzione_menu ()
 	SE (opzione = 1)
 		ALLORA	vincitore_partita = iniziare_nuova_partita ()
-                file_classifica_top_10 = aggiornare_classifica_top_10 (vincitore)
+                file_classifica_top_10 = aggiornare_classifica_top_10 (vincitore_partita)
 		ALTRIMENTI 	SE (opzione = 2)
-						ALLORA vincitore_partita = riprendere_partita ()
+						ALLORA 	vincitore_partita = riprendere_partita ()
+
+								//da controllare
+								file_classifica_top_10 = aggiornare_classifica_top_10 (vincitore_partita)
+
 						ALTRIMENTI 	SE (opzione = 3)
 										ALLORA stampare_classifica ()
 										ALTRIMENTI 	SE (opzione = 4)
@@ -31,7 +35,7 @@ ESEGUI
 						   	   		FINE
 					FINE
 	FINE
-FINCHE' (uscita != 'Y') AND (uscita != 'y')
+FINCHE' (uscita != 'S') AND (uscita != 's')
 
 
   
@@ -72,6 +76,21 @@ vincitore_partita = giocare_partita (partita_attuale)
 
 
 
+
+riprendere_partita
+
+DATI DI INPUT
+
+
+DATI DI OUTPUT
+
+
+
+
+
+
+
+//cambiare con stampare_da_file
 stampare_testo
 
 DATI DI INPUT
@@ -95,3 +114,23 @@ MENTRE (indice_nuova_riga < ALTEZZA_SCHERMATA)
 		ALLORA	indice_nuova_riga = indice_nuova_riga + 1
 	FINE
 FINE
+
+
+
+confermare_uscita
+
+DATI DI INPUT
+conferma_uscita, indica la scelta effettuata dall'utente a riguardo dell'uscita dal gioco, carattere, = 'S' o 's' (indica la conferma dell'uscita dal gioco), = 'N' o 'n' (indica la volontà di non uscire dal gioco)
+
+DATI DI OUTPUT
+conferma_uscita, indica la conferma della volontà di uscire dal gioco da parte dell'utente, carattere, = 'S' o 's' (indica la conferma dell'uscita dal gioco), = 'N' o 'n' (indica la volontà di non uscire dal gioco)
+
+//stampare a video la richiesta di conferma di uscita
+ESEGUI
+	conferma_uscita = leggere_da_tastiera()
+
+	//aggiungere costanti per quanto riguarda le risposte
+	SE (conferma_uscita != 'S') AND (conferma_uscita != 's') AND (conferma_uscita != 'N') AND (conferma_uscita != 'n')
+		ALLORA //stampare a video il messaggio d'errore relativo alla conferma di uscita
+	FINE
+FINCHE' (conferma_uscita != 'S') AND (conferma_uscita != 's') AND (conferma_uscita != 'N') AND (conferma_uscita != 'n') 

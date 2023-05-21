@@ -1,23 +1,31 @@
-
+//molto simile a stamapre_testo, da rivedere o magari scegliere quale tenere, cisto che l'altra è fatta per le nostre dimensioni
 stampare_da_file
+
 DATI DI INPUT
 testo, sequenza di caratteri da stampare, file di testo
 FINE_FILE,  simbolo che indica la fine del file, carattere, = ‘EOF’ 
+
 DATI DI OUTPUT
 nessuno, sarà una stampa
+
 ALGORITMO
 indice_testo = 1
 MENTRE (elemento di testo in posizione indice_testo != FINE_FILE)
-stampare_a_video (elemento di testo in posizione indice_testo )
-indice_testo = indice_testo + 1
+	stampare_a_video (elemento di testo in posizione indice_testo )
+	indice_testo = indice_testo + 1
 FINE
 
+
+//da rivedere in seguito alla scelta di avere una schermata fissa e non la ristampa di tutta l'interfaccia
 scegliere_aiuto
+
 DATI DI INPUT
 file_menu_aiuto, file da cui stampare il menu aiuto, file di testo
 CARATTTERE_A_CAPO,carattere di nuova riga,carattere =”\n”
+
 DATI DI OUTPUT
 opzioni_scelta, opzioni tra cui puo scegliere il giocatore, intero, >= 0, <= 2
+
 ALGORITMO
 stampare_da_file (file_menu_aiuto)
 ESEGUI 
