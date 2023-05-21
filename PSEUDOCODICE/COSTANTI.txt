@@ -58,6 +58,7 @@ NUMERO_MASSIMO_CARATTERI_PERCORSO, il numero massimo di caratteri di un percorso
 PEDINE_DISPONIBILI, i simboli utilizzati per rappresentare i giocatori nella stampa del percorso, Array a una dimensione (NUMERO_MASSIMO_GIOCATORI) di caratteri (terminante con FINE_STRINGA), = "# $ % &"
 CARATTERE_SPAZIO, simbolo indicante uno spazio vuoto tra elementi, carattere, = " "
 NUMERO_MASSIMO_OPZIONI_PRINCIPALE, numero di opzioni disponibili all'interno del menù principale, intero, = 5
+NUMERO_MASSIMO_OPZIONI_AIUTO, numero di opzioni disponibili all'interno del menù aiuto, intero, = 2
 
 
 
@@ -71,3 +72,7 @@ POSIZIONE_GIOCATORE_4, la posizione del quarto giocatore all'interno dell'array 
 NUMERO_GIOCATORI_STRATO_CASELLA, il numero massimo di giocatori rappresentabili in uno strato del disegno della casella, Intero, = 2
 LUNGHEZZA_SCHERMATA, il numero di caratteri rappresentabili in una riga dello schermo, Intero, = 80
 ALTEZZA_SCHERMATA, il numero di caratteri rappresentabili in una colonna dello schermo, Intero, = 25
+RISPOSTA_AFFERMATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta affermativa da parte dell'utente, Intero, = 'S'
+RISPOSTA_AFFERMATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta affermativa da parte dell'utente, Intero, = 's'
+RISPOSTA_NEGATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta negativa da parte dell'utente, Intero, = N'
+RISPOSTA_NEGATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta negativa da parte dell'utente, Intero, = 'n'

@@ -1,57 +1,46 @@
-//molto simile a stamapre_testo, da rivedere o magari scegliere quale tenere, cisto che l'altra è fatta per le nostre dimensioni
-stampare_da_file
-
-DATI DI INPUT
-testo, sequenza di caratteri da stampare, file di testo
-FINE_FILE,  simbolo che indica la fine del file, carattere, = ‘EOF’ 
-
-DATI DI OUTPUT
-nessuno, sarà una stampa
-
-ALGORITMO
-indice_testo = 1
-MENTRE (elemento di testo in posizione indice_testo != FINE_FILE)
-	stampare_a_video (elemento di testo in posizione indice_testo )
-	indice_testo = indice_testo + 1
-FINE
 
 
-//da rivedere in seguito alla scelta di avere una schermata fissa e non la ristampa di tutta l'interfaccia
+
 scegliere_aiuto
 
 DATI DI INPUT
 file_menu_aiuto, file da cui stampare il menu aiuto, file di testo
 CARATTTERE_A_CAPO,carattere di nuova riga,carattere =”\n”
+NUMERO_MASSIMO_OPZIONI_AIUTO, numero di opzioni disponibili all'interno del menù aiuto, intero, = NUMERO_MASSIMO_OPZIONI_AIUTO
 
 DATI DI OUTPUT
-opzioni_scelta, opzioni tra cui puo scegliere il giocatore, intero, >= 0, <= 2
+opzioni_scelta, opzioni tra cui puo scegliere il giocatore, intero, >= 0, <= NUMERO_MASSIMO_OPZIONI_AIUTO
 
 ALGORITMO
-stampare_da_file (file_menu_aiuto)
+//stampare la schermata relativa al menù di aiuto
 ESEGUI 
-	opzione_scelta = leggere_da_tastiera ()
-	SE ( (opzioni_scelta < 0) OR (opzioni_scelta > 2) )
-		stampare_a_video (“ Il valore inserito non e’ valido, riprova inserendo:”)
-		stampare_a_video (“ CARATTERE_A_CAPO”)
-		stampare_a_video (“ CARATTERE_A_CAPO”)
-		stampare_da_file (file_menu_aiuto)
+	opzione_scelta = leggere_da_tastiera()
+	SE ((opzioni_scelta < 0) OR (opzioni_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO))
+	ALLORA
+		//stampare il messaggio “ Il valore inserito non e’ valido, riprova inserendo:”
 	FINE
-FINCHE’ ( (opzioni_scelta < 0) OR (opzioni_scelta > 2) )
+FINCHE’ ( (opzioni_scelta < 0) OR (opzioni_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO) )
 
 
 
 chiedere_aiuto
+
 DATI DI INPUT
 file_regole, file contenente le regole del gioco, file di testo
 file_manuale, file contenente il manuale di gioco, file di testo
-opzione_scelta, scelta effettuata dal giocatore, intero, >= 0, <=2
+opzione_scelta, scelta effettuata dal giocatore, intero, >= 0, <= NUMERO_MASSIMO_OPZIONI_AIUTO
+
 DATI DI OUTPUT
 nessuno, è una stampa
+
 ALGORITMO
 opzione_scelta = scegliere_aiuto ()
 SE (opzione_scelta = 1)
-ALLORA	stampare_da_file(file_regole)
-ALTRIMENTI SE (opzione_scelta = 2)
-				ALLORA	stampare_da_file(file_manuale)
-			  FINE
+ALLORA	
+	stampare_da_file(file_regole)
+ALTRIMENTI	
+	SE (opzione_scelta = 2)
+	ALLORA	
+		stampare_da_file(file_manuale)
+	FINE
 FINE

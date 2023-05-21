@@ -3,7 +3,6 @@ aggiornare_classifica_top_10
 DATI DI INPUT
 file_classifica_top_10, contiene record di tipo vincitore corrispondenti ai dieci migliori giocatori di sempre, file di tipo binario
 vincitore_partita, vincitore della partita appena conclusa di cui confrontare il numero di lanci per verificarne l'inserimento, record di tipo vincitore 
-partita_attuale, la partita da cui leggere la lunghezza del percorso relativa alla vittoria di vincitore_partita, record di tipo partita
 
 DATI DI OUTPUT
 file_classifica_top_10, file della classifica eventualmente aggiornato con l'inserimento di vincitore_partita, file di tipo binario
@@ -80,3 +79,19 @@ MENTRE (indice_vincitore <= NUMERO_MASSIMO_CLASSIFICATI)
         Elemento in posizione indice_vincitore di vincitori = leggere_da_file (file_classifica_top_10)
         indice_vincitore = indice_vincitore + 1
 FINE
+
+
+
+
+stampare_classifica
+
+DATI DI INPUT
+
+
+DATI DI OUTPUT
+
+
+ALGORITMO
+//stampare interfaccia della classifica dell'interfaccer
+//posizionare il cursore nello spazio vuoto
+//indice_lettura)       nome_giocatore          numero lanci            lunghezza_percorso_vincitore
