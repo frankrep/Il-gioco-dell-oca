@@ -28,11 +28,11 @@ int leggere_lanci_vincitore(vincitore* vincitore_attuale){
     int lanci = vincitore_attuale->lanci_vincitore;
     return lanci;
 }
-void scrivere_punteggio(vincitore* vincitore_attuale, float punteggio){
-    vincitore_attuale->punteggio = punteggio;
+void scrivere_punteggio(vincitore* vincitore_attuale, float punteggio_giocatore){
+    vincitore_attuale->punteggio = punteggio_giocatore;
 
 }
 float leggere_punteggio(vincitore* vincitore_attuale){
-    float punteggio = vincitore_attuale->punteggio;
+    float punteggio_giocatore = vincitore_attuale->punteggio;
     return punteggio;
 }
