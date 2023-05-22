@@ -1,21 +1,24 @@
 #ifndef VINCITORE_H_
 #define VINCITORE_H_
-
+#include "costanti.h"
 typedef struct
 {
-    char* nome_vincitore;
+    char nome_vincitore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     char pedina_vincitore;
-    int lunghezza_percorso_vincitore;
     int lanci_vincitore;
-}casella;
+    int lunghezza_percorso_vincitore;
+    float punteggio;
 
-void scrivere_nome_vincitore(vincitore* vincitore_attuale, char* nome);
+}vincitore;
+
+void scrivere_nome_vincitore(vincitore* vincitore_attuale, char nome[]);
 char* leggere_nome_vincitore(vincitore* vincitore_attuale);
 void scrivere_pedina_vincitore(vincitore* vincitore_attuale, char pedina);
 char leggere_pedina_vincitore(vincitore* vincitore_attuale);
-void scrivere_lunghezza_percorso_vincitore(vincitore* vincitore_attuale,int lunghezza);
+void scrivere_lunghezza_percorso_vincitore(vincitore* vincitore_attuale, int lunghezza);
 int leggere_lunghezza_percorso_vincitore(vincitore* vincitore_attuale);
-void scrivere_lanci_vincitore(vincitore* vincitore_attuale,int lanci);
+void scrivere_lanci_vincitore(vincitore* vincitore_attuale, int lanci);
 int leggere_lanci_vincitore(vincitore* vincitore_attuale);
-
+void scrivere_punteggio(vincitore* vincitore_attuale, float punteggio);
+float leggere_punteggio(vincitore* vincitore_attuale);
 #endif /* VINCITORE_H_ */
