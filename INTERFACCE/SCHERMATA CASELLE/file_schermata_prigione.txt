@@ -18,6 +18,19 @@ __________________________________
 | ||     ||     ||     ||     || |<CHE LA FORTUNA TI ASSISTA! :(
 | ||     ||     ||     ||     || |
 | ||     ||     ||     ||     || |
-| ||     ||     ||     ||     || |
+| ||     ||     ||     ||     || |<Premere 0 per proseguire:
 |================================|
-|________________________________|<Premere un tasto per proseguire:__
+|________________________________|
+
+
+
+
+
+
+
+21// riga input
+61// colonna input
+
+23//riga errore
+35//colonna errore 
+2//CM

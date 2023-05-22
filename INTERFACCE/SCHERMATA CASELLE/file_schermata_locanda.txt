@@ -1,5 +1,4 @@
-<IL GIOCO DELL'OCA>
-______________________________________________
+<IL GIOCO DELL'OCA>___________________________
 |     _       ()      _________     ._  \    |<CASELLA SPECIALE LOCANDA>
 |   (`  ).   (__)    //       \\ .-(`  ) `._ |
 |  (     )._.|=^|   //    _    \\       ))  `|Siete capitati sulla casella
@@ -22,7 +21,16 @@ ______________________________________________
 |  ||][][][][][||  | [] |  ||[][][][][||\(| ,|Le camere del Boar Hat ti
 |__||[][][][][]||_-`----'-_||][][][][]||_\|/_|ospiteranno per tre giorni
 |____________________________________________|<BUON RIPOSO ZzZzZz! :(
-<Premere un tasto per proseguire:
+<Premere 0 per proseguire:
   
 
 
+
+
+
+24// riga input
+27// colonna input
+
+25// riga errore
+1// colonna errore
+2//CM

@@ -21,5 +21,16 @@ ___________________________________
 ||     |    "$$$$$$$$$"    |     ||
 |'-._,-'       """""       '-._,-'|
 |_________________________________|<CHE SFORTUNA! :(
+<Premere 0 per proseguire:
 
-<Premere un tasto per proseguire:__
+
+
+
+
+
+24// riga input
+34// colonna input
+
+25//riga errore
+1//colonna errore 
+2//CM

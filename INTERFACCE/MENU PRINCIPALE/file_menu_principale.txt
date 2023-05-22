@@ -17,9 +17,20 @@
                                                       |_____S..S_____$$$$$s|
 0) Esci dal gioco;                                    |_____S..S______$$$$$|
                                                       |_____S..S_______$$$$|
-<Inserisci la tua scelta:__                           |_____S..S_______$$$$|
+<Inserisci la tua scelta:                             |_____S..S_______$$$$|
                                                       |_____S..S_______$$$$|
                                                       |_____S..S_______$$$$|
                                                       |____S...S_______$$$$|
                                                       |____S...S_______$$$$|
                                                       |____________________|
+
+
+
+
+
+20 //riga input
+26 //colonna input
+
+22 //riga errore
+1 //colonna errore
+1 //codice messaggio 

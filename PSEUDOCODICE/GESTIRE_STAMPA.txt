@@ -1,0 +1,162 @@
+
+
+
+stampare_dadi
+
+DATI DI INPUT
+file_interfaccia, il file in cui stampare le facce del dado, file di testo
+facce_dadi, l'elenco dei numeri delle facce dei dadi da rappresentare, Array a una dimensione (NUMERO_DADI) di Interi (>= FACCIA_MINIMA_DADO, <= FACCIA_MASSIMA_DADO)
+LUNGHEZZA_SCHERMATA, il numero di caratteri rappresentabili in una riga dello schermo, Intero, = 80
+ALTEZZA_SCHERMATA, il numero di caratteri rappresentabili in una colonna dello schermo, Intero, = 25
+SPIAZZAMENTO_DADO, il numero di righe successive ad ALTEZZA_SCHERMATA per poter raggiungere le coordinate per la stampa del dado, Intero, = 5
+CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
+NUMERO_MASSIMO_PUNTINI_FACCIA_DADO, il numero massimo di punti che possono essere utilizzati per rappresentare i numeri sulla faccia di un dado, Intero, = 7
+CARATTERE_PUNTO_FACCIA_DADO, il carattere utilizzato per rappresentare i punti indicanti il numero sulla faccia di un dado, Carattere, = '*'
+CARATTERE_SPAZIO, simbolo indicante uno spazio vuoto tra elementi, carattere, = " "
+
+DATI DI OUTPUT
+nessuno, sarà una stampa
+
+DATI DI LAVORO
+indice_carattere, indica il numero di caratteri letti in file_interfaccia, Intero, > 0, <= (LUNGHEZZA_SCHERMATA * ALTEZZA_SCHERMATA)
+indice_riga, indica il numero di righe lette in file_interfaccia, Intero, > 0, <= SPIAZZETAMENTO_DADO
+carattere_letto, l'ultimo carattere letto da file_interfaccia, Carattere
+indice_dadi, indica il dado di cui si stanno stampando i punti rappresentanti il numero della faccia del dado, Intero, > 0, <= NUMERO_DADI
+indice_puntini_dado, indica il punto del dado che si sta stampando a video, Intero, > 0
+posizione_riga, la riga in cui posionare il cursore per poter stampare il punto rappresentante il numero della faccia del dado, Intero
+posizione_colonna, la colonna in cui posionare il cursore per poter stampare il punto rappresentante il numero della faccia del dado, Intero
+
+ALGORITMO
+indice_carattere = 1
+MENTRE (indice_carattere <= (LUNGHEZZA_SCHERMATA * ALTEZZA_SCHERMATA))
+    leggere_da_file(file_interfaccia)
+    indice_carattere = indice_carattere + 1
+FINE
+indice_riga = 1
+MENTRE (indice_riga <= SPIAZZETAMENTO_DADO)
+    carattere_letto = leggere_da_file(file_interfaccia)
+    SE (carattere_letto = CARATTERE_A_CAPO)
+    ALLORA
+        indice_riga = indice_riga + 1
+    FINE
+FINE
+indice_dadi = 1
+MENTRE ((Elemento in posizione indice_dadi di facce_dadi != 0) OR (indice_dadi <= NUMERO_DADI))
+    indice_puntini_dado = 1
+    MENTRE (indice_puntini_dado <= NUMERO_MASSIMO_PUNTINI_FACCIA_DADO)
+
+		//inserire funzione di conversione
+        posizione_riga =  leggere_da_file(file_interfaccia)
+
+        carattere_letto = leggere_da_file(file_interfaccia)
+        MENTRE (carattere_letto != CARATTERE_A_CAPO)
+            carattere_letto = leggere_da_file(file_interfaccia)
+        FINE
+
+		//inserire funzione di conversione
+        posizione_colonna = leggere_da_file(file_interfaccia)
+		
+        carattere_letto = leggere_da_file(file_interfaccia)
+        MENTRE (carattere_letto != CARATTERE_A_CAPO)
+            carattere_letto = leggere_da_file(file_interfaccia)
+        FINE
+        posizionare_cursore(posizione_riga, posizione_colonna)
+        SE (indice_puntini_dado = 1)
+        ALLORA
+            SE ((Elemento in posizione indice_dadi di facce_dadi = 6) OR (Elemento in posizione indice_dadi di facce_dadi = 5) OR (Elemento in posizione indice_dadi di facce_dadi = 4))
+            ALLORA
+                stampare_a_video(CARATTERE_PUNTO_FACCIA_DADO)
+            ALTRIMENTI
+                stampare_a_video(CARATTERE_SPAZIO)
+            FINE
+        ALTRIMENTI
+            SE (indice_puntini_dado = 2)
+            ALLORA
+                SE ((Elemento in posizione indice_dadi di facce_dadi = 6))
+                ALLORA
+                    stampare_a_video(CARATTERE_PUNTO_FACCIA_DADO)
+                ALTRIMENTI
+                    stampare_a_video(CARATTERE_SPAZIO)
+                FINE
+            ALTRIMENTI
+                SE (indice_puntini_dado = 3)
+                ALLORA
+                    SE ((Elemento in posizione indice_dadi di facce_dadi = 6) OR (Elemento in posizione indice_dadi di facce_dadi = 5) OR (Elemento in posizione indice_dadi di facce_dadi = 4) OR (Elemento in posizione indice_dadi di facce_dadi = 3) OR (Elemento in posizione indice_dadi di facce_dadi = 2))
+                    ALLORA
+                        stampare_a_video(CARATTERE_PUNTO_FACCIA_DADO)
+                    ALTRIMENTI
+                        stampare_a_video(CARATTERE_SPAZIO)
+                    FINE
+                ALTRIMENTI
+                    SE (indice_puntini_dado = 4)
+                    ALLORA
+                        SE ((Elemento in posizione indice_dadi di facce_dadi = 5) OR (Elemento in posizione indice_dadi di facce_dadi = 3) OR (Elemento in posizione indice_dadi di facce_dadi = 1))
+                        ALLORA
+                            stampare_a_video(CARATTERE_PUNTO_FACCIA_DADO)
+                        ALTRIMENTI
+                            stampare_a_video(CARATTERE_SPAZIO)
+                        FINE
+                    ALTRIMENTI
+                        SE (indice_puntini_dado = 5)
+                        ALLORA
+                            SE ((Elemento in posizione indice_dadi di facce_dadi = 6) OR (Elemento in posizione indice_dadi di facce_dadi = 5) OR (Elemento in posizione indice_dadi di facce_dadi = 4) OR (Elemento in posizione indice_dadi di facce_dadi = 3) OR (Elemento in posizione indice_dadi di facce_dadi = 2))
+                            ALLORA
+                                stampare_a_video(CARATTERE_PUNTO_FACCIA_DADO)
+                            ALTRIMENTI
+                                stampare_a_video(CARATTERE_SPAZIO)
+                            FINE
+                        ALTRIMENTI
+                            SE (indice_puntini_dado = 6)
+                            ALLORA
+                                SE ((Elemento in posizione indice_dadi di facce_dadi = 6))
+                                ALLORA
+                                    stampare_a_video(CARATTERE_PUNTO_FACCIA_DADO)
+                                ALTRIMENTI
+                                    stampare_a_video(CARATTERE_SPAZIO) 
+                                FINE
+                            ALTRIMENTI
+                                SE (indice_puntini_dado = 7)
+                                ALLORA
+                                    SE ((Elemento in posizione indice_dadi di facce_dadi = 6) OR (Elemento in posizione indice_dadi di facce_dadi = 5) OR (Elemento in posizione indice_dadi di facce_dadi = 4))
+                                    ALLORA
+                                        stampare_a_video(CARATTERE_PUNTO_FACCIA_DADO)
+                                    ALTRIMENTI
+                                        stampare_a_video(CARATTERE_SPAZIO)
+                                    FINE
+                                FINE
+                            FINE
+                        FINE
+                    FINE
+                FINE
+            FINE
+        FINE
+        indice_puntini_dado = indice_puntini_dado + 1
+    FINE
+    indice_dadi = indice_dadi + 1
+FINE
+
+
+
+stampare_testo
+
+DATI DI INPUT
+testo, elenco di caratteri da stampare, file di testo
+ALTEZZA_SCHERMATA, il numero di caratteri rappresentabili in una colonna dello schermo, Intero, = 25
+CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
+
+DATI DI OUTPUT
+nessuno, sarà una stampa
+
+DATI DI LAVORO
+indice_nuova_riga, indica il numero di righe stampate, Intero, > 0
+simbolo_letto, contiene l'ultimo elemento letto presente in testo, carattere
+
+ALGORITMO
+indice_nuova_riga = 1
+MENTRE (indice_nuova_riga < ALTEZZA_SCHERMATA)
+	simbolo_letto = leggere_da_file (testo)
+	stampare_a_video (simbolo_letto) 
+	SE (simbolo_letto = CARATTERE_A_CAPO)
+		ALLORA	indice_nuova_riga = indice_nuova_riga + 1
+	FINE
+FINE

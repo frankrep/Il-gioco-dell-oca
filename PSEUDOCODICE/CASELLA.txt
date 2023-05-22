@@ -1,5 +1,5 @@
 RECORD casella 
-nome_casella, il nome attribuito a casella, Array a una dimensione () di caratteri (terminante con FINE_STRINGA)
+nome_casella, il nome attribuito a casella, Array a una dimensione (DIMENSIONE_MASSIMA_NOME_CASELLA) di caratteri (terminante con FINE_STRINGA)
 numero_casella, la posizione di casella lungo il percorso, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
 file_interfaccia, il file contenente la descrizione e l'immagine rappresentativa della casella, file di testo
 simbolo, glifo rappresentante la casella nel percorso, array a una dimensione (NUMERO_MASSIMO_CARATTERI_SIMBOLO) di caratteri (terminante con FINE_STRINGA)

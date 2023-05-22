@@ -21,5 +21,16 @@ ______________________________
 |   `.     .' \          .'  |recita:"L'umano il cui nome corrisponde a quello
 |     `~~~`    '-.____.-'    |scritto su questo quaderno, REGNERA'!!!".
 |____________________________|
+<Premere 0 per continuare:
 
-<Premere un tasto per continuare:__
+
+
+
+
+
+24// RIGA INPUT
+34// COLONNA INPUT
+
+25// RIGA ERRORE
+1// COLONNA ERRORE
+2// CODICE MESSAGGIO

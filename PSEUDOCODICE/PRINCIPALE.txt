@@ -1,14 +1,16 @@
 
 
+
 gioco_dell'oca
 
 DATI DI INPUT
 opzione, contiene l'opzione desiderata dall'utente, intero, > 0, <= NUMERO_MASSIMO_OPZIONI_PRINCIPALE
 file_classifica_top_10, file della classifica eventualmente aggiornato con l'inserimento di vincitore_partita, file di tipo binario
 FINE_STRINGA, il carattere utilizzato come fine stringa, Carattere, = '\0'
-RISPOSTA_AFFERMATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta affermativa da parte dell'utente, Intero, = 'S'
-RISPOSTA_AFFERMATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta affermativa da parte dell'utente, Intero, = 's'
-RISPOSTA_NEGATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta negativa da parte dell'utente, Intero, = N'
+RISPOSTA_AFFERMATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta affermativa da parte dell'utente, Carattere, = 'S'
+RISPOSTA_AFFERMATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta affermativa da parte dell'utente, Carattere, = 's'
+RISPOSTA_NEGATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta negativa da parte dell'utente, Carattere, = 'N'
+RISPOSTA_NEGATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta negativa da parte dell'utente, Carattere, = 'n'
 
 DATI DI OUTPUT
 //inserire gli output delle varie funzioni
@@ -16,10 +18,11 @@ DATI DI OUTPUT
 DATI DI LAVORO
 uscita, indica la conferma della volontà da parte dell'utente di uscire dal gioco, carattere, = 'RISPOSTA_AFFERMATIVA_MAIUSCOLO' o 'RISPOSTA_AFFERMATIVA_MINUSCOLO' (indica la conferma dell'uscita dal gioco), = 'RISPOSTA_NEGATIVA_MAIUSCOLO' o 'RISPOSTA_NEGATIVA_MINUSCOLO' (indica la volontà di non uscire dal gioco)
 vincitore_partita, contiene le informazioni del vincitore di una partita avviata o caricata, record di tipo vincitore
+vincitore_attuale, 
 
 ALGORITMO
-//compare il logo
-//attendere che l'utente prema un tasto per continuare
+stampare_testo(file_intro) //schermata logo
+leggere_da_tastiera()
 uscita = RISPOSTA_NEGATIVA_MAIUSCOLO
 ESEGUI
 	opzione = scegliere_opzione_menu ()
@@ -65,11 +68,11 @@ NUMERO_MASSIMO_OPZIONI_PRINCIPALE, numero di opzioni disponibili all'interno del
 DATI DI OUTPUT
 opzione, scelta effettuata dall'utente relativa all'opzione desiderata, intero, > 0, <= NUMERO_MASSIMO_OPZIONI_PRINCIPALE
 
-//stampare a video il menù principale
+stampare_testo(file_menu_principale)
 ESEGUI
-	opzione = leggeredatastiera()
+	opzione = leggere_da_tastiera()
 	SE (opzione < 1) OR (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE)
-		//stampare messaggio errore 
+		stampare_messaggio_errore(file_menu_principale)
 	FINE
 FINCHE' (opzione < 1) OR (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE)
 
@@ -130,29 +133,6 @@ partita_attuale = Elemento in posizione slot_scelto di elenco_partite
 
 
 
-stampare_testo
-
-DATI DI INPUT
-testo, elenco di caratteri da stampare, file di testo
-ALTEZZA_SCHERMATA, il numero di caratteri rappresentabili in una colonna dello schermo, Intero, = 25
-CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
-
-DATI DI OUTPUT
-nessuno, sarà una stampa
-
-DATI DI LAVORO
-indice_nuova_riga, indica il numero di righe stampate, Intero, > 0
-simbolo_letto, contiene l'ultimo elemento letto presente in testo, carattere
-
-ALGORITMO
-indice_nuova_riga = 1
-MENTRE (indice_nuova_riga < ALTEZZA_SCHERMATA)
-	simbolo_letto = leggere_da_file (testo)
-	stampare_a_video (simbolo_letto) 
-	SE (simbolo_letto = CARATTERE_A_CAPO)
-		ALLORA	indice_nuova_riga = indice_nuova_riga + 1
-	FINE
-FINE
 
 
 
@@ -160,10 +140,10 @@ confermare_scelta
 
 DATI DI INPUT
 conferma_scelta, indica la conferma di un'azione scelta dall'utente, carattere, = 'RISPOSTA_AFFERMATIVA_MAIUSCOLO' o 'RISPOSTA_AFFERMATIVA_MINUSCOLO' (indica la conferma dell'uscita dal gioco), = 'RISPOSTA_NEGATIVA_MAIUSCOLO' o 'RISPOSTA_NEGATIVA_MINUSCOLO' (indica la volontà di non uscire dal gioco)
-RISPOSTA_AFFERMATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta affermativa da parte dell'utente, Intero, = 'S'
-RISPOSTA_AFFERMATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta affermativa da parte dell'utente, Intero, = 's'
-RISPOSTA_NEGATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta negativa da parte dell'utente, Intero, = N'
-RISPOSTA_NEGATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta negativa da parte dell'utente, Intero, = 'n'
+RISPOSTA_AFFERMATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta affermativa da parte dell'utente, Carattere, = 'S'
+RISPOSTA_AFFERMATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta affermativa da parte dell'utente, Carattere, = 's'
+RISPOSTA_NEGATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta negativa da parte dell'utente, Carattere, = N'
+RISPOSTA_NEGATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta negativa da parte dell'utente, Carattere, = 'n'
 
 DATI DI OUTPUT
 conferma_scelta, indica la conferma di un'azione da parte dell'utente, carattere, = 'S' o 's' (indica la conferma dell'uscita dal gioco), = 'N' o 'n' (indica la volontà di non uscire dal gioco)

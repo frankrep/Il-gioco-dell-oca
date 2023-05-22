@@ -46,11 +46,21 @@ indice_giocatori, indica lo spostamento all'interno dell'elenco dei giocatori pr
 ALGORITMO
 indice_giocatori = 1
 MENTRE (indice_giocatori <= leggere_numero_giocatori(partita_attuale))
-    //stampare scelta_g_iniziale
-    //prendere in input la lettura da tastiera per il lancio
-    Elemento in posizione indice_giocatori di estrazioni = generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO)
-    //stampa del dado risultante
-    //aspetta input da tastiera
+    stampare_testo(file_scelta_g_iniziale)
+    scelta = leggere_da_tastiera()
+    SE (scelta = TASTO_LANCIO_DADI)
+    ALLORA
+        Elemento in posizione indice_giocatori di estrazioni = generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO)
+        //stampa del dado risultante
+        //aspetta input da tastiera
+    ALTRIMENTI
+        SE (scelta = TASTO_USCITA)
+        ALLORA
+           //torna al menu principale
+        ALTRIMENTI
+            
+        FINE
+    FINE
     indice_giocatori = indice_giocatori + 1
 FINE
 partita_attuale = scrivere_turno(partita_attuale, trovare_posizione_massimo(estrazioni, leggere_numero_giocatori(partita_attuale)) - 1)

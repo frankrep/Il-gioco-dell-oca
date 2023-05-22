@@ -15,4 +15,22 @@ ______________________
 |_____S..S_______$$$$|<CHE FORTUNA! :)
 |____S...S_______$$$$|
 |____S...S_______$$$$|
-|____________________|<Premere un tasto per proseguire:__
+|____________________|
+
+<Premere 0 per proseguire:
+
+
+
+
+
+
+
+
+
+
+20// riga input
+27// colonna input
+
+22// riga errore
+1// colonna errore
+2// CM

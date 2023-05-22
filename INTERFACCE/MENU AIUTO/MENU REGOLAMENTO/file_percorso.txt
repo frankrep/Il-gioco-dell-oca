@@ -18,9 +18,9 @@
 | 34 | 33 | 32 |(O) | 30 | 29 | 28 | O  | 26 | 25 | 24 | 23 | 22 | 21 | 20 |   
 |____|____|____|____|____|____|____|____|____|____|____|____|____|____|____|   
                                _____   _____		                            	
--L  lancia i dadi;            |     | |*   *|      -A  avanza;                 
--M  menu;                     |  *  | |  *  |      -S  salva partita;          
-                              |_____| |*___*|                                  
+-L  lancia i dadi;            |     | |     |      -A  avanza;                 
+-M  menu;                     |  ?  | |  ?  |      -S  salva partita;          
+                              |_____| |_____|                                  
  inserisci cosa vuoi fare nel turno numero  :                 
 
 

@@ -82,11 +82,25 @@ lanci = Elemento del campo lanci_vincitore di vincitore_attuale
 
 
 scrivere_punteggio
+
 DATI DI INPUT
-vincitore_attuale, record
+vincitore_attuale, record in cui inserire il punteggio della partita relativo al vincitore della stessa, record di vincitore
+punteggio_giocatore, punteggio di vincitore_attuale da inserire, reale, > 0.0
+
 DATI DI OUTPUT
+vincitore_attuale, record con il punteggio di vincitore_attuale inserito, record di tipo vincitore
 
 ALGORITMO
+Elemento del campo punteggio di vincitore_attuale = punteggio_giocatore
 
 
 leggere_punteggio
+
+DATI DI INPUT
+vincitore_attuale, il vincitore del quale leggere il punteggio relativo, record di tipo vincitore
+
+DATI DI OUTPUT
+punteggio_giocatore, punteggio relativo vincitore_attuale, reale, > 0.0
+
+ALGORITMO
+punteggio_giocatore = Elemento del campo punteggio di vincitore_attuale
