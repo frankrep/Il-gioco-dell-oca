@@ -1,4 +1,4 @@
-#include <stlib.h>
+#include <stdlib.h>
 #include "casella.h"
 #include "giocatore.h"
 #include "partita.h"
