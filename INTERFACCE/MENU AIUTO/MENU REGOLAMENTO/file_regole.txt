@@ -1,4 +1,4 @@
-					<IL GIOCO DELL'OCA>                                        
+                       <IL GIOCO DELL'OCA>                                     
 <SIMBOLI DELLA MAPPA>                                                          
 #LE POSIZIONI SONO DEFINITE IN BASE ALLA LUNG PERCORSO STANDARD DA 90 CASELLE# 
 1)==Ponte: Si ripete il movimento come nelle caselle con le oca(CASELLA 6).    
@@ -21,7 +21,8 @@ Giocatore 4: &
                                                                                
                                                                                
 Inserire 0 per tornare indietro:                                               
-
+                                                                               
+                                                                               
 
 
 

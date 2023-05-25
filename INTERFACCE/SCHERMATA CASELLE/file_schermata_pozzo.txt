@@ -1,28 +1,28 @@
-<IL GIOCO DELL'OCA>
-_________________________________________
-|*          *______________    * ,-.    |<CASELLA SPECIALE POZZO>
-|  *.-.  * .'--./______\.--'. ,-(   )-.*|
-|.-(   )-.'--../________\..--'.      __)|Sei capitato sulla casella speciale
-|      .'--.._/__________\_..--'.  __)-'|pozzo, la stanchezza e la sete 
-|`-( .'--..__/____________\__..--'._'   |provocate da questo lungo viaggio
+<IL GIOCO DELL'OCA>                                                            
+_________________________________________                                      
+|*          *______________    * ,-.    |<CASELLA SPECIALE POZZO>              
+|  *.-.  * .'--./______\.--'. ,-(   )-.*|                                      
+|.-(   )-.'--../________\..--'.      __)|Sei capitato sulla casella speciale   
+|      .'--.._/__________\_..--'.  __)-'|pozzo, la stanchezza e la sete        
+|`-( .'--..__/____________\__..--'._'   |provocate da questo lungo viaggio     
 | *.'--..___/______________\___..--'. * |giocano brutti scherzi! Mentre cercavi
-| '========'================'========'  |di fare rifornimento per proseguire,
-|*      [_|__]            [_|__]    *   |sfortunatamente sei scivolato in 
-|    * =[__|_]=====""=====[__|_]==.   * |questo profondo pozzo, solo con 
-|     * [_|__]     '|     [_|__]* |     |l'aiuto di qualcuno potresti riuscire
-|*      [__|_]     |'     [__|_]  | *   |a fuggire... ma la speranza si sà, è
-|  *    [_|__]  .--JL--.  [_|__]  '===O |l'ultima a morire!
-|     * [__|_]   \====/   [__|_]   *    |
-|       [_|__]_.-| .; |-._[_|__]      * |<CHE LA FORTUNA TI ASSISTA! :(
-|  *    [__|_]'._ \__/(_.'[__|_] *      |
-|       [.-._]            [_.-.]      * |
-|*    * [_.-.'--..____..--'.-._]   *    |
-|       [(_.'   .-.     .-.'._)\        |
-|{}_{}_{[  .-. (_.'.-. (_.' .-.]{}_{}_{}|
-||| || |[ (_.'.-. (_.' .-. (_.'||| || |||<Premere 0 per proseguire:
-|"""""""[ .-. '._) .-. '._).-. ]""""""""|
-|_______________________________________|
-
+| '========'================'========'  |di fare rifornimento per proseguire,  
+|*      [_|__]            [_|__]    *   |sfortunatamente sei scivolato in      
+|    * =[__|_]=====""=====[__|_]==.   * |questo profondo pozzo, solo con       
+|     * [_|__]     '|     [_|__]* |     |l'aiuto di qualcuno potresti riuscire 
+|*      [__|_]     |'     [__|_]  | *   |a fuggire... ma la speranza si sà, è  
+|  *    [_|__]  .--JL--.  [_|__]  '===O |l'ultima a morire!                    
+|     * [__|_]   \====/   [__|_]   *    |                                      
+|       [_|__]_.-| .; |-._[_|__]      * |<CHE LA FORTUNA TI ASSISTA! :(        
+|  *    [__|_]'._ \__/(_.'[__|_] *      |                                      
+|       [.-._]            [_.-.]      * |                                      
+|*    * [_.-.'--..____..--'.-._]   *    |                                      
+|       [(_.'   .-.     .-.'._)\        |                                      
+|{}_{}_{[  .-. (_.'.-. (_.' .-.]{}_{}_{}|                                      
+||| || |[ (_.'.-. (_.' .-. (_.'||| || |||<Premere 0 per proseguire:            
+|"""""""[ .-. '._) .-. '._).-. ]""""""""|                                      
+|_______________________________________|                                      
+                                                                               
 
 
 
