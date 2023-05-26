@@ -21,7 +21,7 @@ partita* inserire_casella(partita* partita_attuale, int posizione_percorso) {
     *partita_attuale = scrivere_casella_percorso(partita_attuale, casella_attuale, posizione_percorso);
     return partita_attuale;
 }
-casella* creare_casella(int indice_partita, FILE* file_oca) {
+casella* creare_casella(int indice_partita) {
     casella* casella_attuale;
     if (calcolare_resto(indice_partita) == FALSE ){
         *casella_attuale = leggere_da_file(casella, 1, file_oca);
@@ -43,7 +43,7 @@ partita* posizionare_caselle_speciali(partita* partita_attuale) {
     }
     return partita_attuale;
 }
-casella* proporzionare_caselle_speciali(partita* partita_attuale, FILE* file_caselle_speciali) {
+casella* proporzionare_caselle_speciali(partita* partita_attuale) {
     casella* caselle_speciali = leggere_da_file(casella, NUMERO_CASELLE_SPECIALI, file_caselle_speciali);
     int indice_speciali = 0;
     while(indice_speciali <= NUMERO_CASELLE_SPECIALI){
