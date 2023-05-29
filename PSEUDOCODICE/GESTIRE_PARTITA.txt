@@ -1,4 +1,4 @@
-giocare_partita ?
+giocare_partita
 DATI DI INPUT
 partita_attuale, la partita da gestire, record di tipo partita
 file_percorso, il file contenente la schermata rappresentante il percorso, file di testo
@@ -216,26 +216,6 @@ lanci_effettuati = lanci_effettuati + 1
 giocatore_attuale = scrivere_lanci_effettuati(giocatore_attuale, lanci_effettuati)
 partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
 
-
-
-incrementare_turno
-DATI DI INPUT
-partita_attuale, la partita di cui incrementare il turno, partita
-
-DATI DI OUTPUT
-partita_attuale, la partita con il turno incrementato, partita
-
-DATI DI LAVORO
-turno, il turno da gestire, Intero
-
-ALGORITMO
-turno = leggere_turno(partita_attuale)
-turno = turno + 1
-SE (turno > leggere_numero_giocatori(partita_attuale))
-ALLORA
-    turno = 1
-FINE
-partita_attuale = scrivere_turno(partita_attuale, turno)
 
 
 
@@ -498,7 +478,7 @@ partita_attuale = scrivere_giocatore(partita_attuale, giocatore_attuale, leggere
 
 
 
-confrontare_stringhe x
+confrontare_stringhe
 DATI DI INPUT
 stringa_1, prima sequenza di caratteri da confrontare, Array a una dimensione di caratteri (terminante con FINE_STRINGA)
 stringa_2, seconda sequenza di caratteri da confrontare, Array a una dimensione di caratteri (terminante con FINE_STRINGA)
