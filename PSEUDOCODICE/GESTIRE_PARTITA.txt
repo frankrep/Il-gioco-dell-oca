@@ -1,6 +1,7 @@
 giocare_partita ?
 DATI DI INPUT
 partita_attuale, la partita da gestire, record di tipo partita
+file_percorso, il file contenente la schermata rappresentante il percorso, file di testo
 DATI DI OUTPUT
 vincitore_partita, il giocatore vincitore di partita_attuale, record di tipo vincitore
 ALGORITMO
@@ -14,13 +15,14 @@ ESEGUI
     ALLORA
         partita_attuale = gestire_autorizzazione(partita_attuale)
     FINE
-    SE (leggere_autorizzazione(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))) > 0)
+    SE (leggere_autorizzazione(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))) = 0)
     ALLORA
         stampare_percorso(partita_attuale)
         partita_attuale = lanciare_dadi(partita_attuale)
-        stampare_dadi(partita_attuale)
+        stampare_dadi(file_percorso)
         partita_attuale = spostare_giocatore(partita_attuale)
-        //stampare percorso con input utente per proseguire con l'effetto
+        stampare_percorso(partita_attuale)
+        stampare_dadi(file_percorso)
         partita_attuale = verificare_casella(partita_attuale)
     FINE
 FINCHE' (leggere_posizione_giocatore (leggere_giocatore (partita_attuale, leggere_turno (partita_attuale))) != leggere_lunghezza_percorso (partita_attuale))
@@ -31,6 +33,7 @@ vincitore_partita = inizializzare_vincitore(partita_attuale)
 scegliere_giocatore 
 DATI DI INPUT
 partita_attuale, la partita in cui scegliere i giocatori, partita
+file_scelta_g_iniziale, il file contenente la schermata per la scelta del giocatore iniziale, file di testo
 PRIMO_DADO, la posizione del dado numero 1 nel campo ultimo_lancio del record partita, Intero, = 1
 
 DATI DI OUTPUT
@@ -309,9 +312,16 @@ FINE
 
 
 
-gestire_casella
+verificare_casella
 DATI DI INPUT
 partita_attuale, partita di cui verificare se il tipo di casella, record di tipo partita
+file_schermata_oca, il file contenente la schermata rappresentante la casella oca, file di testo
+file_schermata_ponte, il file contenente la schermata rappresentante la casella ponte, file di testo
+file_schermata_locanda, il file contenente la schermata rappresentante la casella locanda, file di testo
+file_schermata_pozzo, il file contenente la schermata rappresentante la casella pozzo, file di testo
+file_schermata_prigione, il file contenente la schermata rappresentante la casella prigione, file di testo
+file_schermata_labirinto, il file contenente la schermata rappresentante la casella labirinto, file di testo
+file_schermata_scheletro, il file contenente la schermata rappresentante la casella scheletro, file di testo
 NOME_OCA, il nome della casella oca, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "OCA\0"
 NOME_PRIGIONE, il nome della casella prigione, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "PRIGIONE\0"
 NOME_PONTE, il nome della casella ponte, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "PONTE\0"
@@ -424,6 +434,7 @@ FINE
 impostare_autorizzazioni
 DATI DI INPUT
 partita_attuale, la partita in cui gestire la casella speciale su cui è arrivato il giocatore di turno, record di tipo partita
+file_schermata_liberato, il file contenente la schermata rappresentante l'uscita di prigione, file di testo
 nome_casella_attuale, il nome della casella per cui impostare le autorizzazioni del giocatore di turno di partita_attuale, Array a una dimensione (DIMENSIONE_MASSIMA_NOME_CASELLA) di caratteri (terminante con FINE_STRINGA)
 
 DATI DI OUTPUT
