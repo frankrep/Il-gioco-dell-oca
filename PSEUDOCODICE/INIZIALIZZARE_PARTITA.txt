@@ -19,6 +19,7 @@ richiedere_numero_caselle
 DATI DI INPUT
 partita_attuale, la partita di cui inserire il numero delle caselle richieste all'utente, record di tipo partita
 dimensione_percorso, la dimensione del percorso scelta dall'utente, intero, >= DIMENSIONE_MINIMA_PERCORSO, <= DIMENSIONE_MASSIMA_PERCORSO 
+file_scelta_lung_perco, il file contenente la schermata per la richiesta della lunghezza del percorso, file di testo
 DIMENSIONE_MASSIMA_PERCORSO, la dimensione massima che il percorso può assumere, Intero, = 90
 DIMENSIONE_MINIMA_PERCORSO, la dimensione minima che il percorso può assumere, Intero, = 50
 
@@ -26,12 +27,12 @@ DATI DI OUTPUT
 partita_attuale, la partita con il numero delle caselle inizializzate, record di tipo partita
 
 ALGORITMO
-//stampare richiesta
+stampare_testo(file_scelta_lung_perco)
 ESEGUI
 	dimensione_percorso = leggere_da_tastiera()
 	SE ( (dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO ) OR (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO) )
 	ALLORA 
-		//stampare messsagio errore
+		stampare_messaggio_errore(file_scelta_lung_perco)
 	FINE	
 FINCHE’ ( (dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) OR (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO)  )
 partita_attuale = scrivere_lunghezza_percorso(partita_attuale, dimensione_percorso)
@@ -43,6 +44,7 @@ inizializzare_numero_giocatori
 DATI DI INPUT
 partita_attuale, la partita in cui inserire il numero dei giocatori, record di tipo partita
 numero_partecipanti, numero di giocatori che parteciperanno alla partita, intero, >= NUMERO_MINIMO_GIOCATORI, <= NUMERO_MASSIMO_GIOCATORI
+file_scelta_n_giocatori, il file contenente la schermata per la richiesta del numero_giocatori, file di testo
 NUMERO_MINIMO_GIOCATORI, il numero minimo di giocatori che possono prendere parte alla partita, Intero, = 2
 NUMERO_MASSIMO_GIOCATORI, il numero massimo di giocatori che possono prendere parte alla partita, Intero, = 4
 
@@ -50,11 +52,11 @@ DATI DI OUTPUT
 partita_attuale, record con il numero dei giocatori inserito, record di tipo partita
 
 ALGORITMO
-//stampare messaggio richiesta
+stampare_testo(file_scelta_n_giocatori)
 ESEGUI
 	numero_partecipanti = leggere_da_tastiera ()
 	SE (numero_partecipanti < NUMERO_MINIMO_GIOCATORI) OR (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI)
-	      //stampare messaggio errore
+	      stampare_messaggio_errore(file_scelta_n_giocatori)
 	FINE
 FINCHE’ ( (numero_partecipanti < NUMERO_MINIMO_GIOCATORI) OR (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI) )
 partita_attuale = scrivere_numero_giocatori (partita_attuale, numero_partecipanti)
@@ -65,6 +67,7 @@ inizializzare_nomi_giocatori
 
 DATI DI INPUT
 partita_attuale, la partita in cui inizializzare il nome dei giocatori,r ecord di tipo partita
+file_scelta_nomi_giocatori, il file contenente la schermata per la richiesta della scelta dei nomi dei giocatori, file di testo
 CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
 DIMENSIONE_MINIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, intero, = 3
 DIMENSIONE_MASSIMA_NOME_GIOCATORE, la dimensione minima che il nome del giocatore può avere, intero, = 20
@@ -78,8 +81,8 @@ indice_giocatore, indica lo spostamento all'interno dell'elenco dei giocatori, i
 ALGORITMO
 indice_giocatori = 1
 MENTRE (indice_giocatori <= leggere_numero_giocatori (partita_attuale) )
-	//stampare richiesta
-	partita_attuale = scrivere_giocatori (partita_attuale, scrivere_nome_giocatore (leggere_giocatori(partita_attuale, indice_giocatori) , inserire_stringa (DIMENSIONE_MINIMA_NOME_GIOCATORE , DIMENSIONE_MASSIMA_NOME_GIOCATORE) ), indice_giocatori) 
+	stampare_testo(file_scelta_nomi_giocatori)
+	partita_attuale = scrivere_giocatori (partita_attuale, scrivere_nome_giocatore (leggere_giocatori(partita_attuale, indice_giocatori) , inserire_stringa (DIMENSIONE_MINIMA_NOME_GIOCATORE , DIMENSIONE_MASSIMA_NOME_GIOCATORE, file_scelta_nomi_giocatori) ), indice_giocatori) 
 	indice_giocatori = indice_giocatori + 1
 FINE
 
@@ -90,6 +93,8 @@ inserire_stringa
 DATI DI INPUT
 dimensione_massima_stringa, numero massimo di caratteri consentito all'interno di stringa, intero, > 0
 dimensione_minima_stringa, numero minimo di caratteri consentito all'interno di stringa, intero, > 0
+file_scelta_nomi_giocatori, il file contenente la schermata per la richiesta della scelta dei nomi dei giocatori, file di testo
+carattere_letto, il carattere letto da tastiera, Carattere
 FINE_FILE,  simbolo che indica la fine del file, carattere, = ‘EOF’ 
 CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
 
@@ -105,15 +110,15 @@ ALGORITMO
 indice_stringa = 1
 terminato = 0
 MENTRE ( (indice_stringa < dimensione_massima_stringa) AND (terminato = 0) AND (indice_stringa < dimensione_minima_stringa) )
-carattere = leggere_da_tastiera()
-SE (carattere != CARATTERE_A_CAPO)
+carattere_letto = leggere_da_tastiera()
+SE (carattere_letto != CARATTERE_A_CAPO)
 ALLORA 	
-	elemento in posizione indice_stringa di stringa = carattere
+	elemento in posizione indice_stringa di stringa = carattere_letto
  	indice_stringa = indice_stringa + 1
 ALTRIMENTI 
 	SE (indice_stringa <= dimensione_minima_stringa)	
 	ALLORA 
-		//stampare messaggio errore minimo caratteri richiesti
+		stampare_messaggio_errore(file_scelta_nomi_giocatori)
 	ALTRIMENTI 
 		terminato = 1	
 	FINE

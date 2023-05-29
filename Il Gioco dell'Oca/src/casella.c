@@ -27,4 +27,4 @@ void scrivere_simbolo(casella* casella_attuale, char simbolo_da_inserire[]){
 char* leggere_simbolo(casella* casella_attuale){
     char* simbolo_letto = casella_attuale->simbolo;
     return simbolo_letto;
-} 
+}
