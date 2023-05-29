@@ -102,7 +102,7 @@ partita_attuale, la partita con le caselle speciali posizionate, record di tipo 
 
 DATI DI LAVORO
 indice_speciali, la posizione raggiunta in caselle_speciali, Intero, > 0
-caselle_speciali, le caselle speciali da inseire nel percorso in partita_attuale, Array ad una dimensione (NUMERO_CASELLE_SPECIALI) di casella
+caselle_speciali, le caselle speciali da inserire nel percorso in partita_attuale, Array ad una dimensione (NUMERO_CASELLE_SPECIALI) di casella
 
 ALGORITMO
 caselle_speciali = proporzionare_caselle_speciali(partita_attuale)
