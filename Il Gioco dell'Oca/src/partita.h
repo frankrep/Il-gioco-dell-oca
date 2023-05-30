@@ -9,7 +9,7 @@ typedef struct
     int numero_giocatori;
     int lunghezza_percorso;
     casella percorso[DIMENSIONE_MASSIMA_PERCORSO];
-    giocatore giocatori[NUMERO_MASSIMO_GIOCATORE];
+    giocatore giocatori[NUMERO_MASSIMO_GIOCATORI];
     int turno;
     int dadi[NUMERO_DADI];
     

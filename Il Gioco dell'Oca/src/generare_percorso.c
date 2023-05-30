@@ -3,23 +3,23 @@
 #include "generare_percorso.h"
 #include "casella.h"
 #include "costanti.h"
-partita* generare_percorso(partita* partita_attuale) {
-    *partita_attuale = creare_percorso_con_oche(partita_attuale);
-    *partita_attuale = posizionare_caselle_speciali(partita_attuale);
-    return partita;
+
+void generare_percorso(partita* partita_attuale) {
+    creare_percorso_con_oche(partita_attuale);
+    posizionare_caselle_speciali(partita_attuale);
+    return partita_attuale;
 }
-partita* creare_percorso_con_oche(partita* partita_attaule) {
+
+void creare_percorso_con_oche(partita* partita_attaule) {
     int indice_percorso = 0;
     while(indice_percorso < leggere_numero_caselle(partita_attuale)) {
-        *partita_attuale = inserire_casella(partita_attuale, indice_percorso);
+        partita_attuale = inserire_casella(partita_attuale, indice_percorso);
         indice_percorso = indice_percorso + 1;
     }
-    return partita_attuale;
 }
-partita* inserire_casella(partita* partita_attuale, int posizione_percorso) {
+void inserire_casella(partita* partita_attuale, int posizione_percorso) {
     casella* casella_attuale = creare_casella(posizione_percorso);
     *partita_attuale = scrivere_casella_percorso(partita_attuale, casella_attuale, posizione_percorso);
-    return partita_attuale;
 }
 casella* creare_casella(int indice_partita, FILE* file_oca) {
     casella* casella_attuale;

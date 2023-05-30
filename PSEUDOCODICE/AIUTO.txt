@@ -9,17 +9,17 @@ CARATTTERE_A_CAPO,carattere di nuova riga,carattere =”\n”
 NUMERO_MASSIMO_OPZIONI_AIUTO, numero di opzioni disponibili all'interno del menù aiuto, intero, = NUMERO_MASSIMO_OPZIONI_AIUTO
 
 DATI DI OUTPUT
-opzioni_scelta, opzioni tra cui puo scegliere il giocatore, intero, >= 0, <= NUMERO_MASSIMO_OPZIONI_AIUTO
+opzione_scelta, opzioni tra cui puo scegliere il giocatore, intero, >= 0, <= NUMERO_MASSIMO_OPZIONI_AIUTO
 
 ALGORITMO
 stampare_testo(file_menu_aiuto)
 ESEGUI 
 	opzione_scelta = leggere_da_tastiera()
-	SE ((opzioni_scelta < 0) OR (opzioni_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO))
+	SE ((opzione_scelta < 0) OR (opzione_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO))
 	ALLORA
 		stampare_messaggio_errore(file_menu_aiuto)
 	FINE
-FINCHE’ ( (opzioni_scelta < 0) OR (opzioni_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO) )
+FINCHE’ ( (opzione_scelta < 0) OR (opzione_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO) )
 
 
 

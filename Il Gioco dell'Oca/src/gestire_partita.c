@@ -231,7 +231,7 @@ partita* impostare_autorizzazioni(partita* partita_attuale, char nome_casella_at
             *giocatore_attuale = scrivere_autorizzazione(giocatore_attuale, 0);
             *partita_attuale = scrivere_giocatori(partita_attuale, giocatore_attuale, indice_giocatore);
         }
-        indice_gicoatore = indice_giocatore + 1;
+        indice_giocatore = indice_giocatore + 1;
     }
     *giocatore_attuale = leggere_giocatore(partita_attuale, leggere_turno(partita_attuale));
     *giocatore_attuale = scrivere_autorizzazione(giocatore_attuale, 1);

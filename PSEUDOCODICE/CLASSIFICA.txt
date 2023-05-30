@@ -23,11 +23,11 @@ inserito = FALSO
 indice_vincitori = 1               
 rateo_vincitore_partita = leggere_numero_lanci_vincitore(vincitore_partita) / leggere_lunghezza_percorso_vincitore(vincitore_partita)
 MENTRE ( indice_vincitori <= NUMERO_MASSIMO_CLASSIFICATI )
-    rateo_classificato= leggere_numero_lanci_vincitore(Elemento in posizione indice_vincitori di vincitori) / leggere_lunghezza_percorso_vincitore(Elemento in posizione indice_vincitori di vincitori)
-    SE (rateo_vincitore_partita <= rateo_classificato) AND (inserito != 1)
+    rateo_classificato = leggere_numero_lanci_vincitore(Elemento in posizione indice_vincitori di vincitori) / leggere_lunghezza_percorso_vincitore(Elemento in posizione indice_vincitori di vincitori)
+    SE (rateo_vincitore_partita <= rateo_classificato) AND (inserito != VERO)
     ALLORA
         vincitori = spostamento_destra_vincitori(vincitori, indice_vincitori, vincitore_partita)
-        inserito = 1                
+        inserito = VERO                
     FINE
     indice_vincitori = indice_vincitori + 1
 FINE
@@ -44,22 +44,24 @@ spostamento_destra_vincitori
 DATI DI INPUT
 vincitori, elenco da spostare verso destra, Array ad una dimensione (NUMERO_MASSIMO_CLASSIFICATI) di vincitore
 posizione_inserimento, posizione all'interno di vincitori in cui inserire il nuovo giocatore, intero, > 0
-vincitore_partita, giocatore da aggiungere in vincitori, record di tipo vincitore
+vincitore_partita, , vincitore, 
 NUMERO_MASSIMO_CLASSIFICATI, numero massimo di giocatori di cui è composta la classifica, intero, = 10
 
 DATI DI OUTPUT
-vincitori, elenco spostato verso destra con vincitore_partita inserito in posizione_inserimento, Array ad una dimensione (NUMERO_MASSIMO_CLASSIFICATI) di vincitore
+vincitori, elenco spostato verso destra in posizione_inserimento, Array ad una dimensione (NUMERO_MASSIMO_CLASSIFICATI) di vincitore
 
 DATI DI LAVORO
-vincitore_salvato, contiene il prossimo vincitore da inserire, record di tipo vincitore
-
+vincitore_salvato, contiene il prossimo vincitore da inserire variabile di appoggio, record di tipo vincitore
+vincitore_attuale, contiene il vincitore 
+indice_vincitori,
 ALGORITMO
-MENTRE (posizione_inserimento <= NUNMERO_MASSIMO_CLASSIFICATI)
-    giocatore_salvato = elemento di vincitori in posizione posizione_inserimento
-    elemento di vincitori in posizione posizione_inserimento = giocatore_attuale
-    giocatore_attuale = giocatore_salvato
-    posizione_inserimento = posizione_inserimento + 1
+indice_vincitori = NUMERO_MASSIMO_CLASSIFICATI
+MENTRE (indice_vincitori >= posizione_inserimento)
+    Elemento in posizione indice_vincitori di vincitori = Elemento in posizione (indice_vincitori - 1) di vincitori
+    indice_vincitori = indice_vincitori - 1
 FINE
+Elemento in posizione posizione_inserimento di vincitori = vincitore_partita
+
 
 
 

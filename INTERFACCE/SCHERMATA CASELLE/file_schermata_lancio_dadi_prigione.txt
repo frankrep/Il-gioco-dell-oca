@@ -11,13 +11,13 @@ ______________________________________________
 |88______________888888888_________________88|<BUONA FORTUNA!                  
 |88_____________88888888888________________88|                                 
 |88____________8888888888888_______________88|                                 
-|88___________888888888888888______________88|      _____                      
-|88__________88888888888888888_____________88|     |     |                     
-|88___________888888888888888______________88|     |  ?  |                     
-|88_________________8888___________________88|     |_____|                     
+|88___________888888888888888______________88|        _____     _____          
+|88__________88888888888888888_____________88|       |     |   |     |         
+|88___________888888888888888______________88|       |  ?  |   |  ?  |         
+|88_________________8888___________________88|       |_____|   |_____|         
 |88_______________88888888______$$_____$$__88|                                 
-|88_____________________________$$$___$$$__88| -L Lanciare Dado                
-|88______________________________$$$$$$$___88| -A Avanza                       
+|88_____________________________$$$___$$$__88|        -L Lanciare Dado         
+|88______________________________$$$$$$$___88|           -A Avanza             
 |88______________________________$$___$$___88|                                 
 |88_______________________________$$_$$____88|<Inserisci la tua scelta:        
 |_88_______________________________$$$____88_|                                 
@@ -36,22 +36,43 @@ ______________________________________________
 2// CM
 
 15 //RIGA ALTO SINISTRA DADO
-53 //COLONNA ALTO SINISTRA DADO
+55 //COLONNA ALTO SINISTRA DADO
 
 16// RIGA CENTRO SINISTRA DADO
-53// COLONNA CENTRO SINISTRA DADO
+55// COLONNA CENTRO SINISTRA DADO
 
 17// RIGA BASSO SINISTRA DADO
-53// COLONNA BASSO SINISTRA DADO
+55// COLONNA BASSO SINISTRA DADO
 
 16// RIGA CENTRO DADO
-55// COLONNA CENTRO DADO
+57// COLONNA CENTRO DADO
 
 15 //RIGA ALTO DESTRA DADO
-57 //COLONNA ALTO DESTRA DADO
+59 //COLONNA ALTO DESTRA DADO
 
 16// RIGA CENTRO DESTRA DADO
-57// COLONNA CENTRO DESTRA DADO
+59// COLONNA CENTRO DESTRA DADO
 
 17// RIGA BASSO DESTRA DADO
-57// COLONNA BASSO DESTRA DADO
+59// COLONNA BASSO DESTRA DADO
+
+15 //RIGA ALTO SINISTRA DADO
+65 //COLONNA ALTO SINISTRA DADO
+
+16// RIGA CENTRO SINISTRA DADO
+65// COLONNA CENTRO SINISTRA DADO
+
+17// RIGA BASSO SINISTRA DADO
+65// COLONNA BASSO SINISTRA DADO
+
+16// RIGA CENTRO DADO
+67// COLONNA CENTRO DADO
+
+15 //RIGA ALTO DESTRA DADO
+69 //COLONNA ALTO DESTRA DADO
+
+16// RIGA CENTRO DESTRA DADO
+69// COLONNA CENTRO DESTRA DADO
+
+17// RIGA BASSO DESTRA DADO
+69// COLONNA BASSO DESTRA DADO

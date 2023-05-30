@@ -77,6 +77,7 @@ vincitore_partita = scrivere_nome_vincitore(vincitore_partita, leggere_nome_gioc
 vincitore_partita = scrivere_pedina_vincitore(vincitore_partita, leggere_pedina_giocatore(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))))
 vincitore_partita = scrivere_lanci_vincitore(vincitore_partita, leggere_lanci_effettuati(leggere_giocatore(partita_attuale, leggere_turno(partita_attuale))))
 vincitore_partita = scrivere_lunghezza_percorso_vincitore(vincitore_partita, leggere_lunghezza_percorso(partita_attuale))
+vincitore_partita = scrivere_punteggio(vincitore_partita, 0)
 
 
 
