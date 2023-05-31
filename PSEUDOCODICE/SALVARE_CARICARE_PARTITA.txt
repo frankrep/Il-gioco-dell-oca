@@ -83,7 +83,7 @@ nessuno, sarà una stampa
 
 DATI DI LAVORO
 indice_partita, la posizione raggiunta in elenco_partite, Intero, > 0, <= NUMERO_MASSIMO_PARTITE
-
+nome, , stringa
 ALGORITMO
 indice_partita = 1
 MENTRE (indice_partita <= NUMERO_MASSIMO_PARTITE)
