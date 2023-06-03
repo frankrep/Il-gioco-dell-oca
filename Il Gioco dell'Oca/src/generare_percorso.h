@@ -1,8 +1,8 @@
 #ifndef GENERARE_PERCORSO_H_
 #define GENERARE_PERCORSO_H_
 
-void generare_percorso(partita* partita_attuale);
-partita* creare_percorso_con_oche(partita* partita_attaule);
+void generare_percorso (partita* partita_attuale);
+partita* creare_percorso_con_oche (partita* partita_attuale);
 partita* inserire_casella(partita* partita_attuale, int posizione_percorso);
 casella* creare_casella(FILE* file_oca, int posizione_percorso);
 partita* posizionare_caselle_speciali(partita* partita_attuale);

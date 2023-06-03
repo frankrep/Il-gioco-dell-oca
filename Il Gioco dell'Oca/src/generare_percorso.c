@@ -5,25 +5,29 @@
 #include "costanti.h"
 
 void generare_percorso (partita* partita_attuale) {
-    creare_percorso_con_oche(partita_attuale);
-    posizionare_caselle_speciali(partita_attuale);
+    creare_percorso_con_oche (partita_attuale);
+    posizionare_caselle_speciali (partita_attuale);
     return;
 }
 
-void creare_percorso_con_oche(partita* partita_attuale) {
+void creare_percorso_con_oche (partita* partita_attuale) {
     int indice_percorso = 0;
-    while(indice_percorso < leggere_numero_casella(partita_attuale)) {
-        partita_attuale = inserire_casella(partita_attuale, indice_percorso);
+    while ( indice_percorso < leggere_lunghezza_percorso (partita_attuale) ) {
+        inserire_casella (partita_attuale, indice_percorso);
         indice_percorso = indice_percorso + 1;
     }
+    return;
 }
-void inserire_casella(partita* partita_attuale, int posizione_percorso) {
-    casella* casella_attuale = creare_casella(posizione_percorso);
-    *partita_attuale = scrivere_casella_percorso(partita_attuale, casella_attuale, posizione_percorso);
+
+void inserire_casella (partita* partita_attuale, int posizione_percorso) {
+    casella* casella_attuale = creare_casella (posizione_percorso);
+    *partita_attuale = scrivere_casella_percorso (partita_attuale, casella_attuale, posizione_percorso);
+    return;
 }
+
 casella* creare_casella(int indice_partita, FILE* file_oca) {
     casella* casella_attuale;
-    if (calcolare_resto(indice_partita) == FALSE ){
+    if ( calcolare_resto (indice_partita, DISTANZA_OCHE) == FALSE ) {
         *casella_attuale = leggere_da_file(casella, 1, file_oca);
     }
     else
@@ -85,3 +89,5 @@ int calcolare_parte_intera_unita(float numero, int divisore) {
     }
     return parte_intera;
 }
+
+//calcolare_resto
