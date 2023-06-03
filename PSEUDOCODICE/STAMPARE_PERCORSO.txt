@@ -56,8 +56,8 @@ MENTRE (indice_riga_superiore <= ALTEZZA_TABELLONE)
 
         SE (indice_riga_superiore < (indice_riga_inferiore - 1))
         ALLORA
-            colonne_parte_sinistra = colonne_parte_sinistra + 1;
-            colonne_parte_destra = colonne_parte_destra + 1;
+            colonne_parte_sinistra = colonne_parte_sinistra + 1
+            colonne_parte_destra = colonne_parte_destra + 1
         ALTRIMENTI
             SE (indice_riga_superiore > (indice_riga_inferiore - 1))
             ALLORA
@@ -227,11 +227,7 @@ CONTORNO_LATERALE_CASELLA, il simbolo da utilizzare come contorno laterale della
 DATI DI OUTPUT
 nessuno, sarà una stampa
 
-DATI DI LAVORO
-disegno_casella, i caratteri rappresentanti il disegno di CASELLA, Array di Array di Caratteri con carattere terminale FINE_STRINGA
-
 ALGORITMO
-ALTRIMENTI
     SE (strato = 1)
     ALLORA
         stampare_a_video(CONTORNO_LATERALE_CASELLA)
@@ -252,7 +248,6 @@ ALTRIMENTI
             FINE
         FINE
     FINE
-FINE
 
 
 

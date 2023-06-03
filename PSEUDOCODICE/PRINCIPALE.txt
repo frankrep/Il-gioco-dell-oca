@@ -18,7 +18,7 @@ DATI DI OUTPUT
 DATI DI LAVORO
 uscita, indica la conferma della volontà da parte dell'utente di uscire dal gioco, carattere, = 'RISPOSTA_AFFERMATIVA_MAIUSCOLO' o 'RISPOSTA_AFFERMATIVA_MINUSCOLO' (indica la conferma dell'uscita dal gioco), = 'RISPOSTA_NEGATIVA_MAIUSCOLO' o 'RISPOSTA_NEGATIVA_MINUSCOLO' (indica la volontà di non uscire dal gioco)
 vincitore_partita, contiene le informazioni del vincitore di una partita avviata o caricata, record di tipo vincitore
-vincitore_attuale, 
+vincitore_attuale, ,record di tipo vincitore
 
 ALGORITMO
 stampare_testo(file_intro) //schermata logo

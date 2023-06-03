@@ -2,52 +2,74 @@
 #include <stdlib.h>
 #include "casella.h"
 #include "giocatore.h"
-void scrivere_nome_partita(partita* partita_attuale, char nome[]){
-    partita_attuale->nome_partita = nome;
+void scrivere_carattere_partita (partita* partita_attuale, int posizione, char simbolo) {
+    partita_attuale->nome_partita[posizione] = simbolo;
+    return;
 }
-char* leggere_nome_partita(partita* partita_attuale){
-    char* nome = partita_attuale->nome_partita;
-    return nome;
+char leggere_carattere_partita (partita* partita_attuale, int posizione) {
+    char simbolo = partita_attuale->nome_partita[posizione];
+    return simbolo;
 }
-void scrivere_numero_giocatori(partita* partita_attuale, int numero_partecipanti){
+void scrivere_numero_giocatori (partita* partita_attuale, int numero_partecipanti) {
 	partita_attuale->numero_giocatori = numero_partecipanti;
 }
-int leggere_numero_giocatori(partita* partita_attuale){
+int leggere_numero_giocatori (partita* partita_attuale) {
     int numero_partecipanti = partita_attuale->numero_giocatori;
     return numero_partecipanti;
 }
-void scrivere_lunghezza_percorso(partita* partita_attuale, int dimensione_caselle){
+void scrivere_lunghezza_percorso (partita* partita_attuale, int dimensione_caselle){
 	partita_attuale->lunghezza_percorso = dimensione_caselle;
+    return;
 }
-int leggere_lunghezza_percorso(partita* partita_attuale){
+int leggere_lunghezza_percorso (partita* partita_attuale) {
     int dimensione_caselle = partita_attuale->lunghezza_percorso;
     return dimensione_caselle;
 }
-void scrivere_casella_percorso(partita* partita_attuale, casella* casella_attuale, int posizione_casella){
+void scrivere_casella_percorso (partita* partita_attuale, casella casella_attuale, int posizione_casella) {
 	partita_attuale->percorso[posizione_casella] = casella_attuale;
 }
-casella* leggere_casella_percorso(partita* partita_attuale, int posizione_casella){
-    casella* casella_attuale = partita_attuale->percorso[posizione_casella];
+casella leggere_casella_percorso (partita* partita_attuale, int posizione_casella) {
+    casella casella_attuale = partita_attuale->percorso[posizione_casella];
     return casella_attuale;
 }
-void scrivere_turno(partita* partita_attuale, int turno_attuale){
+void scrivere_turno (partita* partita_attuale, int turno_attuale) {
 	partita_attuale->turno = turno_attuale;
 }
-int leggere_turno(partita* partita_attuale){
+int leggere_turno (partita* partita_attuale) {
     int turno_attuale = partita_attuale->turno;
     return turno_attuale;
 }
-void scrivere_dadi(partita* partita_attuale, int faccia_dado, int posizione_dado){
+void scrivere_dadi (partita* partita_attuale, int faccia_dado, int posizione_dado) {
 	partita_attuale->dadi[posizione_dado] = faccia_dado;
 }
-int leggere_dadi(partita* partita_attuale, int posizione_dado){
+int leggere_dadi (partita* partita_attuale, int posizione_dado) {
     int faccia_dado = partita_attuale->dadi[posizione_dado];
     return faccia_dado;
 }
-void scrivere_giocatore(partita* partita_attuale, giocatore* giocatore_attuale, int posizione_elenco_giocatori){
+void scrivere_giocatore (partita* partita_attuale, giocatore giocatore_attuale, int posizione_elenco_giocatori) {
 	partita_attuale->giocatori[posizione_elenco_giocatori] = giocatore_attuale;
 }
-giocatore* leggere_giocatore(partita* partita_attuale, int posizione_elenco_giocatori){
-    giocatore* giocatore_attuale = partita_attuale->giocatori[posizione_elenco_giocatori];
+giocatore leggere_giocatore (partita* partita_attuale, int posizione_elenco_giocatori) {
+    giocatore giocatore_attuale = partita_attuale->giocatori[posizione_elenco_giocatori];
     return giocatore_attuale;
+}
+
+
+
+void scrivere_nome_partita (partita* partita_attuale, char nome_da_inserire[]) {
+    int indice_nome = 0;
+    while (nome_da_inserire[indice_nome] != FINE_STRINGA) {
+        scrivere_carattere_partita(partita_attuale, nome_da_inserire[indice_nome], indice_nome);
+        indice_nome = indice_nome + 1;
+    }
+    return;
+}
+
+void leggere_nome_partita (partita* partita_attuale, char nome_letto[]) {
+    int indice_nome = 0;
+    while(leggere_carattere_partita (partita_attuale, indice_nome) != FINE_STRINGA){
+        nome_letto[indice_nome] = leggere_carattere_partita(partita_attuale, indice_nome);
+        indice_nome = indice_nome + 1;
+    }
+    return;
 }

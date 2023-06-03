@@ -25,7 +25,7 @@ indice_percorso, la posizione raggiunta all'interno del percorso di partita_attu
 
 ALGORITMO
 indice_percorso = 1
-MENTRE (indice_percorso < leggere_numero_caselle(partita_attuale))
+MENTRE (indice_percorso < leggere_lunghezza_percorso(partita_attuale))
    partita_attuale = inserire_casella (partita_attuale, indice_percorso)
    indice_percorso = indice_percorso + 1
 FINE

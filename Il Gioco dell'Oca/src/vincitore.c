@@ -1,11 +1,13 @@
 #include <stlib.h>
 #include "vincitore.h"
-void scrivere_nome_vincitore(vincitore* vincitore_attuale, char nome[]){
-    vincitore_attuale->nome_vincitore = nome;
+void scrivere_carattere_nome_vincitore (vincitore* vincitore_attuale, int posizione, char simbolo) {
+    partita_attuale->nome_vincitore[posizione] = simbolo;
+    return;
 }
-char* leggere_nome_vincitore(vincitore* vincitore_attuale){
-    char* nome = vincitore_attuale->nome_vincitore;
-    return nome;
+
+char leggere_carattere_nome_vincitore (vincitore* vincitore_attuale, int posizione) {
+    char simbolo = partita_attuale->nome_vincitore[posizione];
+    return simbolo;
 }
 void scrivere_pedina_vincitore(vincitore* vincitore_attuale, char pedina){
     vincitore_attuale->pedina_vincitore = pedina;
@@ -35,4 +37,24 @@ void scrivere_punteggio(vincitore* vincitore_attuale, float punteggio_giocatore)
 float leggere_punteggio(vincitore* vincitore_attuale){
     float punteggio_giocatore = vincitore_attuale->punteggio;
     return punteggio;
+}
+
+
+
+void scrivere_nome_vincitore (vincitore* vincitore_attuale, char nome_da_inserire[]) {
+    int indice_nome = 0;
+    while (nome_da_inserire[indice_nome] != FINE_STRINGA) {
+        scrivere_carattere_nome_vincitore(vincitore_attuale, nome_da_inserire[indice_nome], indice_nome);
+        indice_nome = indice_nome + 1;
+    }
+    return;
+}
+
+void leggere_nome_vincitore (vincitore* vincitore_attuale, char nome_letto[]) {
+    int indice_nome = 0;
+    while(leggere_carattere_nome_vincitore (vincitore_attuale, indice_nome) != FINE_STRINGA){
+        nome_letto[indice_nome] = leggere_carattere_nome_vincitore(vincitore_attuale, indice_nome);
+        indice_nome = indice_nome + 1;
+    }
+    return;
 }
