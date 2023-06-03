@@ -4,15 +4,15 @@
 #include "casella.h"
 #include "costanti.h"
 
-void generare_percorso(partita* partita_attuale) {
+void generare_percorso (partita* partita_attuale) {
     creare_percorso_con_oche(partita_attuale);
     posizionare_caselle_speciali(partita_attuale);
-    return partita_attuale;
+    return;
 }
 
-void creare_percorso_con_oche(partita* partita_attaule) {
+void creare_percorso_con_oche(partita* partita_attuale) {
     int indice_percorso = 0;
-    while(indice_percorso < leggere_numero_caselle(partita_attuale)) {
+    while(indice_percorso < leggere_numero_casella(partita_attuale)) {
         partita_attuale = inserire_casella(partita_attuale, indice_percorso);
         indice_percorso = indice_percorso + 1;
     }
