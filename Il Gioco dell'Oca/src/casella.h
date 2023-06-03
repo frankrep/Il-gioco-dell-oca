@@ -9,12 +9,13 @@ typedef struct
     char simbolo[NUMERO_MASSIMO_CARATTERI_SIMBOLO];
 }casella;
 
-void scrivere_nome_casella(casellla* casella_attuale, char nome_da_inserire[]);
-char* leggere_nome_casella(casella* casella_attuale);
+void scrivere_carattere_casella(casella* casella_attuale, int posizione, char simbolo);
+char leggere_carattere_casella(casella* casella_attuale, int posizione);
 void scrivere_numero_casella(casella* casella_attuale, int numero_casella_da_inserire);
 int leggere_numero_casella(casella* casella_attuale);
-void scrivere_file_interfaccia(casella* casella_attuale, char file[]);
-char* leggere_file_interfaccia(casella* casella_attuale);
 void scrivere_simbolo(casella* casella_attuale, char simbolo_da_inserire[]);
 char* leggere_simbolo(casella* casella_attuale);
+void scrivere_nome_casella (casella* casella_attuale, char nome_da_inserire[]);
+void leggere_nome_casella (casella* casella_attuale, char nome_letto[]);
+
 #endif /* CASELLA_H_ */

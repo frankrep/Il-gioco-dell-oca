@@ -12,6 +12,7 @@ char leggere_carattere_partita (partita* partita_attuale, int posizione) {
 }
 void scrivere_numero_giocatori (partita* partita_attuale, int numero_partecipanti) {
 	partita_attuale->numero_giocatori = numero_partecipanti;
+    return;
 }
 int leggere_numero_giocatori (partita* partita_attuale) {
     int numero_partecipanti = partita_attuale->numero_giocatori;
@@ -27,6 +28,7 @@ int leggere_lunghezza_percorso (partita* partita_attuale) {
 }
 void scrivere_casella_percorso (partita* partita_attuale, casella casella_attuale, int posizione_casella) {
 	partita_attuale->percorso[posizione_casella] = casella_attuale;
+    return;
 }
 casella leggere_casella_percorso (partita* partita_attuale, int posizione_casella) {
     casella casella_attuale = partita_attuale->percorso[posizione_casella];
@@ -34,6 +36,7 @@ casella leggere_casella_percorso (partita* partita_attuale, int posizione_casell
 }
 void scrivere_turno (partita* partita_attuale, int turno_attuale) {
 	partita_attuale->turno = turno_attuale;
+    return;
 }
 int leggere_turno (partita* partita_attuale) {
     int turno_attuale = partita_attuale->turno;
@@ -48,13 +51,12 @@ int leggere_dadi (partita* partita_attuale, int posizione_dado) {
 }
 void scrivere_giocatore (partita* partita_attuale, giocatore giocatore_attuale, int posizione_elenco_giocatori) {
 	partita_attuale->giocatori[posizione_elenco_giocatori] = giocatore_attuale;
+    return;
 }
 giocatore leggere_giocatore (partita* partita_attuale, int posizione_elenco_giocatori) {
     giocatore giocatore_attuale = partita_attuale->giocatori[posizione_elenco_giocatori];
     return giocatore_attuale;
 }
-
-
 
 void scrivere_nome_partita (partita* partita_attuale, char nome_da_inserire[]) {
     int indice_nome = 0;

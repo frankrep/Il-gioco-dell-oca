@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "partita.h"
 #include "generare_percorso.h"
 #include "casella.h"
@@ -20,23 +21,23 @@ void creare_percorso_con_oche (partita* partita_attuale) {
 }
 
 void inserire_casella (partita* partita_attuale, int posizione_percorso) {
-    casella* casella_attuale = creare_casella (posizione_percorso);
-    *partita_attuale = scrivere_casella_percorso (partita_attuale, casella_attuale, posizione_percorso);
+    casella casella_attuale;
+    creare_casella (&casella_attuale, posizione_percorso);
+    scrivere_casella_percorso (partita_attuale, casella_attuale, posizione_percorso);
     return;
 }
 
-casella* creare_casella(int indice_partita, FILE* file_oca) {
-    casella* casella_attuale;
+void creare_casella (casella* casella_attuale, int indice_partita) {
     if ( calcolare_resto (indice_partita, DISTANZA_OCHE) == FALSE ) {
-        *casella_attuale = leggere_da_file(casella, 1, file_oca);
+        scrivere_carattere_casella(casella_attuale, 0, FINE_STRINGA);
+        scrivere_simbolo(casella_attuale, FINE_STRINGA);
     }
-    else
-    {
-        *casella_attuale = scrivere_nome_casella(casella_attuale);
-        *casella_attuale = scrivere_simbolo(casella_attuale);
+    else {
+        scrivere_nome_casella (casella_attuale, NOME_OCA );
+        scrivere_simbolo (casella_attuale);
     }
     *casella_attuale = scrivere_numero_casella(casella_attuale, indice_partita);
-    return casella_attuale;
+    return;
 }
 partita* posizionare_caselle_speciali(partita* partita_attuale) {
     casella* caselle_speciali = proporzionare_caselle_speciali(partita_attuale);
