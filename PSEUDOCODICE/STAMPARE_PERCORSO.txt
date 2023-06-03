@@ -1,6 +1,4 @@
 
-
-
 stampare_percorso
 
 DATI DI INPUT
