@@ -1,0 +1,10 @@
+#include <stdlib.h>
+#include "partita.h"
+#include "generare_percorso.h"
+#include "casella.h"
+#include "costanti.h"
+#include "vincitore.h"
+#include "inizializzare_partita.h"
+#include "giocatore.h"
+#include "gestire_partita.h"
+#include "classifica.h"
