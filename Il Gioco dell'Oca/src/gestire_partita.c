@@ -23,10 +23,10 @@ vincitore gestire_partita(partita* partita_attuale){
     }
     do{
         cambiare_turno(partita_attuale);
-        if(leggere_autorizzazione(leggere_giocatore(*partita_attuale,leggere_turno(*partita_attuale))) > 0){
+        if(leggere_autorizzazione(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))) > 0){
             gestire_autorizzazione(partita_attuale);
         }
-        if(leggere_autorizzazione(leggere_giocatore(*partita_attuale,leggere_turno(*partita_attuale))) > 0){
+        if(leggere_autorizzazione(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))) > 0){
             //stampare percorso con l'attesa con l'attesa dell'input
             lanciare_dadi(partita_attuale);
             //stampare percorso con i dadi aggiornati e attendere l'input
@@ -58,8 +58,8 @@ void scegliere_giocatore(partita* partita_attuale){
 vincitore inizializzare_vincitore(partita* partita_attuale){
     vincitore vincitore_partita;
     char nome_vincitore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
-    leggere_nome_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale)), nome_vincitore)
-    scrivere_nome_vincitore(&vincitore_partita, );
+    leggere_nome_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale)), nome_vincitore);
+    scrivere_nome_vincitore(&vincitore_partita, nome_vincitore);
     scrivere_pedina_vincitore(&vincitore_partita, leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))));
     scrivere_lanci_vincitore(&vincitore_partita, leggere_lanci_effettuati(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))));
     scrivere_lunghezza_percorso_vincitore(&vincitore_partita, leggere_lunghezza_percorso(*partita_attuale));
@@ -68,9 +68,9 @@ vincitore inizializzare_vincitore(partita* partita_attuale){
 
 int generare_numero(int numero_massimo, int numero_minimo){
     int seme;
-    seme = leggere_da_file(sizeof(int),1,file_seme);
+    seme = leggere_da_file(sizeof(int), 1, file_seme);
     seme = generare_seme(seme);
-    file_seme = scrivere_su_file(sizeof(int),1,seme);
+    scrivere_su_file(sizeof(int), 1, seme);
     int numero_casuale = generare_casuale(seme,numero_massimo,numero_minimo);
     return numero_casuale;
 }
@@ -149,8 +149,9 @@ void spostare_giocatore(partita* partita_attuale){
 }
 
 void sommare_lancio_posizione(partita* partita_attuale){
-    giocatore* giocatore_attuale;
-    giocatore_attuale = leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale) + sommare_dadi(partita_attuale));
+    giocatore giocatore_attuale;
+    giocatore_attuale = leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale));
+    scrivere_posizione_giocatore(giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) + sommare_dadi (partita_attuale));
     scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
     return;
 
@@ -161,7 +162,8 @@ void calcolare_caselle_eccesso(partita* partita_attuale){
     giocatore giocatore_attuale;
     int eccesso = leggere_posizione_giocatore (leggere_giocatore(*partita_attuale), leggere_turno(*partita_attuale)) - leggere_lunghezza_percorso(*partita_attuale);
     giocatore_attuale = leggere_giocatore(*partita_attuale,leggere_turno(*partita_attuale));
-    scrivere_giocatore(partita_attuale, scrivere_posizione_giocatore(&giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) - eccesso), leggere_turno(*partita_attuale));
+    giocatore_attuale = scrivere_posizione_giocatore(&giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) - eccesso);
+    scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
     return;
 
     //ATTENZIONE!!! DA CONTROLLARE

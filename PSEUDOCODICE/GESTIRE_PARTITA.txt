@@ -248,7 +248,7 @@ DATI DI LAVORO
 giocatore_attuale, il giocatore di turno di cui calcolare la nuova posizione, record di tipo giocatore
 
 ALGORITMO
-giocatore_attuale = leggere_posizione_giocatore(leggere_giocatore(partita_attuale), leggere_turno(partita_attuale)) + sommare_dadi(partita_attuale)
+giocatore_attuale = scrivere_posizione_giocatore ( leggere_giocatore (partita_attuale, leggere_turno (partita_attuale) ), leggere_posizione_giocatore ( leggere_giocatore (partita_attuale, leggere_turno (partita_attuale) ) ) + sommare_dadi (partita_attuale) )
 partita_attuale = scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(partita_attuale))
 
 
