@@ -43,6 +43,7 @@ void scrivere_nome_casella (casella* casella_attuale, char nome_da_inserire[]) {
         scrivere_carattere_casella(casella_attuale, nome_da_inserire[indice_nome], indice_nome);
         indice_nome = indice_nome + 1;
     }
+    scrivere_carattere_casella(casella_attuale,  indice_nome, FINE_STRINGA);
     return;
 }
 
@@ -59,9 +60,10 @@ void leggere_nome_casella (casella casella_attuale, char nome_letto[]) {
 void scrivere_simbolo (casella* casella_attuale, char simbolo_da_inserire[]) {
     int indice_simbolo = 0;
     while(simbolo_da_inserire[indice_simbolo] != FINE_STRINGA){
-    	scrivere_carattere_simbolo(casella_attuale, simbolo_da_inserire[indice_simbolo], indice_simbolo);
+    	scrivere_carattere_simbolo(casella_attuale, indice_simbolo, simbolo_da_inserire[indice_simbolo]);
         indice_simbolo = indice_simbolo + 1;
     }
+    scrivere_carattere_simbolo(casella_attuale,  indice_simbolo, FINE_STRINGA);
     return;
 }
 
@@ -73,7 +75,4 @@ void leggere_simbolo (casella casella_attuale, char simbolo_letto[]) {
     }
     return;
 }
-
-
-
 

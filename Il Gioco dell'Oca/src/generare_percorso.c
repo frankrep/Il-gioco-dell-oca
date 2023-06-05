@@ -13,7 +13,7 @@ void generare_percorso (partita* partita_attuale) {
 
 void creare_percorso_con_oche (partita* partita_attuale) {
     int indice_percorso = 0;
-    while ( indice_percorso < leggere_lunghezza_percorso (partita_attuale) ) {
+    while ( indice_percorso < leggere_lunghezza_percorso (*partita_attuale) ) {
         inserire_casella (partita_attuale, indice_percorso);
         indice_percorso = indice_percorso + 1;
     }
@@ -29,25 +29,27 @@ void inserire_casella (partita* partita_attuale, int posizione_percorso) {
 
 void creare_casella (casella* casella_attuale, int indice_partita) {
     if ( calcolare_resto (indice_partita, DISTANZA_OCHE) == FALSE ) {
-        scrivere_carattere_casella(casella_attuale, 0, FINE_STRINGA);
-        scrivere_simbolo(casella_attuale, FINE_STRINGA);
+        scrivere_carattere_casella (casella_attuale, 0, FINE_STRINGA);
+        scrivere_carattere_simbolo (casella_attuale, FINE_STRINGA);
     }
     else {
         scrivere_nome_casella (casella_attuale, NOME_OCA );
-        scrivere_simbolo (casella_attuale);
+        scrivere_simbolo (casella_attuale, simbolo_della_casella_oca);  <-----aggiungere costante
     }
-    *casella_attuale = scrivere_numero_casella(casella_attuale, indice_partita);
+    scrivere_numero_casella (casella_attuale, indice_partita);
     return;
 }
-partita* posizionare_caselle_speciali(partita* partita_attuale) {
-    casella* caselle_speciali = proporzionare_caselle_speciali(partita_attuale);
+
+void posizionare_caselle_speciali (partita* partita_attuale) {
+    casella* caselle_speciali = proporzionare_caselle_speciali (partita_attuale);
     int indice_speciali = 0;
-    while(indice_speciali <= NUMERO_CASELLE_SPECIALI) {
-        *partita_attuale = scrivere_casella_percorso(partita_attuale, caselle_speciali[indice_speciali], indice_speciali);
+    while (indice_speciali <= NUMERO_CASELLE_SPECIALI) {
+        scrivere_casella_percorso (partita_attuale, caselle_speciali[indice_speciali], indice_speciali);
         indice_speciali = indice_speciali + 1;
     }
-    return partita_attuale;
+    return;
 }
+
 casella* proporzionare_caselle_speciali(partita* partita_attuale, FILE* file_caselle_speciali) {
     casella* caselle_speciali = leggere_da_file(casella, NUMERO_CASELLE_SPECIALI, file_caselle_speciali);
     int indice_speciali = 0;
@@ -57,6 +59,7 @@ casella* proporzionare_caselle_speciali(partita* partita_attuale, FILE* file_cas
     }
     return caselle_speciali;
 }
+
 int calcolare_proporzione(partita* partita_attuale, int posizione_originale) {
     float valore_proporzione = ((leggere_lunghezza_percorso(partita_attuale) * posizione_originale) / DIMENSIONE_MASSIMA_PERCORSO);
     int posizione_ricavata = calcolare_parte_intera(valore_proporzione);
