@@ -1,12 +1,12 @@
 #include <stlib.h>
 #include "vincitore.h"
 void scrivere_carattere_nome_vincitore (vincitore* vincitore_attuale, int posizione, char simbolo) {
-    partita_attuale->nome_vincitore[posizione] = simbolo;
+    vincitore_attuale->nome_vincitore[posizione] = simbolo;
     return;
 }
 
 char leggere_carattere_nome_vincitore (vincitore* vincitore_attuale, int posizione) {
-    char simbolo = partita_attuale->nome_vincitore[posizione];
+    char simbolo = vincitore_attuale->nome_vincitore[posizione];
     return simbolo;
 }
 void scrivere_pedina_vincitore(vincitore* vincitore_attuale, char pedina){
@@ -36,7 +36,7 @@ void scrivere_punteggio(vincitore* vincitore_attuale, float punteggio_giocatore)
 }
 float leggere_punteggio(vincitore* vincitore_attuale){
     float punteggio_giocatore = vincitore_attuale->punteggio;
-    return punteggio;
+    return punteggio_giocatore;
 }
 
 

@@ -108,10 +108,3 @@ char confermare_scelta (char conferma_scelta)  {
     }while(confermare_scelta != RISPOSTA_AFFERMATIVA_MAIUSCOLO) && (confermare_scelta != RISPOSTA_AFFERMATIVA_MINUSCOLO) && (confermare_scelta != RISPOSTA_NEGATIVA_MAIUSCOLO) && (confermare_scelta != RISPOSTA_NEGATIVA_MINUSCOLO) )
     return conferma_scelta;
 }
-
-
-
-IO VOGLIO LA lista
-//non siamo andati neanche a mare a vedere i culi per fare il progetto, evviva la fica.
-//PERFAVORE PROF METTICI 30 E LODE CI STIAMO IMPEGNANDO, NEANCHE SU R6 TRYHARDIAMO COSI TANTO! CI PROMUOVA GENTILMENTE T.T. p.s: ti amiamo proffy <3
-//le abbiamo inviato solo 1 mail ci promuova non le abbiamo mai rotto il cazzo ti amiamo ciao.
