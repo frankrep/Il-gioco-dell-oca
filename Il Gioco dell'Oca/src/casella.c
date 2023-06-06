@@ -37,7 +37,7 @@ char leggere_carattere_simbolo(casella casella_attuale, int posizione){
 }
 
 
-void scrivere_nome_casella (casella* casella_attuale, char nome_da_inserire[]) {
+void scrivere_nome_casella (casella* casella_attuale, const char nome_da_inserire[]) {
     int indice_nome = 0;
     while(nome_da_inserire[indice_nome] != FINE_STRINGA){
         scrivere_carattere_casella(casella_attuale, nome_da_inserire[indice_nome], indice_nome);
@@ -57,7 +57,7 @@ void leggere_nome_casella (casella casella_attuale, char nome_letto[]) {
 }
 
 
-void scrivere_simbolo (casella* casella_attuale, char simbolo_da_inserire[]) {
+void scrivere_simbolo (casella* casella_attuale, const char simbolo_da_inserire[]) {
     int indice_simbolo = 0;
     while(simbolo_da_inserire[indice_simbolo] != FINE_STRINGA){
     	scrivere_carattere_simbolo(casella_attuale, indice_simbolo, simbolo_da_inserire[indice_simbolo]);
