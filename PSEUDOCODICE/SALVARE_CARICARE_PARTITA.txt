@@ -117,3 +117,27 @@ ESEGUI
         //stampare messaggio errore
 	FINE
 FINCHE’ ((slot_scelto < 1) OR (slot_scelto > NUMERO_MASSIMO_PARTITE))
+
+
+
+confermare_scelta
+
+DATI DI INPUT
+risposta, conterrà la conferma di una scelta da parte dell'utente, carattere, = RISPOSTA_AFFERMATIVA_MAIUSCOLO o RISPOSTA_AFFERMATIVA_MINUSCOLO (indica la conferma da parte dell'utente), = RISPOSTA_NEGATIVA_MAIUSCOLO o RISPOSTA_NEGATIVA_MINUSCOLO (indica la volontà di non confermare da parte dell'utente)
+RISPOSTA_AFFERMATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta affermativa da parte dell'utente, Carattere, = 'S'
+RISPOSTA_AFFERMATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta affermativa da parte dell'utente, Carattere, = 's'
+RISPOSTA_NEGATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta negativa da parte dell'utente, Carattere, = 'N'
+RISPOSTA_NEGATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta negativa da parte dell'utente, Carattere, = 'n'
+
+DATI DI OUTPUT
+risposta, contiene la scelta fatta dall'utente in merito alla conferma di un'operazione, carattere,  = RISPOSTA_AFFERMATIVA_MAIUSCOLO o RISPOSTA_AFFERMATIVA_MINUSCOLO (indica la conferma da parte dell'utente), = RISPOSTA_NEGATIVA_MAIUSCOLO o RISPOSTA_NEGATIVA_MINUSCOLO (indica la volontà di non confermare da parte dell'utente)
+
+//stampare richiesta da file con le frasi
+stampare_a_video ("Confermi la scelta?")
+ESEGUI
+	risposta = leggere_da_tastiera()
+	SE ( (risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO) AND (risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO) AND (RISPOSTA != RISPOSTA_NEGATIVA_MAIUSCOLO) AND (risposta != RISPOSTA_NEGATIVA_MINUSCOLO) )
+		ALLORA stampare_a_video ("La scelta inserita non è valida, riprovare: ")
+	FINE
+FINCHE' ( (risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO) AND (risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO) AND (RISPOSTA != RISPOSTA_NEGATIVA_MAIUSCOLO) AND (risposta != RISPOSTA_NEGATIVA_MINUSCOLO) )
+

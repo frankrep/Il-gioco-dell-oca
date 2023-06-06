@@ -1,85 +1,129 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "costanti.h"
 #include "salvare_caricare_partita.h"
 #include "partita.h"
 #include "gestire_partita.h"
-partita caricare_partite () {
-    int indice_partita = 0;
-    partita elenco_partite[NUMERO_MASSIMO_PARTITE];
-    while (indice_partita <= NUMERO_MASSIMO_PARTITE)
-    {
-        elenco_partite[indice_partita] = leggere_da_file(file_salvataggio);
-        indice_partita = indice_partita + 1;
+#include "inizializzare_partita.h"
+
+
+
+void caricare_partite (partita elenco_partite[]) {
+    FILE * file_salvataggio = fopen("file_salvataggio.bin", "rb");
+    if (file_salvataggio == NULL) {
+        //stampare messaggio di errore nell'apertura del file o del file inesistente
+        //gestire l'errore nel caso di apertura, cioè restituisce la funzione
     }
-    return elenco_partite;
+    else {
+        fread(elenco_partite, sizeof(partita), NUMERO_MASSIMO_PARTITE, file_salvataggio);
+        fclose(file_salvataggio);
+    }
+    return;
 }
 
-FILE* salvare_partita (partita* partita_attuale, int slot_scelto) {
+
+
+void salvare_partita (partita* partita_attuale) {
+    int slot_scelto;
     int salvato = 0;
-    partita elenco_partite[NUMERO_MASSIMO_PARTITE];
-    elenco_partite = caricare_partite();
+    partita elenco_partite [NUMERO_MASSIMO_PARTITE];
+    caricare_partite (elenco_partite);
     do {
         slot_scelto = selezionare_slot (elenco_partite);
-        partita_attuale = scrivere_nome_partita(partita_attuale,inserire_stringa(DIMENSIONE_MINIMA_NOME_PARTITA,DIMENSIONE_MASSIMA_NOME_PARTITA));
-        if (confrontare_stringhe(leggere_nome_partita(elenco_partite[slot_scelto]),FINE_STRINGA) == 1)
-        {
-            elenco_partite[slot_scelto] = partita_attuale;
-            int indice_partita = 0;
-            while(indice_partita < NUMERO_MASSIMO_PARTITE)
-            {
-                file_salvataggio = scrivere_su_file(file_salvataggio,elenco_partite[indice_partita]);
-                indice_partita = indice_partita + 1;
-            }
+        char nome_partita_salvata [DIMENSIONE_MASSIMA_NOME_PARTITA];
+        inserire_stringa (DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata);
+        scrivere_nome_partita (partita_attuale,  nome_partita_salvata);
+        leggere_nome_partita (elenco_partite [slot_scelto], nome_partita_salvata);
+        if (confrontare_stringhe (nome_partita_salvata,STRINGA_VUOTA) == 1) {
+            elenco_partite [slot_scelto] = *partita_attuale;
+            scrivere_partite (elenco_partite);
             salvato = 1;
         }
-        else
-        {
-            //stampare messaggio richiesta sovrascritta
-            char sovrascrivere = confermare_scelta();
-            if ((sovrascrivere == RISPOSTA_AFFERMATIVA_MAIUSCOLO) || (sovrascrivere = RISPOSTA_AFFERMATIVA_MINUSCOLO))
-            {
-                elenco_partite[slot_scelto] = partita_attuale;
-                int indice_partita = 0;
-                while (indice_partita < NUMERO_MASSIMO_PARTITE)
-                {
-                    file_salvataggio = scrivere_su_file(file_salvataggio,elenco_partite[indice_partita]);
-                    indice_partita = indice_partita + 1;
-                }
+        else {
+            //stampare messaggio richiesta sovrascrittura
+            char sovrascrivere;
+            confermare_scelta (&sovrascrivere);
+            if ( (sovrascrivere == RISPOSTA_AFFERMATIVA_MAIUSCOLO) || (sovrascrivere = RISPOSTA_AFFERMATIVA_MINUSCOLO) ) {
+                elenco_partite[slot_scelto] = *partita_attuale;
+                scrivere_partite (elenco_partite);
                 salvato = 1;
             }
         }
-    }while(salvato != 1);
-    return file_salvataggio;
+    } while (salvato != 1);
+    return;
 }
 
-void stampare_partite_salvato(partita* elenco_partite) {
+
+
+void confermare_scelta (char * risposta) {
+    //decidere se stampare da file la frase
+    printf ("Confermi la scelta?");
+    int correttezza_inserimento;
+    do {
+        do {
+            correttezza_inserimento = scanf("%c", risposta);
+            fflush (stdin);
+            //decidere se stampare da file la frase
+            if (correttezza_inserimento == 0)
+                printf("Attenzione: input non valido.");
+        } while (correttezza_inserimento == 0);
+        //decidere se stampare da file la frase
+        if ( risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && risposta != RISPOSTA_NEGATIVA_MINUSCOLO )
+            printf("La scelta inserita non e' valida, riprovare: ");
+
+    } while ( risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && risposta != RISPOSTA_NEGATIVA_MINUSCOLO );
+    return;
+}
+
+
+
+void stampare_partite_salvate (partita elenco_partite[]) {
     int indice_partita = 0;
-    char nome[DIMENSIONE_MASSIMA_NOME_PARTITA];
-    while (indice_partita <= NUMERO_MASSIMO_PARTITE)
-    {
-        nome = leggere_nome_partita(elenco_partite[indice_partita]);
-        if (confrontare_stringhe(nome,FINE_STRINGA) == 1)
-        {
+    char nome [DIMENSIONE_MASSIMA_NOME_PARTITA];
+    while (indice_partita <= NUMERO_MASSIMO_PARTITE) {
+        leggere_nome_partita (elenco_partite[indice_partita], nome);
+        if (confrontare_stringhe (nome,STRINGA_VUOTA) == 1) {
              //stampare il nome dello slot con il simbolo vuoto
         }
-        else
-        {
+        else {
             //stampare il nome relativo alla partita salvata nella posizione individuata dallo slot
         }
     }
+    return;
 }
 
-int selezionare_slot (partita* elenco_partite) {
+
+
+int selezionare_slot (partita elenco_partite[]) {
     int slot_scelto = 0;
     //interfaccia per la scelta tra le partite salvate (interfaccer muvt!)
-    stampare_partite_salvato(elenco_partite);
+    stampare_partite_salvate (elenco_partite);
     do {
-        scanf("%d",slot_scelto);
-        if ((slot_scelto < 0) || (slot_scelto > NUMERO_MASSIMO_PARTITE))
+
+
+        //verifica della correttezza del tipo dell'input inserito dall'utente
+        int correttezza_inserimento;
+        do {
+            correttezza_inserimento = scanf("%d", &slot_scelto);
+            fflush(stdin);
+            if (correttezza_inserimento == 0)
+                printf("Attenzione: input non valido.");
+        } while (correttezza_inserimento == 0);
+
+
+        if ( (slot_scelto < 0) || (slot_scelto > NUMERO_MASSIMO_PARTITE) )
         {
             //stampare messaggio errore
         }
-    }while ((slot_scelto < 1) || (slot_scelto > NUMERO_MASSIMO_PARTITE));
+
+    }while ( (slot_scelto < 1) || (slot_scelto > NUMERO_MASSIMO_PARTITE) );
     return slot_scelto;
+}
+
+
+
+void scrivere_partite (partita elenco_partite[]) {
+    FILE * file_salvataggio = fopen("file_salvataggio.bin", "wb");
+    fwrite(elenco_partite, sizeof (partita), NUMERO_MASSIMO_PARTITE, file_salvataggio);
+    fclose(file_salvataggio);
+    return;
 }

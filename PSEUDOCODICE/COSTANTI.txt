@@ -74,7 +74,7 @@ LUNGHEZZA_SCHERMATA, il numero di caratteri rappresentabili in una riga dello sc
 ALTEZZA_SCHERMATA, il numero di caratteri rappresentabili in una colonna dello schermo, Intero, = 25
 RISPOSTA_AFFERMATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta affermativa da parte dell'utente, Carattere, = 'S'
 RISPOSTA_AFFERMATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta affermativa da parte dell'utente, Carattere, = 's'
-RISPOSTA_NEGATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta negativa da parte dell'utente, Carattere, = N'
+RISPOSTA_NEGATIVA_MAIUSCOLO, il carattere in maiuscolo indicante la risposta negativa da parte dell'utente, Carattere, = 'N'
 RISPOSTA_NEGATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta negativa da parte dell'utente, Carattere, = 'n'
 
 TASTO_LANCIO_DADI, il carattere indicante la scelta di voler lanciare i dadi, Carattere, = 'L'

@@ -91,7 +91,8 @@ vincitore* riprendere_partita () {
 }
 
 partita* scegliere_partita_da_caricare () {
-    partita elenco_partite[NUMERO_MASSIMO_PARTITE] = caricare_partita (file_salvataggio);
+    partita elenco_partite [NUMERO_MASSIMO_PARTITE];
+    caricare_partita (elenco_partite);
     int slot_scelto = selezionare_slot (elenco_partite);
     partita* partita_attuale = elenco_partite[slot_scelto];
     return partita_attuale;

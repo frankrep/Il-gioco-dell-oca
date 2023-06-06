@@ -8,3 +8,9 @@
 15	78	7077521999905372	CMakeFiles/Il_Gioco_dell_Oca.dir/src/partita.c.obj	64916e4821e406b6
 6	79	7077521999905372	CMakeFiles/Il_Gioco_dell_Oca.dir/src/generare_percorso.c.obj	7f25762a7fc85e8b
 26	84	7077521999935366	CMakeFiles/Il_Gioco_dell_Oca.dir/src/vincitore.c.obj	1bd3434c8a147809
+19	118	7077731026390833	CMakeFiles/Il_Gioco_dell_Oca.dir/src/inizializzare_partita.c.obj	817d2092093a98c4
+26	119	7077731026390833	CMakeFiles/Il_Gioco_dell_Oca.dir/src/vincitore.c.obj	1bd3434c8a147809
+2	120	7077731026390833	CMakeFiles/Il_Gioco_dell_Oca.dir/src/casella.c.obj	3c0ae30eb0feadd5
+14	120	7077731026405738	CMakeFiles/Il_Gioco_dell_Oca.dir/src/giocatore.c.obj	f1d1d70345ee8805
+22	121	7077731026415678	CMakeFiles/Il_Gioco_dell_Oca.dir/src/partita.c.obj	64916e4821e406b6
+7	122	7077731026435688	CMakeFiles/Il_Gioco_dell_Oca.dir/src/generare_percorso.c.obj	7f25762a7fc85e8b

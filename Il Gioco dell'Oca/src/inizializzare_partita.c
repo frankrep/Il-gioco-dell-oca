@@ -57,10 +57,10 @@ void inizializzare_nomi_giocatori(partita* partita_attuale) {
     return ;
 }
 
-void inserire_stringa(int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]) {
+void inserire_stringa (int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]) {
     int indice_stringa = 0;
     int terminato = 0;
-    while ( (indice_stringa < dimensione_massima_stringa) && (terminato == FALSE) && (indice_stringa < dimensione_minima_stringa) ) {
+    while ( (indice_stringa < dimensione_massima_stringa) && (terminato == FALSO) && (indice_stringa < dimensione_minima_stringa) ) {
         char carattere;
         scanf("%c", &carattere);
         if(carattere != CARATTERE_A_CAPO){
@@ -71,7 +71,7 @@ void inserire_stringa(int dimensione_minima_stringa, int dimensione_massima_stri
             //stampare messaggio errore minimo caratteri richiesti
         }
          else{
-            terminato = TRUE;
+            terminato = VERO;
          }
     }
     nome_da_inserire[indice_stringa] = FINE_STRINGA;
