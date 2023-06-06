@@ -4,13 +4,14 @@
 #include "costanti.h"
 void stampare_dadi (int facce_dadi) {
     int indice_carattere = 0;
-    while (indice_carattere <= (LUNGHEZZA_SCHERMATA * ALTEZZA_SCHERMTA))
+    int posizione_colonna;
+    while (indice_carattere < (LUNGHEZZA_SCHERMATA * ALTEZZA_SCHERMATA))
     {
         leggere_da_file(file_interfaccia);
         indice_carattere = indice_carattere +1;
     }
     int indice_riga = 0;
-    while (indice_riga <= SPIAZZAMENTO_DADO)
+    while (indice_riga < SPIAZZAMENTO_DADO)
     {
         char carattere_letto = leggere_da_file(file_interfaccia);
         if (carattere_letto == CARATTERE_A_CAPO)
@@ -22,11 +23,11 @@ void stampare_dadi (int facce_dadi) {
     while (facce_dadi[indice_dadi] != 0 || (indice_dadi <= NUMERO_DADI))
     {
         int indice_puntini_dado = 0;
-        while (indice_puntini_dado <= NUMERO_MASSIMO_PUNTINI_FACCIA_DADO)
+        while (indice_puntini_dado < NUMERO_MASSIMO_PUNTINI_FACCIA_DADO)
         {
             //inserire funzione di conversione
             int posizione_riga = leggere_da_file(file_interfaccia);
-            carattere_letto = leggere_da_file(file_interfaccia);
+            char carattere_letto = leggere_da_file(file_interfaccia);
             while (carattere_letto != CARATTERE_A_CAPO)
             {
                 carattere_letto = leggere_da_file(file_interfaccia);
@@ -43,7 +44,7 @@ void stampare_dadi (int facce_dadi) {
                     printf("%c",CARATTERE_SPAZIO);
                 }
             }
-            else if (indice_punti_dado == 2)
+            else if (indice_puntini_dado == 2)
             {
                 if(facce_dadi[indice_dadi] == 6)
                 {
@@ -54,7 +55,7 @@ void stampare_dadi (int facce_dadi) {
                     printf("%c",CARATTERE_SPAZIO);
                 }
             }
-            else if (indice_punti_dado == 3)
+            else if (indice_puntini_dado == 3)
             {
                 if(facce_dadi[indice_dadi] == 6 || (facce_dadi[indice_dadi] == 5) || (facce_dadi[indice_dadi] == 4))
                 {
@@ -65,7 +66,7 @@ void stampare_dadi (int facce_dadi) {
                     printf("%c",CARATTERE_SPAZIO);
                 }
             }
-            else if (indice_punti_dado == 4)
+            else if (indice_puntini_dado == 4)
             {
                 if (facce_dadi[indice_dadi] == 5 || (facce_dadi[indice_dadi] == 3) || (facce_dadi[indice_dadi] == 1))
                 {
@@ -76,7 +77,7 @@ void stampare_dadi (int facce_dadi) {
                     printf("%c",CARATTERE_SPAZIO);
                 }
             }
-            else if (indice_punti_dado == 5)
+            else if (indice_puntini_dado == 5)
             {
                 if (facce_dadi[indice_dadi] == 6 || (facce_dadi[indice_dadi] == 5) || (facce_dadi[indice_dadi] == 4) || (facce_dadi[indice_dadi] == 3) || (facce_dadi[indice_dadi] == 2))
                 {
@@ -87,7 +88,7 @@ void stampare_dadi (int facce_dadi) {
                     printf("%c",CARATTERE_SPAZIO);
                 }
             }
-            else if (indice_punti_dado == 6)
+            else if (indice_puntini_dado == 6)
             {
                 if (facce_dadi[indice_dadi] == 6)
                 {
@@ -98,7 +99,7 @@ void stampare_dadi (int facce_dadi) {
                     printf("%c",CARATTERE_SPAZIO);
                 }
             }
-            else if (indice_punti_dado == 7)
+            else if (indice_puntini_dado == 7)
             {
                 if (facce_dadi[indice_dadi] == 6 || (facce_dadi[indice_dadi] == 5) || (facce_dadi[indice_dadi] == 4))
                 {

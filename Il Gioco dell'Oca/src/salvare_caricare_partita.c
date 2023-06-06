@@ -4,7 +4,7 @@
 #include "salvare_caricare_partita.h"
 #include "partita.h"
 #include "gestire_partita.h"
-parita caricare_partite () {
+partita caricare_partite () {
     int indice_partita = 0;
     partita elenco_partite[NUMERO_MASSIMO_PARTITE];
     while (indice_partita <= NUMERO_MASSIMO_PARTITE)
@@ -21,12 +21,12 @@ FILE* salvare_partita (partita* partita_attuale, int slot_scelto) {
     elenco_partite = caricare_partite();
     do {
         slot_scelto = selezionare_slot (elenco_partite);
-        partita_attuale = scrivere_nome_partita(partita_attuale,inserire_stringa(DIMENSIONE_MINIMA_NOME_PARTITA,DIMENSIONE_NOME_PARTITA));
+        partita_attuale = scrivere_nome_partita(partita_attuale,inserire_stringa(DIMENSIONE_MINIMA_NOME_PARTITA,DIMENSIONE_MASSIMA_NOME_PARTITA));
         if (confrontare_stringhe(leggere_nome_partita(elenco_partite[slot_scelto]),FINE_STRINGA) == 1)
         {
             elenco_partite[slot_scelto] = partita_attuale;
-            indice_partita = 1;
-            while(indice_partita <= NUMERO_MASSIMO_PARTITE)
+            int indice_partita = 0;
+            while(indice_partita < NUMERO_MASSIMO_PARTITE)
             {
                 file_salvataggio = scrivere_su_file(file_salvataggio,elenco_partite[indice_partita]);
                 indice_partita = indice_partita + 1;
@@ -37,11 +37,11 @@ FILE* salvare_partita (partita* partita_attuale, int slot_scelto) {
         {
             //stampare messaggio richiesta sovrascritta
             char sovrascrivere = confermare_scelta();
-            if ((sovrascrivere == RISPOSTA_AFFERMATIVA_MAIUSCOOLO) || (sovrascrivere = RISPOSTA_AFFERMATIVA_MINUSCOLO))
+            if ((sovrascrivere == RISPOSTA_AFFERMATIVA_MAIUSCOLO) || (sovrascrivere = RISPOSTA_AFFERMATIVA_MINUSCOLO))
             {
                 elenco_partite[slot_scelto] = partita_attuale;
-                indice_partita = 1;
-                while (indice_partita <= NUMERO_MASSIMO_PARTITE)
+                int indice_partita = 0;
+                while (indice_partita < NUMERO_MASSIMO_PARTITE)
                 {
                     file_salvataggio = scrivere_su_file(file_salvataggio,elenco_partite[indice_partita]);
                     indice_partita = indice_partita + 1;
@@ -55,7 +55,7 @@ FILE* salvare_partita (partita* partita_attuale, int slot_scelto) {
 
 void stampare_partite_salvato(partita* elenco_partite) {
     int indice_partita = 0;
-    char nome[DIMENSIONE_NOME_PARTITA];
+    char nome[DIMENSIONE_MASSIMA_NOME_PARTITA];
     while (indice_partita <= NUMERO_MASSIMO_PARTITE)
     {
         nome = leggere_nome_partita(elenco_partite[indice_partita]);
@@ -75,11 +75,11 @@ int selezionare_slot (partita* elenco_partite) {
     //interfaccia per la scelta tra le partite salvate (interfaccer muvt!)
     stampare_partite_salvato(elenco_partite);
     do {
-         slot_scelto = scanf("%d",slot_scelto);
+        scanf("%d",slot_scelto);
         if ((slot_scelto < 0) || (slot_scelto > NUMERO_MASSIMO_PARTITE))
         {
             //stampare messaggio errore
         }
-    }while((slot_scelto < 1) || (slot_scelto > NUMERO_MASSIMO_PARTITE);
+    }while ((slot_scelto < 1) || (slot_scelto > NUMERO_MASSIMO_PARTITE));
     return slot_scelto;
 }

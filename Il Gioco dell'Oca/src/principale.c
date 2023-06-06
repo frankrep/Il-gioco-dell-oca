@@ -13,9 +13,10 @@
 #include "stampare_percorso.h"
 
 void main(void) {
+	char uscita;
     stampare_testo(file_intro); //schermata logo
-    scanf("%d" , &uscita);
-    int uscita = RISPOSTA_NEGATIVA_MAIUSCOLO;
+    scanf();//PREMERE UN TASTO QUALSIASI PER CONTINUARE
+    uscita = RISPOSTA_NEGATIVA_MAIUSCOLO;
     int opzione;
     vincitore vincitore_partita;
     vincitore vincitore_attuale;
@@ -53,14 +54,14 @@ void main(void) {
                     }
                     else
                     {
-                        uscita == confermare_scelta ();
+                        uscita = confermare_scelta (&uscita);
                     }
                 }
             }
         }
     } while (uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO);
     system("pause");
-    return EXIT_SUCCESS;
+    return ;
 }
 
 int scegliere_opzione_menu () {
@@ -90,21 +91,21 @@ vincitore* riprendere_partita () {
 }
 
 partita* scegliere_partita_da_caricare () {
-    elenco_partite[NUMERO_MASSIMO_PARTITE] = caricare_partita (file_salvataggio);
+    partita elenco_partite[NUMERO_MASSIMO_PARTITE] = caricare_partita (file_salvataggio);
     int slot_scelto = selezionare_slot (elenco_partite);
     partita* partita_attuale = elenco_partite[slot_scelto];
     return partita_attuale;
 }
 
-char confermare_scelta (char conferma_scelta)  {
+void confermare_scelta (char *conferma_scelta)  {
     //stampare a video la richiesta di conferma dell'opzione (in stile: "Vuoi confermare?")
     do 
     {
         scanf("%c", &conferma_scelta);
-        if ((confermare_scelta != RISPOSTA_AFFERMATIVA_MAIUSCOLO) && (confermare_scelta != RISPOSTA_AFFERMATIVA_MINUSCOLO) && (confermare_scelta != RISPOSTA_NEGATIVA_MAIUSCOLO) && (confermare_scelta != RISPSOTA_NEGATIVA_MINUSCOLO))
+        if ((conferma_scelta != RISPOSTA_AFFERMATIVA_MAIUSCOLO) && (conferma_scelta != RISPOSTA_AFFERMATIVA_MINUSCOLO) && (conferma_scelta != RISPOSTA_NEGATIVA_MAIUSCOLO) && (conferma_scelta != RISPSOTA_NEGATIVA_MINUSCOLO))
         {
             //stampare a video il messaggio d'errore relativo alla conferma
         }
-    }while(confermare_scelta != RISPOSTA_AFFERMATIVA_MAIUSCOLO) && (confermare_scelta != RISPOSTA_AFFERMATIVA_MINUSCOLO) && (confermare_scelta != RISPOSTA_NEGATIVA_MAIUSCOLO) && (confermare_scelta != RISPOSTA_NEGATIVA_MINUSCOLO) )
-    return conferma_scelta;
+    }while((conferma_scelta != RISPOSTA_AFFERMATIVA_MAIUSCOLO) && (conferma_scelta != RISPOSTA_AFFERMATIVA_MINUSCOLO) && (conferma_scelta != RISPOSTA_NEGATIVA_MAIUSCOLO) && (conferma_scelta != RISPOSTA_NEGATIVA_MINUSCOLO) );
+    return ;
 }
