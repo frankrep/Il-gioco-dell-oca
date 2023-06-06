@@ -151,7 +151,7 @@ parte_intera_cifra, contiene il risultato della funzione parte intera realtivo a
 ALGORITMO
 numero = valore_reale
 parte_intera_numero = 0
-divisore = trovare_divisore_decimale(numero)
+divisore = trovare_divisore_massimo_decimale(numero)
 MENTRE (divisore >= 1)
    parte_intera_cifra = calcolare_parte_intera_unita(numero, divisore)
    parte_intera_numero = parte_intera_numero + (parte_intera_cifra * divisore)
@@ -161,7 +161,7 @@ FINE
 
 
 
-trovare_divisore_decimale
+trovare_divisore_massimo_decimale
 
 DATI DI INPUT
 numero, il numero di cui trovare il divisore massimo nella base numerica BASE, reale, > 0.0
