@@ -1,6 +1,12 @@
-#ifndef GESTIRE_STAMPA_H
-#define GESTIRE_STAMPA_H
+/*
+ * gestire_stampa.h
+ *
+ */
 
-void stampare_dadi (int facce_dadi);
-void stampare_testo();
-#endif // GESTIRE_STAMPA_H
+#ifndef GESTIRE_STAMPA_H_
+#define GESTIRE_STAMPA_H_
+
+void stampare_dadi (const char file_da_stampare[], const int facce_dadi[]);
+void stampare_testo (const char file_da_stampare[]);
+
+#endif /* GESTIRE_STAMPA_H_ */

@@ -6,6 +6,9 @@
 #ifndef GESTIRE_PARTITA_H_
 #define GESTIRE_PARTITA_H_
 
+#include "partita.h"
+#include "vincitore.h"
+
 vincitore gestire_partita(partita* partita_attuale);
 void scegliere_giocatore(partita* partita_attuale);
 vincitore inizializzare_vincitore(partita* partita_attuale);

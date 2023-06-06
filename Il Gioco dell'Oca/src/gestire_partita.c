@@ -1,306 +1,122 @@
 /*
- * gestire_partita.c
+ * gestire_stampa.c
  *
  */
 
-
 #include <stdlib.h>
-#include "casella.h"
-#include "giocatore.h"
-#include "partita.h"
-#include "vincitore.h"
+#include <stdio.h>
+#include "gestire_stampa.h"
 #include "costanti.h"
-#include "gestire_partita.h"
 
+void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
+	char carattere_letto;
 
+	FILE *f_interfaccia = NULL;
+	if ((f_interfaccia = fopen(file_interfaccia, "r")) == NULL) {
+		int indice_carattere = 0;
+		while (indice_carattere < (LUNGHEZZA_SCHERMATA * ALTEZZA_SCHERMATA)) {
+			fgetc(f_interfaccia);
+			indice_carattere = indice_carattere + 1;
+		}
+		int indice_riga = 0;
+		while (indice_riga < SPIAZZAMENTO_DADO) {
+			carattere_letto = fgetc(f_interfaccia);
+			if (carattere_letto == CARATTERE_A_CAPO) {
+				indice_riga = indice_riga + 1;
+			}
+		}
+		int posizione_riga;
+		int posizione_colonna;
+		int indice_dadi = 0;
+		while (facce_dadi[indice_dadi] != 0 || (indice_dadi < NUMERO_DADI)) {
+			int indice_puntini_dado = 0;
+			while (indice_puntini_dado < NUMERO_MASSIMO_PUNTINI_FACCIA_DADO) {
+				//inserire funzione di conversione
+				fscanf (f_interfaccia, "%d ", &posizione_riga);
+				carattere_letto = fgetc(f_interfaccia);
+				while (carattere_letto != CARATTERE_A_CAPO) {
+					carattere_letto = leggere_da_file(file_interfaccia);
+				}
 
+				fscanf (f_interfaccia, "%d ", &posizione_colonna);
+				carattere_letto = fgetc(f_interfaccia);
+				while (carattere_letto != CARATTERE_A_CAPO) {
+					carattere_letto = fgetc(f_interfaccia);
+				}
 
+				posizionare_cursore(posizione_riga, posizione_colonna);             //GOTOXY
+				if (indice_puntini_dado == 1) {
+					if (facce_dadi[indice_dadi] == 6
+							|| (facce_dadi[indice_dadi] == 5)
+							|| (facce_dadi[indice_dadi] == 4)) {
+						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
+					} else {
+						printf("%c", CARATTERE_SPAZIO);
+					}
+				} else if (indice_puntini_dado == 2) {
+					if (facce_dadi[indice_dadi] == 6) {
+						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
+					} else {
+						printf("%c", CARATTERE_SPAZIO);
+					}
+				} else if (indice_puntini_dado == 3) {
+					if (facce_dadi[indice_dadi] == 6
+							|| (facce_dadi[indice_dadi] == 5)
+							|| (facce_dadi[indice_dadi] == 4)) {
+						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
+					} else {
+						printf("%c", CARATTERE_SPAZIO);
+					}
+				} else if (indice_puntini_dado == 4) {
+					if (facce_dadi[indice_dadi] == 5
+							|| (facce_dadi[indice_dadi] == 3)
+							|| (facce_dadi[indice_dadi] == 1)) {
+						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
+					} else {
+						printf("%c", CARATTERE_SPAZIO);
+					}
+				} else if (indice_puntini_dado == 5) {
+					if (facce_dadi[indice_dadi] == 6
+							|| (facce_dadi[indice_dadi] == 5)
+							|| (facce_dadi[indice_dadi] == 4)
+							|| (facce_dadi[indice_dadi] == 3)
+							|| (facce_dadi[indice_dadi] == 2)) {
+						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
+					} else {
+						printf("%c", CARATTERE_SPAZIO);
+					}
+				} else if (indice_puntini_dado == 6) {
+					if (facce_dadi[indice_dadi] == 6) {
+						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
+					} else {
+						printf("%c", CARATTERE_SPAZIO);
+					}
+				} else if (indice_puntini_dado == 7) {
+					if (facce_dadi[indice_dadi] == 6
+							|| (facce_dadi[indice_dadi] == 5)
+							|| (facce_dadi[indice_dadi] == 4)) {
+						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
+					} else {
+						printf("%c", CARATTERE_SPAZIO);
+					}
+				}
+				indice_puntini_dado = indice_puntini_dado + 1;
+			}
+			indice_dadi = indice_dadi + 1;
+		}
+	} else {
+		//GESTIRE FILE NON TROVATO
+	}
 
-vincitore gestire_partita(partita* partita_attuale){
-    if(leggere_turno(*partita_attuale) == 0){
-        //scelta giocatore iniziale
-        scegliere_giocatore(partita_attuale);
-    }
-    do{
-        cambiare_turno(partita_attuale);
-        if(leggere_autorizzazione(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))) > 0){
-            gestire_autorizzazione(partita_attuale);
-        }
-        if(leggere_autorizzazione(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))) = 0){
-            //stampare percorso con l'attesa con l'attesa dell'input
-            lanciare_dadi(partita_attuale);
-            //stampare percorso con i dadi aggiornati e attendere l'input
-            spostare_giocatore(partita_attuale);
-            //stampare percorso con input utente per proseguire con l'effetto
-            verificare_casella(partita_attuale);
-        }
-
-        }while(leggere_posizione_giocatore(leggere_giocatore(*partita_attuale,leggere_turno(*partita_attuale))) != leggere_lunghezza_percorso(*partita_attuale));
-        vincitore vincitore_partita = inizializzare_vincitore(partita_attuale);
-        return vincitore_partita;
 }
 
-void scegliere_giocatore(partita* partita_attuale){
-        int estrazioni[NUMERO_MASSIMO_GIOCATORI];
-        int indice_giocatori = 0;
-        while(indice_giocatori < leggere_numero_giocatori(*partita_attuale)){
-            //stampare scelta_g_iniziale
-            //prendere in input la lettura da tastiera per il lancio
-            estrazioni[indice_giocatori] = generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
-            //stampa del dado risultante
-            //aspetta input da tastiera
-            indice_giocatori = indice_giocatori + 1;
-        }
-        scrivere_turno(partita_attuale, trovare_posizione_massimo(estrazioni, leggere_numero_giocatori(*partita_attuale)) + 1);
-        return;
-}
-
-vincitore inizializzare_vincitore(partita* partita_attuale){
-    vincitore vincitore_partita;
-    char nome_vincitore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
-    leggere_nome_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale)), nome_vincitore);
-    scrivere_nome_vincitore(&vincitore_partita, nome_vincitore);
-    scrivere_pedina_vincitore(&vincitore_partita, leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))));
-    scrivere_lanci_vincitore(&vincitore_partita, leggere_lanci_effettuati(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))));
-    scrivere_lunghezza_percorso_vincitore(&vincitore_partita, leggere_lunghezza_percorso(*partita_attuale));
-    return vincitore_partita;
-}
-
-int generare_numero(int numero_massimo, int numero_minimo){
-    int seme;
-    seme = leggere_da_file(sizeof(int), 1, file_seme);
-    seme = generare_seme(seme);
-    scrivere_su_file(sizeof(int), 1, seme);
-    int numero_casuale = generare_casuale(seme,numero_massimo,numero_minimo);
-    return numero_casuale;
-}
-
-int generare_seme(int seme){
-    int nuovo_seme = (MOLTIPLICATORE * seme + INCREMENTO) % DIVISORE;
-    return nuovo_seme;
-}
-
-int generare_casuale(int seme,int numero_massimo,int numero_minimo){
-    int numero_casuale = (seme % numero_massimo) + numero_minimo;
-    return numero_casuale;
-}
-
-int trovare_posizione_massimo(int valori[], int dimensione_valori){
-    int indice_valori = 0;
-    int massimo = valori[indice_valori];
-    int posizione_massimo = indice_valori;
-    while(indice_valori < dimensione_valori){
-        indice_valori = indice_valori + 1;
-        if(massimo < valori[indice_valori]){
-            massimo = valori[indice_valori];
-            posizione_massimo = indice_valori;
-        }
-    }
-    return posizione_massimo;
-}
-
-void cambiare_turno(partita* partita_attuale){
-    scrivere_turno(partita_attuale, leggere_turno(*partita_attuale) + 1);
-    if(leggere_turno(*partita_attuale) > leggere_numero_giocatori(*partita_attuale)){
-        scrivere_turno(partita_attuale, 1);
-    }
-    return;
-}
-
-void lanciare_dadi(partita* partita_attuale){
-    int indice_dado = 0;
-    int lancio;
-    while(indice_dado < NUMERO_DADI){
-        lancio = generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
-        scrivere_dadi(partita_attuale, indice_dado, lancio);
-        indice_dado = indice_dado + 1;
-    }
-    return;
-}
-
-void incrementare_lanci_effettuati(partita* partita_attuale){
-    giocatore giocatore_attuale;
-    int lanci_effettuati;
-    giocatore_attuale = leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale));
-    lanci_effettuati = leggere_lanci_effettuati(giocatore_attuale);
-    lanci_effettuati = lanci_effettuati + 1;
-    scrivere_lanci_effettuati(&giocatore_attuale, lanci_effettuati);
-    scrivere_giocatore(partita_attuale,giocatore_attuale, leggere_turno(*partita_attuale));
-    return;
-}
-
-void incrementare_turno(partita* partita_attuale){
-    int turno = leggere_turno(*partita_attuale);
-    turno = turno + 1;
-    if(turno > leggere_numero_giocatori(*partita_attuale)){
-        turno = 1;
-    }
-    scrivere_turno(partita_attuale, turno);
-    return;
-}
-
-void spostare_giocatore(partita* partita_attuale){
-    sommare_lancio_posizione(partita_attuale);
-    if (leggere_posizione_giocatore (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale))) > leggere_lunghezza_percorso(*partita_attuale)){
-        calcolare_caselle_eccesso(partita_attuale);
-    }
-    return;
-}
-
-void sommare_lancio_posizione(partita* partita_attuale){
-    giocatore giocatore_attuale = leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale));
-    scrivere_posizione_giocatore(giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) + sommare_dadi (partita_attuale));
-    scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
-    return;
-}
-
-void calcolare_caselle_eccesso(partita* partita_attuale){
-    giocatore giocatore_attuale;
-    int eccesso = leggere_posizione_giocatore (leggere_giocatore(*partita_attuale), leggere_turno(*partita_attuale)) - leggere_lunghezza_percorso(*partita_attuale);
-    giocatore_attuale = leggere_giocatore(*partita_attuale,leggere_turno(*partita_attuale));
-    giocatore_attuale = scrivere_posizione_giocatore(&giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) - eccesso);
-    scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
-    return;
-}
-
-int sommare_dadi(partita* partita_attuale){
-    int somma_dadi = 0;
-    int indice_dado = 0;
-    while (indice_dado < NUMERO_DADI){
-        somma_dadi = somma_dadi + leggere_dadi(*partita_attuale, indice_dado);
-        indice_dado = indice_dado + 1;
-    }
-    return somma_dadi;
-}
-
-void gestire_casella(partita* partita_attuale){
-    giocatore giocatore_attuale;
-    char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
-    do{
-        giocatore_attuale = leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale));
-        leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
-        if(confrontare_stringhe(nome_casella, NOME_OCA) == VERO)
-        {
-            //stampare schermata_oca e aspettare input
-            gestire_oca(partita_attuale);
-        }
-        else if(confrontare_stringhe(nome_casella, NOME_PONTE) == VERO )
-        {
-            //schermata_ponte e aspettare input
-            spostare_giocatore(partita_attuale);
-        }
-        else if (confrontare_stringhe(nome_casella, NOME_LOCANDA) == VERO )
-        {
-            //stampare schermata_locanda e aspettare input
-            scrivere_autorizzazione(&giocatore_attuale, TURNI_ATTESA_LOCANDA);
-            scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
-        }
-        else if (confrontare_stringhe(nome_casella, NOME_POZZO) == VERO )
-        {
-            //stampare schermata_pozzo e aspettare input
-            impostare_autorizzazioni(partita_attuale, NOME_POZZO);
-        }
-        else if (confrontare_stringhe(nome_casella, NOME_PRIGIONE) == VERO )
-        {
-            //stampare schermata_prigione e aspettare input
-            impostare_autorizzazioni(partita_attuale, NOME_PRIGIONE);
-        }
-        else if (confrontare_stringhe(nome_casella, NOME_LABIRINTO) == VERO )
-        {
-            //stampare schermata_labirinto e aspettare input
-            scrivere_posizione_giocatore(&giocatore_attuale, calcolare_proporzione(leggere_lunghezza_percorso(*partita_attuale), CASELLA_ARRIVO_LABIRINTO));
-            leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
-            while (confrontare_stringhe(nome_casella, FINE_STRINGA) == FALSO ){
-            	leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
-            	scrivere_posizione_giocatore(&giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1);
-            }
-            scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
-        }
-        else if (confrontare_stringhe(nome_casella, NOME_SCHELETRO) == VERO )
-        {
-            //stampare schermata_scheletro e aspettare input
-            scrivere_posizione_giocatore(&giocatore_attuale, CASELLA_ARRIVO_SCHELETRO);
-            scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
-        }
-              //stampare percorso e aspettare input
-        leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
-    }while(confrontare_stringhe(nome_casella, FINE_STRINGA) == FALSO);
-    return;
-}
-
-void gestire_oca(partita* partita_attuale){
-    giocatore giocatore_attuale = leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale));
-    if(leggere_lanci_effettuati(giocatore_attuale) == 1){
-        if((leggere_dadi(*partita_attuale, PRIMO_DADO) == DADO_MINORE_PRIMO_LANCIO) || (leggere_dadi(*partita_attuale, PRIMO_DADO) == DADO_MAGGIORE_PRIMO_LANCIO))
-        {
-            scrivere_posizione_giocatore(&giocatore_attuale, calcolare_proporzione(leggere_lunghezza_percorso(*partita_attuale), PRIMO_LANCIO_3_6));
-        }
-        else
-        {
-            scrivere_posizione_giocatore(&giocatore_attuale, calcolare_proporzione(leggere_lunghezza_percorso(*partita_attuale), PRIMO_LANCIO_4_5));
-        }
-        char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
-        leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
-        while(confrontare_stringhe(nome_casella, FINE_STRINGA) == FALSO)
-        {
-        	leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
-            scrivere_posizione_giocatore(&giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1);
-        }
-        scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
-    }else{
-        spostare_giocatore(partita_attuale);
-    }
-    return;
-}
-
-void impostare_autorizzazioni(partita* partita_attuale, char nome_casella_attuale[]){
-    giocatore giocatore_attuale;
-    int indice_giocatore = 0;
-    while (indice_giocatore <= leggere_numero_giocatori(*partita_attuale)){
-        giocatore_attuale = leggere_giocatore(*partita_attuale, indice_giocatore);
-        char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
-        leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
-        if (confrontare_stringhe (nome_casella, nome_casella_attuale) == VERO){
-            //stampare schermata_liberato e attendere input
-            scrivere_autorizzazione(&giocatore_attuale, 0);
-            scrivere_giocatori(partita_attuale, giocatore_attuale, indice_giocatore);
-        }
-        indice_giocatore = indice_giocatore + 1;
-    }
-    leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale));
-    scrivere_autorizzazione(&giocatore_attuale, 1);
-    scrivere_giocatori(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
-    return;
-}
-
-void gestire_autorizzazione(partita* partita_attuale){
-    giocatore giocatore_attuale = leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale));
-    char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
-    leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
-    if (confrontare_stringhe(nome_casella, NOME_LOCANDA) == VERO){
-        scrivere_autorizzazione(&giocatore_attuale, leggere_autorizzazione(giocatore_attuale) - 1);
-        //stampare schermata_locanda_turno_passato e attende input
-    }
-    else if(confrontare_stringhe(nome_casella, NOME_PRIGIONE) == VERO ){
-        //stampare schermata_lancio_dadi_prigione e richiedere input
-        lanciare_dadi(partita_attuale);
-        //stampare schermata_lancio_dadi_prigione con lancio effettuato e richiedere input
-        if((sommare_dadi(partita_attuale) == DADO_MINORE_USCITA_PRIGIONE) || (sommare_dadi(partita_attuale) == DADO_MAGGIORE_USCITA_PRIGIONE)){
-            scrivere_autorizzazione(&giocatore_attuale, 0);
-        }
-    }
-    scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
-    return;
-}
-
-int confrontare_stringhe(char stringa_1[],char stringa_2[]){
-    int indice_stringa = 0;
-    int esito = 1;
-    while(stringa_1[indice_stringa] != FINE_STRINGA){
-        if(stringa_1[indice_stringa] != stringa_2[indice_stringa]){
-            esito = 0;
-        }
-        indice_stringa = indice_stringa + 1;
-    }
-    return esito;
+void stampare_testo(const char file_da_stampare[]) {
+	int indice_nuova_riga = 0;
+	while (indice_nuova_riga < ALTEZZA_SCHERMATA) {
+		char simbolo_letto = leggere_da_file(testo);
+		printf("%c", simbolo_letto);
+		if (simbolo_letto == CARATTERE_A_CAPO) {
+			indice_nuova_riga = indice_nuova_riga + 1;
+		}
+	}
 }
