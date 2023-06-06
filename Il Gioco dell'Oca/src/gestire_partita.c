@@ -68,7 +68,7 @@ vincitore inizializzare_vincitore(partita* partita_attuale){
 
 int generare_numero(int numero_massimo, int numero_minimo){
     int seme;
-    seme = leggere_da_file(sizeof(int), 1, file_seme);
+    seme = leggere_da_file(sizeof(int), 1, FILE_SEME);
     seme = generare_seme(seme);
     scrivere_su_file(sizeof(int), 1, seme);
     int numero_casuale = generare_casuale(seme,numero_massimo,numero_minimo);

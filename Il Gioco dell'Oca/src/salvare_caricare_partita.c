@@ -8,14 +8,14 @@
 
 
 void caricare_partite (partita elenco_partite[]) {
-    FILE * file_salvataggio = fopen("file_salvataggio.bin", "rb");
-    if (file_salvataggio == NULL) {
+    FILE * FILE_SALVATAGGIO = fopen("file_salvataggio.bin", "rb");
+    if (FILE_SALVATAGGIO == NULL) {
         //stampare messaggio di errore nell'apertura del file o del file inesistente
         //gestire l'errore nel caso di apertura, cioè restituisce la funzione
     }
     else {
-        fread(elenco_partite, sizeof(partita), NUMERO_MASSIMO_PARTITE, file_salvataggio);
-        fclose(file_salvataggio);
+        fread(elenco_partite, sizeof(partita), NUMERO_MASSIMO_PARTITE, FILE_SALVATAGGIO);
+        fclose(FILE_SALVATAGGIO);
     }
     return;
 }
@@ -122,8 +122,8 @@ int selezionare_slot (partita elenco_partite[]) {
 
 
 void scrivere_partite (partita elenco_partite[]) {
-    FILE * file_salvataggio = fopen("file_salvataggio.bin", "wb");
-    fwrite(elenco_partite, sizeof (partita), NUMERO_MASSIMO_PARTITE, file_salvataggio);
-    fclose(file_salvataggio);
+    FILE * FILE_SALVATAGGIO = fopen("file_salvataggio.bin", "wb");
+    fwrite(elenco_partite, sizeof (partita), NUMERO_MASSIMO_PARTITE, FILE_SALVATAGGIO);
+    fclose(FILE_SALVATAGGIO);
     return;
 }

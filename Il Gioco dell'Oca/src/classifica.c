@@ -4,7 +4,7 @@
 #include "vincitore.h"
 #include "gestire_partita.h"
 FILE* aggiornare_classifica_top_10 (vincitore* vincitore_partita){
-    vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI] = caricare_classifica(file_classifica_top_10);
+    vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI] = caricare_classifica(FILE_CLASSIFICA_TOP_10);
     int inserito = TRUE;
     int indice_vincitori = 1;
     int rateo_vincitore_partita = leggere_numero_lanci_vincitore(vincitore_partita) / leggere_lunghezza_percorso_vincitore(vincitore_partita);
@@ -21,10 +21,10 @@ FILE* aggiornare_classifica_top_10 (vincitore* vincitore_partita){
     indice_vincitori = 1;
     while (indice_vincitori <= NUMERO_MASSIMO_CLASSIFICATI)
     {
-        file_classifica_top_10 = scrivere_su_file(file_classifica_top_10, vincitori[indice_vincitori]);
+        FILE_CLASSIFICA_TOP_10 = scrivere_su_file(FILE_CLASSIFICA_TOP_10, vincitori[indice_vincitori]);
         indice_vincitori = indice_vincitore + 1;
     }
-    return file_classifica_top_10;
+    return FILE_CLASSIFICA_TOP_10;
 }
 
 vincitore* spostamento_destra_vincitori (vincitore* vincitori[], int posizione_inserimento,vincitore* vincitore_partita) {
@@ -42,15 +42,15 @@ vincitore* caricare_classifica () {
     vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI];
     while(indice_vincitore <= NUMERO_MASSIMO_CLASSIFICATI)
     {
-        vincitori[indice_vincitore] = leggere_da_file(file_classifica_top_10);
+        vincitori[indice_vincitore] = leggere_da_file(FILE_CLASSIFICA_TOP_10);
         indice_vincitore = indice_vincitore + 1;
     }
     return vincitori;
 }
 
 void stampare_classifica() {
-    vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI] = caricare_classifica(file_classifica_top_10);
-    stampare_testo(file_classifica);
+    vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI] = caricare_classifica(FILE_CLASSIFICA_TOP_10);
+    stampare_testo(FILE_CLASSIFICA);
     indice_vincitori = 1;
     while(indice_vincitori <= NUMERO_MASSIMO_CLASSIFICATI)
     {

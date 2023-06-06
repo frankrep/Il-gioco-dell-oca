@@ -8,11 +8,11 @@
 #include "gestire_stampa.h"
 #include "costanti.h"
 
-void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
+void stampare_dadi(const char FILE_INTERFACCIA[], const int facce_dadi[]) {
 	char carattere_letto;
 
 	FILE *f_interfaccia = NULL;
-	if ((f_interfaccia = fopen(file_interfaccia, "r")) == NULL) {
+	if ((f_interfaccia = fopen(FILE_INTERFACCIA, "r")) == NULL) {
 		int indice_carattere = 0;
 		while (indice_carattere < (LUNGHEZZA_SCHERMATA * ALTEZZA_SCHERMATA)) {
 			fgetc(f_interfaccia);
@@ -35,7 +35,7 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 				fscanf (f_interfaccia, "%d ", &posizione_riga);
 				carattere_letto = fgetc(f_interfaccia);
 				while (carattere_letto != CARATTERE_A_CAPO) {
-					carattere_letto = leggere_da_file(file_interfaccia);
+					carattere_letto = leggere_da_file(FILE_INTERFACCIA);
 				}
 
 				fscanf (f_interfaccia, "%d ", &posizione_colonna);
@@ -110,7 +110,7 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 
 }
 
-void stampare_testo(const char file_da_stampare[]) {
+void stampare_testo(const char FILE_DA_STAMPARE[]) {
 	int indice_nuova_riga = 0;
 	while (indice_nuova_riga < ALTEZZA_SCHERMATA) {
 		char simbolo_letto = leggere_da_file(testo);

@@ -14,7 +14,7 @@
 
 void main(void) {
 	char uscita;
-    stampare_testo(file_intro); //schermata logo
+    stampare_testo(FILE_INTRO); //schermata logo
     scanf();//PREMERE UN TASTO QUALSIASI PER CONTINUARE
     uscita = RISPOSTA_NEGATIVA_MAIUSCOLO;
     int opzione;
@@ -27,7 +27,7 @@ void main(void) {
             vincitore_partita = iniziare_nuova_partita (); //inserire fine stringa come nome nel caso in cui si interrompe la partita (stessa cosa per riprendere_partita)
             if (leggere_nome_vincitore (vincitore_attuale) != FINE_STRINGA)
             {
-                file_classifica_top_10 = aggiornare_classifica_top_10 (file_classifica_top_10, vincitore_partita);
+                FILE_CLASSIFICA_TOP_10 = aggiornare_classifica_top_10 (FILE_CLASSIFICA_TOP_10, vincitore_partita);
             }    
         }
         else
@@ -37,7 +37,7 @@ void main(void) {
                 vincitore_partita = riprendere_partita();
                 if (leggere_nome_vincitore (vincitore_attuale) != FINE_STRINGA) 
                 {
-                    file_classifica_top_10 = aggiornare_classifica_top_10 (file_classifica_top_10, vincitore_partita);
+                    FILE_CLASSIFICA_TOP_10 = aggiornare_classifica_top_10 (FILE_CLASSIFICA_TOP_10, vincitore_partita);
                 }
             }
             else
@@ -71,7 +71,7 @@ int scegliere_opzione_menu () {
         scanf ("%d",&opzione);
         if ((opzione < 1) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE))
         {
-            stampare_messaggio_errore(file_menu_principale);
+            stampare_messaggio_errore(FILE_MENU_PRINCIPALE);
         }
     }while ((opzione < 1) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE));
     return opzione;

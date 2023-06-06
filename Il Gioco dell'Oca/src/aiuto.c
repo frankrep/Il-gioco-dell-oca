@@ -6,11 +6,11 @@ void chiedere_aiuto (int opzione_scelta) {
     opzione_scelta = scegliere_aiuto ();
     if (opzione_scelta == 1)
     {
-        stampare_da_file(file_regole);
+        stampare_da_file(FILE_REGOLE);
     }
     else if (opzione_scelta == 2)
     {
-        stampare_da_file(file_manuale);
+        stampare_da_file(FILE_MANUALE);
     }
 }
 int scegliere_aiuto () {
@@ -21,7 +21,7 @@ int scegliere_aiuto () {
          scanf("%d",&opzione_scelta);
          if ((opzione_scelta < 0) || (opzione_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO))
          {
-            stampare_messaggio_errore(file_menu_aiuto);
+            stampare_messaggio_errore(FILE_MENU_AIUTO);
          }
     }while((opzione_scelta < 0 ) || (opzione_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO));
     return opzione_scelta;
