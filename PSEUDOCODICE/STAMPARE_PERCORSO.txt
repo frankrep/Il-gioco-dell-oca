@@ -18,6 +18,7 @@ indice_altezza_disegno, l'indice dell'altezza del disegno ovvero dello strato de
 colonne_parte_sinistra, il numero di caselle non contigue da stampare nella parte sinistra del tabellone, Intero, > 0, <= LARGHEZZA_TABELLONE
 colonne_parte_destra, il numero di caselle non contigue da stampare nella parte destra, Intero, > 0, <= LARGHEZZA_TABELLONE
 ultima_casella_stampata, l'ultima casella stampata dalle funzioni di stampa del percorso, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
+meta_righe, , reale
 
 ALGORITMO
 stampare_parte_superiore_casella()
@@ -25,7 +26,7 @@ indice_riga_superiore = 1
 MENTRE (indice_riga_superiore <= ALTEZZA_TABELLONE)
 
     indice_altezza_disegno = 1
-    MENTRE (indice_altezza_disegno <= ALTEZZA_DISEGNO_TABELLA)
+    MENTRE (indice_altezza_disegno <= ALTEZZA_DISEGNO_CASELLA)
         
         SE (colonne_parte_sinistra > 0)
         ALLORA
@@ -112,7 +113,7 @@ stampare_superiore_sinistra
 DATI DI INPUT
 numero_colonne, indica quante colonne verranno stampate nella parte destra, Intero, > 0, <= LARGHEZZA_TABELLONE
 contatore, indica quale delle colonne viene stampata al momento, Intero, > 0, <= LARGHEZZA_TABELLONE
-strato, indica quale strato della casella si sta stampando a video, Intero, > 0, <= ALTEZZA_DISEGNO_TABELLA
+strato, indica quale strato della casella si sta stampando a video, Intero, > 0, <= ALTEZZA_DISEGNO_CASELLA
 LARGHEZZA_TABELLONE, il numero di caselle da stampare in una riga del tabellone, Intero, = 15
 ALTEZZA_TABELLONE, il numero di caselle da stampare in una colonna del tabellone, Intero, = 6
 
@@ -134,7 +135,7 @@ stampare_inferiore_sinistra
 DATI DI INPUT
 numero_colonne, indica quante colonne verranno stampate nella parte destra, intero, > 0, <= LARGHEZZA_TABELLONE
 contatore, indica quale delle colonne viene stampata al momento, intero, > 0, <= LARGHEZZA_TABELLONE
-strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO_TABELLA
+strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO_CASELLA
 LARGHEZZA_TABELLONE, il numero di caselle da stampare in una riga del tabellone, Intero, = 15
 ALTEZZA_TABELLONE, il numero di caselle da stampare in una colonna del tabellone, Intero, = 6
 
@@ -156,7 +157,7 @@ stampare_parte_destra
 DATI DI INPUT
 numero_colonne, indica quante colonne verranno stampate nella parte destra, intero, > 0, <= LARGHEZZA_TABELLONE
 contatore, indica quale delle colonne viene stampata al momento, intero, > 0, <= LARGHEZZA_TABELLONE
-strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO_TABELLA
+strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO_CASELLA
 numero_iniziale,  il numero raggiunto nell'ultima stampa effettuata,Intero
 LARGHEZZA_TABELLONE, il numero di caselle da stampare in una riga del tabellone, Intero, = 15
 ALTEZZA_TABELLONE, il numero di caselle da stampare in una colonna del tabellone, Intero, = 6
@@ -179,7 +180,7 @@ stampare_parte_centrale_incremento
 DATI DI INPUT
 numero_iniziale,  il numero raggiunto nell'ultima stampa effettuata,Intero
 numero_colonne, indica quante colonne verranno stampate nella parte destra, intero, > 0, <= LARGHEZZA_TABELLONE
-strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO_TABELLA
+strato, indica quale strato della casella si sta stampando a video, intero, > 0, <= ALTEZZA_DISEGNO_CASELLA
 
 DATI DI OUTPUT
 ultima_casella_stampata, ultimo numero di casella stampato, intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO

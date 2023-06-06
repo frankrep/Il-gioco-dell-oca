@@ -44,23 +44,27 @@ void inizializzare_numero_giocatori(partita* partita_attuale) {
 
 void inizializzare_nomi_giocatori(partita* partita_attuale) {
     int indice_giocatori = 0;
+    giocatore giocatore_attuale;
+    char nome_da_inserire[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     while (indice_giocatori <= leggere_numero_giocatori(*partita_attuale)) {
         //stampare richiesta
-        *partita_attuale = scrivere_giocatori(partita_attuale, scrivere_nome_giocatore(leggere_giocatori(*partita_attuale, indice_giocatori), inserire_stringa(DIMENSIONE_MINIMA_NOME_GIOCATORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE)), indice_giocatori);
+    	inserire_stringa(DIMENSIONE_MINIMA_NOME_GIOCATORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE, nome_da_inserire);
+    	giocatore_attuale = leggere_giocatore(*partita_attuale, indice_giocatori);
+    	scrivere_nome_giocatore (&giocatore_attuale, nome_da_inserire);
+        scrivere_giocatore(partita_attuale, giocatore_attuale,indice_giocatori);
         indice_giocatori = indice_giocatori + 1;
     }
     return ;
 }
 
-char* inserire_stringa(int dimensione_minima_stringa, int dimensione_massima_stringa) {
+void inserire_stringa(int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]) {
     int indice_stringa = 0;
     int terminato = 0;
-    char stringa[dimensione_massima_stringa];
     while ( (indice_stringa < dimensione_massima_stringa) && (terminato == FALSE) && (indice_stringa < dimensione_minima_stringa) ) {
         char carattere;
         scanf("%c", &carattere);
         if(carattere != CARATTERE_A_CAPO){
-            stringa[indice_stringa] = carattere;
+        	nome_da_inserire[indice_stringa] = carattere;
             indice_stringa = indice_stringa + 1;
         }
         else if (indice_stringa <= dimensione_minima_stringa){
@@ -70,15 +74,19 @@ char* inserire_stringa(int dimensione_minima_stringa, int dimensione_massima_str
             terminato = TRUE;
          }
     }
-    stringa[indice_stringa] = FINE_STRINGA;
-    return stringa;
+    nome_da_inserire[indice_stringa] = FINE_STRINGA;
+    return ;
 }
 
 void inizializzare_pedine_giocatori(partita* partita_attuale) {
     int indice_pedine = 0;
+    giocatore giocatore_attuale;
     do{
-        *partita_attuale = scrivere_giocatore(*partita_attuale,scrivere_pedina(leggere_giocatore(*partita_attuale,indice_pedine),PEDINE_DISPONIBILI[indice_pedine]),indice_pedine);
+    	giocatore_attuale = leggere_giocatore(*partita_attuale,indice_pedine);
+    	scrivere_pedina_giocatore(&giocatore_attuale,PEDINE_DISPONIBILI[indice_pedine]);
+    	scrivere_giocatore(partita_attuale,giocatore_attuale,indice_pedine);
         indice_pedine = indice_pedine + 1;
     }while(indice_pedine <= leggere_numero_giocatori(*partita_attuale));
     return ;
 }
+

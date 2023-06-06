@@ -14,11 +14,11 @@ void chiedere_aiuto (int opzione_scelta) {
     }
 }
 int scegliere_aiuto () {
-    prtinf("file_menu_aiuto");
+    printf("file_menu_aiuto");
     int opzione_scelta;
     do
     {
-         opzione_scelta = scanf("%d", opzione_scelta);
+         scanf("%d",&opzione_scelta);
          if ((opzione_scelta < 0) || (opzione_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO))
          {
             stampare_messaggio_errore(file_menu_aiuto);
