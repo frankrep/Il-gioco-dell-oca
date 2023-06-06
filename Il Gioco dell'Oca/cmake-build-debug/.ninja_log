@@ -1,0 +1,10 @@
+# ninja log v5
+27	106	7077515999637224	CMakeFiles/Il_Gioco_dell_Oca.dir/src/vincitore.c.obj	1bd3434c8a147809
+0	107	7077515999627227	CMakeFiles/Il_Gioco_dell_Oca.dir/src/casella.c.obj	3c0ae30eb0feadd5
+13	108	7077515999627227	CMakeFiles/Il_Gioco_dell_Oca.dir/src/giocatore.c.obj	f1d1d70345ee8805
+15	108	7077515999647222	CMakeFiles/Il_Gioco_dell_Oca.dir/src/partita.c.obj	64916e4821e406b6
+1	69	7077521999805374	CMakeFiles/Il_Gioco_dell_Oca.dir/src/casella.c.obj	3c0ae30eb0feadd5
+11	74	7077521999845374	CMakeFiles/Il_Gioco_dell_Oca.dir/src/giocatore.c.obj	f1d1d70345ee8805
+15	78	7077521999905372	CMakeFiles/Il_Gioco_dell_Oca.dir/src/partita.c.obj	64916e4821e406b6
+6	79	7077521999905372	CMakeFiles/Il_Gioco_dell_Oca.dir/src/generare_percorso.c.obj	7f25762a7fc85e8b
+26	84	7077521999935366	CMakeFiles/Il_Gioco_dell_Oca.dir/src/vincitore.c.obj	1bd3434c8a147809
