@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "partita.h"
 #include "generare_percorso.h"
 #include "casella.h"
@@ -12,6 +13,8 @@
 #include "salvare_caricare_partita.h"
 #include "stampare_percorso.h"
 
+int scegliere_opzione_menu ();
+
 void main(void) {
 	char uscita;
     stampare_testo(FILE_INTRO); //schermata logo
@@ -21,9 +24,10 @@ void main(void) {
     vincitore vincitore_partita;
     vincitore vincitore_attuale;
     do {
-        opzione = scegliere_opzione_menu;
+        opzione = scegliere_opzione_menu();
         if (opzione == 1) 
         {
+            //iniziare_nuova_partita (&vincitore_partita);
             vincitore_partita = iniziare_nuova_partita (); //inserire fine stringa come nome nel caso in cui si interrompe la partita (stessa cosa per riprendere_partita)
             if (leggere_nome_vincitore (vincitore_attuale) != FINE_STRINGA)
             {
@@ -64,21 +68,36 @@ void main(void) {
     return ;
 }
 
+
 int scegliere_opzione_menu () {
     int opzione;
-    do 
-    {
-        scanf ("%d",&opzione);
-        if ((opzione < 1) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE))
-        {
+    int correttezza_inserimento;
+    do {
+
+
+        //richiediamo l'opzione e verifichiamo che l'imput immesso sia del tipo consentito
+        do {
+            correttezza_inserimento = scanf("%d", &opzione);
+            fflush(stdin);
+            if (correttezza_inserimento == 0) {
+                printf("Attenzione: input non valido.");
+            }
+        } while (correttezza_inserimento == 0);
+
+
+        //verifichiamo se l'imput immesso sia consentito all'interno dei vincoli
+        if ((opzione < 1) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE)) {
             stampare_messaggio_errore(FILE_MENU_PRINCIPALE);
         }
-    }while ((opzione < 1) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE));
+
+
+    } while ( (opzione < 1) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE) );
     return opzione;
 }
 
+
 vincitore* iniziare_nuova_partita (vincitore* vincitore_partita) {
-    partita* partita_attuale = inziializzare_giocatori ();
+    partita* partita_attuale = inizializzare_giocatori ();
     partita_attuale = generare_percorso (partita_attuale);
     vincitore_partita = gestire_partita (partita_attuale);
     return vincitore_partita;
@@ -92,9 +111,12 @@ vincitore* riprendere_partita () {
 
 partita* scegliere_partita_da_caricare () {
     partita elenco_partite [NUMERO_MASSIMO_PARTITE];
-    caricare_partita (elenco_partite);
+    caricare_partite (elenco_partite);
     int slot_scelto = selezionare_slot (elenco_partite);
-    partita* partita_attuale = elenco_partite[slot_scelto];
+
+    //partita partita_attuale = elenco_partite [slot_scelto];
+    partita* partita_attuale = elenco_partite [slot_scelto];
+
     return partita_attuale;
 }
 

@@ -8,14 +8,14 @@
 
 
 void caricare_partite (partita elenco_partite[]) {
-    FILE * FILE_SALVATAGGIO = fopen("file_salvataggio.bin", "rb");
-    if (FILE_SALVATAGGIO == NULL) {
+    FILE * file_salvataggio = fopen(FILE_SALVATAGGIO, "rb");
+    if (file_salvataggio == NULL) {
         //stampare messaggio di errore nell'apertura del file o del file inesistente
         //gestire l'errore nel caso di apertura, cioè restituisce la funzione
     }
     else {
-        fread(elenco_partite, sizeof(partita), NUMERO_MASSIMO_PARTITE, FILE_SALVATAGGIO);
-        fclose(FILE_SALVATAGGIO);
+        fread(elenco_partite, sizeof(partita), NUMERO_MASSIMO_PARTITE, file_salvataggio);
+        fclose(file_salvataggio);
     }
     return;
 }
@@ -63,14 +63,15 @@ void confermare_scelta (char * risposta) {
             correttezza_inserimento = scanf("%c", risposta);
             fflush (stdin);
             //decidere se stampare da file la frase
-            if (correttezza_inserimento == 0)
+            if (correttezza_inserimento == 0) {
                 printf("Attenzione: input non valido.");
+            }
         } while (correttezza_inserimento == 0);
         //decidere se stampare da file la frase
-        if ( risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && risposta != RISPOSTA_NEGATIVA_MINUSCOLO )
+        if ( *risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && *risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && *risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && *risposta != RISPOSTA_NEGATIVA_MINUSCOLO )
             printf("La scelta inserita non e' valida, riprovare: ");
 
-    } while ( risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && risposta != RISPOSTA_NEGATIVA_MINUSCOLO );
+    } while ( *risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && *risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && *risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && *risposta != RISPOSTA_NEGATIVA_MINUSCOLO );
     return;
 }
 
@@ -105,8 +106,9 @@ int selezionare_slot (partita elenco_partite[]) {
         do {
             correttezza_inserimento = scanf("%d", &slot_scelto);
             fflush(stdin);
-            if (correttezza_inserimento == 0)
+            if (correttezza_inserimento == 0) {
                 printf("Attenzione: input non valido.");
+            }
         } while (correttezza_inserimento == 0);
 
 
@@ -122,8 +124,8 @@ int selezionare_slot (partita elenco_partite[]) {
 
 
 void scrivere_partite (partita elenco_partite[]) {
-    FILE * FILE_SALVATAGGIO = fopen("file_salvataggio.bin", "wb");
-    fwrite(elenco_partite, sizeof (partita), NUMERO_MASSIMO_PARTITE, FILE_SALVATAGGIO);
-    fclose(FILE_SALVATAGGIO);
+    FILE * file_salvataggio = fopen(FILE_SALVATAGGIO, "wb");
+    fwrite(elenco_partite, sizeof (partita), NUMERO_MASSIMO_PARTITE, file_salvataggio);
+    fclose(file_salvataggio);
     return;
 }

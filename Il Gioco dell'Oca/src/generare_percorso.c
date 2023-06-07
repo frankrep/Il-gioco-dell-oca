@@ -59,14 +59,14 @@ void posizionare_caselle_speciali (partita* partita_attuale) {
 }
 
 void proporzionare_caselle_speciali( partita* partita_attuale, casella caselle_speciali[]) {
-    FILE * FILE_CASELLE_SPECIALI = fopen("file_caselle_speciali.bin", "rb");
-    if (FILE_CASELLE_SPECIALI == NULL) {
+    FILE * file_caselle_speciali = fopen(FILE_CASELLE_SPECIALI, "rb");
+    if (file_caselle_speciali == NULL) {
         //stampare messaggio errore per mancata apertura file
         //gestire l'errore di modo che il programma si comporti in una certa maniera
     }
     else {
-        fread(caselle_speciali, sizeof(casella), NUMERO_CASELLE_SPECIALI, FILE_CASELLE_SPECIALI);
-        fclose(FILE_CASELLE_SPECIALI);
+        fread(caselle_speciali, sizeof(casella), NUMERO_CASELLE_SPECIALI, file_caselle_speciali);
+        fclose(file_caselle_speciali);
         int indice_speciali = 0;
         while (indice_speciali < NUMERO_CASELLE_SPECIALI) {
             scrivere_numero_casella(&caselle_speciali[indice_speciali], calcolare_proporzione(*partita_attuale, leggere_numero_casella (caselle_speciali[indice_speciali])));
