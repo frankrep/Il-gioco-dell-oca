@@ -1,0 +1,41 @@
+<IL GIOCO DELL'OCA>                                                            
+                                                                               
+________________________________________________                               
+| *         *    *   ______    *   *      *    |<CASELLA SPECIALE PONTE>       
+|    *   *   __..-:'':____:'':-..__   *     *  |                               
+| *      _.-:__:.-:'':   *:'':-.:__:-._        |Sei capitato sulla casella     
+|    * .':.-:  :  : *:    :  :  :* :._:'. *  * |speciale ponte, wow! questo    
+| * _ :.':  :  :  :  :  * :  :  :  :  :'.: _   |ponte è davvero fantastico!    
+|  [ ]:  :  :* :  :  :    : *:  :  :* :  :[ ]* |quasi quanto quello dello      
+|  [ ]: *:  :  : *:  :*   :  :  : *:  :  :[ ]  |stretto di messina...          
+|::[ ]:__:__:__:__:__:____:__:__:__:__:__:[ ]::|arrivati all'ingresso per il   
+|!![ ]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!![ ]!!|ponte, un troll vi si pone     
+|^^[ ]^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[ ]^^|davanti, imponendovi di        
+|  [ ]  |""|  ___   |"|    _._ _   |""|   [ ]  |proseguire sul ponte per       
+|  [ ]  |""| |"""|  |"|   (__((_(  |""|   [ ]  |una distanza pari a quella     
+|  [ ]  |""| |"""|  |"|  \'-:--:-. |""|   [ ]  |percorsa per raggiungerlo.     
+|^/   \~^-~^~ _~^-~_^~-^~_'-----'~^~-~_~-/   \~|                               
+|______________________________________________|<CHE FORTUNA! :)               
+                                                                               
+<Premere 0 per proseguire:                                                     
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+
+
+ 
+
+
+
+
+
+
+
+20// riga input 
+27// colonna input 
+
+22// riga input 
+1// colonna input 
+2// cm 

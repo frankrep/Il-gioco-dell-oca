@@ -1,0 +1,36 @@
+<IL GIOCO DELL'OCA>                                                            
+___________________________________                                            
+|   ) * )                   /  )  |<CASELLA SPECIALE SCHELETRO>                
+|    \#/      uuuuuuu      ( * (  |                                            
+|  .-"#'-.uu$$$$$$$$$$$uu   \#/   |Siete capitati sulla casella speciale       
+|  |"-.uu$$$$$$$$$$$$$$$$$uu"#'-. |scheletro, la mappa per El Dorado indicava  
+|  |  u$$$$$$$$$$$$$$$$$$$$$u.='| |proprio quella piramide lì in lontananza,   
+|  | u$$$$$$$$$$$$$$$$$$$$$$$u  | |una volta arrivato all'ingresso della       
+|  |u$$$$$$$$$$$$$$$$$$$$$$$$$u | |piramide, decidi di recarti nella cripta    
+|  |u$$$$$$$$$$$$$$$$$$$$$$$$$u | |in cerca delle tue infinite pepite d'oro,   
+|  |u$$$$$$"   "$$$"   "$$$$$$u | |arrivato lì però l'atmosfera si fa cupa...  
+|  |"$$$$"      u$u       $$$$" | |molto strano per un enorme riserva d'oro!   
+|  |)$$$u       u$u       u$$$( | |Dopo una serie di rumori sinistri, ti si    
+|  / $$$u      u$$$u      u$$$ \| |para davanti lo scheletro di Tzekel-Kan, che
+| ( * "$$$$uu$$$   $$$uu$$$$" * ) |in cerca di vendetta decide di colpirti con 
+|  \#/ "$$$$$$$"   "$$$$$$$" \#/  |una maledizione, facendoti tornare          
+|.-"#'-. u$$$$$$$u$$$$$$$u .-"#'-.|all'inizio del tuo viaggio. Forse il fatto  
+||"-.-"|  u$"$"$"$"$"$"$u  |"-.-"||che la persona da cui hai comprato la mappa 
+||     |  $$u$ $ $ $ $u$$  |     ||fosse un noto ricercato della regione di    
+||     |   $$$$$u$u$u$$$   |     ||Uniba avrebbe duvuto farti riflettere...    
+||     |    "$$$$$$$$$"    |     ||                                            
+|'-._,-'       """""       '-._,-'|                                            
+|_________________________________|<CHE SFORTUNA! :(                           
+<Premere 0 per proseguire:                                                     
+                                                                               
+
+
+
+
+
+24// riga input
+34// colonna input
+
+25//riga errore
+1//colonna errore 
+2//CM
