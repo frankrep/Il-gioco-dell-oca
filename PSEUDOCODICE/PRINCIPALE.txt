@@ -18,7 +18,6 @@ DATI DI OUTPUT
 DATI DI LAVORO
 uscita, indica la conferma della volontà da parte dell'utente di uscire dal gioco, carattere, = 'RISPOSTA_AFFERMATIVA_MAIUSCOLO' o 'RISPOSTA_AFFERMATIVA_MINUSCOLO' (indica la conferma dell'uscita dal gioco), = 'RISPOSTA_NEGATIVA_MAIUSCOLO' o 'RISPOSTA_NEGATIVA_MINUSCOLO' (indica la volontà di non uscire dal gioco)
 vincitore_partita, contiene le informazioni del vincitore di una partita avviata o caricata, record di tipo vincitore
-vincitore_attuale, ,record di tipo vincitore
 
 ALGORITMO
 stampare_testo(file_intro) //schermata logo
@@ -29,7 +28,7 @@ ESEGUI
 	SE (opzione = 1)
 	ALLORA
 		vincitore_partita = iniziare_nuova_partita ()	//inserire fine stringa come nome nel caso in cui si interrompe la partita (stessa cosa per riprendere_partita)
-		SE (leggere_nome_vincitore (vincitore_attuale) != FINE_STRINGA)
+		SE (leggere_nome_vincitore (vincitore_partita) != FINE_STRINGA)
         ALLORA
 			file_classifica_top_10 = aggiornare_classifica_top_10 (file_classifica_top_10, vincitore_partita)
 		FINE
@@ -37,7 +36,7 @@ ESEGUI
 		SE (opzione = 2)
 		ALLORA
 			vincitore_partita = riprendere_partita ()
-			SE (leggere_nome_vincitore (vincitore_attuale) != FINE_STRINGA)
+			SE (leggere_nome_vincitore (vincitore_partita) != FINE_STRINGA)
             ALLORA
 				file_classifica_top_10 = aggiornare_classifica_top_10 (file_classifica_top_10, vincitore_partita)
 			FINE
