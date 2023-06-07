@@ -125,7 +125,7 @@ void confermare_scelta (char *conferma_scelta)  {
     do 
     {
         scanf("%c", &conferma_scelta);
-        if ((conferma_scelta != RISPOSTA_AFFERMATIVA_MAIUSCOLO) && (conferma_scelta != RISPOSTA_AFFERMATIVA_MINUSCOLO) && (conferma_scelta != RISPOSTA_NEGATIVA_MAIUSCOLO) && (conferma_scelta != RISPSOTA_NEGATIVA_MINUSCOLO))
+        if ((conferma_scelta != RISPOSTA_AFFERMATIVA_MAIUSCOLO) && (conferma_scelta != RISPOSTA_AFFERMATIVA_MINUSCOLO) && (conferma_scelta != RISPOSTA_NEGATIVA_MAIUSCOLO) && (conferma_scelta != RISPOSTA_NEGATIVA_MINUSCOLO))
         {
             //stampare a video il messaggio d'errore relativo alla conferma
         }
