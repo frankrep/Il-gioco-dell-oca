@@ -296,8 +296,8 @@ void gestire_autorizzazione(partita* partita_attuale){
 int confrontare_stringhe (char stringa_1[], char stringa_2[]) {
     int indice_stringa = 0;
     int esito = 1;
-    while(stringa_1[indice_stringa] != FINE_STRINGA){
-        if(stringa_1[indice_stringa] != stringa_2[indice_stringa]){
+    while (stringa_1[indice_stringa] != FINE_STRINGA && esito == 1) {
+        if (stringa_1 [indice_stringa] != stringa_2 [indice_stringa]) {
             esito = 0;
         }
         indice_stringa = indice_stringa + 1;

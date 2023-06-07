@@ -3,7 +3,10 @@
 #include "costanti.h"
 #include "vincitore.h"
 #include "gestire_partita.h"
-FILE* aggiornare_classifica_top_10 (vincitore* vincitore_partita){
+
+
+
+void aggiornare_classifica_top_10 (vincitore vincitore_partita){
     vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI] = caricare_classifica(FILE_CLASSIFICA_TOP_10);
     int inserito = VERO;
     int indice_vincitori = 1;
@@ -21,7 +24,7 @@ FILE* aggiornare_classifica_top_10 (vincitore* vincitore_partita){
         FILE_CLASSIFICA_TOP_10 = scrivere_su_file(FILE_CLASSIFICA_TOP_10, vincitori[indice_vincitori]);
         indice_vincitori = indice_vincitori + 1;
     }
-    return FILE_CLASSIFICA_TOP_10;
+    return;
 }
 
 vincitore* spostamento_destra_vincitori (vincitore* vincitori[], int posizione_inserimento,vincitore* vincitore_partita) {
