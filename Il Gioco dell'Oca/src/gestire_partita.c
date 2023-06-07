@@ -16,17 +16,17 @@
 
 
 
-vincitore gestire_partita(partita* partita_attuale){
-    if(leggere_turno(*partita_attuale) == 0){
+vincitore gestire_partita (partita* partita_attuale) {
+    if (leggere_turno(*partita_attuale) == 0) {
         //scelta giocatore iniziale
-        scegliere_giocatore(partita_attuale);
+        scegliere_giocatore (partita_attuale);
     }
     do{
-        cambiare_turno(partita_attuale);
-        if(leggere_autorizzazione(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))) > 0){
+        cambiare_turno (partita_attuale);
+        if (leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) > 0) {
             gestire_autorizzazione(partita_attuale);
         }
-        if(leggere_autorizzazione(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))) = 0){
+        if (leggere_autorizzazione(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))) = 0){
             //stampare percorso con l'attesa con l'attesa dell'input
             lanciare_dadi(partita_attuale);
             //stampare percorso con i dadi aggiornati e attendere l'input
@@ -36,7 +36,7 @@ vincitore gestire_partita(partita* partita_attuale){
         }
 
         }while(leggere_posizione_giocatore(leggere_giocatore(*partita_attuale,leggere_turno(*partita_attuale))) != leggere_lunghezza_percorso(*partita_attuale));
-        vincitore vincitore_partita = inizializzare_vincitore(partita_attuale);
+        vincitore vincitore_partita = inizializzare_vincitore (partita_attuale);
         return vincitore_partita;
 }
 
@@ -51,7 +51,7 @@ void scegliere_giocatore(partita* partita_attuale){
             //aspetta input da tastiera
             indice_giocatori = indice_giocatori + 1;
         }
-        scrivere_turno(partita_attuale, trovare_posizione_massimo(estrazioni, leggere_numero_giocatori(*partita_attuale)) + 1);
+        scrivere_turno (partita_attuale, trovare_posizione_massimo (estrazioni, leggere_numero_giocatori(*partita_attuale)) + 1);
         return;
 }
 

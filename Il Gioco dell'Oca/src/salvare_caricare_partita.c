@@ -5,7 +5,8 @@
 #include "gestire_partita.h"
 #include "inizializzare_partita.h"
 
-
+void stampare_partite_salvate (partita elenco_partite[]);
+void scrivere_partite (partita elenco_partite[]);
 
 void caricare_partite (partita elenco_partite[]) {
     FILE * file_salvataggio = fopen(FILE_SALVATAGGIO, "rb");
@@ -56,7 +57,7 @@ void salvare_partita (partita* partita_attuale) {
 
 void confermare_scelta (char * risposta) {
     //decidere se stampare da file la frase
-    printf ("Confermi la scelta?");
+    printf ("Vuoi confermare?");
     int correttezza_inserimento;
     do {
         do {
