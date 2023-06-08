@@ -8,31 +8,30 @@
             |___/                                     ______________________   
                                                       |____________________|   
 <TOP 10 MIGLIORI GIOCATORI>                           |___SSSS_____________|   
-1^ Nome giocatore: NL/LP;                             |__8.()..S___________|   
-2^ Nome giocatore: NL/LP:                             |_88.....S___________|   
-3^ Nome giocatore: NL/LP;                             |888....S_____$$$$s__|   
-4^ Nome giocatore: NL/LP;                             |____S...S___80_)$$$_|   
-5^ Nome giocatore: NL/LP;                             |_____S..S__88$$$$$$_|   
-6^ Nome giocatore: NL/LP;                             |_____S..S_8888$$$$$_|   
-7^ Nome giocatore: NL/LP;                             |_____S..S_____$$$$$s|   
-8^ Nome giocatore: NL/LP;                             |_____S..S______$$$$$|   
-9^ Nome giocatore: NL/LP;                             |_____S..S_______$$$$|   
-10^ Nome giocatore: NL/LP;                            |_____S..S_______$$$$|   
+1^               :      ;                             |__8.()..S___________|   
+2^               :      ;                             |_88.....S___________|   
+3^               :      ;                             |888....S_____$$$$s__|   
+4^               :      ;                             |____S...S___80_)$$$_|   
+5^               :      ;                             |_____S..S__88$$$$$$_|   
+6^               :      ;                             |_____S..S_8888$$$$$_|   
+7^               :      ;                             |_____S..S_____$$$$$s|   
+8^               :      ;                             |_____S..S______$$$$$|   
+9^               :      ;                             |_____S..S_______$$$$|   
+10^              :      ;                             |_____S..S_______$$$$|   
 (Numero di lanci/Lunghezza del percorso)              |_____S..S_______$$$$|   
                                                       |_____S..S_______$$$$|   
 <Inserisci 0 per tornare indietro:                    |____S...S_______$$$$|   
                                                       |____S...S_______$$$$|   
                                                       |____________________|   
-
-
-
-
-
 23 //riga input
 35 //colonna input
 25 //riga errore
 1 //colonna errore
 1 //codice messaggio
+11 //riga 1^
+4 // colonna 1^
+11 // riga NL/LP 1^
+20 // colonna nl/lp 1^
 
 
 

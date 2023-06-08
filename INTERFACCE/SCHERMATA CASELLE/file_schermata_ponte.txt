@@ -23,19 +23,8 @@ ________________________________________________
                                                                                
                                                                                
                                                                                
-
-
- 
-
-
-
-
-
-
-
-20// riga input 
-27// colonna input 
-
-22// riga input 
-1// colonna input 
-2// cm 
+20 // riga input 
+27 // colonna input  
+22 // riga input 
+1 // colonna input 
+2 // cm 

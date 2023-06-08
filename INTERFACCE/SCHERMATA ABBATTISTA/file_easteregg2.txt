@@ -23,12 +23,7 @@
            /`---';      `----'     | \         |             /                 
           (     /                  |  `.     .' \          .'                  
            `---'                   |<PREMERE UN TASTO PER CONTINUARE:          
-
-
-
-
-
-25//RIGA INPUT
-70//COLONNA INPUT
+25 //RIGA INPUT
+70 //COLONNA INPUT
 
 

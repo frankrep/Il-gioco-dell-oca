@@ -23,14 +23,8 @@ Inserisci la lunghezza del percorso desiderato:       |____S...S___80_)$$$_|
                                                       |____S...S_______$$$$|   
                                                       |____S...S_______$$$$|   
                                                       |____________________|   
-
-
-
-
-
 14 //riga input
 49 //colonna input
-
-24 //riga errore
-25 //colonna errore
+15 //riga errore
+1 //colonna errore
 2 //codice messaggio 

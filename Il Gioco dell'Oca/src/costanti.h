@@ -68,6 +68,7 @@
 #define NUMERO_MASSIMO_PUNTINI_FACCIA_DADO 7
 #define NUMERO_CIFRE 10
 
+
 const char FINE_STRINGA = '\0';
 const char CARATTERE_A_CAPO = '\n';
 const char STRINGA_VUOTA[1] = "\0";
@@ -94,7 +95,8 @@ const char CONTORNO_INFERIORE_CASELLA = '_';
 const char CARATTERE_PUNTO_FACCIA_DADO = '*';
 const char FILE_CASELLE_SPECIALI [] = "txt/file_caselle_speciali.bin";
 const char FILE_CLASSIFICA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "txt/file_classifica.txt";
-const char FILE_CREDITI_6[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "txt/crediti.txt";
+const char FILE_CREDITI[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "txt/crediti.txt";
+const char FILE_SEME [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "bin/seme.bin";
 const char FILE_MENU_AIUTO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "txt/file_menu_aiuto.txt";
 const char FINE_MANUALE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "txt/file_manuale.txt";
 const char FILE_MENU_REGOLAMENTO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "txt/file_menu_regolamento.txt";

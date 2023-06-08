@@ -23,14 +23,8 @@ _________________________________________
 |"""""""[ .-. '._) .-. '._).-. ]""""""""|                                      
 |_______________________________________|                                      
                                                                                
-
-
-
-
-
-22// riga input
-68// colonna input
-
-24//riga errore
-42//colonna errore 
-2//CM
+22 // riga input
+68 // colonna input
+24 //riga errore
+42 //colonna errore 
+2 //CM

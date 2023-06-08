@@ -24,16 +24,8 @@ Inserire 0 per tornare indietro:
                                                                                
                                                                                
 
-
-
-
-
-
-
-
 23 //riga input
 33 //colonna input
-
 25 //riga errore
 1 //colonna errore
 1 //codice messaggio 
