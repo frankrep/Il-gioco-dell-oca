@@ -14,7 +14,7 @@ void stampare_percorso (partita* partita_attuale) {
     while (indice_riga_superiore <= ALTEZZA_TABELLONE)
     {
         int indice_altezza_disegno = 1;
-        while (indice_altezza_disegno <= ALTEZZA_DISEGNO_TABELLA)
+        while (indice_altezza_disegno <= ALTEZZA_DISEGNO_CASELLA)
         {
             if (colonne_parte_sinistra > 0)
             {

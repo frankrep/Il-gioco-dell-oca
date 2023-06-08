@@ -18,13 +18,14 @@ indice_altezza_disegno, l'indice dell'altezza del disegno ovvero dello strato de
 colonne_parte_sinistra, il numero di caselle non contigue da stampare nella parte sinistra del tabellone, Intero, > 0, <= LARGHEZZA_TABELLONE
 colonne_parte_destra, il numero di caselle non contigue da stampare nella parte destra, Intero, > 0, <= LARGHEZZA_TABELLONE
 ultima_casella_stampata, l'ultima casella stampata dalle funzioni di stampa del percorso, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
-meta_righe, , reale
+meta_righe, , Intero
 
 ALGORITMO
 stampare_parte_superiore_casella()
 indice_riga_superiore = 1
 MENTRE (indice_riga_superiore <= ALTEZZA_TABELLONE)
 
+    meta_righe = calcolare_parte_intera(ALTEZZA_TABELLONE / 2)
     indice_altezza_disegno = 1
     MENTRE (indice_altezza_disegno <= ALTEZZA_DISEGNO_CASELLA)
         
