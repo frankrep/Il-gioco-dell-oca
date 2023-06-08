@@ -12,7 +12,7 @@
 vincitore gestire_partita(partita* partita_attuale);
 void scegliere_giocatore(partita* partita_attuale);
 vincitore inizializzare_vincitore(partita* partita_attuale);
-int trovare_posizione_massimo(int valori[], int dimensione_valori);
+int trovare_posizione_massimo(const int valori[], int dimensione_valori);
 void cambiare_turno(partita* partita_attuale);
 void lanciare_dadi(partita* partita_attuale);
 void incrementare_lanci_effettuati(partita* partita_attuale);
@@ -23,7 +23,7 @@ void calcolare_caselle_eccesso(partita* partita_attuale);
 int sommare_dadi (partita partita_attuale);
 void verificare_casella(partita* partita_attuale);
 void gestire_oca(partita* partita_attuale);
-void impostare_autorizzazioni(partita* partita_attuale, char nome_casella_attuale[]);
+void impostare_autorizzazioni(partita* partita_attuale, const char nome_casella_attuale[]);
 void gestire_autorizzazione(partita* partita_attuale);
 int confrontare_stringhe(const char stringa_1[], const char stringa_2[]);
 

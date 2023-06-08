@@ -65,7 +65,7 @@ giocatore leggere_giocatore (partita partita_attuale, int posizione_elenco_gioca
 void scrivere_nome_partita (partita* partita_attuale, char nome_da_inserire[]) {
     int indice_nome = 0;
     while (nome_da_inserire[indice_nome] != FINE_STRINGA) {
-        scrivere_carattere_partita(partita_attuale, nome_da_inserire[indice_nome], indice_nome);
+        scrivere_carattere_partita(partita_attuale, indice_nome, nome_da_inserire[indice_nome]);
         indice_nome = indice_nome + 1;
     }
     return;

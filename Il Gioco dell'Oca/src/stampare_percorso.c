@@ -1,10 +1,40 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "costanti.h"
 #include "partita.h"
 #include "giocatore.h"
 #include "gestire_partita.h"
 #include "stampare_percorso.h"
+#include "generare_percorso.h"
+
+
+void stampare_interfaccia_percorso(partita* partita_attuale, const char file_interfaccia[]){
+    stampare_percorso(partita_attuale);
+    FILE *f_interfaccia = NULL;
+    if ((f_interfaccia = fopen(file_interfaccia, "r")) == NULL) {
+        int indice_carattere = 0;
+        while (indice_carattere < (LUNGHEZZA_SCHERMATA * (ALTEZZA_SCHERMATA - ALTEZZA_MENU_INTERFACCIA_PERCORSO))) {
+            fgetc(f_interfaccia);
+            indice_carattere = indice_carattere + 1;
+        }
+        char simbolo_letto;
+        int indice_altezza_menu = 0;
+        while (indice_altezza_menu < ALTEZZA_MENU_INTERFACCIA_PERCORSO) {
+            simbolo_letto = fgetc(f_interfaccia);
+            printf("%c", simbolo_letto);
+            if (simbolo_letto == CARATTERE_A_CAPO) {
+                indice_altezza_menu = indice_altezza_menu + 1;
+            }
+        }
+        fclose(f_interfaccia);
+    } else {
+        printf("%s", ERRORE_FILE_NON_TROVATO);
+        fflush(stdout);
+        printf("%c", CARATTERE_SPAZIO);
+        fflush(stdout);
+        printf("%s", file_interfaccia);
+        fflush(stdout);
+    }
+}
 
 void stampare_percorso(partita* partita_attuale) {
 
@@ -14,9 +44,9 @@ void stampare_percorso(partita* partita_attuale) {
     int indice_riga_inferiore = ALTEZZA_TABELLONE;
     int colonne_parte_sinistra = 0;
     int colonne_parte_destra = 0;
-    int ultima_casella_stampata = 0;
+    int ultima_casella_stampata;
 
-    float meta_righe = ALTEZZA_TABELLONE / 2;
+    int meta_righe = calcolare_parte_intera(ALTEZZA_TABELLONE / 2);
 
     while (indice_riga_superiore < ALTEZZA_TABELLONE)
     {

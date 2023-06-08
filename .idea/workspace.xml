@@ -21,31 +21,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab046243-0dc6-4e0d-b4b1-bf3f8e57d275" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Il-gioco-dell-oca.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Il-gioco-dell-oca.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.cmake/api/v1/reply/cache-v2-b4575fc79d9283efc45f.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-09d9e192db940e9abfdd.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-16ca12b146eaf8cfc6e0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.cmake/api/v1/reply/index-2023-06-06T10-39-01-0402.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.cmake/api/v1/reply/target-Il_Gioco_dell_Oca-Debug-bef0c55ca7f26083d5ea.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-98deb88f10a077c59947.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/3.25.2/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/3.25.2/CMakeCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/3.25.2/CMakeRCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/3.25.2/CMakeRCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/3.25.2/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/3.25.2/CMakeSystem.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/aiuto.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/aiuto.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/aiuto.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/aiuto.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/casella.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/casella.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/casella.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/casella.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/classifica.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/classifica.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/classifica.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/classifica.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/costanti.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/costanti.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_partita.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_partita.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_partita.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_partita.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/giocatore.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/giocatore.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/inizializzare_partita.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/inizializzare_partita.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/partita.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/partita.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/principale.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/principale.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/salvare_caricare_partita.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/salvare_caricare_partita.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/stampare_percorso.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/stampare_percorso.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/stampare_percorso.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/stampare_percorso.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/vincitore.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/vincitore.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +56,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -85,6 +81,8 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -109,7 +107,7 @@
       <option name="presentableId" value="Default" />
       <updated>1686148914314</updated>
       <workItem from="1686148915453" duration="24000" />
-      <workItem from="1686241210325" duration="6959000" />
+      <workItem from="1686241210325" duration="16225000" />
     </task>
     <servers />
   </component>

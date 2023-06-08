@@ -40,7 +40,7 @@ char leggere_carattere_simbolo(casella casella_attuale, int posizione){
 void scrivere_nome_casella (casella* casella_attuale, const char nome_da_inserire[]) {
     int indice_nome = 0;
     while(nome_da_inserire[indice_nome] != FINE_STRINGA){
-        scrivere_carattere_casella(casella_attuale, nome_da_inserire[indice_nome], indice_nome);
+        scrivere_carattere_casella(casella_attuale, indice_nome, nome_da_inserire[indice_nome]);
         indice_nome = indice_nome + 1;
     }
     scrivere_carattere_casella(casella_attuale,  indice_nome, FINE_STRINGA);

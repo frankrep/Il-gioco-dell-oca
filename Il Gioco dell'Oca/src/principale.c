@@ -21,7 +21,7 @@ void gestire_vincitore (vincitore vincitore_partita);
 
 
 
-void main(void) {
+int main(void) {
 	char uscita;
 
     //stampa della schermata con il logo e la richiesta di premere un tasto qualsiasi
@@ -51,7 +51,7 @@ void main(void) {
                 }
                 else {
                     if (opzione == 4) {
-                        chiedere_aiuto ();
+                        chiedere_aiuto (opzione);
                     }
                     else {
                         confermare_scelta (&uscita);
@@ -61,7 +61,7 @@ void main(void) {
         }
     } while (uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO);
     system("pause");
-    return ;
+    return EXIT_SUCCESS;
 }
 
 

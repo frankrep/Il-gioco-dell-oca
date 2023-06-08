@@ -1,5 +1,5 @@
-#ifndef aiuto_h_
-#define aiuto_h_
+#ifndef STAMPARE_PERCORSO_H_
+#define STAMPARE_PERCORSO_H_
 
 void stampare_percorso(partita* partita_attuale);
 void stampare_parte_superiore_casella();
@@ -13,4 +13,4 @@ void stampare_contenuto_casella(partita* partita_attuale, int numero_casella);
 void stampare_giocatori_superiori_casella(partita* partita_attuale, int numero_casella);
 void stampare_giocatori_inferiori_casella(partita* partita_attuale, int numero_casella);
 
-#endif /* CASELLA_H_ */
+#endif /* STAMPARE_PERCORSO_H_ */

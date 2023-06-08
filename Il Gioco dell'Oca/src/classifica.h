@@ -1,7 +1,12 @@
 #ifndef classifica_h_
 #define classifica_h_
+
+#include "vincitore.h"
+
 void aggiornare_classifica_top_10 (vincitore vincitore_partita);
-vincitore* spostamento_destra_vincitori (vincitore* vincitori[], int posizione_inserimento,vincitore* vincitore_partita);
-vincitore* caricare_classifica ();
+void spostamento_destra_vincitori (vincitore vincitori[], int posizione_inserimento, vincitore vincitore_partita);
+void caricare_classifica (vincitore vincitori[]);
 void stampare_classifica();
-#endif /* classifica_h_ *
+void scrivere_classifica (vincitore elenco_vincitori[]);
+
+#endif /* classifica_h_ */

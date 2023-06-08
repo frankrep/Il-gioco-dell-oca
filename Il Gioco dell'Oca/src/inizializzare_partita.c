@@ -6,7 +6,8 @@
 #include "casella.h"
 #include <stdlib.h>
 #include <stdio.h>
-partita* inizializzare_giocatori(partita* partita_attuale) {
+
+partita *inizializzare_giocatori(partita *partita_attuale) {
     richiedere_numero_caselle(partita_attuale);
     inizializzare_numero_giocatori(partita_attuale);
     inizializzare_nomi_giocatori(partita_attuale);
@@ -14,79 +15,76 @@ partita* inizializzare_giocatori(partita* partita_attuale) {
     return partita_attuale;
 }
 
-void richiedere_numero_caselle(partita* partita_attuale) {
-	int dimensione_percorso;
+void richiedere_numero_caselle(partita *partita_attuale) {
+    int dimensione_percorso;
     //stampare richiesta
-    do{
-        int dimensione_percorso;
+    do {
         scanf("%d", &dimensione_percorso);
         if ((dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) || (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO)) {
             //stampare messaggio errore
         }
-    }while((dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) || (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO));
+    } while ((dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) || (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO));
     scrivere_lunghezza_percorso(partita_attuale, dimensione_percorso);
-    return ;
+    return;
 }
 
-void inizializzare_numero_giocatori(partita* partita_attuale) {
-	int numero_partecipanti;
+void inizializzare_numero_giocatori(partita *partita_attuale) {
+    int numero_partecipanti;
     //stampare messaggio richiesta
-    do{
-        int numero_partecipanti;
+    do {
         scanf("%d", &numero_partecipanti);
         if ((numero_partecipanti < NUMERO_MINIMO_GIOCATORI) || (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI)) {
             //stampare messaggio errore
         }
-    }while((numero_partecipanti < NUMERO_MINIMO_GIOCATORI) || (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI));
-    scrivere_numero_giocatori (partita_attuale, numero_partecipanti);
-    return ;
+    } while ((numero_partecipanti < NUMERO_MINIMO_GIOCATORI) || (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI));
+    scrivere_numero_giocatori(partita_attuale, numero_partecipanti);
+    return;
 }
 
-void inizializzare_nomi_giocatori(partita* partita_attuale) {
+void inizializzare_nomi_giocatori(partita *partita_attuale) {
     int indice_giocatori = 0;
     giocatore giocatore_attuale;
     char nome_da_inserire[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     while (indice_giocatori <= leggere_numero_giocatori(*partita_attuale)) {
         //stampare richiesta
-    	inserire_stringa(DIMENSIONE_MINIMA_NOME_GIOCATORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE, nome_da_inserire);
-    	giocatore_attuale = leggere_giocatore(*partita_attuale, indice_giocatori);
-    	scrivere_nome_giocatore (&giocatore_attuale, nome_da_inserire);
-        scrivere_giocatore(partita_attuale, giocatore_attuale,indice_giocatori);
+        inserire_stringa(DIMENSIONE_MINIMA_NOME_GIOCATORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE, nome_da_inserire);
+        giocatore_attuale = leggere_giocatore(*partita_attuale, indice_giocatori);
+        scrivere_nome_giocatore(&giocatore_attuale, nome_da_inserire);
+        scrivere_giocatore(partita_attuale, giocatore_attuale, indice_giocatori);
         indice_giocatori = indice_giocatori + 1;
     }
-    return ;
+    return;
 }
 
-void inserire_stringa (int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]) {
+void inserire_stringa(int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]) {
     int indice_stringa = 0;
     int terminato = 0;
-    while ( (indice_stringa < dimensione_massima_stringa) && (terminato == FALSO) && (indice_stringa < dimensione_minima_stringa) ) {
+    while ((indice_stringa < dimensione_massima_stringa) && (terminato == FALSO) &&
+           (indice_stringa < dimensione_minima_stringa)) {
         char carattere;
         scanf("%c", &carattere);
-        if(carattere != CARATTERE_A_CAPO){
-        	nome_da_inserire[indice_stringa] = carattere;
+        if (carattere != CARATTERE_A_CAPO) {
+            nome_da_inserire[indice_stringa] = carattere;
             indice_stringa = indice_stringa + 1;
-        }
-        else if (indice_stringa <= dimensione_minima_stringa){
+        } else if (indice_stringa <= dimensione_minima_stringa) {
             //stampare messaggio errore minimo caratteri richiesti
-        }
-         else{
+        } else {
             terminato = VERO;
-         }
+        }
     }
     nome_da_inserire[indice_stringa] = FINE_STRINGA;
-    return ;
+    return;
 }
 
-void inizializzare_pedine_giocatori(partita* partita_attuale) {
+void inizializzare_pedine_giocatori(partita *partita_attuale) {
     int indice_pedine = 0;
     giocatore giocatore_attuale;
-    do{
-    	giocatore_attuale = leggere_giocatore(*partita_attuale,indice_pedine);
-    	scrivere_pedina_giocatore(&giocatore_attuale,PEDINE_DISPONIBILI[indice_pedine]);
-    	scrivere_giocatore(partita_attuale,giocatore_attuale,indice_pedine);
+    do {
+        giocatore_attuale = leggere_giocatore(*partita_attuale, indice_pedine);
+        scrivere_pedina_giocatore(&giocatore_attuale, PEDINE_DISPONIBILI[indice_pedine]);
+        scrivere_giocatore(partita_attuale, giocatore_attuale, indice_pedine);
         indice_pedine = indice_pedine + 1;
-    }while(indice_pedine <= leggere_numero_giocatori(*partita_attuale));
-    return ;
+    } while (indice_pedine <= leggere_numero_giocatori(*partita_attuale));
+    return;
 }
 

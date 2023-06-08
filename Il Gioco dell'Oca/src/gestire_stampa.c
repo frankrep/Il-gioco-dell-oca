@@ -30,8 +30,8 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 		int posizione_colonna;
 		int indice_dadi = 0;
 		while (facce_dadi[indice_dadi] != 0 || (indice_dadi < NUMERO_DADI)) {
-			int indice_puntini_dado = 0;
-			while (indice_puntini_dado < NUMERO_MASSIMO_PUNTINI_FACCIA_DADO) {
+			int indice_puntini_dado = 1;
+			while (indice_puntini_dado <= NUMERO_MASSIMO_PUNTINI_FACCIA_DADO) {
 				//inserire funzione di conversione
 				fscanf(f_interfaccia, "%d ", &posizione_riga);
 				carattere_letto = fgetc(f_interfaccia);
@@ -45,7 +45,7 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 					carattere_letto = fgetc(f_interfaccia);
 				}
 
-				posizionare_cursore(posizione_riga, posizione_colonna); //GOTOXY
+				posizionare_cursore(posizione_riga, posizione_colonna);
 				if (indice_puntini_dado == 1) {
 					if (facce_dadi[indice_dadi] == 6
 							|| (facce_dadi[indice_dadi] == 5)
@@ -178,15 +178,14 @@ void stampare_messaggio_errore(const char file_interfaccia[]) {
 		}
 		fclose(f_interfaccia);
 
-		posizionare_cursore(posizione_riga, posizione_colonna); //GOTOXY
+		posizionare_cursore(posizione_riga, posizione_colonna);
 		FILE *f_messaggi_errore = NULL;
 		if ((f_messaggi_errore = fopen(FILE_MESSAGGI_ERRORE, "r")) == NULL) {
-			char messaggio_errore[DIMENSIONE_MASSIMA_MESSAGGIO_ERRORE];
+			char messaggio_errore[LUNGHEZZA_SCHERMATA + 1];
 
 			indice_riga = 0;
 			while (indice_riga < codice_messaggio_errore) {
-				fgets(messaggio_errore, DIMENSIONE_MASSIMA_MESSAGGIO_ERRORE,
-						f_messaggi_errore);
+				fgets(messaggio_errore, (LUNGHEZZA_SCHERMATA + 1),f_messaggi_errore);
 			}
 			fclose(f_messaggi_errore);
 			printf("%s", messaggio_errore);

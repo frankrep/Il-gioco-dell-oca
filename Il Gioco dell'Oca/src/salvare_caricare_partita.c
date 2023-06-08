@@ -81,7 +81,7 @@ void confermare_scelta (char * risposta) {
 void stampare_partite_salvate (partita elenco_partite[]) {
     int indice_partita = 0;
     char nome [DIMENSIONE_MASSIMA_NOME_PARTITA];
-    while (indice_partita <= NUMERO_MASSIMO_PARTITE) {
+    while (indice_partita < NUMERO_MASSIMO_PARTITE) {
         leggere_nome_partita (elenco_partite[indice_partita], nome);
         if (confrontare_stringhe (nome,STRINGA_VUOTA) == VERO) {
              //stampare il nome dello slot con il simbolo vuoto
@@ -89,6 +89,7 @@ void stampare_partite_salvate (partita elenco_partite[]) {
         else {
             //stampare il nome relativo alla partita salvata nella posizione individuata dallo slot
         }
+        indice_partita = indice_partita + 1;
     }
     return;
 }

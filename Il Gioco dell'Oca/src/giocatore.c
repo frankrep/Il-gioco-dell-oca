@@ -59,7 +59,7 @@ int leggere_autorizzazione (giocatore giocatore_attuale) {
 void scrivere_nome_giocatore (giocatore* giocatore_attuale, char nome_da_inserire[]) {
     int indice_nome = 0;
     while (nome_da_inserire[indice_nome] != FINE_STRINGA) {
-        scrivere_carattere_nome_giocatore(giocatore_attuale, nome_da_inserire[indice_nome], indice_nome);
+        scrivere_carattere_nome_giocatore(giocatore_attuale, indice_nome, nome_da_inserire[indice_nome]);
         indice_nome = indice_nome + 1;
     }
     return;

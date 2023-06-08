@@ -1,5 +1,7 @@
-#ifndef aiuto_h_
-#define aiuto_h_
+#ifndef AIUTO_H_
+#define AIUTO_H_
+
 void chiedere_aiuto (int opzione_scelta);
 int scegliere_aiuto ();
-#endif /* CASELLA_H_ */
+
+#endif /* AIUTO_H_ */
