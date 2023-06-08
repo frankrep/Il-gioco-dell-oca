@@ -12,10 +12,7 @@
 vincitore gestire_partita(partita* partita_attuale);
 void scegliere_giocatore(partita* partita_attuale);
 vincitore inizializzare_vincitore(partita* partita_attuale);
-int generare_numero(int numero_massimo, int numero_minimo);
-int generare_seme(int seme);
-int generare_casuale(int seme,int numero_massimo,int numero_minimo);
-int trovare_posizione_massimo(int* valori, int dimensione_valori);
+int trovare_posizione_massimo(int valori[], int dimensione_valori);
 void cambiare_turno(partita* partita_attuale);
 void lanciare_dadi(partita* partita_attuale);
 void incrementare_lanci_effettuati(partita* partita_attuale);
