@@ -34,7 +34,7 @@ void salvare_partita (partita* partita_attuale) {
         inserire_stringa (DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata);
         scrivere_nome_partita (partita_attuale,  nome_partita_salvata);
         leggere_nome_partita (elenco_partite [slot_scelto], nome_partita_salvata);
-        if (confrontare_stringhe (nome_partita_salvata,STRINGA_VUOTA) == 1) {
+        if (confrontare_stringhe (nome_partita_salvata,STRINGA_VUOTA) == VERO) {
             elenco_partite [slot_scelto] = *partita_attuale;
             scrivere_partite (elenco_partite);
             salvato = 1;
@@ -83,7 +83,7 @@ void stampare_partite_salvate (partita elenco_partite[]) {
     char nome [DIMENSIONE_MASSIMA_NOME_PARTITA];
     while (indice_partita <= NUMERO_MASSIMO_PARTITE) {
         leggere_nome_partita (elenco_partite[indice_partita], nome);
-        if (confrontare_stringhe (nome,STRINGA_VUOTA) == 1) {
+        if (confrontare_stringhe (nome,STRINGA_VUOTA) == VERO) {
              //stampare il nome dello slot con il simbolo vuoto
         }
         else {
