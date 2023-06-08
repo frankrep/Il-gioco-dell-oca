@@ -23,14 +23,8 @@ __________________________________
 |________________________________|                                             
                                                                                
                                                                                
-
-
-
-
-
-21//RIGA INPUT
-61// COLONNA INPUT
-
-23// RIGA ERRORE
-35// COLONNA ERRORE
-2// CM
+21 //RIGA INPUT
+61 // COLONNA INPUT
+23 // RIGA ERRORE
+35 // COLONNA ERRORE
+2 // CM

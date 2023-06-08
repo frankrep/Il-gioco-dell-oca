@@ -56,8 +56,11 @@ file_conferma_inserimento (file che mostra che l'inserimento è avvenuto con suc
 file_richiesta_c_salvataggio (file che richiede se si vuole confermare il salvataggio)
 file_conferma_salvataggio (file che mostra che il salvataggio è avvenuto con successo)
 
-<ERRORE>
-file_errore (file che mostra una schermata di errore all'utente)
+<ERRORE, STAMPE VARIE UTILI NEL GIOCO>
+file_stampe (file contenente i vari messaggi da stampare in base alla situazione)
+
+<CREDITI>
+file_crediti (file contenente la schermata finale con i crediti)
 
 
 

@@ -23,14 +23,8 @@
 |________________________________________________________|                     
 <Premere 0 per proseguire:                                                     
                                                                                
-
-
-
-
-
-24// riga input
-27// colonna input
-
-25// riga errore
-1// colonna errore
-2// CM
+24 // riga input
+27 // colonna input
+25 // riga errore
+1 // colonna errore
+2 // CM

@@ -23,30 +23,19 @@ ____________$$$....GIOCO...$$$_____________|<--                               |
 ____________$$$..DELL'OCA..$$$_____________|<PREMERE 0 PER USCIRE:            |
 ____________$$$$$$$$$$$$$$$$$$_____________|                                  |
 __________$$$$$$$$$$$$$$$$$$$$$$___________|__________________________________|
-
-
-
-
-6//riga NOME
-46//colonna NOME
-
-10// riga LP
-46// colonna LP
-
-14// riga NL
-46// colonna NL
-
-18// riga rateo nl/LP
-46// colonna rateo nl/LP
-
-22//riga classifica
-46// colonna classifica
-4// cofice messaggio
-O POSIZIONE 
-
-23//RIGA input
-67//COLONNA INPUT
-
-24//RIGA ERRORE
-45// COLONNA ERRORE
-2// CODICE MESSAGGIO
+6 //riga NOME
+46 //colonna NOME
+10 // riga LP
+46 // colonna LP
+14 // riga NL
+46 // colonna NL
+18 // riga rateo nl/LP
+46 // colonna rateo nl/LP
+22 //riga classifica
+46 // colonna classifica
+4 // cofice messaggio O POSIZIONE 
+23 //RIGA input
+67 //COLONNA INPUT
+24 //RIGA ERRORE
+45 // COLONNA ERRORE
+2 // CODICE MESSAGGIO

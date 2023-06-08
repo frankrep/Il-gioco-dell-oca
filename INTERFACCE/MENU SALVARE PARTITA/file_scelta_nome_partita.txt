@@ -23,14 +23,8 @@ Inserisci il nome della partita:                      |____S...S___80_)$$$_|
                                                       |____S...S_______$$$$|   
                                                       |____S...S_______$$$$|   
                                                       |____________________|   
-
-
-
-
-
 14 //riga input
 33 //colonna input
-
 16 //riga errore
 1 //colonna errore
 2 //codice messaggio 

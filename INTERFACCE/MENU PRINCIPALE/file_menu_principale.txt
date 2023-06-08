@@ -23,14 +23,8 @@
                                                       |____S...S_______$$$$|   
                                                       |____S...S_______$$$$|   
                                                       |____________________|   
-
-
-
-
-
 20 //riga input
 26 //colonna input
-
 22 //riga errore
 1 //colonna errore
 1 //codice messaggio 
