@@ -24,7 +24,7 @@ void spostare_giocatore(partita* partita_attuale);
 void sommare_lancio_posizione(partita* partita_attuale);
 void calcolare_caselle_eccesso(partita* partita_attuale);
 int sommare_dadi(partita* partita_attuale);
-void gestire_casella(partita* partita_attuale);
+void verificare_casella(partita* partita_attuale);
 void gestire_oca(partita* partita_attuale);
 void impostare_autorizzazioni(partita* partita_attuale, char nome_casella_attuale[]);
 void gestire_autorizzazione(partita* partita_attuale);
