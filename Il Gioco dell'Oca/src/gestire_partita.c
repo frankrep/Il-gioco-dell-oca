@@ -294,7 +294,7 @@ void gestire_autorizzazione(partita* partita_attuale){
     return;
 }
 
-int confrontare_stringhe (char stringa_1[], char stringa_2[]) {
+int confrontare_stringhe (const char stringa_1[], const char stringa_2[]) {
     int indice_stringa = 0;
     int esito = 1;
     while (stringa_1[indice_stringa] != FINE_STRINGA && esito == 1) {

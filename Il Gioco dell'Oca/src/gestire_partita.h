@@ -25,6 +25,6 @@ void verificare_casella(partita* partita_attuale);
 void gestire_oca(partita* partita_attuale);
 void impostare_autorizzazioni(partita* partita_attuale, char nome_casella_attuale[]);
 void gestire_autorizzazione(partita* partita_attuale);
-int confrontare_stringhe(char stringa_1[],char stringa_2[]);
+int confrontare_stringhe(const char stringa_1[], const char stringa_2[]);
 
 #endif /* GESTIRE_PARTITA_H_ */
