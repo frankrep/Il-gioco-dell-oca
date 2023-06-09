@@ -3,7 +3,7 @@
  *
  */
 
-
+#include <stdio.h>
 #include <stdlib.h>
 #include "casella.h"
 #include "giocatore.h"
@@ -13,6 +13,7 @@
 #include "gestire_partita.h"
 #include "generare_numero_casuale.h"
 #include "generare_percorso.h"
+#include "gestire_stampa.h"
 
 
 
@@ -36,7 +37,6 @@ void gestire_autorizzazione(partita* partita_attuale);
 
 vincitore gestire_partita (partita* partita_attuale) {
     if ( leggere_turno (*partita_attuale) == 0 ) {
-        //scelta giocatore iniziale
         scegliere_giocatore (partita_attuale);
     }
     do{
@@ -61,18 +61,19 @@ vincitore gestire_partita (partita* partita_attuale) {
 
 
 void scegliere_giocatore (partita* partita_attuale) {
-        int estrazioni [NUMERO_MASSIMO_GIOCATORI];
-        int indice_giocatori = 0;
-        while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
-            //stampare scelta_g_iniziale
-            //prendere in input la lettura da tastiera per il lancio
-            estrazioni [indice_giocatori] = generare_numero (FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
-            //stampa del dado risultante
-            //aspetta input da tastiera
-            indice_giocatori = indice_giocatori + 1;
-        }
-        scrivere_turno (partita_attuale, trovare_posizione_massimo (estrazioni, leggere_numero_giocatori (*partita_attuale) ) - 1);
-        return;
+    stampare_testo (FILE_SCELTA_G_INIZIALE);
+    int estrazioni [NUMERO_MASSIMO_GIOCATORI];
+    int indice_giocatori = 0;
+    while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
+        posizionare_cursore_in_attesa (FILE_SCELTA_G_INIZIALE);
+        fgetc(stdin);
+        estrazioni [indice_giocatori] = generare_numero (FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
+        stampare_dadi (FILE_SCELTA_G_INIZIALE, estrazioni);
+        fgetc (stdin);
+        indice_giocatori = indice_giocatori + 1;
+    }
+    scrivere_turno (partita_attuale, trovare_posizione_massimo (estrazioni, leggere_numero_giocatori (*partita_attuale) ) - 1);
+    return;
 }
 
 

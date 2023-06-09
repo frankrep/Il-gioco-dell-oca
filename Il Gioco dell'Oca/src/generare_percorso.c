@@ -82,7 +82,8 @@ void proporzionare_caselle_speciali( partita* partita_attuale, casella caselle_s
 }
 
 
-void inizializzare_caselle_speciali(casella caselle_speciali[]){
+
+void inizializzare_caselle_speciali (casella caselle_speciali[]) {
 
 scrivere_nome_casella (&caselle_speciali[0], NOME_PONTE);
 scrivere_simbolo (&caselle_speciali[0], SIMBOLO_PONTE);
@@ -104,6 +105,7 @@ scrivere_simbolo (&caselle_speciali[5], SIMBOLO_SCHELETRO);
 scrivere_numero_casella(&caselle_speciali[5], 58);
 
 }
+
 
 
 int calcolare_proporzione (partita partita_attuale, int posizione_originale) {

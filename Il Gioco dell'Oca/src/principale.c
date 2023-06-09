@@ -85,7 +85,7 @@ int scegliere_opzione_menu () {
             correttezza_inserimento = scanf("%d", &opzione);
             fflush(stdin);
             if (correttezza_inserimento == 0) {
-                stampare_messaggio_errore(FILE_MENU_PRINCIPALE)
+                stampare_messaggio_errore(FILE_MENU_PRINCIPALE);
             }
         } while (correttezza_inserimento == 0);
 
