@@ -25,11 +25,23 @@
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/costanti.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/costanti.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/generare_percorso.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/generare_percorso.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/generare_percorso.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/generare_percorso.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_partita.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_partita.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/inizializzare_partita.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/inizializzare_partita.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/inizializzare_partita.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/inizializzare_partita.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/principale.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/principale.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/stampare_percorso.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/stampare_percorso.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/stampare_percorso.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/stampare_percorso.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +87,11 @@
   }
 }</component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Il_Gioco_dell_Oca" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Il_Gioco_dell_Oca" TARGET_NAME="Il_Gioco_dell_Oca" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Il_Gioco_dell_Oca" RUN_TARGET_NAME="Il_Gioco_dell_Oca">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -92,6 +109,7 @@
       <workItem from="1686148915453" duration="24000" />
       <workItem from="1686241210325" duration="16225000" />
       <workItem from="1686322010602" duration="1745000" />
+      <workItem from="1686329810020" duration="12153000" />
     </task>
     <servers />
   </component>

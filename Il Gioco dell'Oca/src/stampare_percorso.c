@@ -10,7 +10,7 @@
 void stampare_interfaccia_percorso(partita* partita_attuale, const char file_interfaccia[]){
     stampare_percorso(partita_attuale);
     FILE *f_interfaccia = NULL;
-    if ((f_interfaccia = fopen(file_interfaccia, "r")) == NULL) {
+    if ((f_interfaccia = fopen(file_interfaccia, "r")) != NULL) {
         int indice_carattere = 0;
         while (indice_carattere < (LUNGHEZZA_SCHERMATA * (ALTEZZA_SCHERMATA - ALTEZZA_MENU_INTERFACCIA_PERCORSO))) {
             fgetc(f_interfaccia);
@@ -186,26 +186,32 @@ void stampare_casella(partita* partita_attuale, int ultima_casella_stampata, int
 
 
 void stampare_contenuto_casella(partita* partita_attuale, int numero_casella) {
-    char simbolo[DIMENSIONE_MASSIMA_SIMBOLO_CASELLA];
-    leggere_simbolo(leggere_casella_percorso(*partita_attuale, numero_casella), simbolo);
-    if (confrontare_stringhe(simbolo, STRINGA_VUOTA) == VERO){
-    printf("%c", CARATTERE_SPAZIO);
-    printf("%d", numero_casella);
-    if(numero_casella < NUMERO_CIFRE) {
-        printf("%c", CARATTERE_SPAZIO);
+    if((leggere_numero_casella(leggere_casella_percorso(*partita_attuale, numero_casella - 1)) <= leggere_lunghezza_percorso(*partita_attuale)) && (leggere_numero_casella(leggere_casella_percorso(*partita_attuale, numero_casella - 1)) > 0)){
+        if (leggere_carattere_casella(leggere_casella_percorso(*partita_attuale, numero_casella - 1), 0) == FINE_STRINGA){
+            printf("%c", CARATTERE_SPAZIO);
+            printf("%d", leggere_numero_casella(leggere_casella_percorso(*partita_attuale, numero_casella - 1)));
+            if(leggere_numero_casella(leggere_casella_percorso(*partita_attuale, numero_casella - 1)) < NUMERO_CIFRE) {
+                printf("%c", CARATTERE_SPAZIO);
+            }
+            printf("%c", CARATTERE_SPAZIO);
+        } else {
+            char simbolo[DIMENSIONE_MASSIMA_SIMBOLO_CASELLA];
+            leggere_simbolo(leggere_casella_percorso(*partita_attuale, numero_casella - 1), simbolo);
+            printf("%s", simbolo);
+            fflush(stdout);
+        }
+    }else{
+        printf("%s", SIMBOLO_VUOTO);
     }
 
-    printf("%c", CARATTERE_SPAZIO);
-    } else {
-        printf("%s", simbolo);
-        fflush(stdout);
-    }
 }
 
 
 void stampare_giocatori_superiori_casella(partita* partita_attuale, int numero_casella) {
     if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_1)) == numero_casella) {
         printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_1)));
+    }else {
+        printf("%c", CARATTERE_SPAZIO);
     }
     int indice_spazio = 1;
     while (indice_spazio <= (SPAZIO_DISPONIBILE_CASELLA - NUMERO_GIOCATORI_STRATO_CASELLA)) {
@@ -214,31 +220,35 @@ void stampare_giocatori_superiori_casella(partita* partita_attuale, int numero_c
     }
     if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_2)) == numero_casella) {
         printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_2)));
+    }else {
+        printf("%c", CARATTERE_SPAZIO);
     }
 }
 
 
 void stampare_giocatori_inferiori_casella(partita* partita_attuale, int numero_casella) {
-    if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)) == numero_casella) {
-        if (leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)) == FINE_STRINGA) {
-            printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, CONTORNO_INFERIORE_CASELLA)));
-        } else {
+    if (leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)) == FINE_STRINGA) {
+        if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)) == numero_casella) {
             printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)));
+        } else {
+            printf("%c", CONTORNO_INFERIORE_CASELLA);
         }
+    }else {
+        printf("%c", CONTORNO_INFERIORE_CASELLA);
     }
-
     int indice_spazio = 1;
     while (indice_spazio <= (SPAZIO_DISPONIBILE_CASELLA - NUMERO_GIOCATORI_STRATO_CASELLA)){
         printf("%c", CONTORNO_INFERIORE_CASELLA);
         indice_spazio = indice_spazio + 1;
     }
-
-    if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)) == numero_casella) {
-        if (leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)) == FINE_STRINGA) {
-            printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, CONTORNO_INFERIORE_CASELLA)));
-        } else {
+    if (leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)) == FINE_STRINGA) {
+        if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)) == numero_casella) {
             printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)));
+        } else {
+            printf("%c", CONTORNO_INFERIORE_CASELLA);
         }
+    }else {
+        printf("%c", CONTORNO_INFERIORE_CASELLA);
     }
 
 }

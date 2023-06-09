@@ -14,7 +14,8 @@
 #include "generare_numero_casuale.h"
 #include "generare_percorso.h"
 #include "gestire_stampa.h"
-
+#include "stampare_percorso.h"
+#include "inizializzare_partita.h"
 
 
 void scegliere_giocatore(partita* partita_attuale);
@@ -36,7 +37,8 @@ void gestire_autorizzazione(partita* partita_attuale);
 
 
 vincitore gestire_partita (partita* partita_attuale) {
-    if ( leggere_turno (*partita_attuale) == 0 ) {
+    int dadi_da_stampare[NUMERO_DADI];
+    if ( leggere_turno (*partita_attuale) == -1 ) {
         scegliere_giocatore (partita_attuale);
     }
     do{
@@ -45,9 +47,13 @@ vincitore gestire_partita (partita* partita_attuale) {
             gestire_autorizzazione(partita_attuale);
         }
         if ( leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) == 0 ) {
-            //stampare percorso con l'attesa con l'attesa dell'input
+            system("cls");
+            stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
             lanciare_dadi (partita_attuale);
-            //stampare percorso con i dadi aggiornati e attendere l'input
+            dadi_da_stampare[0] = leggere_dadi(*partita_attuale, 0);
+            dadi_da_stampare[1] = leggere_dadi(*partita_attuale, 1);
+            stampare_dadi(FILE_PERCORSO, dadi_da_stampare);
+            system("pause");
             spostare_giocatore (partita_attuale);
             //stampare percorso con input utente per proseguire con l'effetto
             verificare_casella (partita_attuale);
@@ -61,15 +67,30 @@ vincitore gestire_partita (partita* partita_attuale) {
 
 
 void scegliere_giocatore (partita* partita_attuale) {
-    stampare_testo (FILE_SCELTA_G_INIZIALE);
+    char scelta;
     int estrazioni [NUMERO_MASSIMO_GIOCATORI];
     int indice_giocatori = 0;
+    int dadi_da_stampare[NUMERO_DADI] = {0,0};
     while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
+        system("cls");
+        stampare_testo (FILE_SCELTA_G_INIZIALE);
+
+
+
+        do{
+            posizionare_cursore_in_attesa (FILE_SCELTA_G_INIZIALE);
+            scelta = fgetc(stdin);
+            if((scelta != TASTO_INDIETRO) && (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO)){
+                stampare_messaggio_errore(FILE_SCELTA_G_INIZIALE);
+            }
+        } while ((scelta != TASTO_INDIETRO) && (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO));
+
+
+        estrazioni [indice_giocatori] = 5;//generare_numero (FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
+        dadi_da_stampare[0] = estrazioni [indice_giocatori];
+        stampare_dadi(FILE_SCELTA_G_INIZIALE, dadi_da_stampare);
         posizionare_cursore_in_attesa (FILE_SCELTA_G_INIZIALE);
-        fgetc(stdin);
-        estrazioni [indice_giocatori] = generare_numero (FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
-        stampare_dadi (FILE_SCELTA_G_INIZIALE, estrazioni);
-        fgetc (stdin);
+        system("pause");
         indice_giocatori = indice_giocatori + 1;
     }
     scrivere_turno (partita_attuale, trovare_posizione_massimo (estrazioni, leggere_numero_giocatori (*partita_attuale) ) - 1);
@@ -122,7 +143,7 @@ void lanciare_dadi (partita* partita_attuale) {
     int indice_dado = 0;
     int lancio;
     while (indice_dado < NUMERO_DADI) {
-        lancio = generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
+        lancio = 6;//generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
         scrivere_dadi (partita_attuale, indice_dado, lancio);
         indice_dado = indice_dado + 1;
     }
@@ -300,11 +321,16 @@ void gestire_autorizzazione (partita* partita_attuale) {
 int confrontare_stringhe (const char stringa_1[], const char stringa_2[]) {
     int indice_stringa = 0;
     int esito = VERO;
-    while (stringa_1 [indice_stringa] != FINE_STRINGA && esito == VERO) {
-        if (stringa_1 [indice_stringa] != stringa_2 [indice_stringa]) {
-            esito = FALSO;
+    if(calcolare_lunghezza_stringa(stringa_1) == calcolare_lunghezza_stringa(stringa_2)){
+        while ((stringa_1 [indice_stringa] != FINE_STRINGA) && (esito == VERO)) {
+            if (stringa_1 [indice_stringa] != stringa_2 [indice_stringa]) {
+                esito = FALSO;
+            }
+            indice_stringa = indice_stringa + 1;
         }
-        indice_stringa = indice_stringa + 1;
+    }else{
+        esito = FALSO;
     }
+
     return esito;
 }

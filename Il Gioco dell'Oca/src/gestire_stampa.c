@@ -17,9 +17,10 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
         scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_DADO);
 		int posizione_riga;
 		int posizione_colonna;
+        int indice_puntini_dado;
 		int indice_dadi = 0;
-		while (facce_dadi[indice_dadi] != 0 || (indice_dadi < NUMERO_DADI)) {
-			int indice_puntini_dado = 1;
+		while ((facce_dadi[indice_dadi] != 0) || (indice_dadi < NUMERO_DADI)) {
+            indice_puntini_dado = 1;
 			while (indice_puntini_dado <= NUMERO_MASSIMO_PUNTINI_FACCIA_DADO) {
 				//inserire funzione di conversione
 				fscanf(f_interfaccia, "%d ", &posizione_riga);
@@ -28,7 +29,7 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 				fscanf(f_interfaccia, "%d ", &posizione_colonna);
                 scorrere_righe_file(f_interfaccia, 1);
 
-				posizionare_cursore(posizione_riga, posizione_colonna);
+				posizionare_cursore(posizione_riga, posizione_colonna - 1);
 				if (indice_puntini_dado == 1) {
 					if (facce_dadi[indice_dadi] == 6
 							|| (facce_dadi[indice_dadi] == 5)
@@ -56,9 +57,13 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 							|| (facce_dadi[indice_dadi] == 3)
 							|| (facce_dadi[indice_dadi] == 1)) {
 						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
-					} else {
-						printf("%c", CARATTERE_SPAZIO);
-					}
+					} else if((facce_dadi[indice_dadi] == 6)
+                              || (facce_dadi[indice_dadi] == 4)
+                              || (facce_dadi[indice_dadi] == 2)){
+                        printf("%c", CARATTERE_SPAZIO);
+                    }else{
+                        printf("%c", CARATTERE_PUNTO_INTERROGATIVO);
+                    }
 				} else if (indice_puntini_dado == 5) {
 					if (facce_dadi[indice_dadi] == 6
 							|| (facce_dadi[indice_dadi] == 5)
@@ -76,7 +81,7 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 						printf("%c", CARATTERE_SPAZIO);
 					}
 				} else if (indice_puntini_dado == 7) {
-					if (facce_dadi[indice_dadi] == 6
+					if ((facce_dadi[indice_dadi] == 6)
 							|| (facce_dadi[indice_dadi] == 5)
 							|| (facce_dadi[indice_dadi] == 4)) {
 						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);

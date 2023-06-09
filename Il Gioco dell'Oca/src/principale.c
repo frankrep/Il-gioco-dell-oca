@@ -10,7 +10,7 @@
 #include "aiuto.h"
 #include "salvare_caricare_partita.h"
 #include "gestire_stampa.h"
-
+#include "stampare_percorso.h"
 
 
 int scegliere_opzione_menu ();
@@ -30,7 +30,6 @@ int main() {
     posizionare_cursore_in_attesa(FILE_INTRO);
     fgetc(stdin);
     fflush(stdout);
-
 
     uscita = RISPOSTA_NEGATIVA_MAIUSCOLO;
     int opzione;
@@ -111,6 +110,12 @@ void iniziare_nuova_partita (vincitore* vincitore_partita) {
     partita partita_attuale;
     inizializzare_giocatori (&partita_attuale);
     generare_percorso (&partita_attuale);
+
+
+    system("cls");
+    stampare_percorso(&partita_attuale);
+    system("pause");
+
     *vincitore_partita = gestire_partita (&partita_attuale);
     return;
 }

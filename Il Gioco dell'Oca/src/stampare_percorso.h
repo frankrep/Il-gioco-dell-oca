@@ -1,6 +1,7 @@
 #ifndef STAMPARE_PERCORSO_H_
 #define STAMPARE_PERCORSO_H_
 
+void stampare_interfaccia_percorso(partita* partita_attuale, const char file_interfaccia[]);
 void stampare_percorso(partita* partita_attuale);
 void stampare_parte_superiore_casella();
 int stampare_superiore_sinistra(partita* partita_attuale, int numero_colonne, int contatore, int strato);

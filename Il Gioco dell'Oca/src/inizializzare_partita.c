@@ -16,13 +16,13 @@ void rimuovere_carattere_nuova_riga (char stringa[]);
 
 
 
-partita *inizializzare_giocatori (partita *partita_attuale) {
+void inizializzare_giocatori (partita *partita_attuale) {
     richiedere_numero_caselle (partita_attuale);
     inizializzare_numero_giocatori (partita_attuale);
     inizializzare_nomi_giocatori (partita_attuale);
     inizializzare_pedine_giocatori (partita_attuale);
-    scrivere_turno (partita_attuale, 0);
-    return partita_attuale;
+    scrivere_turno (partita_attuale, -1);
+    return;
 }
 
 
