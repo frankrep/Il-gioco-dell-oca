@@ -11,7 +11,7 @@
 0)Tornare indietro                                    |__8.()..S___________|   
                                                       |_88.....S___________|   
                                                       |888....S_____$$$$s__|   
-Inserisci il numero dei giocatori che giocheranno:__  |____S...S___80_)$$$_|   
+Inserisci il numero dei giocatori che giocheranno:    |____S...S___80_)$$$_|   
                                                       |_____S..S__88$$$$$$_|   
                                                       |_____S..S_8888$$$$$_|   
                                                       |_____S..S_____$$$$$s|   
@@ -23,4 +23,8 @@ Inserisci il numero dei giocatori che giocheranno:__  |____S...S___80_)$$$_|
                                                       |____S...S_______$$$$|   
                                                       |____S...S_______$$$$|   
                                                       |____________________|   
-
+14 //riga input
+51 //colonna input
+15 //riga errore
+1 //colonna errore
+2 //codice messaggio 

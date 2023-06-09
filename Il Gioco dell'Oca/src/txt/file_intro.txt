@@ -23,10 +23,5 @@ ____S...S_______$$$$____S...S_______$$$$____S...S_______$$$$____S...S_______$$$
 ____S...S_______$$$$____S...S_______$$$$____S...S_______$$$$____S...S_______$$$
                                                                                
 <Premere un tasto per proseguire:                                              
-
-
-
-
-
-25//RIGA INPUT
-34//COLONNA INPUT
+25 //RIGA INPUT
+34 //COLONNA INPUT
