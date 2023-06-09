@@ -13,7 +13,7 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 	char carattere_letto;
 
 	FILE *f_interfaccia = NULL;
-	if ((f_interfaccia = fopen(file_interfaccia, "r")) == NULL) {
+	if ((f_interfaccia = fopen(file_interfaccia, "r")) != NULL) {
 		int indice_carattere = 0;
 		while (indice_carattere < (LUNGHEZZA_SCHERMATA * ALTEZZA_SCHERMATA)) {
 			fgetc(f_interfaccia);
@@ -144,7 +144,7 @@ void stampare_testo (const char file_interfaccia[]) {
 
 void stampare_messaggio_errore(const char file_interfaccia[]) {
 	FILE *f_interfaccia = NULL;
-	if ((f_interfaccia = fopen(file_interfaccia, "r")) == NULL) {
+	if ((f_interfaccia = fopen(file_interfaccia, "r")) != NULL) {
 		char carattere_letto;
 		int indice_carattere = 0;
 		while (indice_carattere < (LUNGHEZZA_SCHERMATA * ALTEZZA_SCHERMATA)) {
@@ -217,8 +217,8 @@ void posizionare_cursore(int asse_x, int asse_y) {
 }
 
 void posizionare_cursore_in_attesa(const char file_interfaccia[]) {
-	FILE *f_interfaccia = NULL;
-	if ((f_interfaccia = fopen(file_interfaccia, "r")) == NULL) {
+	FILE *f_interfaccia = fopen(file_interfaccia, "r");
+	if ( f_interfaccia != NULL ) {
 		char carattere_letto;
 		int indice_carattere = 0;
 		while (indice_carattere < (LUNGHEZZA_SCHERMATA * ALTEZZA_SCHERMATA)) {

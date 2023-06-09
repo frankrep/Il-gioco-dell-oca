@@ -25,6 +25,7 @@ int main() {
 	char uscita;
 
     //stampa della schermata con il logo e la richiesta di premere un tasto qualsiasi
+
     stampare_testo(FILE_INTRO);
     posizionare_cursore_in_attesa(FILE_INTRO);
     fgetc(stdin);
@@ -80,7 +81,7 @@ int scegliere_opzione_menu () {
             correttezza_inserimento = scanf("%d", &opzione);
             fflush(stdin);
             if (correttezza_inserimento == 0) {
-                printf("Attenzione: input non valido.");
+                printf("%s", "Attenzione: input non valido.");
             }
         } while (correttezza_inserimento == 0);
 
