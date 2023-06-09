@@ -147,13 +147,6 @@ build CMakeFiles/Il_Gioco_dell_Oca.dir/src/generare_numero_casuale.c.obj: C_COMP
   OBJECT_DIR = CMakeFiles\Il_Gioco_dell_Oca.dir
   OBJECT_FILE_DIR = CMakeFiles\Il_Gioco_dell_Oca.dir\src
 
-build CMakeFiles/Il_Gioco_dell_Oca.dir/src/costanti.c.obj: C_COMPILER__Il_Gioco_dell_Oca_Debug C$:/Users/potit/Desktop/Gruppo$ 1/Il-gioco-dell-oca/Il$ Gioco$ dell'Oca/src/costanti.c || cmake_object_order_depends_target_Il_Gioco_dell_Oca
-  DEP_FILE = CMakeFiles\Il_Gioco_dell_Oca.dir\src\costanti.c.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu11
-  INCLUDES = -I"C:/Users/potit/Desktop/Gruppo 1/Il-gioco-dell-oca/Il Gioco dell'Oca/src"
-  OBJECT_DIR = CMakeFiles\Il_Gioco_dell_Oca.dir
-  OBJECT_FILE_DIR = CMakeFiles\Il_Gioco_dell_Oca.dir\src
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Il_Gioco_dell_Oca
@@ -162,7 +155,7 @@ build CMakeFiles/Il_Gioco_dell_Oca.dir/src/costanti.c.obj: C_COMPILER__Il_Gioco_
 #############################################
 # Link the executable Il_Gioco_dell_Oca.exe
 
-build Il_Gioco_dell_Oca.exe: C_EXECUTABLE_LINKER__Il_Gioco_dell_Oca_Debug CMakeFiles/Il_Gioco_dell_Oca.dir/src/aiuto.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/casella.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/classifica.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/generare_percorso.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/gestire_partita.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/gestire_stampa.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/giocatore.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/inizializzare_partita.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/partita.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/principale.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/salvare_caricare_partita.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/stampare_percorso.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/vincitore.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/generare_numero_casuale.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/costanti.c.obj
+build Il_Gioco_dell_Oca.exe: C_EXECUTABLE_LINKER__Il_Gioco_dell_Oca_Debug CMakeFiles/Il_Gioco_dell_Oca.dir/src/aiuto.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/casella.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/classifica.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/generare_percorso.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/gestire_partita.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/gestire_stampa.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/giocatore.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/inizializzare_partita.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/partita.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/principale.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/salvare_caricare_partita.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/stampare_percorso.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/vincitore.c.obj CMakeFiles/Il_Gioco_dell_Oca.dir/src/generare_numero_casuale.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Il_Gioco_dell_Oca.dir

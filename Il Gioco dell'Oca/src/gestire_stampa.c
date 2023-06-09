@@ -117,10 +117,10 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 
 }
 
-void stampare_testo(const char file_interfaccia[]) {
+void stampare_testo (const char file_interfaccia[]) {
 
-	FILE *f_interfaccia = NULL;
-	if ((f_interfaccia = fopen(file_interfaccia, "r")) == NULL) {
+	FILE * f_interfaccia = fopen(file_interfaccia, "r");
+	if (f_interfaccia != NULL) {
 		char simbolo_letto;
 		int indice_nuova_riga = 0;
 		while (indice_nuova_riga < ALTEZZA_SCHERMATA) {
