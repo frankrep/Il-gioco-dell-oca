@@ -1,12 +1,18 @@
 #include "inizializzare_partita.h"
 #include "partita.h"
 #include "giocatore.h"
-#include "vincitore.h"
 #include "costanti.h"
-#include "casella.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include "gestire_stampa.h"
+
+
+
+void richiedere_numero_caselle(partita* partita_attuale);
+void inizializzare_numero_giocatori(partita* partita_attuale);
+void inizializzare_nomi_giocatori(partita* partita_attuale);
+void inizializzare_pedine_giocatori(partita* partita_attuale);
+void rimuovere_carattere_nuova_riga (char stringa[]);
 
 
 
@@ -17,11 +23,6 @@ partita *inizializzare_giocatori (partita *partita_attuale) {
     inizializzare_pedine_giocatori(partita_attuale);
     return partita_attuale;
 }
-
-
-
-void rimuovere_carattere_nuova_riga (char stringa[]);
-int calcolare_lunghezza_stringa (char stringa[]);
 
 
 
@@ -105,10 +106,8 @@ void inizializzare_nomi_giocatori (partita *partita_attuale) {
 
 void inserire_stringa (int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]) {
     int indice_stringa = 0;
-    int terminato = 0;
+    int terminato = FALSO;
     while ( terminato == FALSO ) {
-        char carattere;
-
         fgets(nome_da_inserire, dimensione_massima_stringa + 1, stdin);
         rimuovere_carattere_nuova_riga (nome_da_inserire);
         if (calcolare_lunghezza_stringa (nome_da_inserire) < dimensione_minima_stringa) {
@@ -151,11 +150,11 @@ void inizializzare_pedine_giocatori(partita *partita_attuale) {
     int indice_pedine = 0;
     giocatore giocatore_attuale;
     do {
-        giocatore_attuale = leggere_giocatore(*partita_attuale, indice_pedine);
-        scrivere_pedina_giocatore(&giocatore_attuale, PEDINE_DISPONIBILI[indice_pedine]);
-        scrivere_giocatore(partita_attuale, giocatore_attuale, indice_pedine);
+        giocatore_attuale = leggere_giocatore (*partita_attuale, indice_pedine);
+        scrivere_pedina_giocatore (&giocatore_attuale, PEDINE_DISPONIBILI[indice_pedine]);
+        scrivere_giocatore (partita_attuale, giocatore_attuale, indice_pedine);
         indice_pedine = indice_pedine + 1;
-    } while (indice_pedine <= leggere_numero_giocatori(*partita_attuale));
+    } while (indice_pedine < leggere_numero_giocatori (*partita_attuale) );
     return;
 }
 

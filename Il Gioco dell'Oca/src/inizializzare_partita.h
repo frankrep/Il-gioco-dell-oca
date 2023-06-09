@@ -1,10 +1,12 @@
 #ifndef INIZIALIZZARE_PARTITA_H_
 #define INIZIALIZZARE_PARTITA_H_
 #include "partita.h"
+
+
+
 partita* inizializzare_giocatori(partita* partita_attuale);
-void richiedere_numero_caselle(partita* partita_attuale);
-void inizializzare_numero_giocatori(partita* partita_attuale);
-void inizializzare_nomi_giocatori(partita* partita_attuale);
 void inserire_stringa(int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]);
-void inizializzare_pedine_giocatori(partita* partita_attuale);
+int calcolare_lunghezza_stringa (char stringa[]);
+
+
 #endif /* INIZIALIZZARE_PARTITA_H_ */
