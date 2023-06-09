@@ -31,4 +31,7 @@ add_executable(Il_Gioco_dell_Oca
         src/stampare_percorso.c
         src/stampare_percorso.h
         src/vincitore.c
-        src/vincitore.h)
+        src/vincitore.h
+        src/generare_numero_casuale.c
+        src/generare_numero_casuale.h
+        )

@@ -11,14 +11,26 @@
 #include "vincitore.h"
 #include "costanti.h"
 #include "gestire_partita.h"
-#include <stdio.h>
+#include "generare_numero_casuale.h"
 #include "generare_percorso.h"
 
-int generare_numero (int numero_massimo, int numero_minimo);
-int generare_seme (int seme);
-void caricare_seme (int * seme);
-void scrivere_seme (int * seme);
-int generare_casuale (int seme, int numero_massimo, int numero_minimo);
+
+
+void scegliere_giocatore(partita* partita_attuale);
+vincitore inizializzare_vincitore(partita* partita_attuale);
+int trovare_posizione_massimo(const int valori[], int dimensione_valori);
+void cambiare_turno(partita* partita_attuale);
+void lanciare_dadi(partita* partita_attuale);
+void incrementare_lanci_effettuati(partita* partita_attuale);
+void incrementare_turno(partita* partita_attuale);
+void spostare_giocatore(partita* partita_attuale);
+void sommare_lancio_posizione(partita* partita_attuale);
+void calcolare_caselle_eccesso(partita* partita_attuale);
+int sommare_dadi (partita partita_attuale);
+void verificare_casella(partita* partita_attuale);
+void gestire_oca(partita* partita_attuale);
+void impostare_autorizzazioni(partita* partita_attuale, const char nome_casella_attuale[]);
+void gestire_autorizzazione(partita* partita_attuale);
 
 
 
@@ -54,7 +66,7 @@ void scegliere_giocatore (partita* partita_attuale) {
         while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
             //stampare scelta_g_iniziale
             //prendere in input la lettura da tastiera per il lancio
-            //estrazioni [indice_giocatori] = generare_numero (FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
+            estrazioni [indice_giocatori] = generare_numero (FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
             //stampa del dado risultante
             //aspetta input da tastiera
             indice_giocatori = indice_giocatori + 1;
@@ -77,49 +89,6 @@ vincitore inizializzare_vincitore (partita* partita_attuale) {
     return vincitore_partita;
 }
 
-/*
-
-int generare_numero (int numero_massimo, int numero_minimo) {
-    int seme;
-    caricare_seme (&seme);
-    seme = generare_seme (seme);
-    scrivere_seme (&seme);
-    int numero_casuale = generare_casuale (seme, numero_massimo, numero_minimo);
-    return numero_casuale;
-}
-
-
-
-void caricare_seme (int * seme) {
-    FILE * file_seme = fopen(FILE_SEME, "rb");
-    fread(seme, sizeof(int), 1, file_seme);
-    fclose(file_seme);
-    return;
-}
-
-
-
-int generare_seme (int seme) {
-    int nuovo_seme = (MOLTIPLICATORE * seme + INCREMENTO) % DIVISORE;
-    return nuovo_seme;
-}
-
-
-
-void scrivere_seme (int * seme) {
-    FILE * file_seme = fopen (FILE_SEME, "wb");
-    fwrite(seme, sizeof(int), 1, file_seme);
-    fclose (file_seme);
-    return;
-}
-
-
-
-int generare_casuale (int seme, int numero_massimo, int numero_minimo) {
-    int numero_casuale = (seme % numero_massimo) + numero_minimo;
-    return numero_casuale;
-}
-*/
 
 
 int trovare_posizione_massimo (const int valori[], int dimensione_valori) {
@@ -152,7 +121,7 @@ void lanciare_dadi (partita* partita_attuale) {
     int indice_dado = 0;
     int lancio;
     while (indice_dado < NUMERO_DADI) {
-        //lancio = generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
+        lancio = generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
         scrivere_dadi (partita_attuale, indice_dado, lancio);
         indice_dado = indice_dado + 1;
     }

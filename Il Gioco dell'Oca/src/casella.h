@@ -8,12 +8,12 @@
 
 #include "costanti.h"
 
-typedef struct{
+typedef struct {
     char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
     int numero_casella;
     char file_interfaccia[NUMERO_MASSIMO_CARATTERI_PERCORSO];
     char simbolo[NUMERO_MASSIMO_CARATTERI_SIMBOLO];
-}casella;
+} casella;
 
 void scrivere_carattere_casella(casella* casella_attuale, int posizione, char simbolo);
 char leggere_carattere_casella(casella casella_attuale, int posizione);
