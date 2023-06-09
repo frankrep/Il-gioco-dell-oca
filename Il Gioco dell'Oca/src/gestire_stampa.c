@@ -14,18 +14,7 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 
 	FILE *f_interfaccia = fopen(file_interfaccia, "r");
 	if (f_interfaccia != NULL) {
-		int indice_carattere = 0;
-		while (indice_carattere < (LUNGHEZZA_SCHERMATA * ALTEZZA_SCHERMATA)) {
-			fgetc(f_interfaccia);
-			indice_carattere = indice_carattere + 1;
-		}
-		int indice_riga = 0;
-		while (indice_riga < SPIAZZAMENTO_DADO) {
-			carattere_letto = fgetc(f_interfaccia);
-			if (carattere_letto == CARATTERE_A_CAPO) {
-				indice_riga = indice_riga + 1;
-			}
-		}
+        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_DADO);
 		int posizione_riga;
 		int posizione_colonna;
 		int indice_dadi = 0;
@@ -34,16 +23,10 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 			while (indice_puntini_dado <= NUMERO_MASSIMO_PUNTINI_FACCIA_DADO) {
 				//inserire funzione di conversione
 				fscanf(f_interfaccia, "%d ", &posizione_riga);
-				carattere_letto = fgetc(f_interfaccia);
-				while (carattere_letto != CARATTERE_A_CAPO) {
-					carattere_letto = fgetc(f_interfaccia);
-				}
+                scorrere_righe_file(f_interfaccia, 1);
 
 				fscanf(f_interfaccia, "%d ", &posizione_colonna);
-				carattere_letto = fgetc(f_interfaccia);
-				while (carattere_letto != CARATTERE_A_CAPO) {
-					carattere_letto = fgetc(f_interfaccia);
-				}
+                scorrere_righe_file(f_interfaccia, 1);
 
 				posizionare_cursore(posizione_riga, posizione_colonna);
 				if (indice_puntini_dado == 1) {
@@ -145,24 +128,14 @@ void stampare_testo (const char file_interfaccia[]) {
 void stampare_messaggio_errore (const char file_interfaccia[]) {
 	FILE *f_interfaccia = fopen(file_interfaccia, "r");
 	if (f_interfaccia != NULL) {
-		char riga_letta [LUNGHEZZA_SCHERMATA + 1];
-		int indice_riga = 0;
-		while (indice_riga < ALTEZZA_SCHERMATA) {
-			fgets(riga_letta, LUNGHEZZA_SCHERMATA + 1, f_interfaccia);
-			indice_riga = indice_riga + 1;
-		}
-		indice_riga = 0;
-		while (indice_riga < SPIAZZAMENTO_MESSAGGIO_ERRORE) {
-			fgets(riga_letta, LUNGHEZZA_SCHERMATA + 1, f_interfaccia);
-			indice_riga = indice_riga + 1;
-		}
+        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_MESSAGGIO_ERRORE);
 		int posizione_riga;
 		int posizione_colonna;
 		int codice_messaggio_errore;
 		fscanf(f_interfaccia, "%d ", &posizione_riga);
-		fgets (riga_letta, LUNGHEZZA_SCHERMATA + 1, f_interfaccia);
+        scorrere_righe_file(f_interfaccia, 1);
 		fscanf(f_interfaccia, "%d ", &posizione_colonna);
-		fgets (riga_letta, LUNGHEZZA_SCHERMATA + 1, f_interfaccia);
+        scorrere_righe_file(f_interfaccia, 1);
 		fscanf(f_interfaccia, "%d ", &codice_messaggio_errore);
 		fclose(f_interfaccia);
 
@@ -170,13 +143,9 @@ void stampare_messaggio_errore (const char file_interfaccia[]) {
 		posizionare_cursore(posizione_riga, posizione_colonna);
 		FILE *f_messaggi_errore = fopen(FILE_MESSAGGI_ERRORE, "r");
 		if (f_messaggi_errore != NULL) {
+            scorrere_righe_file(f_interfaccia, codice_messaggio_errore - 1);
 			char messaggio_errore[LUNGHEZZA_SCHERMATA + 1];
-
-			indice_riga = 0;
-			while (indice_riga < codice_messaggio_errore) {
-				fgets(messaggio_errore, (LUNGHEZZA_SCHERMATA + 1),f_messaggi_errore);
-                indice_riga = indice_riga + 1;
-			}
+            fgets(messaggio_errore, (LUNGHEZZA_SCHERMATA + 1),f_messaggi_errore);
 			fclose(f_messaggi_errore);
 			printf("%s", messaggio_errore);
 			fflush(stdout);
@@ -199,12 +168,6 @@ void stampare_messaggio_errore (const char file_interfaccia[]) {
 	}
 }
 
-/*void posizionare_cursore (int x, int y) {
-	COORD CursorPos = {x, y};
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleCursorPosition(hConsole, CursorPos);
-}*/
-
 void posizionare_cursore(int posizione_riga, int posizione_colonna) {
 	COORD coord;
 	coord.X = posizione_colonna;
@@ -215,16 +178,11 @@ void posizionare_cursore(int posizione_riga, int posizione_colonna) {
 void posizionare_cursore_in_attesa(const char file_interfaccia[]) {
 	FILE *f_interfaccia = fopen(file_interfaccia, "r");
 	if ( f_interfaccia != NULL ) {
-		char riga_letta [LUNGHEZZA_SCHERMATA + 1];
-		int indice_riga = 0;
-		while (indice_riga < ALTEZZA_SCHERMATA) {
-			fgets(riga_letta, LUNGHEZZA_SCHERMATA + 1, f_interfaccia);
-			indice_riga = indice_riga + 1;
-		}
+        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA);
 		int posizione_riga;
 		int posizione_colonna;
 		fscanf (f_interfaccia, "%d ", &posizione_riga);
-		fgets (riga_letta, LUNGHEZZA_SCHERMATA + 1, f_interfaccia);
+        scorrere_righe_file(f_interfaccia, 1);
 		fscanf (f_interfaccia, "%d ", &posizione_colonna);
 		posizionare_cursore (posizione_riga, posizione_colonna);
 		fclose(f_interfaccia);
@@ -236,4 +194,14 @@ void posizionare_cursore_in_attesa(const char file_interfaccia[]) {
 		printf ("%s", file_interfaccia);
 		fflush (stdout);
 	}
+}
+
+
+void scorrere_righe_file(FILE* file_testo, int numero_righe){
+    char riga_letta [LUNGHEZZA_SCHERMATA + 1];
+    int indice_riga = 0;
+    while (indice_riga < numero_righe) {
+        fgets(riga_letta, LUNGHEZZA_SCHERMATA + 1, file_testo);
+        indice_riga = indice_riga + 1;
+    }
 }
