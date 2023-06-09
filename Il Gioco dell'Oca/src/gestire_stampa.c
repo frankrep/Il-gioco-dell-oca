@@ -9,6 +9,30 @@
 #include "gestire_stampa.h"
 #include "costanti.h"
 
+
+void stampare_dadi_partita(const char file_interfaccia[], partita* partita_attuale){
+    int dadi_da_stampare[NUMERO_DADI];
+    int indice_dadi = 0;
+    while (indice_dadi < NUMERO_DADI){
+        dadi_da_stampare[indice_dadi] = leggere_dadi(*partita_attuale, indice_dadi);
+        indice_dadi = indice_dadi + 1;
+    }
+    stampare_dadi(file_interfaccia, dadi_da_stampare);
+}
+
+
+void stampare_dado(const char file_interfaccia[], int valore_faccia_dado){
+    int dadi_da_stampare[NUMERO_DADI];
+    dadi_da_stampare[0] = valore_faccia_dado;
+    int indice_dadi = 1;
+    while (indice_dadi < NUMERO_DADI){
+        dadi_da_stampare[indice_dadi] = 0;
+        indice_dadi = indice_dadi + 1;
+    }
+    stampare_dadi(file_interfaccia, dadi_da_stampare);
+}
+
+
 void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 	char carattere_letto;
 
@@ -19,7 +43,7 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 		int posizione_colonna;
         int indice_puntini_dado;
 		int indice_dadi = 0;
-		while ((facce_dadi[indice_dadi] != 0) || (indice_dadi < NUMERO_DADI)) {
+		while ((facce_dadi[indice_dadi] != 0) && (indice_dadi < NUMERO_DADI)) {
             indice_puntini_dado = 1;
 			while (indice_puntini_dado <= NUMERO_MASSIMO_PUNTINI_FACCIA_DADO) {
 				//inserire funzione di conversione
@@ -46,11 +70,13 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 					}
 				} else if (indice_puntini_dado == 3) {
 					if (facce_dadi[indice_dadi] == 6
-							|| (facce_dadi[indice_dadi] == 5)
-							|| (facce_dadi[indice_dadi] == 4)) {
+                            || (facce_dadi[indice_dadi] == 5)
+							|| (facce_dadi[indice_dadi] == 4)
+							|| (facce_dadi[indice_dadi] == 3)
+                            || (facce_dadi[indice_dadi] == 2)) {
 						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
 					} else {
-						printf("%c", CARATTERE_SPAZIO);
+						printf("%c", CONTORNO_INFERIORE_CASELLA);
 					}
 				} else if (indice_puntini_dado == 4) {
 					if (facce_dadi[indice_dadi] == 5
@@ -86,7 +112,7 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 							|| (facce_dadi[indice_dadi] == 4)) {
 						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
 					} else {
-						printf("%c", CARATTERE_SPAZIO);
+						printf("%c", CONTORNO_INFERIORE_CASELLA);
 					}
 				}
 				indice_puntini_dado = indice_puntini_dado + 1;

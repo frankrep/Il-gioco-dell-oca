@@ -27,11 +27,7 @@
 46 //colonna input
 25 //riga errore
 1 //colonna errore
-1 //codice messaggio 
-24 // riga inserimento nome giocatore
-1 //colonna inserimento nome giocatore
-24 //riga inserimento n turno
-44 // colonna inserimento n turno
+1 //codice messaggio
 21 //RIGA ALTO SINISTRA DADO1
 32 //COLONNA ALTO A SINISTRA DADO1
 22 //RIGA CENTRO SINISTRA DADO1
@@ -61,6 +57,12 @@
 23 //RIGA BASSO DESTRA DADO2
 44 //COLONNA BASSO DESTRA DADO2
 
+
+
+24 // riga inserimento nome giocatore
+1 //colonna inserimento nome giocatore
+24 //riga inserimento n turno
+44 // colonna inserimento n turno
 
 
 

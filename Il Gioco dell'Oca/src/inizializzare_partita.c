@@ -142,7 +142,7 @@ void rimuovere_carattere_nuova_riga (char stringa[]) {
 
 
 
-int calcolare_lunghezza_stringa (char stringa[]) {
+int calcolare_lunghezza_stringa (const char stringa[]) {
     int lunghezza_stringa = 0;
     while (stringa[lunghezza_stringa] != FINE_STRINGA) {
         lunghezza_stringa = lunghezza_stringa + 1;

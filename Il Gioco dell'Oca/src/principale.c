@@ -110,12 +110,6 @@ void iniziare_nuova_partita (vincitore* vincitore_partita) {
     partita partita_attuale;
     inizializzare_giocatori (&partita_attuale);
     generare_percorso (&partita_attuale);
-
-
-    system("cls");
-    stampare_percorso(&partita_attuale);
-    system("pause");
-
     *vincitore_partita = gestire_partita (&partita_attuale);
     return;
 }

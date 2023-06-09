@@ -75,6 +75,12 @@ static const long long DIVISORE = 4294367296;
 //Caratteri per scelta opzioni menu
 #define TASTO_LANCIO_DADI_MINUSCOLO 'l'
 #define TASTO_LANCIO_DADI_MAIUSCOLO 'L'
+#define TASTO_MENU_MINUSCOLO 'm'
+#define TASTO_MENU_MAIUSCOLO 'M'
+#define TASTO_AVANZAMENTO_MINUSCOLO 'a'
+#define TASTO_AVANZAMENTO_MAIUSCOLO 'A'
+#define TASTO_SALVATAGGIO_MINUSCOLO 's'
+#define TASTO_SALVATAGGIO_MAIUSCOLO 'S'
 #define TASTO_INDIETRO '0'
 
 
@@ -134,7 +140,7 @@ static const char FILE_SCHERMATA_LABIRINTO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = 
 static const char FILE_SCHERMATA_LANCIO_DADI_PRIGIONE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_lancio_dadi_prigione.txt";
 static const char FILE_SCHERMATA_LIBERATO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_liberato.txt";
 static const char FILE_SCHERMATA_LOCANDA_TURNO_PASSATO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_locanda_turno_passato.txt";
-static const char FILE_SCHERMATA_LONCANDA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_locanda.txt";
+static const char FILE_SCHERMATA_LOCANDA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_locanda.txt";
 static const char FILE_SCHERMATA_OCA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_oca.txt";
 static const char FILE_SCHERMATA_PERM_POZZO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_perm_pozzo.txt";
 static const char FILE_SCHERMATA_PONTE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_ponte.txt";

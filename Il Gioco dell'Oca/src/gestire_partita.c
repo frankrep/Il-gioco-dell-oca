@@ -37,7 +37,7 @@ void gestire_autorizzazione(partita* partita_attuale);
 
 
 vincitore gestire_partita (partita* partita_attuale) {
-    int dadi_da_stampare[NUMERO_DADI];
+    char scelta;
     if ( leggere_turno (*partita_attuale) == -1 ) {
         scegliere_giocatore (partita_attuale);
     }
@@ -49,14 +49,27 @@ vincitore gestire_partita (partita* partita_attuale) {
         if ( leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) == 0 ) {
             system("cls");
             stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
-            lanciare_dadi (partita_attuale);
-            dadi_da_stampare[0] = leggere_dadi(*partita_attuale, 0);
-            dadi_da_stampare[1] = leggere_dadi(*partita_attuale, 1);
-            stampare_dadi(FILE_PERCORSO, dadi_da_stampare);
+            do{
+                posizionare_cursore_in_attesa (FILE_PERCORSO);
+                fflush(stdin);
+                scelta = fgetc(stdin);
+                if((scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) && (scelta != TASTO_SALVATAGGIO_MAIUSCOLO) && (scelta != TASTO_SALVATAGGIO_MINUSCOLO) ){
+                    stampare_messaggio_errore(FILE_PERCORSO);
+                }
+            } while ((scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) && (scelta != TASTO_SALVATAGGIO_MAIUSCOLO) && (scelta != TASTO_SALVATAGGIO_MINUSCOLO));
+
+            if((scelta == TASTO_LANCIO_DADI_MAIUSCOLO) || (scelta == TASTO_LANCIO_DADI_MAIUSCOLO)){
+                lanciare_dadi (partita_attuale);
+                incrementare_lanci_effettuati(partita_attuale);
+                stampare_dadi_partita(FILE_PERCORSO, partita_attuale);
+                posizionare_cursore_in_attesa(FILE_PERCORSO);
+            }
             system("pause");
             spostare_giocatore (partita_attuale);
             //stampare percorso con input utente per proseguire con l'effetto
+            system("pause");
             verificare_casella (partita_attuale);
+            system("pause");
         }
 
         } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale) );
@@ -70,15 +83,13 @@ void scegliere_giocatore (partita* partita_attuale) {
     char scelta;
     int estrazioni [NUMERO_MASSIMO_GIOCATORI];
     int indice_giocatori = 0;
-    int dadi_da_stampare[NUMERO_DADI] = {0,0};
     while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
         system("cls");
         stampare_testo (FILE_SCELTA_G_INIZIALE);
 
-
-
         do{
             posizionare_cursore_in_attesa (FILE_SCELTA_G_INIZIALE);
+            fflush(stdin);
             scelta = fgetc(stdin);
             if((scelta != TASTO_INDIETRO) && (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO)){
                 stampare_messaggio_errore(FILE_SCELTA_G_INIZIALE);
@@ -87,8 +98,7 @@ void scegliere_giocatore (partita* partita_attuale) {
 
 
         estrazioni [indice_giocatori] = 5;//generare_numero (FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
-        dadi_da_stampare[0] = estrazioni [indice_giocatori];
-        stampare_dadi(FILE_SCELTA_G_INIZIALE, dadi_da_stampare);
+        stampare_dado(FILE_SCELTA_G_INIZIALE, estrazioni [indice_giocatori]);
         posizionare_cursore_in_attesa (FILE_SCELTA_G_INIZIALE);
         system("pause");
         indice_giocatori = indice_giocatori + 1;
@@ -206,31 +216,37 @@ void verificare_casella (partita* partita_attuale) {
         giocatore_attuale = leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale) );
         leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) ), nome_casella );
         if ( confrontare_stringhe (nome_casella, NOME_OCA) == VERO ) {
-            //stampare schermata_oca e aspettare input
+            stampare_testo(FILE_SCHERMATA_OCA);
+            system("pause");
             gestire_oca (partita_attuale);
         }
         else if(confrontare_stringhe(nome_casella, NOME_PONTE) == VERO ) {
-            //schermata_ponte e aspettare input
+            stampare_testo(FILE_SCHERMATA_PONTE);
+            system("pause");
             spostare_giocatore(partita_attuale);
         }
         else if (confrontare_stringhe(nome_casella, NOME_LOCANDA) == VERO ) {
-            //stampare schermata_locanda e aspettare input
+            stampare_testo(FILE_SCHERMATA_LOCANDA);
+            system("pause");
             scrivere_autorizzazione(&giocatore_attuale, TURNI_ATTESA_LOCANDA);
             scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
         }
         else if (confrontare_stringhe(nome_casella, NOME_POZZO) == VERO )
         {
-            //stampare schermata_pozzo e aspettare input
+            stampare_testo(FILE_SCHERMATA_POZZO);
+            system("pause");
             impostare_autorizzazioni(partita_attuale, NOME_POZZO);
         }
         else if (confrontare_stringhe(nome_casella, NOME_PRIGIONE) == VERO )
         {
-            //stampare schermata_prigione e aspettare input
+            stampare_testo(FILE_SCHERMATA_PRIGIONE);
+            system("pause");
             impostare_autorizzazioni(partita_attuale, NOME_PRIGIONE);
         }
         else if (confrontare_stringhe(nome_casella, NOME_LABIRINTO) == VERO )
         {
-            //stampare schermata_labirinto e aspettare input
+            stampare_testo(FILE_SCHERMATA_LABIRINTO);
+            system("pause");
             scrivere_posizione_giocatore(&giocatore_attuale, calcolare_proporzione(*partita_attuale, CASELLA_ARRIVO_LABIRINTO));
             leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
             while (confrontare_stringhe(nome_casella, STRINGA_VUOTA) == FALSO ){
@@ -241,11 +257,14 @@ void verificare_casella (partita* partita_attuale) {
         }
         else if (confrontare_stringhe(nome_casella, NOME_SCHELETRO) == VERO )
         {
-            //stampare schermata_scheletro e aspettare input
+            stampare_testo(FILE_SCHERMATA_SCHELETRO);
+            system("pause");
             scrivere_posizione_giocatore(&giocatore_attuale, CASELLA_ARRIVO_SCHELETRO);
             scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
         }
               //stampare percorso e aspettare input
+        stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
+        system("pause");
         leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
     }while(confrontare_stringhe(nome_casella, STRINGA_VUOTA) == FALSO);
     return;
