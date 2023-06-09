@@ -12,8 +12,8 @@
 void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 	char carattere_letto;
 
-	FILE *f_interfaccia = NULL;
-	if ((f_interfaccia = fopen(file_interfaccia, "r")) != NULL) {
+	FILE *f_interfaccia = fopen(file_interfaccia, "r");
+	if (f_interfaccia != NULL) {
 		int indice_carattere = 0;
 		while (indice_carattere < (LUNGHEZZA_SCHERMATA * ALTEZZA_SCHERMATA)) {
 			fgetc(f_interfaccia);
@@ -142,45 +142,33 @@ void stampare_testo (const char file_interfaccia[]) {
 
 }
 
-void stampare_messaggio_errore(const char file_interfaccia[]) {
-	FILE *f_interfaccia = NULL;
-	if ((f_interfaccia = fopen(file_interfaccia, "r")) != NULL) {
-		char carattere_letto;
-		int indice_carattere = 0;
-		while (indice_carattere < (LUNGHEZZA_SCHERMATA * ALTEZZA_SCHERMATA)) {
-			fgetc(f_interfaccia);
-			indice_carattere = indice_carattere + 1;
-		}
+void stampare_messaggio_errore (const char file_interfaccia[]) {
+	FILE *f_interfaccia = fopen(file_interfaccia, "r");
+	if (f_interfaccia != NULL) {
+		char riga_letta [LUNGHEZZA_SCHERMATA + 1];
 		int indice_riga = 0;
+		while (indice_riga < ALTEZZA_SCHERMATA) {
+			fgets(riga_letta, LUNGHEZZA_SCHERMATA + 1, f_interfaccia);
+			indice_riga = indice_riga + 1;
+		}
+		indice_riga = 0;
 		while (indice_riga < SPIAZZAMENTO_MESSAGGIO_ERRORE) {
-			carattere_letto = fgetc(f_interfaccia);
-			if (carattere_letto == CARATTERE_A_CAPO) {
-				indice_riga = indice_riga + 1;
-			}
+			fgets(riga_letta, LUNGHEZZA_SCHERMATA + 1, f_interfaccia);
+			indice_riga = indice_riga + 1;
 		}
 		int posizione_riga;
 		int posizione_colonna;
 		int codice_messaggio_errore;
 		fscanf(f_interfaccia, "%d ", &posizione_riga);
-		carattere_letto = fgetc(f_interfaccia);
-		while (carattere_letto != CARATTERE_A_CAPO) {
-			carattere_letto = fgetc(f_interfaccia);
-		}
+		fgets (riga_letta, LUNGHEZZA_SCHERMATA + 1, f_interfaccia);
 		fscanf(f_interfaccia, "%d ", &posizione_colonna);
-		carattere_letto = fgetc(f_interfaccia);
-		while (carattere_letto != CARATTERE_A_CAPO) {
-			carattere_letto = fgetc(f_interfaccia);
-		}
+		fgets (riga_letta, LUNGHEZZA_SCHERMATA + 1, f_interfaccia);
 		fscanf(f_interfaccia, "%d ", &codice_messaggio_errore);
-		carattere_letto = fgetc(f_interfaccia);
-		while (carattere_letto != CARATTERE_A_CAPO) {
-			carattere_letto = fgetc(f_interfaccia);
-		}
 		fclose(f_interfaccia);
 
 		posizionare_cursore(posizione_riga, posizione_colonna);
-		FILE *f_messaggi_errore = NULL;
-		if ((f_messaggi_errore = fopen(FILE_MESSAGGI_ERRORE, "r")) == NULL) {
+		FILE *f_messaggi_errore = fopen(FILE_MESSAGGI_ERRORE, "r");
+		if (f_messaggi_errore != NULL) {
 			char messaggio_errore[LUNGHEZZA_SCHERMATA + 1];
 
 			indice_riga = 0;
@@ -209,18 +197,18 @@ void stampare_messaggio_errore(const char file_interfaccia[]) {
 	}
 }
 
-void posizionare_cursore (int x, int y) {
+/*void posizionare_cursore (int x, int y) {
 	COORD CursorPos = {x, y};
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleCursorPosition(hConsole, CursorPos);
-}
-
-/*void posizionare_cursore(int asse_x, int asse_y) {
-	COORD coord;
-	coord.X = asse_x;
-	coord.Y = asse_y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }*/
+
+void posizionare_cursore(int posizione_riga, int posizione_colonna) {
+	COORD coord;
+	coord.X = posizione_colonna;
+	coord.Y = posizione_riga - 1;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
 
 void posizionare_cursore_in_attesa(const char file_interfaccia[]) {
 	FILE *f_interfaccia = fopen(file_interfaccia, "r");
@@ -233,16 +221,17 @@ void posizionare_cursore_in_attesa(const char file_interfaccia[]) {
 		}
 		int posizione_riga;
 		int posizione_colonna;
-		fscanf(f_interfaccia, "%d ", &posizione_riga);
-		fgets(riga_letta, LUNGHEZZA_SCHERMATA + 1, f_interfaccia);
-		fscanf(f_interfaccia, "%d ", &posizione_colonna);
-		posizionare_cursore(posizione_riga, posizione_colonna);
+		fscanf (f_interfaccia, "%d ", &posizione_riga);
+		fgets (riga_letta, LUNGHEZZA_SCHERMATA + 1, f_interfaccia);
+		fscanf (f_interfaccia, "%d ", &posizione_colonna);
+		posizionare_cursore (posizione_riga, posizione_colonna);
+		fclose(f_interfaccia);
 	} else {
-		printf("%s", ERRORE_FILE_NON_TROVATO);
-		fflush(stdout);
-		printf("%c", CARATTERE_SPAZIO);
-		fflush(stdout);
-		printf("%s", file_interfaccia);
-		fflush(stdout);
+		printf ("%s", ERRORE_FILE_NON_TROVATO);
+		fflush (stdout);
+		printf ("%c", CARATTERE_SPAZIO);
+		fflush (stdout);
+		printf ("%s", file_interfaccia);
+		fflush (stdout);
 	}
 }

@@ -30,14 +30,16 @@ int main() {
     posizionare_cursore_in_attesa(FILE_INTRO);
     fgetc(stdin);
     fflush(stdout);
-    system("cls");
+
 
     uscita = RISPOSTA_NEGATIVA_MAIUSCOLO;
     int opzione;
     vincitore vincitore_partita;
 
     do {
+        system("cls");
         opzione = scegliere_opzione_menu();
+        
         if (opzione == 1) {
             iniziare_nuova_partita (&vincitore_partita);
             //inserire fine stringa come nome di vincitore_attuale nel caso in cui si interrompe la partita (stessa cosa per riprendere_partita)
@@ -46,6 +48,7 @@ int main() {
         }
         else {
             if (opzione == 2) {
+                riprendere_partita(&vincitore_partita);
                 gestire_vincitore (vincitore_partita);
             }
             else {
@@ -63,7 +66,6 @@ int main() {
             }
         }
     } while (uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO);
-    system("pause");
     return 0;
 }
 
@@ -73,6 +75,7 @@ int scegliere_opzione_menu () {
     int opzione;
     int correttezza_inserimento;
     stampare_testo(FILE_MENU_PRINCIPALE);
+    posizionare_cursore_in_attesa(FILE_MENU_PRINCIPALE);
     do {
 
 
@@ -81,19 +84,19 @@ int scegliere_opzione_menu () {
             correttezza_inserimento = scanf("%d", &opzione);
             fflush(stdin);
             if (correttezza_inserimento == 0) {
-                printf("%s", "Attenzione: input non valido.");
+                printf("%s", "Attenzione: input non valido.\n");
             }
         } while (correttezza_inserimento == 0);
 
 
 
         //verifichiamo se l'imput immesso sia consentito all'interno dei vincoli
-        if ( (opzione < 1) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE) ) {
+        if ( (opzione < 0) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE) ) {
             stampare_messaggio_errore (FILE_MENU_PRINCIPALE);
         }
 
 
-    } while ( (opzione < 1) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE) );
+    } while ( (opzione < 0) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE) );
     return opzione;
 }
 

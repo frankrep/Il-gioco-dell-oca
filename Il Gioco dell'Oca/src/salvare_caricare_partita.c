@@ -57,17 +57,12 @@ void salvare_partita (partita* partita_attuale) {
 
 void confermare_scelta (char * risposta) {
     //decidere se stampare da file la frase
-    printf ("Vuoi confermare?");
+    printf ("Vuoi confermare? (%c/%c)  ", RISPOSTA_AFFERMATIVA_MAIUSCOLO, RISPOSTA_NEGATIVA_MAIUSCOLO);
     int correttezza_inserimento;
     do {
-        do {
-            correttezza_inserimento = scanf("%c", risposta);
-            fflush (stdin);
-            //decidere se stampare da file la frase
-            if (correttezza_inserimento == 0) {
-                printf("Attenzione: input non valido.");
-            }
-        } while (correttezza_inserimento == 0);
+        scanf("%c", risposta);
+        fflush (stdin);
+
         //decidere se stampare da file la frase
         if ( *risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && *risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && *risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && *risposta != RISPOSTA_NEGATIVA_MINUSCOLO )
             printf("La scelta inserita non e' valida, riprovare: ");
