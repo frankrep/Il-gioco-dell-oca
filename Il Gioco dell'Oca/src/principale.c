@@ -26,8 +26,10 @@ int main() {
 
     //stampa della schermata con il logo e la richiesta di premere un tasto qualsiasi
     stampare_testo(FILE_INTRO);
+    posizionare_cursore_in_attesa(FILE_INTRO);
     fgetc(stdin);
-    fflush(stdin);
+    fflush(stdout);
+    system("cls");
 
     uscita = RISPOSTA_NEGATIVA_MAIUSCOLO;
     int opzione;
@@ -69,6 +71,7 @@ int main() {
 int scegliere_opzione_menu () {
     int opzione;
     int correttezza_inserimento;
+    stampare_testo(FILE_MENU_PRINCIPALE);
     do {
 
 
@@ -82,9 +85,10 @@ int scegliere_opzione_menu () {
         } while (correttezza_inserimento == 0);
 
 
+
         //verifichiamo se l'imput immesso sia consentito all'interno dei vincoli
-        if ((opzione < 1) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE)) {
-            stampare_messaggio_errore(FILE_MENU_PRINCIPALE);
+        if ( (opzione < 1) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE) ) {
+            stampare_messaggio_errore (FILE_MENU_PRINCIPALE);
         }
 
 
