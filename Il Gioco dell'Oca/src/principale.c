@@ -98,7 +98,10 @@ int scegliere_opzione_menu () {
 
 
     } while ( (opzione < 0) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE) );
-    system("cls");
+
+    if (opzione != 0) {
+        system("cls");
+    }
     return opzione;
 }
 
