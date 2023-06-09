@@ -114,15 +114,6 @@ void inserire_stringa (int dimensione_minima_stringa, int dimensione_massima_str
         if (calcolare_lunghezza_stringa (nome_da_inserire) < dimensione_minima_stringa) {
             printf("Nome inserito non valido, riprovare.");
         }
-
-
-        /*scanf ("%c", &carattere);
-        if (carattere != CARATTERE_A_CAPO) {
-            nome_da_inserire [indice_stringa] = carattere;
-            indice_stringa = indice_stringa + 1;
-        } else if (indice_stringa <= dimensione_minima_stringa) {
-            //stampare messaggio errore minimo caratteri richiesti
-        }*/
         else {
             terminato = VERO;
         }
@@ -136,7 +127,7 @@ void inserire_stringa (int dimensione_minima_stringa, int dimensione_massima_str
 void rimuovere_carattere_nuova_riga (char stringa[]) {
     int indice_stringa = 0;
     while (indice_stringa < calcolare_lunghezza_stringa (stringa) ) {
-        if (stringa[indice_stringa == CARATTERE_A_CAPO]) {
+        if (stringa[indice_stringa] == CARATTERE_A_CAPO) {
             stringa[indice_stringa] = FINE_STRINGA;
         }
         indice_stringa = indice_stringa + 1;
