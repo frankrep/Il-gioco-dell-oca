@@ -11,7 +11,6 @@
 typedef struct {
     char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
     int numero_casella;
-    char file_interfaccia[NUMERO_MASSIMO_CARATTERI_PERCORSO];
     char simbolo[NUMERO_MASSIMO_CARATTERI_SIMBOLO];
 } casella;
 

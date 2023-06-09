@@ -12,11 +12,15 @@ void proporzionare_caselle_speciali(partita* partita_attuale, casella caselle_sp
 int trovare_divisore_massimo_decimale (float valore_reale);
 int calcolare_parte_intera_unita (float valore_reale, int divisore);
 
+
+
 void generare_percorso (partita* partita_attuale) {
     creare_percorso_con_oche (partita_attuale);
     posizionare_caselle_speciali (partita_attuale);
     return;
 }
+
+
 
 void creare_percorso_con_oche (partita* partita_attuale) {
     int indice_percorso = 0;
@@ -27,12 +31,16 @@ void creare_percorso_con_oche (partita* partita_attuale) {
     return;
 }
 
+
+
 void inserire_casella (partita* partita_attuale, int posizione_percorso) {
     casella casella_attuale;
     creare_casella (&casella_attuale, posizione_percorso);
     scrivere_casella_percorso (partita_attuale, casella_attuale, posizione_percorso);
     return;
 }
+
+
 
 void creare_casella (casella* casella_attuale, int indice_partita) {
     if ( calcolare_resto (indice_partita, DISTANZA_OCHE) != DISTANZA_OCHE ) {
@@ -47,8 +55,11 @@ void creare_casella (casella* casella_attuale, int indice_partita) {
     return;
 }
 
+
+
 void posizionare_caselle_speciali (partita* partita_attuale) {
     casella caselle_speciali [NUMERO_CASELLE_SPECIALI];
+    //passare l'array caselle speciali a proprzionare
     proporzionare_caselle_speciali (partita_attuale, caselle_speciali);
     int indice_speciali = 0;
     while (indice_speciali < NUMERO_CASELLE_SPECIALI) {
@@ -58,29 +69,51 @@ void posizionare_caselle_speciali (partita* partita_attuale) {
     return;
 }
 
+
+
 void proporzionare_caselle_speciali( partita* partita_attuale, casella caselle_speciali[]) {
-    FILE * file_caselle_speciali = fopen(FILE_CASELLE_SPECIALI, "rb");
-    if (file_caselle_speciali == NULL) {
-        //stampare messaggio errore per mancata apertura file
-        //gestire l'errore di modo che il programma si comporti in una certa maniera
-    }
-    else {
-        fread(caselle_speciali, sizeof(casella), NUMERO_CASELLE_SPECIALI, file_caselle_speciali);
-        fclose(file_caselle_speciali);
-        int indice_speciali = 0;
-        while (indice_speciali < NUMERO_CASELLE_SPECIALI) {
-            scrivere_numero_casella(&caselle_speciali[indice_speciali], calcolare_proporzione(*partita_attuale, leggere_numero_casella (caselle_speciali[indice_speciali])));
-            indice_speciali = indice_speciali + 1;
-        }
+    inizializzare_caselle_speciali(caselle_speciali);
+    int indice_speciali = 0;
+    while (indice_speciali < NUMERO_CASELLE_SPECIALI) {
+        scrivere_numero_casella(&caselle_speciali[indice_speciali], calcolare_proporzione(*partita_attuale, leggere_numero_casella (caselle_speciali[indice_speciali])));
+        indice_speciali = indice_speciali + 1;
     }
     return;
 }
+
+
+void inizializzare_caselle_speciali(casella caselle_speciali[]){
+
+scrivere_nome_casella (&caselle_speciali[0], NOME_PONTE);
+scrivere_simbolo (&caselle_speciali[0], SIMBOLO_PONTE);
+scrivere_numero_casella(&caselle_speciali[0], 6);
+scrivere_nome_casella (&caselle_speciali[1], NOME_LOCANDA);
+scrivere_simbolo (&caselle_speciali[1], SIMBOLO_LOCANDA);
+scrivere_numero_casella(&caselle_speciali[1], 19);
+scrivere_nome_casella (&caselle_speciali[2], NOME_POZZO);
+scrivere_simbolo (&caselle_speciali[2], SIMBOLO_POZZO);
+scrivere_numero_casella(&caselle_speciali[2], 31);
+scrivere_nome_casella (&caselle_speciali[3], NOME_LABIRINTO);
+scrivere_simbolo (&caselle_speciali[3], SIMBOLO_LABIRINTO);
+scrivere_numero_casella(&caselle_speciali[3], 42);
+scrivere_nome_casella (&caselle_speciali[4], NOME_PRIGIONE);
+scrivere_simbolo (&caselle_speciali[4], SIMBOLO_PRIGIONE);
+scrivere_numero_casella(&caselle_speciali[4], 52);
+scrivere_nome_casella (&caselle_speciali[5], NOME_SCHELETRO);
+scrivere_simbolo (&caselle_speciali[5], SIMBOLO_SCHELETRO);
+scrivere_numero_casella(&caselle_speciali[5], 58);
+
+}
+
 
 int calcolare_proporzione (partita partita_attuale, int posizione_originale) {
     float valore_proporzione = ( ( leggere_lunghezza_percorso (partita_attuale) * posizione_originale) / DIMENSIONE_MASSIMA_PERCORSO);
     int posizione_ricavata = calcolare_parte_intera (valore_proporzione);
     return posizione_ricavata;
 }
+
+
+
 int calcolare_parte_intera (float valore_reale) {
     int parte_intera_numero = 0;
     int divisore = trovare_divisore_massimo_decimale (valore_reale);
@@ -92,6 +125,9 @@ int calcolare_parte_intera (float valore_reale) {
     }
     return parte_intera_numero;
 }
+
+
+
 int trovare_divisore_massimo_decimale (float valore_reale) {
     int divisore = 1;
     while ( (valore_reale / divisore) >= BASE) {
@@ -99,6 +135,9 @@ int trovare_divisore_massimo_decimale (float valore_reale) {
     }
     return divisore;
 }
+
+
+
 int calcolare_parte_intera_unita (float valore_reale, int divisore) {
     float cifra_del_numero = valore_reale / divisore;
     int parte_intera = 0;
@@ -108,6 +147,8 @@ int calcolare_parte_intera_unita (float valore_reale, int divisore) {
     }
     return parte_intera;
 }
+
+
 
 int calcolare_resto (int dividendo, int divisore) {
     int resto = dividendo;

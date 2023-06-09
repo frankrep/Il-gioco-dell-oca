@@ -75,12 +75,13 @@ int scegliere_opzione_menu () {
     int opzione;
     int correttezza_inserimento;
     stampare_testo(FILE_MENU_PRINCIPALE);
-    posizionare_cursore_in_attesa(FILE_MENU_PRINCIPALE);
+
     do {
 
 
         //richiediamo l'opzione e verifichiamo che l'imput immesso sia del tipo consentito
         do {
+            posizionare_cursore_in_attesa(FILE_MENU_PRINCIPALE);
             correttezza_inserimento = scanf("%d", &opzione);
             fflush(stdin);
             if (correttezza_inserimento == 0) {
@@ -97,6 +98,7 @@ int scegliere_opzione_menu () {
 
 
     } while ( (opzione < 0) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE) );
+    system("cls");
     return opzione;
 }
 

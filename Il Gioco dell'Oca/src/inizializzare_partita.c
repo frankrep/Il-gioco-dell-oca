@@ -6,8 +6,10 @@
 #include "casella.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "gestire_stampa.h"
 
-partita *inizializzare_giocatori(partita *partita_attuale) {
+
+partita *inizializzare_giocatori (partita *partita_attuale) {
     richiedere_numero_caselle(partita_attuale);
     inizializzare_numero_giocatori(partita_attuale);
     inizializzare_nomi_giocatori(partita_attuale);
@@ -17,24 +19,52 @@ partita *inizializzare_giocatori(partita *partita_attuale) {
 
 void richiedere_numero_caselle(partita *partita_attuale) {
     int dimensione_percorso;
-    //stampare richiesta
+    stampare_testo(FILE_SCELTA_LUNG_PERCO);
     do {
-        scanf("%d", &dimensione_percorso);
+
+
+        int correttezza_inserimento;
+        do {
+            posizionare_cursore_in_attesa(FILE_SCELTA_LUNG_PERCO);
+            correttezza_inserimento = scanf("%d", &dimensione_percorso);
+            fflush(stdin);
+            if (correttezza_inserimento == 0) {
+                printf("%s","Attenzione: input non valido.\n");
+            }
+        } while (correttezza_inserimento == 0);
+
+
         if ((dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) || (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO)) {
-            //stampare messaggio errore
+            stampare_messaggio_errore(FILE_SCELTA_LUNG_PERCO);
         }
+
+
     } while ((dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) || (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO));
     scrivere_lunghezza_percorso(partita_attuale, dimensione_percorso);
     return;
 }
 
-void inizializzare_numero_giocatori(partita *partita_attuale) {
+
+
+void inizializzare_numero_giocatori (partita *partita_attuale) {
     int numero_partecipanti;
-    //stampare messaggio richiesta
+    stampare_testo(FILE_SCELTA_N_GIOCATORI);
     do {
-        scanf("%d", &numero_partecipanti);
+
+
+        int correttezza_inserimento;
+        do {
+            posizionare_cursore_in_attesa(FILE_SCELTA_N_GIOCATORI);
+            correttezza_inserimento = scanf("%d", &numero_partecipanti);
+            fflush(stdin);
+            if (correttezza_inserimento == 0) {
+                printf("%s","Attenzione: input non valido.\n");
+            }
+        } while (correttezza_inserimento == 0);
+
+
         if ((numero_partecipanti < NUMERO_MINIMO_GIOCATORI) || (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI)) {
-            //stampare messaggio errore
+            stampare_messaggio_errore(FILE_SCELTA_N_GIOCATORI);
         }
     } while ((numero_partecipanti < NUMERO_MINIMO_GIOCATORI) || (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI));
     scrivere_numero_giocatori(partita_attuale, numero_partecipanti);

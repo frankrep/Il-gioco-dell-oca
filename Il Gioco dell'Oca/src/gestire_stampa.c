@@ -166,6 +166,7 @@ void stampare_messaggio_errore (const char file_interfaccia[]) {
 		fscanf(f_interfaccia, "%d ", &codice_messaggio_errore);
 		fclose(f_interfaccia);
 
+
 		posizionare_cursore(posizione_riga, posizione_colonna);
 		FILE *f_messaggi_errore = fopen(FILE_MESSAGGI_ERRORE, "r");
 		if (f_messaggi_errore != NULL) {
@@ -174,6 +175,7 @@ void stampare_messaggio_errore (const char file_interfaccia[]) {
 			indice_riga = 0;
 			while (indice_riga < codice_messaggio_errore) {
 				fgets(messaggio_errore, (LUNGHEZZA_SCHERMATA + 1),f_messaggi_errore);
+                indice_riga = indice_riga + 1;
 			}
 			fclose(f_messaggi_errore);
 			printf("%s", messaggio_errore);
