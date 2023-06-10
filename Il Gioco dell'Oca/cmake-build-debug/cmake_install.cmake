@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Francesco/Desktop/Il-gioco-dell-oca/Il Gioco dell'Oca
+# Install script for directory: C:/Users/appic/eclipse-workspace/Il-gioco-dell-oca/Il Gioco dell'Oca
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Francesco/Desktop/Il-gioco-dell-oca/Il Gioco dell'Oca/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/appic/eclipse-workspace/Il-gioco-dell-oca/Il Gioco dell'Oca/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
