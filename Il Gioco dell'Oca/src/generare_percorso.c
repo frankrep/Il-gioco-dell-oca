@@ -63,10 +63,14 @@ void posizionare_caselle_speciali (partita* partita_attuale) {
     //passare l'array caselle speciali a proprzionare
     proporzionare_caselle_speciali (partita_attuale, caselle_speciali);
     int indice_speciali = 0;
-    while (indice_speciali < NUMERO_CASELLE_SPECIALI) {
+    while (indice_speciali < NUMERO_CASELLE_SPECIALI - 1) {
+        if ( calcolare_resto (leggere_numero_casella (caselle_speciali [indice_speciali] ), DISTANZA_OCHE) == DISTANZA_OCHE){
+            scrivere_numero_casella(&caselle_speciali[indice_speciali], leggere_numero_casella (caselle_speciali[indice_speciali]) - 1);
+            }
         scrivere_casella_percorso (partita_attuale, caselle_speciali[indice_speciali], leggere_numero_casella (caselle_speciali [indice_speciali] ) - 1);
         indice_speciali = indice_speciali + 1;
     }
+    scrivere_casella_percorso (partita_attuale, caselle_speciali[indice_speciali], leggere_numero_casella (caselle_speciali [indice_speciali] ) - 1);
     return;
 }
 
