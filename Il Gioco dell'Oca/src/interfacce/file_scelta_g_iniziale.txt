@@ -27,7 +27,21 @@ _______________________________________________________________________________
 53 //colonna input
 24 //riga errore
 25 //colonna errore
-2 //codice messaggio 
+2 //codice messaggio
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 16 //RIGA ALTO SINISTRA DADO
 37 //COLONNA ALTO SINISTRA DADO
 17 // RIGA CENTRO SINISTRA DADO
