@@ -18,5 +18,6 @@ void stampare_dadi_partita(const char file_interfaccia[], partita* partita_attua
 void stampare_dado(const char file_interfaccia[], int valore_faccia_dado);
 void cancellare_schermata();
 void stampare_valore_intero(const char file_interfaccia[], int valore);
+void stampare_valore_testuale(const char file_interfaccia[], const char stringa[]);
 
 #endif /* GESTIRE_STAMPA_H_ */
