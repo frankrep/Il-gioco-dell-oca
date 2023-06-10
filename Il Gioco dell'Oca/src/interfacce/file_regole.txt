@@ -5,12 +5,12 @@
 2)O Oca: Il giocatore che arriva su di esse si sposta in avanti di un numero di
 caselle pari a quelle ottenute con il lancio dei dati.(ogni 9 caselle ).       
 3)^^Locanda: In cui si sta fermi 3 turni(CASELLA 19).                          
-4)(O)Pozzo: Si rimane bloccati finché non arriva un'altra pedina(CASELLA 31).  
-5)@Labirinto: Fà tornare alla casella 33 (CASELLA 42).                         
-6)[#]Prigione:Si rimane bloccati finché non arriva un'altra pedina(CASELLA 52).
-7)XXScheletro: Che fà retrocedere fino alla casella 1 (CASELLA 58).            
+4)(O)Pozzo: Si rimane bloccati finche'non arriva un'altra pedina(CASELLA 31).  
+5)@Labirinto: Fa'tornare alla casella 33 (CASELLA 42).                         
+6)[#]Prigione:Si rimane bloccati finche'non arriva un'altra pedina(CASELLA 52).
+7)XXScheletro: Che fa'retrocedere fino alla casella 1 (CASELLA 58).            
 8)WVittoria: La casella di arrivo, va raggiunta con lanci esatti, altrimenti   
-si retrocede dei punti in più (CASELLA 90).                                    
+si retrocede dei punti in piu'(CASELLA 90).                                    
 <LA LUNG DEL PERCORSO PUO ESSERE SCELTA DAL GIOCATORE, COMPRESA TRA 50 E 90>   
 <SIMBOLI DEI GIOCATORI>                                                        
 Giocatore 1: #                                                                 
