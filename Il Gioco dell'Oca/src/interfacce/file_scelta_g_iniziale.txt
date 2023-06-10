@@ -28,8 +28,8 @@ _______________________________________________________________________________
 24 //riga errore
 25 //colonna errore
 2 //codice messaggio
-12 // riga nome giocatore
-33 // colonna nome giocatore
+13 // riga nome giocatore
+31 // colonna nome giocatore
 
 
 

@@ -50,8 +50,8 @@ vincitore gestire_partita (partita* partita_attuale) {
             stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
             do{
                 posizionare_cursore_in_attesa (FILE_PERCORSO);
-                fflush(stdin);
                 scelta = fgetc(stdin);
+                fflush(stdin);
                 if((scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) && (scelta != TASTO_SALVATAGGIO_MAIUSCOLO) && (scelta != TASTO_SALVATAGGIO_MINUSCOLO) ){
                     stampare_messaggio_errore(FILE_PERCORSO);
                 }
@@ -81,24 +81,27 @@ void scegliere_giocatore (partita* partita_attuale) {
     char scelta;
     int estrazioni [NUMERO_MASSIMO_GIOCATORI];
     int indice_giocatori = 0;
+    char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
         system("cls");
         stampare_testo (FILE_SCELTA_G_INIZIALE);
-
+        leggere_nome_giocatore(leggere_giocatore(*partita_attuale,indice_giocatori),nome_giocatore);
+        stampare_valore_testuale(FILE_SCELTA_G_INIZIALE, nome_giocatore);
         do{
             posizionare_cursore_in_attesa (FILE_SCELTA_G_INIZIALE);
             fflush(stdin);
             scelta = fgetc(stdin);
+            fflush(stdout);
             if((scelta != TASTO_INDIETRO) && (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO)){
                 stampare_messaggio_errore(FILE_SCELTA_G_INIZIALE);
             }
         } while ((scelta != TASTO_INDIETRO) && (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO));
 
 
-        estrazioni [indice_giocatori] = 5;//generare_numero (FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
+        estrazioni [indice_giocatori] = generare_numero (FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO);
         stampare_dado(FILE_SCELTA_G_INIZIALE, estrazioni [indice_giocatori]);
         posizionare_cursore_in_attesa (FILE_SCELTA_G_INIZIALE);
-        system("pause");
+        fgetc(stdin);
         indice_giocatori = indice_giocatori + 1;
     }
     scrivere_turno (partita_attuale, trovare_posizione_massimo (estrazioni, leggere_numero_giocatori (*partita_attuale) ) - 1);
@@ -152,7 +155,7 @@ void lanciare_dadi (partita* partita_attuale) {
     int lancio;
     while (indice_dado < NUMERO_DADI) {
         scanf("%d", &lancio);
-        //lancio = generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
+        //lancio = generare_numero(FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO);
         scrivere_dadi (partita_attuale, lancio, indice_dado);
         indice_dado = indice_dado + 1;
     }

@@ -122,6 +122,7 @@ void richiedere_stringa (const char file_interfaccia[], int dimensione_minima_st
 
 
 void inserire_stringa (int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]) {
+    fflush(stdin);
     fgets (nome_da_inserire, dimensione_massima_stringa + 1, stdin);
     rimuovere_carattere_nuova_riga (nome_da_inserire);
     if (calcolare_lunghezza_stringa (nome_da_inserire) < dimensione_minima_stringa) {

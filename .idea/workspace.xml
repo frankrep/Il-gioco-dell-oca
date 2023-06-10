@@ -25,7 +25,15 @@
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/aiuto.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/aiuto.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/costanti.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/costanti.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/generare_numero_casuale.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/generare_numero_casuale.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_partita.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_partita.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/inizializzare_partita.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/inizializzare_partita.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/interfacce/file_percorso.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/interfacce/file_percorso.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/interfacce/file_scelta_g_iniziale.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/interfacce/file_scelta_g_iniziale.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/interfacce/file_scelta_nomi_giocatori.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/interfacce/file_scelta_nomi_giocatori.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +48,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -96,7 +104,7 @@
       <workItem from="1686329810020" duration="27871000" />
       <workItem from="1686403846636" duration="6683000" />
       <workItem from="1686413217033" duration="85000" />
-      <workItem from="1686413318150" duration="1869000" />
+      <workItem from="1686413318150" duration="4365000" />
     </task>
     <servers />
   </component>
@@ -114,7 +122,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_partita.c</url>
-          <line>301</line>
+          <line>304</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

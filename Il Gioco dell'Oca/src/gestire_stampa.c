@@ -263,3 +263,29 @@ void stampare_valore_intero(const char file_interfaccia[], int valore){
     fflush (stdout);
     }
 }
+
+
+
+
+
+void stampare_valore_testuale(const char file_interfaccia[], const char stringa[]){
+    FILE *f_interfaccia = fopen(file_interfaccia, "r");
+    if (f_interfaccia != NULL) {
+        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_STAMPA_VALORI);
+        int posizione_riga;
+        int posizione_colonna;
+        fscanf (f_interfaccia, "%d ", &posizione_riga);
+        scorrere_righe_file(f_interfaccia, 1);
+        fscanf (f_interfaccia, "%d ", &posizione_colonna);
+        posizionare_cursore (posizione_riga, posizione_colonna);
+        printf("%s", stringa);
+        fclose(f_interfaccia);
+    } else {
+        printf ("%s", ERRORE_FILE_NON_TROVATO);
+        fflush (stdout);
+        printf ("%c", CARATTERE_SPAZIO);
+        fflush (stdout);
+        printf ("%s", file_interfaccia);
+        fflush (stdout);
+    }
+}

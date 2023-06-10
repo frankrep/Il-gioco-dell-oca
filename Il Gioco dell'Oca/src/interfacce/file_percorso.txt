@@ -24,7 +24,7 @@
                     inserisci cosa vuoi fare nel turno numero  :                                  
                                                                                
 24 //riga input
-46 //colonna input
+65 //colonna input
 25 //riga errore
 1 //colonna errore
 1 //codice messaggio
