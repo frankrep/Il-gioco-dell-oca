@@ -6,25 +6,46 @@
 
 void chiedere_aiuto (int opzione_scelta) {
     opzione_scelta = scegliere_aiuto ();
-    if (opzione_scelta == 1)
-    {
-        stampare_testo(FILE_REGOLE);
-    }
-    else if (opzione_scelta == 2)
-    {
-        stampare_testo(FILE_MANUALE);
-    }
+    int torna_indietro;
+    do {
+            if (opzione_scelta == 1) {
+                stampare_testo(FILE_REGOLE);
+                posizionare_cursore_in_attesa(FILE_REGOLE);
+                scanf("%d", &torna_indietro);
+                fflush(stdin);
+                if (torna_indietro != 0) {
+                        stampare_messaggio_errore(FILE_REGOLE);
+                    }
+            } else if (opzione_scelta == 2) {
+                stampare_testo(FILE_MANUALE);
+                posizionare_cursore_in_attesa(FILE_MANUALE);
+                scanf("%d", &torna_indietro);
+                fflush(stdin);
+                if (torna_indietro != 0) {
+                    stampare_messaggio_errore(FILE_MANUALE);
+                }
+                system("cls");
+            }
+            else if((opzione_scelta != 1) || (opzione_scelta != 2)) {
+            stampare_messaggio_errore(FILE_MENU_AIUTO);
+        }
+
+    } while(opzione_scelta != 0);
+    return ;
 }
+
 int scegliere_aiuto () {
-    printf("file_menu_aiuto");
+    stampare_testo(FILE_MENU_AIUTO);
     int opzione_scelta;
-    do
-    {
+    do {
+         posizionare_cursore_in_attesa(FILE_MENU_AIUTO);
          scanf("%d", &opzione_scelta);
+         fflush(stdin);
          if ((opzione_scelta < 0) || (opzione_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO))
          {
             stampare_messaggio_errore(FILE_MENU_AIUTO);
          }
     }while((opzione_scelta < 0 ) || (opzione_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO));
+    system("cls");
     return opzione_scelta;
 }
