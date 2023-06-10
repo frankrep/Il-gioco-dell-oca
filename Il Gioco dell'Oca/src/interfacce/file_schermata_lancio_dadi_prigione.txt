@@ -28,20 +28,6 @@ ______________________________________________
 24 // RIGA ERRORE
 47 // COLONNA ERRORE
 2 // CM
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 15 //RIGA ALTO SINISTRA DADO
 55 //COLONNA ALTO SINISTRA DADO
 16 // RIGA CENTRO SINISTRA DADO

@@ -3,8 +3,8 @@ ______________________
 |___SSSS_____________|<CASELLA SPECIALE OCA>                                   
 |__8.()..S___________|                                                         
 |_88.....S___________|Siete capitati sulla casella speciale oca,               
-|888....S_____$$$$s__|questa oasi e'abitata da una colonia                     
-|____S...S___80_)$$$_|di oche molto gentili ed ospitali, cosi'tanto            
+|888....S_____$$$$s__|questa oasi è abitata da una colonia                     
+|____S...S___80_)$$$_|di oche molto gentili ed ospitali, cosi tanto            
 |_____S..S__88$$$$$$_|gentili da offrirti un passaggio verso la prossima       
 |_____S..S_8888$$$$$_|casella, ad una distanza pari a quella percorsa          
 |_____S..S_____$$$$$s|per raggiungere la colonia.                              

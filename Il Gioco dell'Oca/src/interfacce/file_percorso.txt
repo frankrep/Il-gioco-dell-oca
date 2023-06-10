@@ -28,20 +28,6 @@
 25 //riga errore
 1 //colonna errore
 1 //codice messaggio
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 21 //RIGA ALTO SINISTRA DADO1
 32 //COLONNA ALTO A SINISTRA DADO1
 22 //RIGA CENTRO SINISTRA DADO1

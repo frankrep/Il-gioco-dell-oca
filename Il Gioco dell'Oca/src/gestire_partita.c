@@ -194,7 +194,7 @@ void calcolare_caselle_eccesso(partita* partita_attuale){
     giocatore_attuale = leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) );
     int eccesso = leggere_posizione_giocatore (giocatore_attuale ) - leggere_lunghezza_percorso (*partita_attuale);
 
-    scrivere_posizione_giocatore (&giocatore_attuale, leggere_posizione_giocatore (giocatore_attuale) - eccesso);
+    scrivere_posizione_giocatore (&giocatore_attuale, leggere_lunghezza_percorso (*partita_attuale) - eccesso);
     scrivere_giocatore (partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
     return;
 }
@@ -214,38 +214,50 @@ void verificare_casella (partita* partita_attuale) {
     char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
     do{
         giocatore_attuale = leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale) );
-        leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella );
-        if ( confrontare_stringhe (nome_casella, NOME_OCA) == VERO ) {
+        leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);
+        if (confrontare_stringhe (nome_casella, NOME_OCA) == VERO ) {
+            cancellare_schermata();
             stampare_testo(FILE_SCHERMATA_OCA);
+            posizionare_cursore_in_attesa(FILE_SCHERMATA_OCA);
             system("pause");
             gestire_oca (partita_attuale);
         }
         else if(confrontare_stringhe(nome_casella, NOME_PONTE) == VERO ) {
+            cancellare_schermata();
             stampare_testo(FILE_SCHERMATA_PONTE);
+            posizionare_cursore_in_attesa(FILE_SCHERMATA_PONTE);
             system("pause");
             spostare_giocatore(partita_attuale);
         }
         else if (confrontare_stringhe(nome_casella, NOME_LOCANDA) == VERO ) {
+            cancellare_schermata();
             stampare_testo(FILE_SCHERMATA_LOCANDA);
+            posizionare_cursore_in_attesa(FILE_SCHERMATA_LOCANDA);
             system("pause");
             scrivere_autorizzazione(&giocatore_attuale, TURNI_ATTESA_LOCANDA);
             scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
         }
         else if (confrontare_stringhe(nome_casella, NOME_POZZO) == VERO )
         {
+            cancellare_schermata();
             stampare_testo(FILE_SCHERMATA_POZZO);
+            posizionare_cursore_in_attesa(FILE_SCHERMATA_POZZO);
             system("pause");
             impostare_autorizzazioni(partita_attuale, NOME_POZZO);
         }
         else if (confrontare_stringhe(nome_casella, NOME_PRIGIONE) == VERO )
         {
+            cancellare_schermata();
             stampare_testo(FILE_SCHERMATA_PRIGIONE);
+            posizionare_cursore_in_attesa(FILE_SCHERMATA_PRIGIONE);
             system("pause");
             impostare_autorizzazioni(partita_attuale, NOME_PRIGIONE);
         }
         else if (confrontare_stringhe(nome_casella, NOME_LABIRINTO) == VERO )
         {
+            cancellare_schermata();
             stampare_testo(FILE_SCHERMATA_LABIRINTO);
+            posizionare_cursore_in_attesa(FILE_SCHERMATA_LABIRINTO);
             system("pause");
             scrivere_posizione_giocatore(&giocatore_attuale, calcolare_proporzione(*partita_attuale, CASELLA_ARRIVO_LABIRINTO));
             leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
@@ -257,16 +269,21 @@ void verificare_casella (partita* partita_attuale) {
         }
         else if (confrontare_stringhe(nome_casella, NOME_SCHELETRO) == VERO )
         {
+            cancellare_schermata();
             stampare_testo(FILE_SCHERMATA_SCHELETRO);
+            posizionare_cursore_in_attesa(FILE_SCHERMATA_SCHELETRO);
             system("pause");
             scrivere_posizione_giocatore(&giocatore_attuale, CASELLA_ARRIVO_SCHELETRO);
             scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
         }
               //stampare percorso e aspettare input
         stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
+        posizionare_cursore_in_attesa(FILE_PERCORSO);
         system("pause");
-        leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
-    }while(confrontare_stringhe(nome_casella, STRINGA_VUOTA) == FALSO);
+        giocatore_attuale = leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale));
+        casella casella_attuale = leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale))) - 1);
+        leggere_nome_casella(casella_attuale, nome_casella);
+    }while(nome_casella[0] != FINE_STRINGA);
     return;
 }
 
@@ -281,7 +298,7 @@ void gestire_oca (partita* partita_attuale) {
         }
         char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
         leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);
-        while (confrontare_stringhe (nome_casella, STRINGA_VUOTA) == FALSO)
+        while (nome_casella[0] != FINE_STRINGA)
         {
         	leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
             scrivere_posizione_giocatore(&giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1);

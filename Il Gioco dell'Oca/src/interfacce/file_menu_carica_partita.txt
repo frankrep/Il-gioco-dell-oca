@@ -9,15 +9,15 @@
                                                       |____________________|   
 <SCEGLIERE LA PARTITA DA CARICARE>                    |___SSSS_____________|   
                                                       |__8.()..S___________|   
-1)             ;                                      |_88.....S___________|   
+1) Nome partita;                                      |_88.....S___________|   
                                                       |888....S_____$$$$s__|   
-2)             ;                                      |____S...S___80_)$$$_|   
+2) Nome partita;                                      |____S...S___80_)$$$_|   
                                                       |_____S..S__88$$$$$$_|   
-3)             ;                                      |_____S..S_8888$$$$$_|   
+3) Nome partita;                                      |_____S..S_8888$$$$$_|   
                                                       |_____S..S_____$$$$$s|   
-4)             ;                                      |_____S..S______$$$$$|   
+4) Nome partita;                                      |_____S..S______$$$$$|   
                                                       |_____S..S_______$$$$|   
-5)             ;                                      |_____S..S_______$$$$|   
+5) Nome partita;                                      |_____S..S_______$$$$|   
                                                       |_____S..S_______$$$$|   
 0) Tornare indietro;                                  |_____S..S_______$$$$|   
                                                       |____S...S_______$$$$|   
@@ -28,21 +28,6 @@
 25 //riga errore
 1 //colonna errore
 1 //codice messaggio 
-12 //riga partita 1
-4 // colonna partita 1
-3 //codice messaggio o nome partita
-14 //riga partita 2
-4 // colonna partita 2
-3 //codice messaggio o nome partita
-16 //riga partita 3
-4 // colonna partita 3
-3 //codice messaggio o nome partita
-18 //riga partita 4
-4 // colonna partita 4
-3 //codice messaggio o nome partita
-20 //riga partita 5
-4 // colonna partita 5
-3 //codice messaggio o nome partita
 
 
 

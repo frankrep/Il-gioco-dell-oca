@@ -6,12 +6,12 @@
 MAX 4) o 0 per tornare al menu principale; 2) i nomi dei giocatori (MAX 20     
 caratteri) o 0 per tornare al menu principale; 3) la lunghezza del percorso    
 desiderata (MIN 50 MAX 90) o 0 per tornare al menu principale.                 
-<COME SI GIOCA> Durante il proprio turno il giocatore potra'digitare: L) per   
+<COME SI GIOCA> Durante il proprio turno il giocatore potrà digitare: L) per   
 lanciare i dadi; A) per far avanzare la pedina nel percorso in base al lancio; 
-M) per abbandonare la partita e tornare al menu principale (SENZA SALVARE);    
+M) per abbandonare la partita e tornare al menù principale (SENZA SALVARE);    
 S) per salvare la partita e tornare al menu.                                   
-<SALVATAGGIO> Digitato il tasto "S" l'utente potra'decidere se: 1)sovrascrivere
-una partita gia'salvata; 2) selezionare uno slot vuoto, per poi scegliere il   
+<SALVATAGGIO> Digitato il tasto "S" l'utente potrà decidere se: 1)sovrascrivere
+una partita già salvata; 2) selezionare uno slot vuoto, per poi scegliere il   
 nome della partita (MAX 20 CARATTERI); 0) per tornare indietro.                
 <CARICA PARTITA>, permette all'utente di caricare una partita salvata per      
 continuare a giocarla, digitando: 1) un numero da 1 a 5 per caricare una       

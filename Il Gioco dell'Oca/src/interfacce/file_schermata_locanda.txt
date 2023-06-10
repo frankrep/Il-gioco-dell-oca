@@ -3,7 +3,7 @@
 |   (`  ).   (__)    //       \\ .-(`  ) `._ |                                 
 |  (     )._.|=^|   //    _    \\       ))  `|Siete capitati sulla casella     
 | _(       __|= |__//    (+)    \\    )  ))  |speciale locanda, questa locanda 
-|`(       /LLLLLLL//      ~      \\ __.:'    |di nome Boar Hat e'gestita da un 
+|`(       /LLLLLLL//      ~      \\ __.:'    |di nome Boar Hat è gestita da un 
 |  (..__./LLLLLLL//               \\         |simpatico ed ospitale ragazzino  
 |`.     /LLLLLLL//                 \\        |biondino, che con il suo maialino
 |  )   /LLLLLLL//  |~[|]~| |~[|]~|  \\.--    |domestico prepara delle birre    
@@ -11,10 +11,10 @@
 |.-'    | [|] ^|   |_[|]_| |_[|]_|   |^   )  |tutta la regione di Uniba. Decidi
 |    ___|______|                     |    )) |di entrate nella locanda per     
 |   /LLLLLLLLLL|_____________________|- _.'  |provare una di queste famosissime
-|  /LLLLLLLLLLL/LLLLLLLLLLLLLLLLLLLLLL\      |birre, cosi'il giovane Meliodas e
+|  /LLLLLLLLLLL/LLLLLLLLLLLLLLLLLLLLLL\      |birre, così il giovane Meliodas e
 | /LLLLLLLLLLL/L_|Boar Hat|_LLLLLLLLLLL\     |il suo maialino Hawk ti preparano
-| ^||^^^^^^^^/L|McLaren'sPUB|LLLLLLLLLLL\    |una delle loro specialita';       
-|  || |~[|]~|^^||^^^^^^^^^^||^|~[|]~|^||^^   |resti cosi colpito dalla bonta'di
+| ^||^^^^^^^^/L|McLaren'sPUB|LLLLLLLLLLL\    |una delle loro specialità;       
+|  || |~[|]~|^^||^^^^^^^^^^||^|~[|]~|^||^^   |resti cosi colpito dalla bontà di
 |  || | [|] |  ||  |~~~~|  || | [|] | ||     |quest'ultima, che decidi di      
 |  || |_[|]_|  ||  | [] |  || |_[|]_| || (w) |prenderne ancora, ancora, ancora.
 |  ||__________||  |   o|  ||_________|| `|' |Forse hai bevuto un po troppo!   
