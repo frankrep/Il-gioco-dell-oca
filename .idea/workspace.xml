@@ -20,15 +20,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab046243-0dc6-4e0d-b4b1-bf3f8e57d275" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/filebin/seme.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/filebin/seme.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_partita.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_partita.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/giocatore.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/giocatore.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/inizializzare_partita.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/inizializzare_partita.c" afterDir="false" />
-    </list>
+    <list default="true" id="ab046243-0dc6-4e0d-b4b1-bf3f8e57d275" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,11 +65,6 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Il_Gioco_dell_Oca" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Il_Gioco_dell_Oca" TARGET_NAME="Il_Gioco_dell_Oca" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Il_Gioco_dell_Oca" RUN_TARGET_NAME="Il_Gioco_dell_Oca">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
