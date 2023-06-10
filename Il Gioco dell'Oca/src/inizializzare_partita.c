@@ -97,6 +97,7 @@ void inizializzare_nomi_giocatori (partita *partita_attuale) {
     char nome_da_inserire[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
         stampare_testo (FILE_SCELTA_NOMI_GIOCATORI);
+        stampare_valore_intero(FILE_SCELTA_NOMI_GIOCATORI, indice_giocatori+1);
         posizionare_cursore_in_attesa (FILE_SCELTA_NOMI_GIOCATORI);
         richiedere_stringa (FILE_SCELTA_NOMI_GIOCATORI,DIMENSIONE_MINIMA_NOME_GIOCATORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE, nome_da_inserire);
         giocatore giocatore_attuale = leggere_giocatore (*partita_attuale, indice_giocatori);

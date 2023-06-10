@@ -32,10 +32,9 @@
 4 // colonna 1^
 11 // riga NL/LP 1^
 20 // colonna nl/lp 1^
-
-
-
-
+11 // linea primo giocatore
+4 // linea primo giocatore
+3 // codice messaggio o nome giocatore
 
 
 

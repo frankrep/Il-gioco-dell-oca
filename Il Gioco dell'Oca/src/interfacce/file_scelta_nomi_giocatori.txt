@@ -11,7 +11,7 @@
 0)Tornare indietro                                    |__8.()..S___________|   
                                                       |_88.....S___________|   
                                                       |888....S_____$$$$s__|   
-giocatore   inserisci il tuo nome:                    |____S...S___80_)$$$_|   
+giocatore    inserisci il tuo nome:                   |____S...S___80_)$$$_|
                                                       |_____S..S__88$$$$$$_|   
                                                       |_____S..S_8888$$$$$_|   
                                                       |_____S..S_____$$$$$s|   

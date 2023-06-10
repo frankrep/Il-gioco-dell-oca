@@ -26,9 +26,6 @@ void chiedere_aiuto (int opzione_scelta) {
                 }
                 system("cls");
             }
-            else if((opzione_scelta != 1) || (opzione_scelta != 2)) {
-            stampare_messaggio_errore(FILE_MENU_AIUTO);
-        }
 
     } while(opzione_scelta != 0);
     return ;
