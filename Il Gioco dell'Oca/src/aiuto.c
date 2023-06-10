@@ -3,33 +3,36 @@
 #include "aiuto.h"
 #include "costanti.h"
 #include "gestire_stampa.h"
-//prova commit da cclone
 void chiedere_aiuto (int opzione_scelta) {
-    opzione_scelta = scegliere_aiuto ();
-    int torna_indietro;
     do {
-            if (opzione_scelta == 1) {
-                stampare_testo(FILE_REGOLE);
+        opzione_scelta = scegliere_aiuto();
+        int torna_indietro = 1;
+        if (opzione_scelta == 1) {
+            stampare_testo(FILE_REGOLE);
+            do {
                 posizionare_cursore_in_attesa(FILE_REGOLE);
                 scanf("%d", &torna_indietro);
                 fflush(stdin);
                 if (torna_indietro != 0) {
-                        stampare_messaggio_errore(FILE_REGOLE);
-                    }
-            } else if (opzione_scelta == 2) {
-                stampare_testo(FILE_MANUALE);
+                    stampare_messaggio_errore(FILE_REGOLE);
+                }
+            } while (torna_indietro != 0);
+            system("cls");
+        } else if (opzione_scelta == 2) {
+            stampare_testo(FILE_MANUALE);
+            do {
                 posizionare_cursore_in_attesa(FILE_MANUALE);
                 scanf("%d", &torna_indietro);
                 fflush(stdin);
                 if (torna_indietro != 0) {
                     stampare_messaggio_errore(FILE_MANUALE);
                 }
-                system("cls");
-            }
+            }while (torna_indietro != 0);
+        system("cls");
+    }
             else if((opzione_scelta != 1) || (opzione_scelta != 2)) {
             stampare_messaggio_errore(FILE_MENU_AIUTO);
         }
-
     } while(opzione_scelta != 0);
     return ;
 }

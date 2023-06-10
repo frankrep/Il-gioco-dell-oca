@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/Francesco/Desktop/Il-gioco-dell-oca/Il Gioco dell'Oca/cmake-build-debug"
+			"value" : "c:/Users/appic/eclipse-workspace/Il-gioco-dell-oca/Il Gioco dell'Oca/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -431,7 +431,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Francesco/Desktop/Il-gioco-dell-oca/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/appic/eclipse-workspace/Il-gioco-dell-oca/Il Gioco dell'Oca/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -503,7 +503,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/Francesco/Desktop/Il-gioco-dell-oca/Il Gioco dell'Oca"
+			"value" : "C:/Users/appic/eclipse-workspace/Il-gioco-dell-oca/Il Gioco dell'Oca"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1119,7 +1119,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Francesco/Desktop/Il-gioco-dell-oca/Il Gioco dell'Oca/cmake-build-debug"
+			"value" : "C:/Users/appic/eclipse-workspace/Il-gioco-dell-oca/Il Gioco dell'Oca/cmake-build-debug"
 		},
 		{
 			"name" : "Il_Gioco_dell_Oca_IS_TOP_LEVEL",
@@ -1143,7 +1143,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Francesco/Desktop/Il-gioco-dell-oca/Il Gioco dell'Oca"
+			"value" : "C:/Users/appic/eclipse-workspace/Il-gioco-dell-oca/Il Gioco dell'Oca"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
