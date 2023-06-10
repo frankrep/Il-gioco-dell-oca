@@ -24,16 +24,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/aiuto.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/aiuto.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/costanti.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/costanti.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/generare_numero_casuale.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/generare_numero_casuale.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/filebin/seme.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/filebin/seme.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_partita.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_partita.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.h" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/gestire_stampa.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/giocatore.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/giocatore.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/inizializzare_partita.c" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/inizializzare_partita.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/interfacce/file_percorso.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/interfacce/file_percorso.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/interfacce/file_scelta_g_iniziale.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/interfacce/file_scelta_g_iniziale.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Il Gioco dell'Oca/src/interfacce/file_scelta_nomi_giocatori.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Il Gioco dell'Oca/src/interfacce/file_scelta_nomi_giocatori.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +98,7 @@
       <workItem from="1686329810020" duration="27871000" />
       <workItem from="1686403846636" duration="6683000" />
       <workItem from="1686413217033" duration="85000" />
-      <workItem from="1686413318150" duration="4365000" />
+      <workItem from="1686413318150" duration="5713000" />
     </task>
     <servers />
   </component>

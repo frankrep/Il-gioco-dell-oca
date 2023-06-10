@@ -99,7 +99,7 @@ void inizializzare_nomi_giocatori (partita *partita_attuale) {
         stampare_testo (FILE_SCELTA_NOMI_GIOCATORI);
         stampare_valore_intero(FILE_SCELTA_NOMI_GIOCATORI, indice_giocatori+1);
         posizionare_cursore_in_attesa (FILE_SCELTA_NOMI_GIOCATORI);
-        richiedere_stringa (FILE_SCELTA_NOMI_GIOCATORI,DIMENSIONE_MINIMA_NOME_GIOCATORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE, nome_da_inserire);
+        richiedere_stringa (FILE_SCELTA_NOMI_GIOCATORI, DIMENSIONE_MINIMA_NOME_GIOCATORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE, nome_da_inserire);
         giocatore giocatore_attuale = leggere_giocatore (*partita_attuale, indice_giocatori);
         scrivere_nome_giocatore (&giocatore_attuale, nome_da_inserire);
         scrivere_giocatore (partita_attuale, giocatore_attuale, indice_giocatori);
@@ -122,8 +122,8 @@ void richiedere_stringa (const char file_interfaccia[], int dimensione_minima_st
 
 
 void inserire_stringa (int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]) {
-    fflush(stdin);
     fgets (nome_da_inserire, dimensione_massima_stringa + 1, stdin);
+    fflush(stdin);
     rimuovere_carattere_nuova_riga (nome_da_inserire);
     if (calcolare_lunghezza_stringa (nome_da_inserire) < dimensione_minima_stringa) {
         nome_da_inserire[0] = FINE_STRINGA;

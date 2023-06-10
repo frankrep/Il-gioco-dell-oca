@@ -62,6 +62,7 @@ void scrivere_nome_giocatore (giocatore* giocatore_attuale, char nome_da_inserir
         scrivere_carattere_nome_giocatore(giocatore_attuale, indice_nome, nome_da_inserire[indice_nome]);
         indice_nome = indice_nome + 1;
     }
+    scrivere_carattere_nome_giocatore(giocatore_attuale, indice_nome, nome_da_inserire[indice_nome]);
     return;
 }
 
