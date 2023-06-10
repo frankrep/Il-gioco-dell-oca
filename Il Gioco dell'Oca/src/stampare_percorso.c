@@ -5,9 +5,10 @@
 #include "gestire_partita.h"
 #include "stampare_percorso.h"
 #include "generare_percorso.h"
-
+#include "gestire_stampa.h"
 
 void stampare_interfaccia_percorso(partita* partita_attuale, const char file_interfaccia[]){
+    cancellare_schermata();
     stampare_percorso(partita_attuale);
     FILE *f_interfaccia = NULL;
     if ((f_interfaccia = fopen(file_interfaccia, "r")) != NULL) {
@@ -34,6 +35,7 @@ void stampare_interfaccia_percorso(partita* partita_attuale, const char file_int
         printf("%s", file_interfaccia);
         fflush(stdout);
     }
+    stampare_dadi_partita(file_interfaccia, partita_attuale);
 }
 
 void stampare_percorso(partita* partita_attuale) {
