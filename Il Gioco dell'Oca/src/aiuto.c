@@ -9,24 +9,30 @@ void chiedere_aiuto (int opzione_scelta) {
     int torna_indietro;
     do {
             if (opzione_scelta == 1) {
+                torna_indietro = 1;
+                do {
                 stampare_testo(FILE_REGOLE);
-                posizionare_cursore_in_attesa(FILE_REGOLE);
-                scanf("%d", &torna_indietro);
-                fflush(stdin);
-                if (torna_indietro != 0) {
+                    posizionare_cursore_in_attesa(FILE_REGOLE);
+                    scanf("%d", &torna_indietro);
+                    fflush(stdin);
+                    if (torna_indietro != 0) {
                         stampare_messaggio_errore(FILE_REGOLE);
                     }
+                }while(torna_indietro != 0);
+                system("cls");
             } else if (opzione_scelta == 2) {
+                torna_indietro = 1;
+                do {
                 stampare_testo(FILE_MANUALE);
-                posizionare_cursore_in_attesa(FILE_MANUALE);
-                scanf("%d", &torna_indietro);
-                fflush(stdin);
-                if (torna_indietro != 0) {
-                    stampare_messaggio_errore(FILE_MANUALE);
-                }
+                    posizionare_cursore_in_attesa(FILE_MANUALE);
+                    scanf("%d", &torna_indietro);
+                    fflush(stdin);
+                    if (torna_indietro != 0) {
+                        stampare_messaggio_errore(FILE_REGOLE);
+                    }
+                }while(torna_indietro != 0);
                 system("cls");
             }
-
     } while(opzione_scelta != 0);
     return ;
 }

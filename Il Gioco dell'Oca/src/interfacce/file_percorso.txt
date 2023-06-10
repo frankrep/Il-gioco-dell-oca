@@ -1,5 +1,5 @@
  ___________________________<IL GIOCO DELL'OCA>____________________________    
-|*  &|    |    |    |    |    |    |    |    |    |    |    |    |    |    |   
+|#  &|    |    |    |    |    |    |    |    |    |    |    |    |    |    |   
 | 1  | 2  | 3  | 4  | 5  | == | 7  | 8  | O  | 10 | 11 | 12 | 13 | 14 | 15 |   
 |$__%|____|____|____|____|____|____|____|____|____|____|____|____|____|____|   
 |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |   
@@ -21,13 +21,27 @@
 -L  lancia i dadi;            |     | |     |      -A  avanza;                 
 -M  menu;                     |  ?  | |  ?  |      -S  salva partita;          
                               |_____| |_____|                                  
- inserisci cosa vuoi fare nel turno numero  :                                  
+                    inserisci cosa vuoi fare nel turno numero  :                                  
                                                                                
 24 //riga input
 46 //colonna input
 25 //riga errore
 1 //colonna errore
 1 //codice messaggio
+24 // riga inserimento nome giocatore
+1 // colonna inserimento nome giocatore
+24 // riga inserimento n turno
+44 // colonna inserimento n turno
+
+
+
+
+
+
+
+
+
+
 21 //RIGA ALTO SINISTRA DADO1
 32 //COLONNA ALTO A SINISTRA DADO1
 22 //RIGA CENTRO SINISTRA DADO1
@@ -56,13 +70,6 @@
 44 //COLONNA CENTRO DESTRA DADO2
 23 //RIGA BASSO DESTRA DADO2
 44 //COLONNA BASSO DESTRA DADO2
-
-
-
-24 // riga inserimento nome giocatore
-1 //colonna inserimento nome giocatore
-24 //riga inserimento n turno
-44 // colonna inserimento n turno
 
 
 
