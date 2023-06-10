@@ -40,8 +40,8 @@
 #define NUMERO_MASSIMO_PARTITE 5
 #define NUMERO_MASSIMO_CLASSIFICATI 10
 static const long long SEME_INIZIALE = 123456789;
-static const long int MOLTIPLICATORE = 1664525;
-static const long int INCREMENTO = 1013904223;
+static const long long MOLTIPLICATORE = 1664525;
+static const long long INCREMENTO = 1013904223;
 static const long long DIVISORE = 4294367296;
 #define BASE 10
 #define UNITA 1

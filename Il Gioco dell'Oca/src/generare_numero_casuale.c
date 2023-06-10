@@ -12,7 +12,7 @@
 void caricare_seme (long long * seme);
 long long generare_seme (long long seme);
 void scrivere_seme (long long * seme);
-long int generare_casuale (long int seme, int numero_massimo, int numero_minimo);
+long int generare_casuale (long long seme, int numero_massimo, int numero_minimo);
 void creare_file_seme ();
 
 
@@ -59,7 +59,7 @@ void scrivere_seme (long long * seme) {
 
 
 
-long int generare_casuale (long int seme, int numero_massimo, int numero_minimo) {
+long int generare_casuale (long long seme, int numero_massimo, int numero_minimo) {
     long int numero_casuale = (seme % numero_massimo) + numero_minimo;
     return numero_casuale;
 }
