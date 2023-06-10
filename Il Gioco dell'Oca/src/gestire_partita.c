@@ -83,7 +83,7 @@ void scegliere_giocatore (partita* partita_attuale) {
     int indice_giocatori = 0;
     char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
-        system("cls");
+        cancellare_schermata();
         stampare_testo (FILE_SCELTA_G_INIZIALE);
         leggere_nome_giocatore(leggere_giocatore(*partita_attuale,indice_giocatori),nome_giocatore);
         stampare_valore_testuale(FILE_SCELTA_G_INIZIALE, nome_giocatore);
