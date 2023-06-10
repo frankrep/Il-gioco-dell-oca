@@ -212,7 +212,7 @@ int sommare_dadi (partita partita_attuale) {
 }
 
 void verificare_casella (partita* partita_attuale) {
-    giocatore giocatore_attuale;
+    giocatore giocatore_attuale; 
     char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
     do{
         giocatore_attuale = leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale) );
