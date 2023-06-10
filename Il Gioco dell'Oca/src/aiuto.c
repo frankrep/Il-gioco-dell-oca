@@ -3,7 +3,7 @@
 #include "aiuto.h"
 #include "costanti.h"
 #include "gestire_stampa.h"
-
+//prova commit da cclone
 void chiedere_aiuto (int opzione_scelta) {
     opzione_scelta = scegliere_aiuto ();
     int torna_indietro;
