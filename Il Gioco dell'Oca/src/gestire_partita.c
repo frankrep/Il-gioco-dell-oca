@@ -58,7 +58,7 @@ vincitore gestire_partita (partita* partita_attuale) {
                 }
             } while ((scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) && (scelta != TASTO_SALVATAGGIO_MAIUSCOLO) && (scelta != TASTO_SALVATAGGIO_MINUSCOLO));
 
-            if((scelta == TASTO_LANCIO_DADI_MAIUSCOLO) || (scelta == TASTO_LANCIO_DADI_MAIUSCOLO)){
+            if((scelta == TASTO_LANCIO_DADI_MAIUSCOLO) || (scelta == TASTO_LANCIO_DADI_MINUSCOLO)){
                 lanciare_dadi (partita_attuale);
                 incrementare_lanci_effettuati(partita_attuale);
                 stampare_dadi_partita(FILE_PERCORSO, partita_attuale);
@@ -154,7 +154,7 @@ void lanciare_dadi (partita* partita_attuale) {
     int lancio;
     while (indice_dado < NUMERO_DADI) {
         lancio = 6;//generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
-        scrivere_dadi (partita_attuale, indice_dado, lancio);
+        scrivere_dadi (partita_attuale, lancio, indice_dado);
         indice_dado = indice_dado + 1;
     }
     return;
