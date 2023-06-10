@@ -22,7 +22,6 @@ Giocatore 4: &
                                                                                
 Inserire 0 per tornare indietro:                                               
                                                                                
-                                                                               
 
 23 //riga input
 33 //colonna input

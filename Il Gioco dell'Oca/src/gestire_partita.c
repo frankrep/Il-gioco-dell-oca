@@ -24,7 +24,6 @@ int trovare_posizione_massimo(const int valori[], int dimensione_valori);
 void cambiare_turno(partita* partita_attuale);
 void lanciare_dadi(partita* partita_attuale);
 void incrementare_lanci_effettuati(partita* partita_attuale);
-void incrementare_turno(partita* partita_attuale);
 void spostare_giocatore(partita* partita_attuale);
 void sommare_lancio_posizione(partita* partita_attuale);
 void calcolare_caselle_eccesso(partita* partita_attuale);
@@ -64,7 +63,6 @@ vincitore gestire_partita (partita* partita_attuale) {
                 stampare_dadi_partita(FILE_PERCORSO, partita_attuale);
                 posizionare_cursore_in_attesa(FILE_PERCORSO);
             }
-            system("pause");
             spostare_giocatore (partita_attuale);
             //stampare percorso con input utente per proseguire con l'effetto
             system("pause");
@@ -153,7 +151,8 @@ void lanciare_dadi (partita* partita_attuale) {
     int indice_dado = 0;
     int lancio;
     while (indice_dado < NUMERO_DADI) {
-        lancio = 6;//generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
+        scanf("%d", &lancio);
+        //lancio = generare_numero(FACCIA_MINIMA_DADO, FACCIA_MASSIMA_DADO);
         scrivere_dadi (partita_attuale, lancio, indice_dado);
         indice_dado = indice_dado + 1;
     }
@@ -192,8 +191,9 @@ void sommare_lancio_posizione (partita* partita_attuale) {
 
 void calcolare_caselle_eccesso(partita* partita_attuale){
     giocatore giocatore_attuale;
-    int eccesso = leggere_posizione_giocatore (leggere_giocatore ( *partita_attuale, leggere_turno (*partita_attuale) ) ) - leggere_lunghezza_percorso (*partita_attuale);
     giocatore_attuale = leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) );
+    int eccesso = leggere_posizione_giocatore (giocatore_attuale ) - leggere_lunghezza_percorso (*partita_attuale);
+
     scrivere_posizione_giocatore (&giocatore_attuale, leggere_posizione_giocatore (giocatore_attuale) - eccesso);
     scrivere_giocatore (partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
     return;
@@ -214,7 +214,7 @@ void verificare_casella (partita* partita_attuale) {
     char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
     do{
         giocatore_attuale = leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale) );
-        leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) ), nome_casella );
+        leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella );
         if ( confrontare_stringhe (nome_casella, NOME_OCA) == VERO ) {
             stampare_testo(FILE_SCHERMATA_OCA);
             system("pause");
@@ -248,9 +248,9 @@ void verificare_casella (partita* partita_attuale) {
             stampare_testo(FILE_SCHERMATA_LABIRINTO);
             system("pause");
             scrivere_posizione_giocatore(&giocatore_attuale, calcolare_proporzione(*partita_attuale, CASELLA_ARRIVO_LABIRINTO));
-            leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
+            leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
             while (confrontare_stringhe(nome_casella, STRINGA_VUOTA) == FALSO ){
-            	leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
+            	leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
             	scrivere_posizione_giocatore(&giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1);
             }
             scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
@@ -265,7 +265,7 @@ void verificare_casella (partita* partita_attuale) {
               //stampare percorso e aspettare input
         stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
         system("pause");
-        leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
+        leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
     }while(confrontare_stringhe(nome_casella, STRINGA_VUOTA) == FALSO);
     return;
 }
@@ -280,10 +280,10 @@ void gestire_oca (partita* partita_attuale) {
             scrivere_posizione_giocatore (&giocatore_attuale, calcolare_proporzione (*partita_attuale, PRIMO_LANCIO_4_5) );
         }
         char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
-        leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) ), nome_casella);
+        leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);
         while (confrontare_stringhe (nome_casella, STRINGA_VUOTA) == FALSO)
         {
-        	leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
+        	leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
             scrivere_posizione_giocatore(&giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1);
         }
         scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
@@ -299,7 +299,7 @@ void impostare_autorizzazioni(partita* partita_attuale, const char nome_casella_
     while (indice_giocatore <= leggere_numero_giocatori(*partita_attuale)){
         giocatore_attuale = leggere_giocatore(*partita_attuale, indice_giocatore);
         char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
-        leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale)), nome_casella);
+        leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
         if (confrontare_stringhe (nome_casella, nome_casella_attuale) == VERO){
             //stampare schermata_liberato e attendere input
             scrivere_autorizzazione(&giocatore_attuale, 0);
@@ -316,7 +316,7 @@ void impostare_autorizzazioni(partita* partita_attuale, const char nome_casella_
 void gestire_autorizzazione (partita* partita_attuale) {
     giocatore giocatore_attuale = leggere_giocatore ( *partita_attuale, leggere_turno (*partita_attuale) );
     char nome_casella [DIMENSIONE_MASSIMA_NOME_CASELLA];
-    leggere_nome_casella (leggere_casella_percorso ( *partita_attuale, leggere_posizione_giocatore (giocatore_attuale) ), nome_casella);
+    leggere_nome_casella (leggere_casella_percorso ( *partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);
 
     //se il giocatore si trova sulla casella locanda, vengono diminuiti i turni di attesa di 1
     if ( confrontare_stringhe (nome_casella, NOME_LOCANDA) == VERO ) {
