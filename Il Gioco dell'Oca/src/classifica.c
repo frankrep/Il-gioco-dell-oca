@@ -57,6 +57,7 @@ void stampare_classifica() {
     stampare_testo(FILE_CLASSIFICA);
     char nome_vincitore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     int indice_vincitori = 0;
+    int correttezza_inserimento;
     while (indice_vincitori < NUMERO_MASSIMO_CLASSIFICATI) {
         leggere_nome_vincitore(vincitori[indice_vincitori], nome_vincitore);
         if (confrontare_stringhe(nome_vincitore, STRINGA_VUOTA)) {
@@ -67,6 +68,14 @@ void stampare_classifica() {
         }
         indice_vincitori = indice_vincitori + 1;
     }
+    do {
+        posizionare_cursore_in_attesa(FILE_CLASSIFICA);
+        scanf("%d", &correttezza_inserimento);
+        fflush(stdin);
+        if (correttezza_inserimento != 0) {
+        stampare_messaggio_errore(FILE_CLASSIFICA);
+        }
+    } while (correttezza_inserimento != 0);
 }
 
 void scrivere_classifica(vincitore elenco_vincitori[]) {

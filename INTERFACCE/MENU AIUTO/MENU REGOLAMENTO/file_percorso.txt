@@ -32,6 +32,16 @@
 1 //colonna inserimento nome giocatore
 24 //riga inserimento n turno
 44 // colonna inserimento n turno
+
+
+
+
+
+
+
+
+
+
 21 //RIGA ALTO SINISTRA DADO1
 32 //COLONNA ALTO A SINISTRA DADO1
 22 //RIGA CENTRO SINISTRA DADO1
