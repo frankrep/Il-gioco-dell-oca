@@ -16,7 +16,5 @@ void posizionare_cursore_in_attesa(const char file_interfaccia[]);
 void scorrere_righe_file(FILE* file_testo, int numero_righe);
 void stampare_dadi_partita(const char file_interfaccia[], partita* partita_attuale);
 void stampare_dado(const char file_interfaccia[], int valore_faccia_dado);
-void cancellare_schermata();
-void stampare_valore_intero(const char file_interfaccia[], int valore);
 
 #endif /* GESTIRE_STAMPA_H_ */
