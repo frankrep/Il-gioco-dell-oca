@@ -53,6 +53,7 @@ void leggere_nome_casella (casella casella_attuale, char nome_letto[]) {
         nome_letto[indice_nome] = leggere_carattere_casella(casella_attuale, indice_nome);
         indice_nome = indice_nome + 1;
     }
+    nome_letto[indice_nome] = FINE_STRINGA;
     return;
 }
 
@@ -73,6 +74,7 @@ void leggere_simbolo (casella casella_attuale, char simbolo_letto[]) {
     	simbolo_letto[indice_simbolo] = leggere_carattere_simbolo(casella_attuale, indice_simbolo);
     	indice_simbolo = indice_simbolo + 1;
     }
+    simbolo_letto[indice_simbolo] = FINE_STRINGA;
     return;
 }
 

@@ -46,12 +46,12 @@ vincitore gestire_partita (partita* partita_attuale) {
             gestire_autorizzazione(partita_attuale);
         }
         if ( leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) == 0 ) {
-            system("cls");
+            cancellare_schermata();
             stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
             do{
                 posizionare_cursore_in_attesa (FILE_PERCORSO);
-                scelta = fgetc(stdin);
                 fflush(stdin);
+                scelta = fgetc(stdin);
                 if((scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) && (scelta != TASTO_SALVATAGGIO_MAIUSCOLO) && (scelta != TASTO_SALVATAGGIO_MINUSCOLO) ){
                     stampare_messaggio_errore(FILE_PERCORSO);
                 }
