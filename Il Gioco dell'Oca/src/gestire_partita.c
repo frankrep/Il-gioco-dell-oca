@@ -253,8 +253,8 @@ void lanciare_dadi (partita* partita_attuale) {
     int indice_dado = 0;
     int lancio;
     while (indice_dado < NUMERO_DADI) {
-        scanf("%d", &lancio);
-        //lancio = generare_numero(FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO);
+        //scanf("%d", &lancio);
+        lancio = generare_numero(FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO);
         scrivere_dadi (partita_attuale, lancio, indice_dado);
         indice_dado = indice_dado + 1;
     }
@@ -371,7 +371,7 @@ void verificare_casella (partita* partita_attuale) {
             fgetc(stdin);
             scrivere_posizione_giocatore(&giocatore_attuale, calcolare_proporzione(*partita_attuale, CASELLA_ARRIVO_LABIRINTO));
             leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
-            while (confrontare_stringhe(nome_casella, STRINGA_VUOTA) == FALSO ){
+            while (nome_casella[0] != FINE_STRINGA){
             	leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
             	scrivere_posizione_giocatore(&giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1);
             }

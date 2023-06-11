@@ -152,7 +152,7 @@ void scegliere_partita_da_caricare (partita* partita_attuale) {
 void gestire_vincitore (vincitore vincitore_partita) {
     char nome_vincitore_partita [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     leggere_nome_vincitore (vincitore_partita, nome_vincitore_partita);
-    if (confrontare_stringhe (nome_vincitore_partita, STRINGA_VUOTA) == FALSO) {
+    if (nome_vincitore_partita[0] != FINE_STRINGA) {
         aggiornare_classifica_top_10 (vincitore_partita);
     }
     return;
