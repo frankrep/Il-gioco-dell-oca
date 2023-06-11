@@ -15,10 +15,10 @@
 |.'.'.'.'.|===:'    /%%%%%\    ':===|.'.'.'.'.|fuggire indietreggiando,        
 |.'.'.'.'.|%%%%%%%%%%%%%%%%%%%%%%%%%|.'.'.'.'.|perdendo terreno sui            
 |.'.'.'.','       /%%%%%%%%%\       ','.'.'.'.|tuoi avversari.                 
-|.'.'.','        /%%%%%%%%%%%\        ','.'.'.|                                
-|.'.','         /%%%%%%%%%%%%%\         ','.'.|<CHE FIFONE! :(                 
+|.'.'.','        /%%%%%%%%%%%\        ','.'.'.|Tornerai indietro alla          
+|.'.','         /%%%%%%%%%%%%%\         ','.'.|casella numero  .               
 |.','          /%%%%%%%%%%%%%%%\          ','.|                                
-|;            /%%%%%%%%%%%%%%%%%\            ;|                                
+|;            /%%%%%%%%%%%%%%%%%\            ;|<CHE FIFONE! :(                 
 |_____________________________________________|                                
                                                                                
 <Premere 0 per proseguire:                                                     
@@ -28,3 +28,5 @@
 25 // RIGA ERRORE
 1 // COLONNA ERRORE
 2 // CM
+19 // RIGA NUMERO CASELLA
+63 // COLONNA NUMERO CASELLA

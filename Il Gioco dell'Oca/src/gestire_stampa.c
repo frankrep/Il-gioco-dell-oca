@@ -178,23 +178,23 @@ void stampare_messaggio_errore (const char file_interfaccia[]) {
             fgets(messaggio_errore, (LUNGHEZZA_SCHERMATA + 1),f_messaggi_errore);
 			fclose(f_messaggi_errore);
 			printf("%s", messaggio_errore);
-			fflush(stdout);
+			fflush(stdin);
 		} else {
 			printf("%s", ERRORE_FILE_NON_TROVATO);
-			fflush(stdout);
+			fflush(stdin);
 			printf("%c", CARATTERE_SPAZIO);
-			fflush(stdout);
+			fflush(stdin);
 			printf("%s", FILE_MESSAGGI_ERRORE);
-			fflush(stdout);
+			fflush(stdin);
 		}
 
 	} else {
 		printf("%s", ERRORE_FILE_NON_TROVATO);
-		fflush(stdout);
+		fflush(stdin);
 		printf("%c", CARATTERE_SPAZIO);
-		fflush(stdout);
+		fflush(stdin);
 		printf("%s", file_interfaccia);
-		fflush(stdout);
+		fflush(stdin);
 	}
 }
 
