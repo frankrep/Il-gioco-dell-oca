@@ -53,3 +53,4 @@ dkms.conf
 
 #Folder
 *cmake-build-debug/
+*seme.bin
