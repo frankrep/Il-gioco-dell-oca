@@ -50,46 +50,60 @@ vincitore gestire_partita (partita* partita_attuale) {
         if ( leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) == 0 ) {
             cancellare_schermata();
             stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
-            do{
-                posizionare_cursore_in_attesa (FILE_PERCORSO);
-                fflush(stdin);
-                scelta = fgetc(stdin);
-                if ( (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) ) {
-                    stampare_messaggio_errore(FILE_PERCORSO);
-                }
-            } while ( (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) );
 
-            if ( (scelta == TASTO_LANCIO_DADI_MAIUSCOLO) || (scelta == TASTO_LANCIO_DADI_MINUSCOLO) ) {
-                lanciare_dadi (partita_attuale);
-                incrementare_lanci_effettuati(partita_attuale);
-                stampare_dadi_partita(FILE_PERCORSO, partita_attuale);
-
-                //inserire scritta per l'inserimento di A per avanzare
+            do {
                 do {
                     posizionare_cursore_in_attesa(FILE_PERCORSO);
-                    scanf("%c", &scelta);
                     fflush(stdin);
-                    if ( (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) ) {
-                        stampare_messaggio_errore (FILE_PERCORSO);
+                    scelta = fgetc(stdin);
+                    if ((scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO)) {
+                        stampare_messaggio_errore(FILE_PERCORSO);
                     }
-                } while ( (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) );
-                spostare_giocatore(partita_attuale);
-                //stampare percorso con input utente per proseguire con l'effetto
-                fgetc(stdin);
-                fflush(stdin);
-                verificare_casella (partita_attuale);
+                } while ((scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO));
+
+                if ((scelta == TASTO_LANCIO_DADI_MAIUSCOLO) || (scelta == TASTO_LANCIO_DADI_MINUSCOLO)) {
+                    lanciare_dadi(partita_attuale);
+                    incrementare_lanci_effettuati(partita_attuale);
+                    stampare_dadi_partita(FILE_PERCORSO, partita_attuale);
+
+                    do {
+                        //inserire scritta per l'inserimento di A per avanzare
+                        do {
+                            posizionare_cursore_in_attesa(FILE_PERCORSO);
+                            scanf("%c", &scelta);
+                            fflush(stdin);
+                            if ((scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO)) {
+                                stampare_messaggio_errore(FILE_PERCORSO);
+                            }
+                        } while ((scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO));
+
+                        if ((scelta == TASTO_AVANZAMENTO_MAIUSCOLO) || (scelta == TASTO_AVANZAMENTO_MINUSCOLO)) {
+                            spostare_giocatore(partita_attuale);
+                            //stampare percorso con input utente per proseguire con l'effetto
+                            cancellare_schermata();
+                            stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
+                            posizionare_cursore_in_attesa(FILE_PERCORSO);
+                            fgetc(stdin);
+                            fflush(stdin);
+                            verificare_casella(partita_attuale);
 
 
-                stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
-                posizionare_cursore_in_attesa(FILE_PERCORSO);
-                //inserire il messaggio per dire di premere un tasto per concludere il turno
-            }
-            else {
-                scelta = gestire_menu_di_pausa(partita_attuale);
-
-
-                //stampare menu
-            }
+                            stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
+                            posizionare_cursore_in_attesa(FILE_PERCORSO);
+                            //inserire il messaggio per dire di premere un tasto per concludere il turno
+                        }
+                        else {
+                            scelta = gestire_menu_di_pausa(partita_attuale);
+                            stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
+                        }
+                    } while (scelta == 1);
+                }
+                else {
+                    scelta = gestire_menu_di_pausa(partita_attuale);
+                    stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
+                    //stampare menu
+                }
+            } while (scelta == 1);
 
         }
         } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale)  && (scelta != 0));
@@ -107,10 +121,11 @@ vincitore gestire_partita (partita* partita_attuale) {
 
 int gestire_menu_di_pausa (partita* partita_attuale) {
     char uscita;
-    int scelta = scegliere_opzione_menu_di_pausa();
+    int scelta;
     do {
+        scelta = scegliere_opzione_menu_di_pausa();
         if (scelta == 2) {
-            salvare_partita(partita_attuale);
+            salvare_partita (partita_attuale);
         } else {
             if (scelta == 3) {
                 chiedere_aiuto();
@@ -123,6 +138,7 @@ int gestire_menu_di_pausa (partita* partita_attuale) {
             }
         }
     } while (scelta != 1 && uscita != 0);
+    cancellare_schermata();
     return scelta;
 }
 
@@ -140,7 +156,7 @@ int scegliere_opzione_menu_di_pausa () {
         int correttezza_inserimento;
         do {
             posizionare_cursore_in_attesa(FILE_MENU_DI_PAUSA);
-            correttezza_inserimento = scanf("&d", &scelta);
+            correttezza_inserimento = scanf("%d", &scelta);
             fflush(stdin);
             if (correttezza_inserimento == 0) {
                 stampare_messaggio_errore(FILE_MENU_DI_PAUSA);
@@ -155,6 +171,7 @@ int scegliere_opzione_menu_di_pausa () {
 
 
     } while (scelta < 0 || scelta > NUMERO_MASSIMO_OPZIONE_PAUSA );
+    cancellare_schermata();
     return scelta;
 }
 
