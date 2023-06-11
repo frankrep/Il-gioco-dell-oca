@@ -7,11 +7,11 @@
              __/ |                                                             
             |___/                                     ______________________   
                                                       |____________________|   
-1) Voglio vedere il percorso;                         |___SSSS_____________|   
+1) Voglio vedere il percorso                          |___SSSS_____________|   
                                                       |__8.()..S___________|   
-2) Voglio leggere le regole e la legenda;             |_88.....S___________|   
+2) Voglio leggere le regole e la legenda              |_88.....S___________|   
                                                       |888....S_____$$$$s__|   
-0) Tornare indietro;                                  |____S...S___80_)$$$_|   
+0) Tornare indietro                                   |____S...S___80_)$$$_|   
                                                       |_____S..S__88$$$$$$_|   
 <Inserisci la tua scelta:                             |_____S..S_8888$$$$$_|   
                                                       |_____S..S_____$$$$$s|   

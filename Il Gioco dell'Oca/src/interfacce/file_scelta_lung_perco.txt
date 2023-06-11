@@ -8,12 +8,12 @@
             |___/                                     ______________________   
                                                       |____________________|   
                                                       |___SSSS_____________|   
-0)Tornare indietro                                    |__8.()..S___________|   
-                                                      |_88.....S___________|   
+                                                      |__8.()..S___________|   
+Inserisci la lunghezza del percorso desiderato:       |_88.....S___________|   
                                                       |888....S_____$$$$s__|   
-Inserisci la lunghezza del percorso desiderato:       |____S...S___80_)$$$_|   
+                                                      |____S...S___80_)$$$_|   
                                                       |_____S..S__88$$$$$$_|   
-                                                      |_____S..S_8888$$$$$_|   
+0)Tornare indietro                                    |_____S..S_8888$$$$$_|   
                                                       |_____S..S_____$$$$$s|   
                                                       |_____S..S______$$$$$|   
                                                       |_____S..S_______$$$$|   
@@ -23,8 +23,8 @@ Inserisci la lunghezza del percorso desiderato:       |____S...S___80_)$$$_|
                                                       |____S...S_______$$$$|   
                                                       |____S...S_______$$$$|   
                                                       |____________________|   
-14 //riga input
+12 //riga input
 49 //colonna input
-15 //riga errore
+14 //riga errore
 1 //colonna errore
 2 //codice messaggio 
