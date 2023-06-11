@@ -21,7 +21,6 @@ void inizializzare_lanci_giocatore(partita *partita_attuale);
 
 void inizializzare_giocatori (partita *partita_attuale) {
     int indietro = 0;
-    int completo = 0;
     do {
         richiedere_numero_caselle(partita_attuale);
         if (leggere_lunghezza_percorso (*partita_attuale) == 0) {
@@ -49,12 +48,11 @@ void inizializzare_giocatori (partita *partita_attuale) {
                         inizializzare_posizione_giocatori(partita_attuale);
                         inizializzare_lanci_giocatore(partita_attuale);
                         scrivere_turno(partita_attuale, -1);
-                        completo = 1;
                     }
                 }
-            } while (indietro != 0 && completo == 0);
+            } while (indietro != 0);
         }
-    } while (indietro != 1 && completo == 0);
+    } while (indietro != 1 && leggere_numero_giocatori(*partita_attuale) == 0);
     return;
 }
 

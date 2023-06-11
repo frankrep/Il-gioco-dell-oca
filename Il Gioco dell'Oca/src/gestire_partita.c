@@ -4,7 +4,6 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include "casella.h"
 #include "giocatore.h"
 #include "partita.h"
@@ -15,7 +14,6 @@
 #include "generare_percorso.h"
 #include "gestire_stampa.h"
 #include "stampare_percorso.h"
-#include "inizializzare_partita.h"
 
 
 void scegliere_giocatore(partita* partita_attuale);
@@ -131,7 +129,7 @@ int trovare_posizione_massimo (const int valori[], int dimensione_valori) {
     int indice_valori = 0;
     int massimo = valori[indice_valori];
     int posizione_massimo = indice_valori;
-    while (indice_valori < dimensione_valori) {
+    while (indice_valori < dimensione_valori - 1) {
         indice_valori = indice_valori + 1;
         if (massimo < valori [indice_valori]) {
             massimo = valori[indice_valori];
@@ -188,12 +186,16 @@ void spostare_giocatore (partita* partita_attuale) {
     return;
 }
 
+
+
 void sommare_lancio_posizione (partita* partita_attuale) {
     giocatore giocatore_attuale = leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) );
     scrivere_posizione_giocatore (&giocatore_attuale, leggere_posizione_giocatore (giocatore_attuale) + sommare_dadi (*partita_attuale) );
     scrivere_giocatore (partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
     return;
 }
+
+
 
 void calcolare_caselle_eccesso(partita* partita_attuale){
     giocatore giocatore_attuale;
@@ -205,6 +207,8 @@ void calcolare_caselle_eccesso(partita* partita_attuale){
     return;
 }
 
+
+
 int sommare_dadi (partita partita_attuale) {
     int somma_dadi = 0;
     int indice_dado = 0;
@@ -214,6 +218,8 @@ int sommare_dadi (partita partita_attuale) {
     }
     return somma_dadi;
 }
+
+
 
 void verificare_casella (partita* partita_attuale) {
     giocatore giocatore_attuale; 
@@ -289,6 +295,8 @@ void verificare_casella (partita* partita_attuale) {
     return;
 }
 
+
+
 void gestire_oca (partita* partita_attuale) {
     giocatore giocatore_attuale = leggere_giocatore ( *partita_attuale, leggere_turno (*partita_attuale) );
     if (leggere_lanci_effettuati (giocatore_attuale) == 1) {
@@ -306,7 +314,8 @@ void gestire_oca (partita* partita_attuale) {
             scrivere_posizione_giocatore(&giocatore_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1);
         }
         scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
-    }else{
+    }
+    else {
         spostare_giocatore(partita_attuale);
     }
     return;
