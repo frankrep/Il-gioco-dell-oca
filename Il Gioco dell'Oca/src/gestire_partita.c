@@ -487,8 +487,8 @@ void gestire_autorizzazione (partita* partita_attuale) {
 int confrontare_stringhe (const char stringa_1[], const char stringa_2[]) {
     int indice_stringa = 0;
     int esito = VERO;
-        while ((stringa_1 [indice_stringa] != FINE_STRINGA) && (esito == VERO)) {
-            if (stringa_1 [indice_stringa] != stringa_2 [indice_stringa]) {
+        while ((stringa_2 [indice_stringa] != FINE_STRINGA) && (esito == VERO)) {
+            if (stringa_2 [indice_stringa] != stringa_1 [indice_stringa]) {
                 esito = FALSO;
             }
             indice_stringa = indice_stringa + 1;
