@@ -15,6 +15,7 @@ void inizializzare_pedine_giocatori (partita* partita_attuale);
 void rimuovere_carattere_nuova_riga (char stringa[]);
 void inizializzare_autorizzazione_giocatori(partita *partita_attuale);
 void inizializzare_posizione_giocatori(partita *partita_attuale);
+void inizializzare_lanci_giocatore(partita *partita_attuale);
 
 
 
@@ -48,6 +49,7 @@ void inizializzare_giocatori (partita *partita_attuale) {
                         inizializzare_pedine_giocatori(partita_attuale);
                         inizializzare_autorizzazione_giocatori(partita_attuale);
                         inizializzare_posizione_giocatori(partita_attuale);
+                        inizializzare_lanci_giocatore(partita_attuale);
                         scrivere_turno(partita_attuale, -1);
                     }
                 }
@@ -217,6 +219,18 @@ void inizializzare_posizione_giocatori(partita *partita_attuale) {
     do {
         giocatore_attuale = leggere_giocatore (*partita_attuale, indice_giocatori);
         scrivere_posizione_giocatore(&giocatore_attuale, 0);
+        scrivere_giocatore (partita_attuale, giocatore_attuale, indice_giocatori);
+        indice_giocatori = indice_giocatori + 1;
+    } while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) );
+    return;
+}
+
+void inizializzare_lanci_giocatore(partita *partita_attuale) {
+    int indice_giocatori = 0;
+    giocatore giocatore_attuale;
+    do {
+        giocatore_attuale = leggere_giocatore (*partita_attuale, indice_giocatori);
+        scrivere_lanci_effettuati(&giocatore_attuale, 0);
         scrivere_giocatore (partita_attuale, giocatore_attuale, indice_giocatori);
         indice_giocatori = indice_giocatori + 1;
     } while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) );

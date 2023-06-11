@@ -23,7 +23,7 @@
 <Inserisci 0 per tornare indietro:                    |____S...S_______$$$$|   
                                                       |____S...S_______$$$$|   
                                                       |____________________|   
-23 //riga input
+24 //riga input
 35 //colonna input
 25 //riga errore
 1 //colonna errore
