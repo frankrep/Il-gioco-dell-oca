@@ -13,17 +13,47 @@ void inizializzare_numero_giocatori (partita* partita_attuale);
 void inizializzare_nomi_giocatori (partita* partita_attuale);
 void inizializzare_pedine_giocatori (partita* partita_attuale);
 void rimuovere_carattere_nuova_riga (char stringa[]);
+void inizializzare_autorizzazione_giocatori(partita *partita_attuale);
+void inizializzare_posizione_giocatori(partita *partita_attuale);
 
 
 
 void inizializzare_giocatori (partita *partita_attuale) {
-    richiedere_numero_caselle (partita_attuale);
-    inizializzare_numero_giocatori (partita_attuale);
-    inizializzare_nomi_giocatori (partita_attuale);
-    inizializzare_pedine_giocatori (partita_attuale);
-    inizializzare_autorizzazione_giocatori(partita_attuale);
-    inizializzare_posizione_giocatori(partita_attuale);
-    scrivere_turno (partita_attuale, -1);
+    int numero_funzioni = 0;
+    do {
+        if (numero_funzioni > 0) {
+            numero_funzioni = numero_funzioni - 1;
+        }
+        richiedere_numero_caselle(partita_attuale);
+        if (leggere_lunghezza_percorso(*partita_attuale) == 0) {
+            numero_funzioni = 0;
+        }
+        else {
+            do {
+                if (numero_funzioni > 1) {
+                    numero_funzioni = numero_funzioni - 1;
+                }
+                inizializzare_numero_giocatori(partita_attuale);
+                if (leggere_numero_giocatori(*partita_attuale) == 0) {
+                    numero_funzioni = numero_funzioni + 1;
+                }
+                else {
+                    inizializzare_nomi_giocatori(partita_attuale);
+                    char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+                    leggere_nome_giocatore(leggere_giocatore(*partita_attuale, 0), nome_giocatore);
+                    if (nome_giocatore[0] == 0 && nome_giocatore[1] == FINE_STRINGA) {
+                        numero_funzioni = numero_funzioni + 1;
+                    }
+                    else {
+                        inizializzare_pedine_giocatori(partita_attuale);
+                        inizializzare_autorizzazione_giocatori(partita_attuale);
+                        inizializzare_posizione_giocatori(partita_attuale);
+                        scrivere_turno(partita_attuale, -1);
+                    }
+                }
+            } while (numero_funzioni > 1);
+        }
+    } while (numero_funzioni > 0);
     return;
 }
 
@@ -48,13 +78,13 @@ void richiedere_numero_caselle(partita *partita_attuale) {
 
 
 
-        if ((dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) || (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO)) {
+        if ( ( (dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) || (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO) ) && dimensione_percorso != 0) {
             stampare_messaggio_errore(FILE_SCELTA_LUNG_PERCO);
         }
 
 
 
-    } while ((dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) || (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO));
+    } while ( ( (dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) || (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO) ) && dimensione_percorso != 0);
     scrivere_lunghezza_percorso(partita_attuale, dimensione_percorso);
     system("cls");
     return;
@@ -79,12 +109,12 @@ void inizializzare_numero_giocatori (partita *partita_attuale) {
         } while (correttezza_inserimento == 0);
 
 
-        if ( (numero_partecipanti < NUMERO_MINIMO_GIOCATORI) || (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI) ) {
+        if ( ( (numero_partecipanti < NUMERO_MINIMO_GIOCATORI) || (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI) ) && numero_partecipanti != 0) {
             stampare_messaggio_errore(FILE_SCELTA_N_GIOCATORI);
         }
 
 
-    } while ( (numero_partecipanti < NUMERO_MINIMO_GIOCATORI) || (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI) );
+    } while ( ( (numero_partecipanti < NUMERO_MINIMO_GIOCATORI) || (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI) ) && numero_partecipanti != 0);
     scrivere_numero_giocatori(partita_attuale, numero_partecipanti);
     system("cls");
     return;
