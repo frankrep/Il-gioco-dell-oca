@@ -105,6 +105,7 @@ void scegliere_giocatore (partita* partita_attuale) {
         estrazioni [indice_giocatori] = generare_numero (FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO);
         stampare_dado(FILE_SCELTA_G_INIZIALE, estrazioni [indice_giocatori]);
         posizionare_cursore_in_attesa (FILE_SCELTA_G_INIZIALE);
+        fflush(stdin);
         fgetc(stdin);
         indice_giocatori = indice_giocatori + 1;
     }
