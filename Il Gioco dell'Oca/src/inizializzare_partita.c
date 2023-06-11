@@ -8,28 +8,62 @@
 
 
 
-void richiedere_numero_caselle (partita* partita_attuale);
-void inizializzare_numero_giocatori (partita* partita_attuale);
-void inizializzare_nomi_giocatori (partita* partita_attuale);
+void richiedere_numero_caselle (partita *partita_attuale, int * indietro);
+void inizializzare_numero_giocatori (partita *partita_attuale, int * indietro);
+void inizializzare_nomi_giocatori (partita *partita_attuale, int * indietro);
 void inizializzare_pedine_giocatori (partita* partita_attuale);
 void rimuovere_carattere_nuova_riga (char stringa[]);
 
 
 
-void inizializzare_giocatori (partita *partita_attuale) {
-    richiedere_numero_caselle (partita_attuale);
-    inizializzare_numero_giocatori (partita_attuale);
-    inizializzare_nomi_giocatori (partita_attuale);
-    inizializzare_pedine_giocatori (partita_attuale);
-    inizializzare_autorizzazione_giocatori(partita_attuale);
-    inizializzare_posizione_giocatori(partita_attuale);
-    scrivere_turno (partita_attuale, -1);
+void inizializzare_giocatori (partita *partita_attuale, int * indietro_precedente) {
+    int indietro_blocco;
+    do {
+
+
+        indietro_blocco = FALSO;
+        richiedere_numero_caselle (partita_attuale, indietro_precedente);
+        if (*indietro_precedente == FALSO) {
+
+            int numero_funzioni = 0;
+            do {
+
+                //se si è tornati qui perchè l'utente ha inserito indietro nella funzione successiva a quella che segue
+                //allora diminuisco il numero di funzioni che precedono
+                if (indietro_blocco == VERO) {
+                    numero_funzioni = numero_funzioni - 1;
+                }
+
+                indietro_blocco = FALSO;
+                inizializzare_numero_giocatori(partita_attuale, &indietro_blocco);
+                if (indietro_blocco == FALSO) {
+
+                    //aumento il numero di funzioni che precedono quella che verrà richiamata
+                    numero_funzioni = numero_funzioni + 1;
+                    inizializzare_nomi_giocatori(partita_attuale, &indietro_blocco);
+
+                    if (indietro_blocco == FALSO) {
+                        inizializzare_pedine_giocatori(partita_attuale);
+                        inizializzare_autorizzazione_giocatori(partita_attuale);
+                        inizializzare_posizione_giocatori(partita_attuale);
+                        scrivere_turno(partita_attuale, -1);
+                    }
+                }
+
+
+            } while (indietro_blocco == VERO && numero_funzioni == 1);
+
+
+        }
+
+
+    } while (indietro_blocco == VERO);
     return;
 }
 
 
 
-void richiedere_numero_caselle(partita *partita_attuale) {
+void richiedere_numero_caselle (partita *partita_attuale, int * indietro) {
     int dimensione_percorso;
     stampare_testo(FILE_SCELTA_LUNG_PERCO);
     do {
@@ -48,21 +82,29 @@ void richiedere_numero_caselle(partita *partita_attuale) {
 
 
 
-        if ((dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) || (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO)) {
+        if ( ( (dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) || (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO) ) && dimensione_percorso != 0 ) {
             stampare_messaggio_errore(FILE_SCELTA_LUNG_PERCO);
         }
 
 
 
-    } while ((dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) || (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO));
-    scrivere_lunghezza_percorso(partita_attuale, dimensione_percorso);
+    } while ( ( (dimensione_percorso < DIMENSIONE_MINIMA_PERCORSO) || (dimensione_percorso > DIMENSIONE_MASSIMA_PERCORSO) ) && dimensione_percorso != 0 );
+
+    //verifico se l'utente desidera tornare insietro o ha inserito un numero di caselle valido
+    if (dimensione_percorso == 0) {
+        *indietro = VERO;
+    }
+    else {
+        scrivere_lunghezza_percorso(partita_attuale, dimensione_percorso);
+    }
+
     system("cls");
     return;
 }
 
 
 
-void inizializzare_numero_giocatori (partita *partita_attuale) {
+void inizializzare_numero_giocatori (partita *partita_attuale, int * indietro) {
     int numero_partecipanti;
     stampare_testo(FILE_SCELTA_N_GIOCATORI);
     do {
@@ -79,27 +121,35 @@ void inizializzare_numero_giocatori (partita *partita_attuale) {
         } while (correttezza_inserimento == 0);
 
 
-        if ( (numero_partecipanti < NUMERO_MINIMO_GIOCATORI) || (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI) ) {
+        if ( ( (numero_partecipanti < NUMERO_MINIMO_GIOCATORI) || (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI) ) && numero_partecipanti != 0) {
             stampare_messaggio_errore(FILE_SCELTA_N_GIOCATORI);
         }
 
 
-    } while ( (numero_partecipanti < NUMERO_MINIMO_GIOCATORI) || (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI) );
-    scrivere_numero_giocatori(partita_attuale, numero_partecipanti);
+    } while ( ( (numero_partecipanti < NUMERO_MINIMO_GIOCATORI) || (numero_partecipanti > NUMERO_MASSIMO_GIOCATORI) ) && numero_partecipanti != 0);
+
+    //verifico se l'utente desidera tornare insietro o ha inserito un numero di caselle valido
+    if (numero_partecipanti == 0) {
+        *indietro = VERO;
+    }
+    else {
+        scrivere_numero_giocatori(partita_attuale, numero_partecipanti);
+    }
+
     system("cls");
     return;
 }
 
 
 
-void inizializzare_nomi_giocatori (partita *partita_attuale) {
+void inizializzare_nomi_giocatori (partita *partita_attuale, int * indietro) {
     int indice_giocatori = 0;
     char nome_da_inserire[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
-    while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
+    while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) && *indietro == FALSO) {
         stampare_testo (FILE_SCELTA_NOMI_GIOCATORI);
         stampare_valore_intero(FILE_SCELTA_NOMI_GIOCATORI, indice_giocatori+1);
         posizionare_cursore_in_attesa (FILE_SCELTA_NOMI_GIOCATORI);
-        richiedere_stringa (FILE_SCELTA_NOMI_GIOCATORI, DIMENSIONE_MINIMA_NOME_GIOCATORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE, nome_da_inserire);
+        richiedere_stringa (FILE_SCELTA_NOMI_GIOCATORI, DIMENSIONE_MINIMA_NOME_GIOCATORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE, nome_da_inserire, indietro);
         giocatore giocatore_attuale = leggere_giocatore (*partita_attuale, indice_giocatori);
         scrivere_nome_giocatore (&giocatore_attuale, nome_da_inserire);
         scrivere_giocatore (partita_attuale, giocatore_attuale, indice_giocatori);
@@ -110,10 +160,10 @@ void inizializzare_nomi_giocatori (partita *partita_attuale) {
 }
 
 
-void richiedere_stringa (const char file_interfaccia[], int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]) {
+void richiedere_stringa (const char file_interfaccia[], int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[], int * indietro) {
     nome_da_inserire[0] = FINE_STRINGA;
     while (nome_da_inserire[0] == FINE_STRINGA){
-        inserire_stringa (dimensione_minima_stringa, dimensione_massima_stringa, nome_da_inserire);
+        inserire_stringa (dimensione_minima_stringa, dimensione_massima_stringa, nome_da_inserire, indietro);
         if (nome_da_inserire[0] == FINE_STRINGA){
             stampare_messaggio_errore (file_interfaccia);
         }
@@ -121,12 +171,17 @@ void richiedere_stringa (const char file_interfaccia[], int dimensione_minima_st
 }
 
 
-void inserire_stringa (int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]) {
+void inserire_stringa (int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[], int * indietro) {
     fgets (nome_da_inserire, dimensione_massima_stringa + 1, stdin);
     fflush(stdin);
     rimuovere_carattere_nuova_riga (nome_da_inserire);
-    if (calcolare_lunghezza_stringa (nome_da_inserire) < dimensione_minima_stringa) {
-        nome_da_inserire[0] = FINE_STRINGA;
+    if (nome_da_inserire[0] = '0' && nome_da_inserire[1] == FINE_STRINGA) {
+        *indietro = VERO;
+    }
+    else {
+        if (calcolare_lunghezza_stringa (nome_da_inserire) < dimensione_minima_stringa) {
+            nome_da_inserire[0] = FINE_STRINGA;
+        }
     }
     return;
 }

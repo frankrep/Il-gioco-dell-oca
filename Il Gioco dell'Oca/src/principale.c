@@ -14,7 +14,7 @@
 
 
 int scegliere_opzione_menu ();
-void iniziare_nuova_partita (vincitore* vincitore_partita);
+void iniziare_nuova_partita (vincitore* vincitore_partita, int * indietro);
 void riprendere_partita (vincitore* vincitore_partita);
 void scegliere_partita_da_caricare (partita* partita_attuale);
 void gestire_vincitore (vincitore vincitore_partita);
@@ -35,14 +35,15 @@ int main() {
     int opzione;
     vincitore vincitore_partita;
 
-    int indietro = 0;
+    int indietro;
 
     do {
+        indietro = 0;
         system("cls");
         opzione = scegliere_opzione_menu();
-        
+
         if (opzione == 1) {
-            iniziare_nuova_partita (&vincitore_partita);
+            iniziare_nuova_partita (&vincitore_partita, &indietro);
             //inserire fine stringa come nome di vincitore_attuale nel caso in cui si interrompe la partita (stessa cosa per riprendere_partita)
             if (indietro == 0) {
                 gestire_vincitore(vincitore_partita);
@@ -70,6 +71,15 @@ int main() {
     } while (uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO);
     return 0;
 }
+
+//se premo indietro:
+        //se la funzione è stata chiamata, deve tornare alla funzione chiamante
+                //la funzione chiamante intera si troverà in un do while con la condizione che il tasto indietro sia uguale a 1 e che come prima istruzione del do, a questo venga assegnato 0
+                //le funzioni che seguono quella chiamante, all'interno dello stesso ramo, avranno come condizione che il tasto indietro sia uguale a 0
+                //le funzioni che seguono quella chiamata avranno come condizione che indietro sia uguale a 0
+        //altrimenti, se è parte e non la prima di un blocco, bisogna eseguire la funzione precedente
+                //la funzione precedente si troverà in un ciclo do while con condizione che il tasto indietro sia uguale a 0
+                //le funzioni che seguono quella di un blocco avranno come condizione che indietro sia uguale a 0
 
 
 
@@ -109,11 +119,13 @@ int scegliere_opzione_menu () {
 
 
 
-void iniziare_nuova_partita (vincitore* vincitore_partita) {
+void iniziare_nuova_partita (vincitore* vincitore_partita, int * indietro) {
     partita partita_attuale;
-    inizializzare_giocatori (&partita_attuale);
-    generare_percorso (&partita_attuale);
-    *vincitore_partita = gestire_partita (&partita_attuale);
+    inizializzare_giocatori (&partita_attuale, indietro);
+    if (indietro == 0) {
+        generare_percorso(&partita_attuale);
+        *vincitore_partita = gestire_partita(&partita_attuale);
+    }
     return;
 }
 

@@ -24,6 +24,7 @@ void caricare_partite (partita elenco_partite[]) {
 
 
 void salvare_partita (partita* partita_attuale) {
+    int indietro = FALSO;
     int slot_scelto;
     int salvato = 0;
     partita elenco_partite [NUMERO_MASSIMO_PARTITE];
@@ -31,7 +32,7 @@ void salvare_partita (partita* partita_attuale) {
     do {
         slot_scelto = selezionare_slot (elenco_partite);
         char nome_partita_salvata [DIMENSIONE_MASSIMA_NOME_PARTITA];
-        inserire_stringa (DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata);
+        inserire_stringa (DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata, &indietro);
         scrivere_nome_partita (partita_attuale,  nome_partita_salvata);
         leggere_nome_partita (elenco_partite [slot_scelto], nome_partita_salvata);
         if (confrontare_stringhe (nome_partita_salvata,STRINGA_VUOTA) == VERO) {
