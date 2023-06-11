@@ -125,6 +125,7 @@ void iniziare_nuova_partita (vincitore* vincitore_partita) {
 
 
 void riprendere_partita (vincitore* vincitore_partita) {
+    //VEDERE SCEGLIERE_PARTITA_DA_CARICARE PER INFORMAZIONI
     partita partita_attuale;
     scegliere_partita_da_caricare(&partita_attuale);
     *vincitore_partita = gestire_partita (&partita_attuale);
@@ -135,7 +136,13 @@ void riprendere_partita (vincitore* vincitore_partita) {
 
 void scegliere_partita_da_caricare (partita* partita_attuale) {
     partita elenco_partite [NUMERO_MASSIMO_PARTITE];
+    stampare_testo(FILE_MENU_CARICA_PARTITA);
+    posizionare_cursore_in_attesa(FILE_MENU_CARICA_PARTITA);
+    //AGGIUNGERE CONTROLLO CHE SE IL CAMPO DELLA PARTITA SALVATA è VUOTO ALLORA DEVE DARE ERRORE CHE NON ESISTE NESSUNA PARTITA IN QUELLO SLOT.
     caricare_partite (elenco_partite);
+    //Stampare le partite salvate dal file dove ci sono le partite salvate su video su FILE_MENU_CARICA_PARTITA
+    //AGGIUNGERE CONTROLLO SE SLOT_SCELTO != 1,2,3,4,5 DA ERRORE
+    //AGGIUNGERE CONTROLLO SE SLOT_SCELTO = 0 TORNA AL MENU PRINCIPALE
     int slot_scelto = selezionare_slot (elenco_partite);
     *partita_attuale = elenco_partite [slot_scelto];
     return;
