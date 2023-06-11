@@ -284,9 +284,6 @@ void verificare_casella (partita* partita_attuale) {
             scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
         }
               //stampare percorso e aspettare input
-        stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
-        posizionare_cursore_in_attesa(FILE_PERCORSO);
-        fgetc(stdin);
         giocatore_attuale = leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale) );
         leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
     }while((nome_casella[0] != FINE_STRINGA) && (leggere_autorizzazione(giocatore_attuale) == 0));
@@ -343,12 +340,13 @@ void gestire_autorizzazione (partita* partita_attuale) {
 
     //se il giocatore si trova sulla casella locanda, vengono diminuiti i turni di attesa di 1
     if ( confrontare_stringhe (nome_casella, NOME_LOCANDA) == VERO ) {
-        scrivere_autorizzazione ( &giocatore_attuale, leggere_autorizzazione (giocatore_attuale) - 1);
         //stampare schermata_locanda_turno_passato e attende input
         cancellare_schermata();
         stampare_testo(FILE_SCHERMATA_LOCANDA_TURNO_PASSATO);
-        posizionare_cursore_in_attesa(FILE_SCHERMATA_SCHELETRO);
+        stampare_valore_intero(FILE_SCHERMATA_LOCANDA_TURNO_PASSATO, leggere_autorizzazione(giocatore_attuale));
+        posizionare_cursore_in_attesa(FILE_SCHERMATA_LOCANDA_TURNO_PASSATO);
         fgetc(stdin);
+        scrivere_autorizzazione ( &giocatore_attuale, leggere_autorizzazione (giocatore_attuale) - 1);
     }
 
     //se il giocatore si trova sulla casella prigione,
