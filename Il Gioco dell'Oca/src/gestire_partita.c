@@ -50,31 +50,46 @@ vincitore gestire_partita (partita* partita_attuale) {
                 posizionare_cursore_in_attesa (FILE_PERCORSO);
                 fflush(stdin);
                 scelta = fgetc(stdin);
-                if((scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) && (scelta != TASTO_SALVATAGGIO_MAIUSCOLO) && (scelta != TASTO_SALVATAGGIO_MINUSCOLO) ){
+                if ( (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) ) {
                     stampare_messaggio_errore(FILE_PERCORSO);
                 }
-            } while ((scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) && (scelta != TASTO_SALVATAGGIO_MAIUSCOLO) && (scelta != TASTO_SALVATAGGIO_MINUSCOLO));
+            } while ( (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) );
 
-            if((scelta == TASTO_LANCIO_DADI_MAIUSCOLO) || (scelta == TASTO_LANCIO_DADI_MINUSCOLO)){
+            if ( (scelta == TASTO_LANCIO_DADI_MAIUSCOLO) || (scelta == TASTO_LANCIO_DADI_MINUSCOLO) ) {
                 lanciare_dadi (partita_attuale);
                 incrementare_lanci_effettuati(partita_attuale);
                 stampare_dadi_partita(FILE_PERCORSO, partita_attuale);
                 posizionare_cursore_in_attesa(FILE_PERCORSO);
+
+                //inserire scritta per l'iserimento di A per avanzare
+                do {
+                    scanf("%c", &scelta);
+                    fflush(stdin);
+                    if ( (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) ) {
+                        stampare_messaggio_errore (FILE_PERCORSO);
+                    }
+                } while ( (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) );
+                spostare_giocatore(partita_attuale);
+                //stampare percorso con input utente per proseguire con l'effetto
+                fgetc(stdin);
+                fflush(stdin);
+                verificare_casella (partita_attuale);
             }
-            spostare_giocatore (partita_attuale);
-            //stampare percorso con input utente per proseguire con l'effetto
-            fgetc(stdin);
-            verificare_casella (partita_attuale);
+
+            else {
+                //stampare menu
+            }
+
         }
-        } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale) );
-        cancellare_schermata();
-        stampare_testo (FILE_VITTORIA_NOMI);
-        char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
-        leggere_nome_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale)), nome_giocatore);
-        stampare_valore_testuale(FILE_VITTORIA_NOMI, nome_giocatore);
-        posizionare_cursore_in_attesa(FILE_SCELTA_G_INIZIALE);
-        vincitore vincitore_partita = inizializzare_vincitore (partita_attuale);
-        return vincitore_partita;
+    } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale) );
+    cancellare_schermata();
+    stampare_testo (FILE_VITTORIA_NOMI);
+    char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    leggere_nome_giocatore (leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale)), nome_giocatore);
+    stampare_valore_testuale (FILE_VITTORIA_NOMI, nome_giocatore);
+    posizionare_cursore_in_attesa (FILE_SCELTA_G_INIZIALE);
+    vincitore vincitore_partita = inizializzare_vincitore (partita_attuale);
+    return vincitore_partita;
 }
 
 
