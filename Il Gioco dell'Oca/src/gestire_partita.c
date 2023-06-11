@@ -67,9 +67,7 @@ vincitore gestire_partita (partita* partita_attuale) {
             //stampare percorso con input utente per proseguire con l'effetto
             fgetc(stdin);
             verificare_casella (partita_attuale);
-            system("pause");
         }
-
         } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale) );
         cancellare_schermata();
         stampare_testo (FILE_VITTORIA_NOMI);
@@ -328,7 +326,7 @@ void impostare_autorizzazioni(partita* partita_attuale, const char nome_casella_
         }
         indice_giocatore = indice_giocatore + 1;
     }
-    leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale));
+    giocatore_attuale = leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale));
     scrivere_autorizzazione(&giocatore_attuale, 1);
     scrivere_giocatore(partita_attuale, giocatore_attuale, leggere_turno(*partita_attuale));
     return;
