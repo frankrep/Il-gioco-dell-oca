@@ -286,7 +286,7 @@ void verificare_casella (partita* partita_attuale) {
               //stampare percorso e aspettare input
         giocatore_attuale = leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale) );
         leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
-    }while((nome_casella[0] != FINE_STRINGA) && (leggere_autorizzazione(giocatore_attuale) == 0));
+    }while((nome_casella[0] != FINE_STRINGA) && (leggere_autorizzazione(giocatore_attuale) == 0) && (leggere_posizione_giocatore(giocatore_attuale) != leggere_lunghezza_percorso(*partita_attuale)));
     return;
 }
 
@@ -362,6 +362,10 @@ void gestire_autorizzazione (partita* partita_attuale) {
         stampare_dadi_partita(FILE_SCHERMATA_LANCIO_DADI_PRIGIONE, partita_attuale);
         fgetc(stdin);
         if ( (sommare_dadi (*partita_attuale) == DADO_MINORE_USCITA_PRIGIONE) || (sommare_dadi (*partita_attuale) == DADO_MAGGIORE_USCITA_PRIGIONE) ) {
+            cancellare_schermata();
+            stampare_testo(FILE_SCHERMATA_LIBERATO);
+            posizionare_cursore_in_attesa(FILE_SCHERMATA_LIBERATO);
+            fgetc(stdin);
             scrivere_autorizzazione (&giocatore_attuale, 0);
         }
     }

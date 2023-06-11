@@ -23,13 +23,14 @@ ____________$$$....GIOCO...$$$_____________|
 ____________$$$..DELL'OCA..$$$_____________|                                   
 ____________$$$$$$$$$$$$$$$$$$_____________|                                   
 __________$$$$$$$$$$$$$$$$$$$$$$___________|                                   
+14 // RIGA INSERIMENTO
+71 // COLONNA INSERIMENTO
+16 // RIGA ERRORE
+45 // COLONNA ERRORE
+2 // CODICE MESSAGGIO
 4 // RIGA NOME
 15 // COLONNA NOME
 5 // RIGA CLASSIFICA
 16 // COLONNA CLASSIFICA
 5 // MESSAGGIO stampa O POSIZIONE IN CLASSIFICA
-14 // RIGA INSERIMENTO
-71 // COLONNA INSERIMENTO   
-16 // RIGA ERRORE 
-45 // COLONNA ERRORE
-2 // CODICE MESSAGGIO
+
