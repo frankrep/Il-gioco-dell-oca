@@ -89,6 +89,7 @@ static const char ERRORE_FILE_NON_TROVATO[LUNGHEZZA_SCHERMATA + 1] = "ERRORE! FI
 static const char FINE_STRINGA = '\0';
 static const char CARATTERE_A_CAPO = '\n';
 static const char STRINGA_VUOTA[1] = "\0";
+static const char NOME_GIOCATORE_INDIETRO [2] = "0\0";
 static const char PEDINE_DISPONIBILI[NUMERO_MASSIMO_GIOCATORI] = "#$%&";
 static const char NOME_OCA[DIMENSIONE_MASSIMA_NOME_CASELLA] = "OCA\0";
 static const char NOME_PRIGIONE[DIMENSIONE_MASSIMA_NOME_CASELLA] = "PRIGIONE\0";
