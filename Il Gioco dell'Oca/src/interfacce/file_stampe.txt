@@ -3,3 +3,6 @@
 <VUOTO>
 <NON QUALIFICATO>
 N/C
+Sei sicuro di voler uscire dal gioco?
+Tutte le modifiche non salvate andranno perse 
+{S/N} 
