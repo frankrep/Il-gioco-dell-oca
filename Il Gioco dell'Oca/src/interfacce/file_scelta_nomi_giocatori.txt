@@ -29,4 +29,4 @@ Giocatore   inserisci il tuo nome:                    |_88.....S___________|
 1 //colonna errore
 2 //codice messaggio   
 12 //riga n giocatore
-11 //colonna n giocatore                                                    
+10 //colonna n giocatore                                                    
