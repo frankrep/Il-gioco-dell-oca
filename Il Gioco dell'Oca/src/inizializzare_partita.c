@@ -23,6 +23,7 @@ void inizializzare_giocatori (partita *partita_attuale) {
     do {
         richiedere_numero_caselle(partita_attuale);
         if (leggere_lunghezza_percorso (*partita_attuale) == 0) {
+            scrivere_lunghezza_percorso(partita_attuale, 0);
             indietro = 1;
         }
         else {
