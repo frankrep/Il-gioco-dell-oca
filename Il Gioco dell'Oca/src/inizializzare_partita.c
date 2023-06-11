@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "gestire_stampa.h"
-
+#include "gestire_partita.h"
 
 
 void richiedere_numero_caselle (partita* partita_attuale);
@@ -20,30 +20,28 @@ void inizializzare_lanci_giocatore(partita *partita_attuale);
 
 
 void inizializzare_giocatori (partita *partita_attuale) {
-    int numero_funzioni = 0;
+    int indietro = 0;
     do {
-        if (numero_funzioni > 0) {
-            numero_funzioni = numero_funzioni - 1;
-        }
         richiedere_numero_caselle(partita_attuale);
-        if (leggere_lunghezza_percorso(*partita_attuale) == 0) {
-            numero_funzioni = 0;
+        if (leggere_lunghezza_percorso (*partita_attuale) == 0) {
+            scrivere_lunghezza_percorso(partita_attuale, 0);
+            indietro = 1;
         }
         else {
             do {
-                if (numero_funzioni > 1) {
-                    numero_funzioni = numero_funzioni - 1;
+                if (indietro == 1) {
+                    indietro = 0;
                 }
                 inizializzare_numero_giocatori(partita_attuale);
                 if (leggere_numero_giocatori(*partita_attuale) == 0) {
-                    numero_funzioni = numero_funzioni + 1;
+                    indietro = 0;
                 }
                 else {
                     inizializzare_nomi_giocatori(partita_attuale);
                     char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
                     leggere_nome_giocatore(leggere_giocatore(*partita_attuale, 0), nome_giocatore);
-                    if (nome_giocatore[0] == 0 && nome_giocatore[1] == FINE_STRINGA) {
-                        numero_funzioni = numero_funzioni + 1;
+                    if (confrontare_stringhe(nome_giocatore, NOME_GIOCATORE_INDIETRO) == VERO) {
+                        indietro = 1;
                     }
                     else {
                         inizializzare_pedine_giocatori(partita_attuale);
@@ -53,9 +51,9 @@ void inizializzare_giocatori (partita *partita_attuale) {
                         scrivere_turno(partita_attuale, -1);
                     }
                 }
-            } while (numero_funzioni > 1);
+            } while (indietro != 0);
         }
-    } while (numero_funzioni > 0);
+    } while (indietro != 1);
     return;
 }
 
@@ -132,10 +130,18 @@ void inizializzare_nomi_giocatori (partita *partita_attuale) {
         stampare_valore_intero(FILE_SCELTA_NOMI_GIOCATORI, indice_giocatori+1);
         posizionare_cursore_in_attesa (FILE_SCELTA_NOMI_GIOCATORI);
         richiedere_stringa (FILE_SCELTA_NOMI_GIOCATORI, DIMENSIONE_MINIMA_NOME_GIOCATORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE, nome_da_inserire);
-        giocatore giocatore_attuale = leggere_giocatore (*partita_attuale, indice_giocatori);
-        scrivere_nome_giocatore (&giocatore_attuale, nome_da_inserire);
-        scrivere_giocatore (partita_attuale, giocatore_attuale, indice_giocatori);
-        indice_giocatori = indice_giocatori + 1;
+        if (confrontare_stringhe (nome_da_inserire, NOME_GIOCATORE_INDIETRO) == FALSO) {
+            giocatore giocatore_attuale = leggere_giocatore(*partita_attuale, indice_giocatori);
+            scrivere_nome_giocatore(&giocatore_attuale, nome_da_inserire);
+            scrivere_giocatore(partita_attuale, giocatore_attuale, indice_giocatori);
+            indice_giocatori = indice_giocatori + 1;
+        }
+        else {
+            giocatore giocatore_attuale = leggere_giocatore(*partita_attuale, 0);
+            scrivere_nome_giocatore(&giocatore_attuale, nome_da_inserire);
+            scrivere_giocatore(partita_attuale, giocatore_attuale, 0);
+            indice_giocatori = leggere_numero_giocatori (*partita_attuale);
+        }
         system("cls");
     }
     return;
@@ -144,9 +150,9 @@ void inizializzare_nomi_giocatori (partita *partita_attuale) {
 
 void richiedere_stringa (const char file_interfaccia[], int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]) {
     nome_da_inserire[0] = FINE_STRINGA;
-    while (nome_da_inserire[0] == FINE_STRINGA){
+    while (nome_da_inserire[0] == FINE_STRINGA) {
         inserire_stringa (dimensione_minima_stringa, dimensione_massima_stringa, nome_da_inserire);
-        if (nome_da_inserire[0] == FINE_STRINGA){
+        if (nome_da_inserire[0] == FINE_STRINGA) {
             stampare_messaggio_errore (file_interfaccia);
             posizionare_cursore_in_attesa (FILE_SCELTA_NOMI_GIOCATORI);
         }
@@ -158,7 +164,7 @@ void inserire_stringa (int dimensione_minima_stringa, int dimensione_massima_str
     fgets (nome_da_inserire, dimensione_massima_stringa + 1, stdin);
     fflush(stdin);
     rimuovere_carattere_nuova_riga (nome_da_inserire);
-    if (calcolare_lunghezza_stringa (nome_da_inserire) < dimensione_minima_stringa) {
+    if ((calcolare_lunghezza_stringa (nome_da_inserire) < dimensione_minima_stringa) && (confrontare_stringhe (nome_da_inserire, NOME_GIOCATORE_INDIETRO) == FALSO)) {
         nome_da_inserire[0] = FINE_STRINGA;
     }
     return;

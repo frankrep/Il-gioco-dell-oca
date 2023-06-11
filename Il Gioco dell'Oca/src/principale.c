@@ -44,7 +44,7 @@ int main() {
         if (opzione == 1) {
             iniziare_nuova_partita (&vincitore_partita);
             //inserire fine stringa come nome di vincitore_attuale nel caso in cui si interrompe la partita (stessa cosa per riprendere_partita)
-            if (indietro == 0) {
+            if (leggere_lunghezza_percorso_vincitore(vincitore_partita) != 0) {
                 gestire_vincitore(vincitore_partita);
             }
         }
@@ -112,8 +112,13 @@ int scegliere_opzione_menu () {
 void iniziare_nuova_partita (vincitore* vincitore_partita) {
     partita partita_attuale;
     inizializzare_giocatori (&partita_attuale);
-    generare_percorso (&partita_attuale);
-    *vincitore_partita = gestire_partita (&partita_attuale);
+    if (leggere_lunghezza_percorso (partita_attuale) != 0) {
+        generare_percorso(&partita_attuale);
+        *vincitore_partita = gestire_partita(&partita_attuale);
+    }
+    else {
+        scrivere_lunghezza_percorso_vincitore(vincitore_partita, 0);
+    }
     return;
 }
 
