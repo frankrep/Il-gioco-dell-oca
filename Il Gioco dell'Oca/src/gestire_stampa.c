@@ -237,7 +237,7 @@ void scorrere_righe_file(FILE* file_testo, int numero_righe){
 }
 
 
-void cancellare_schermata(){
+void cancellare_schermata () {
     system("cls");
 }
 

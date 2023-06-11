@@ -65,7 +65,7 @@ vincitore gestire_partita (partita* partita_attuale) {
             }
             spostare_giocatore (partita_attuale);
             //stampare percorso con input utente per proseguire con l'effetto
-            system("pause");
+            fgetc(stdin);
             verificare_casella (partita_attuale);
             system("pause");
         }
@@ -89,9 +89,8 @@ void scegliere_giocatore (partita* partita_attuale) {
         stampare_valore_testuale(FILE_SCELTA_G_INIZIALE, nome_giocatore);
         do{
             posizionare_cursore_in_attesa (FILE_SCELTA_G_INIZIALE);
-            fflush(stdin);
             scelta = fgetc(stdin);
-            fflush(stdout);
+            fflush(stdin);
             if((scelta != TASTO_INDIETRO) && (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO)){
                 stampare_messaggio_errore(FILE_SCELTA_G_INIZIALE);
             }

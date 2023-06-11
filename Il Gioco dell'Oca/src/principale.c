@@ -35,6 +35,8 @@ int main() {
     int opzione;
     vincitore vincitore_partita;
 
+    int indietro = 0;
+
     do {
         system("cls");
         opzione = scegliere_opzione_menu();
@@ -42,8 +44,9 @@ int main() {
         if (opzione == 1) {
             iniziare_nuova_partita (&vincitore_partita);
             //inserire fine stringa come nome di vincitore_attuale nel caso in cui si interrompe la partita (stessa cosa per riprendere_partita)
-
-            gestire_vincitore (vincitore_partita);
+            if (indietro == 0) {
+                gestire_vincitore(vincitore_partita);
+            }
         }
         else {
             if (opzione == 2) {
