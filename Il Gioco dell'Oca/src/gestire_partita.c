@@ -92,7 +92,7 @@ vincitore gestire_partita (partita* partita_attuale) {
             }
 
         }
-        } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale)  && scelta != 0);
+        } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale)  && (scelta != 0));
         cancellare_schermata();
         stampare_vittoria(FILE_VITTORIA_NOMI);
         char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
@@ -459,8 +459,8 @@ void gestire_autorizzazione (partita* partita_attuale) {
         }
     }else if ( confrontare_stringhe (nome_casella, NOME_POZZO) == VERO ){
         cancellare_schermata();
-        stampare_testo(FILE_SCHERMATA_POZZO);
-        posizionare_cursore_in_attesa(FILE_SCHERMATA_POZZO);
+        stampare_testo(FILE_SCHERMATA_PERM_POZZO);
+        posizionare_cursore_in_attesa(FILE_SCHERMATA_PERM_POZZO);
         fgetc(stdin);
     }
     scrivere_giocatore ( partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
