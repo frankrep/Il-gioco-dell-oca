@@ -116,6 +116,7 @@ void richiedere_stringa (const char file_interfaccia[], int dimensione_minima_st
         inserire_stringa (dimensione_minima_stringa, dimensione_massima_stringa, nome_da_inserire);
         if (nome_da_inserire[0] == FINE_STRINGA){
             stampare_messaggio_errore (file_interfaccia);
+            posizionare_cursore_in_attesa (FILE_SCELTA_NOMI_GIOCATORI);
         }
     }
 }
