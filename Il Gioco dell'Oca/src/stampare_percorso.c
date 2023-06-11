@@ -242,7 +242,7 @@ void stampare_giocatori_superiori_casella(partita* partita_attuale, int numero_c
 
 void stampare_giocatori_inferiori_casella(partita* partita_attuale, int numero_casella) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    if (leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)) == FINE_STRINGA) {
+    if (leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)) != FINE_STRINGA) {
         if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)) == numero_casella) {
             SetConsoleTextAttribute(hConsole, 2);
             printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)));
@@ -258,7 +258,7 @@ void stampare_giocatori_inferiori_casella(partita* partita_attuale, int numero_c
         printf("%c", CONTORNO_INFERIORE_CASELLA);
         indice_spazio = indice_spazio + 1;
     }
-    if (leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)) == FINE_STRINGA) {
+    if (leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)) != FINE_STRINGA) {
         if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)) == numero_casella) {
             SetConsoleTextAttribute(hConsole, 6);
             printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)));
