@@ -17,7 +17,7 @@ void scorrere_righe_file(FILE* file_testo, int numero_righe);
 void stampare_dadi_partita(const char file_interfaccia[], partita* partita_attuale);
 void stampare_dado(const char file_interfaccia[], int valore_faccia_dado);
 void cancellare_schermata();
-void stampare_valore_intero(const char file_interfaccia[], int valore);
-void stampare_valore_testuale(const char file_interfaccia[], const char stringa[]);
+void stampare_valore_intero(const char file_interfaccia[], int valore, int posizione_valore);
+void stampare_valore_testuale(const char file_interfaccia[], const char stringa[], int posizione_valore);
 
 #endif /* GESTIRE_STAMPA_H_ */

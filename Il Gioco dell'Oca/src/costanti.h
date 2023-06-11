@@ -72,6 +72,7 @@ static const long long DIVISORE = 4294367296;
 #define NUMERO_CIFRE 10
 #define SPIAZZAMENTO_MESSAGGIO_ERRORE 2
 #define SPIAZZAMENTO_STAMPA_VALORI 5
+#define SPIAZZAMENTO_SINGOLO_VALORE 2
 
 //Caratteri per scelta opzioni menu
 #define TASTO_LANCIO_DADI_MINUSCOLO 'l'
@@ -114,6 +115,7 @@ static const char CONTORNO_SUPERIORE_CASELLA = '_';
 static const char CONTORNO_INFERIORE_CASELLA = '_';
 static const char CARATTERE_PUNTO_FACCIA_DADO = '*';
 static const char CARATTERE_PUNTO_INTERROGATIVO = '?';
+static const char CARATTERE_COPPA = '$';
 static const char FILE_CASELLE_SPECIALI [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_caselle_speciali.bin";
 static const char FILE_CLASSIFICA_TOP_10 [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_classifica_top_10.bin";
 static const char FILE_CLASSIFICA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_classifica.txt";

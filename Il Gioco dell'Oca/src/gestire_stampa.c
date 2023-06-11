@@ -57,15 +57,15 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 					if (facce_dadi[indice_dadi] == 6
 							|| (facce_dadi[indice_dadi] == 5)
 							|| (facce_dadi[indice_dadi] == 4)) {
-						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
+						printf("%c", CARATTERE_PUNTO_FACCIA_DADO); fflush(stdin);
 					} else {
-						printf("%c", CARATTERE_SPAZIO);
+						printf("%c", CARATTERE_SPAZIO); fflush(stdin);
 					}
 				} else if (indice_puntini_dado == 2) {
 					if (facce_dadi[indice_dadi] == 6) {
 						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
 					} else {
-						printf("%c", CARATTERE_SPAZIO);
+						printf("%c", CARATTERE_SPAZIO); fflush(stdin);
 					}
 				} else if (indice_puntini_dado == 3) {
 					if (facce_dadi[indice_dadi] == 6
@@ -73,21 +73,21 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 							|| (facce_dadi[indice_dadi] == 4)
 							|| (facce_dadi[indice_dadi] == 3)
                             || (facce_dadi[indice_dadi] == 2)) {
-						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
+						printf("%c", CARATTERE_PUNTO_FACCIA_DADO); fflush(stdin);
 					} else {
-						printf("%c", CONTORNO_INFERIORE_CASELLA);
+						printf("%c", CONTORNO_INFERIORE_CASELLA); fflush(stdin);
 					}
 				} else if (indice_puntini_dado == 4) {
 					if (facce_dadi[indice_dadi] == 5
 							|| (facce_dadi[indice_dadi] == 3)
 							|| (facce_dadi[indice_dadi] == 1)) {
-						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
+						printf("%c", CARATTERE_PUNTO_FACCIA_DADO); fflush(stdin);
 					} else if((facce_dadi[indice_dadi] == 6)
                               || (facce_dadi[indice_dadi] == 4)
                               || (facce_dadi[indice_dadi] == 2)){
-                        printf("%c", CARATTERE_SPAZIO);
+                        printf("%c", CARATTERE_SPAZIO); fflush(stdin);
                     }else{
-                        printf("%c", CARATTERE_PUNTO_INTERROGATIVO);
+                        printf("%c", CARATTERE_PUNTO_INTERROGATIVO); fflush(stdin);
                     }
 				} else if (indice_puntini_dado == 5) {
 					if (facce_dadi[indice_dadi] == 6
@@ -95,23 +95,23 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 							|| (facce_dadi[indice_dadi] == 4)
 							|| (facce_dadi[indice_dadi] == 3)
 							|| (facce_dadi[indice_dadi] == 2)) {
-						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
+						printf("%c", CARATTERE_PUNTO_FACCIA_DADO); fflush(stdin);
 					} else {
-						printf("%c", CARATTERE_SPAZIO);
+						printf("%c", CARATTERE_SPAZIO); fflush(stdin);
 					}
 				} else if (indice_puntini_dado == 6) {
 					if (facce_dadi[indice_dadi] == 6) {
-						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
+						printf("%c", CARATTERE_PUNTO_FACCIA_DADO); fflush(stdin);
 					} else {
-						printf("%c", CARATTERE_SPAZIO);
+						printf("%c", CARATTERE_SPAZIO); fflush(stdin);
 					}
 				} else if (indice_puntini_dado == 7) {
 					if ((facce_dadi[indice_dadi] == 6)
 							|| (facce_dadi[indice_dadi] == 5)
 							|| (facce_dadi[indice_dadi] == 4)) {
-						printf("%c", CARATTERE_PUNTO_FACCIA_DADO);
+						printf("%c", CARATTERE_PUNTO_FACCIA_DADO); fflush(stdin);
 					} else {
-						printf("%c", CONTORNO_INFERIORE_CASELLA);
+						printf("%c", CONTORNO_INFERIORE_CASELLA); fflush(stdin);
 					}
 				}
 				indice_puntini_dado = indice_puntini_dado + 1;
@@ -120,11 +120,11 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 		}
 		fclose(f_interfaccia);
 	} else {
-		printf("%s", ERRORE_FILE_NON_TROVATO);
+		printf("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
 		fflush(stdout);
-		printf("%c", CARATTERE_SPAZIO);
+		printf("%c", CARATTERE_SPAZIO); fflush(stdin);
 		fflush(stdout);
-		printf("%s", file_interfaccia);
+		printf("%s", file_interfaccia); fflush(stdin);
 		fflush(stdout);
 	}
 
@@ -138,18 +138,18 @@ void stampare_testo (const char file_interfaccia[]) {
 		int indice_nuova_riga = 0;
 		while (indice_nuova_riga < ALTEZZA_SCHERMATA) {
 			simbolo_letto = fgetc(f_interfaccia);
-			printf("%c", simbolo_letto);
+			printf("%c", simbolo_letto); fflush(stdin);
 			if (simbolo_letto == CARATTERE_A_CAPO) {
 				indice_nuova_riga = indice_nuova_riga + 1;
 			}
 		}
 		fclose(f_interfaccia);
 	} else {
-		printf("%s", ERRORE_FILE_NON_TROVATO);
+		printf("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
 		fflush(stdout);
-		printf("%c", CARATTERE_SPAZIO);
+		printf("%c", CARATTERE_SPAZIO); fflush(stdin);
 		fflush(stdout);
-		printf("%s", file_interfaccia);
+		printf("%s", file_interfaccia); fflush(stdin);
 		fflush(stdout);
 	}
 
@@ -217,11 +217,11 @@ void posizionare_cursore_in_attesa(const char file_interfaccia[]) {
 		posizionare_cursore (posizione_riga, posizione_colonna);
 		fclose(f_interfaccia);
 	} else {
-		printf ("%s", ERRORE_FILE_NON_TROVATO);
+		printf ("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
 		fflush (stdout);
-		printf ("%c", CARATTERE_SPAZIO);
+		printf ("%c", CARATTERE_SPAZIO); fflush(stdin);
 		fflush (stdout);
-		printf ("%s", file_interfaccia);
+		printf ("%s", file_interfaccia); fflush(stdin);
 		fflush (stdout);
 	}
 }
@@ -242,24 +242,24 @@ void cancellare_schermata () {
 }
 
 
-void stampare_valore_intero(const char file_interfaccia[], int valore){
+void stampare_valore_intero(const char file_interfaccia[], int valore, int posizione_valore){
     FILE *f_interfaccia = fopen(file_interfaccia, "r");
     if (f_interfaccia != NULL) {
-        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_STAMPA_VALORI);
+        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_STAMPA_VALORI + ((posizione_valore - 1) * SPIAZZAMENTO_SINGOLO_VALORE));
         int posizione_riga;
         int posizione_colonna;
         fscanf (f_interfaccia, "%d ", &posizione_riga);
         scorrere_righe_file(f_interfaccia, 1);
         fscanf (f_interfaccia, "%d ", &posizione_colonna);
         posizionare_cursore (posizione_riga, posizione_colonna);
-        printf("%d", valore);
+        printf("%d", valore); fflush(stdin);
     fclose(f_interfaccia);
     } else {
-    printf ("%s", ERRORE_FILE_NON_TROVATO);
+    printf ("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
     fflush (stdout);
-    printf ("%c", CARATTERE_SPAZIO);
+    printf ("%c", CARATTERE_SPAZIO); fflush(stdin);
     fflush (stdout);
-    printf ("%s", file_interfaccia);
+    printf ("%s", file_interfaccia); fflush(stdin);
     fflush (stdout);
     }
 }
@@ -268,24 +268,54 @@ void stampare_valore_intero(const char file_interfaccia[], int valore){
 
 
 
-void stampare_valore_testuale(const char file_interfaccia[], const char stringa[]){
+void stampare_valore_testuale(const char file_interfaccia[], const char stringa[], int posizione_valore){
     FILE *f_interfaccia = fopen(file_interfaccia, "r");
     if (f_interfaccia != NULL) {
-        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_STAMPA_VALORI);
+        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_STAMPA_VALORI + ((posizione_valore - 1) * SPIAZZAMENTO_SINGOLO_VALORE));
         int posizione_riga;
         int posizione_colonna;
         fscanf (f_interfaccia, "%d ", &posizione_riga);
         scorrere_righe_file(f_interfaccia, 1);
         fscanf (f_interfaccia, "%d ", &posizione_colonna);
         posizionare_cursore (posizione_riga, posizione_colonna);
-        printf("%s", stringa);
+        printf("%s", stringa); fflush(stdin);
         fclose(f_interfaccia);
     } else {
-        printf ("%s", ERRORE_FILE_NON_TROVATO);
+        printf ("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
         fflush (stdout);
-        printf ("%c", CARATTERE_SPAZIO);
+        printf ("%c", CARATTERE_SPAZIO); fflush(stdin);
         fflush (stdout);
-        printf ("%s", file_interfaccia);
+        printf ("%s", file_interfaccia); fflush(stdin);
         fflush (stdout);
     }
+}
+
+
+
+void stampare_vittoria (const char file_interfaccia[]) {
+
+    FILE * f_interfaccia = fopen(file_interfaccia, "r");
+    if (f_interfaccia != NULL) {
+        char simbolo_letto;
+        int indice_nuova_riga = 0;
+        while (indice_nuova_riga < ALTEZZA_SCHERMATA) {
+            simbolo_letto = fgetc(f_interfaccia);
+            if(simbolo_letto == CARATTERE_COPPA){
+
+            }
+            printf("%c", simbolo_letto); fflush(stdin);
+            if (simbolo_letto == CARATTERE_A_CAPO) {
+                indice_nuova_riga = indice_nuova_riga + 1;
+            }
+        }
+        fclose(f_interfaccia);
+    } else {
+        printf("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
+        fflush(stdout);
+        printf("%c", CARATTERE_SPAZIO); fflush(stdin);
+        fflush(stdout);
+        printf("%s", file_interfaccia); fflush(stdin);
+        fflush(stdout);
+    }
+
 }

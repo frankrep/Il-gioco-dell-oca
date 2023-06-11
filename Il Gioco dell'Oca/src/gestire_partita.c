@@ -71,7 +71,7 @@ vincitore gestire_partita (partita* partita_attuale) {
         stampare_testo (FILE_VITTORIA_NOMI);
         char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
         leggere_nome_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale)), nome_giocatore);
-        stampare_valore_testuale(FILE_VITTORIA_NOMI, nome_giocatore);
+        stampare_valore_testuale(FILE_VITTORIA_NOMI, nome_giocatore, 1);
         posizionare_cursore_in_attesa(FILE_SCELTA_G_INIZIALE);
         vincitore vincitore_partita = inizializzare_vincitore (partita_attuale);
         return vincitore_partita;
@@ -88,7 +88,7 @@ void scegliere_giocatore (partita* partita_attuale) {
         cancellare_schermata();
         stampare_testo (FILE_SCELTA_G_INIZIALE);
         leggere_nome_giocatore(leggere_giocatore(*partita_attuale,indice_giocatori),nome_giocatore);
-        stampare_valore_testuale(FILE_SCELTA_G_INIZIALE, nome_giocatore);
+        stampare_valore_testuale(FILE_SCELTA_G_INIZIALE, nome_giocatore, 1);
         do{
             posizionare_cursore_in_attesa (FILE_SCELTA_G_INIZIALE);
             fflush(stdin);
@@ -351,7 +351,7 @@ void gestire_autorizzazione (partita* partita_attuale) {
         //stampare schermata_locanda_turno_passato e attende input
         cancellare_schermata();
         stampare_testo(FILE_SCHERMATA_LOCANDA_TURNO_PASSATO);
-        stampare_valore_intero(FILE_SCHERMATA_LOCANDA_TURNO_PASSATO, leggere_autorizzazione(giocatore_attuale));
+        stampare_valore_intero(FILE_SCHERMATA_LOCANDA_TURNO_PASSATO, leggere_autorizzazione(giocatore_attuale), 1);
         posizionare_cursore_in_attesa(FILE_SCHERMATA_LOCANDA_TURNO_PASSATO);
         fgetc(stdin);
         scrivere_autorizzazione ( &giocatore_attuale, leggere_autorizzazione (giocatore_attuale) - 1);
@@ -376,6 +376,11 @@ void gestire_autorizzazione (partita* partita_attuale) {
             fgetc(stdin);
             scrivere_autorizzazione (&giocatore_attuale, 0);
         }
+    }else if ( confrontare_stringhe (nome_casella, NOME_POZZO) == VERO ){
+        cancellare_schermata();
+        stampare_testo(FILE_SCHERMATA_POZZO);
+        posizionare_cursore_in_attesa(FILE_SCHERMATA_POZZO);
+        fgetc(stdin);
     }
     scrivere_giocatore ( partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
     return;
