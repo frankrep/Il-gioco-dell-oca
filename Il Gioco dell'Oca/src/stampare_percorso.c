@@ -2,11 +2,12 @@
 #include "costanti.h"
 #include "partita.h"
 #include "giocatore.h"
-#include "gestire_partita.h"
 #include "stampare_percorso.h"
 #include "generare_percorso.h"
 #include "gestire_stampa.h"
 #include "windows.h"
+
+
 
 void stampare_interfaccia_percorso(partita* partita_attuale, const char file_interfaccia[]){
     cancellare_schermata();

@@ -61,7 +61,7 @@ vincitore gestire_partita (partita* partita_attuale) {
                 stampare_dadi_partita(FILE_PERCORSO, partita_attuale);
                 posizionare_cursore_in_attesa(FILE_PERCORSO);
 
-                //inserire scritta per l'iserimento di A per avanzare
+                //inserire scritta per l'inserimento di A per avanzare
                 do {
                     scanf("%c", &scelta);
                     fflush(stdin);
@@ -74,8 +74,12 @@ vincitore gestire_partita (partita* partita_attuale) {
                 fgetc(stdin);
                 fflush(stdin);
                 verificare_casella (partita_attuale);
-            }
 
+
+                stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
+                posizionare_cursore_in_attesa(FILE_PERCORSO);
+                //inserire il messaggio per dire di premere un tasto per concludere il turno
+            }
             else {
                 //stampare menu
             }

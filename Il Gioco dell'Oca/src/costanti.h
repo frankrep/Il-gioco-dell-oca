@@ -139,7 +139,7 @@ static const char FILE_VITTORIA_NOMI[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\s
 static const char FILE_INTRO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_intro.txt";
 static const char FILE_EASTEREGG1[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_easteregg1.txt";
 static const char FILE_EASTEREGG2[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_easteregg2.txt";
-static const char FILE_SALVATAGGIO [] = "..\\src\\interfacce\\file_salvataggio.bin";
+static const char FILE_SALVATAGGIO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_salvataggio.bin";
 static const char FILE_SCHERMATA_LABIRINTO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_labirinto.txt";
 static const char FILE_SCHERMATA_LANCIO_DADI_PRIGIONE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_lancio_dadi_prigione.txt";
 static const char FILE_SCHERMATA_LIBERATO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_liberato.txt";
@@ -157,6 +157,7 @@ static const char FILE_RICHIESTA_C_INSERIMENTO[NUMERO_MASSIMO_CARATTERI_PERCORSO
 static const char FILE_RICHIESTA_C_SALVATAGGIO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_richiesta_c_salvataggio.txt";
 static const char FILE_STAMPE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\stampe.txt";
 static const char FILE_MESSAGGI_ERRORE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_stampe.txt";
+static const char FILE_MENU_DI_PAUSA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_menu_di_gioco.txt";
 
 
 
