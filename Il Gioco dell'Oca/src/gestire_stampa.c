@@ -45,13 +45,10 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 		while ((facce_dadi[indice_dadi] != 0) && (indice_dadi < NUMERO_DADI)) {
             indice_puntini_dado = 1;
 			while (indice_puntini_dado <= NUMERO_MASSIMO_PUNTINI_FACCIA_DADO) {
-				//inserire funzione di conversione
 				fscanf(f_interfaccia, "%d ", &posizione_riga);
                 scorrere_righe_file(f_interfaccia, 1);
-
 				fscanf(f_interfaccia, "%d ", &posizione_colonna);
                 scorrere_righe_file(f_interfaccia, 1);
-
 				posizionare_cursore(posizione_riga, posizione_colonna - 1);
 				if (indice_puntini_dado == 1) {
 					if (facce_dadi[indice_dadi] == 6
@@ -301,9 +298,12 @@ void stampare_vittoria (const char file_interfaccia[]) {
         while (indice_nuova_riga < ALTEZZA_SCHERMATA) {
             simbolo_letto = fgetc(f_interfaccia);
             if(simbolo_letto == CARATTERE_COPPA){
-
+                cambiare_colore_testo(ARANCIO);
             }
             printf("%c", simbolo_letto); fflush(stdin);
+            if(simbolo_letto == CARATTERE_COPPA){
+                cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
+            }
             if (simbolo_letto == CARATTERE_A_CAPO) {
                 indice_nuova_riga = indice_nuova_riga + 1;
             }
@@ -318,4 +318,54 @@ void stampare_vittoria (const char file_interfaccia[]) {
         fflush(stdout);
     }
 
+}
+
+
+void stampare_intro (const char file_interfaccia[]) {
+
+    FILE * f_interfaccia = fopen(file_interfaccia, "r");
+    if (f_interfaccia != NULL) {
+        char simbolo_letto;
+        int indice_nuova_riga = 0;
+        cambiare_colore_testo(VERDE_FLUO);
+        while (indice_nuova_riga < ALTEZZA_TITOLO_GRANDE) {
+            simbolo_letto = fgetc(f_interfaccia);
+            printf("%c", simbolo_letto); fflush(stdin);
+            if (simbolo_letto == CARATTERE_A_CAPO) {
+                indice_nuova_riga = indice_nuova_riga + 1;
+            }
+        }
+        while (indice_nuova_riga < ALTEZZA_SCHERMATA) {
+            simbolo_letto = fgetc(f_interfaccia);
+            if(simbolo_letto == CARATTERE_BECCO){
+                cambiare_colore_testo(ARANCIO);
+            }else if (simbolo_letto == CARATTERE_SFONDO){
+                cambiare_colore_testo(CELESTE);
+            }
+            printf("%c", simbolo_letto); fflush(stdin);
+            if(simbolo_letto == CARATTERE_BECCO){
+                cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
+            }else if (simbolo_letto == CARATTERE_SFONDO){
+                cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
+            }
+            if (simbolo_letto == CARATTERE_A_CAPO) {
+                indice_nuova_riga = indice_nuova_riga + 1;
+            }
+        }
+        fclose(f_interfaccia);
+    } else {
+        printf("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
+        fflush(stdout);
+        printf("%c", CARATTERE_SPAZIO); fflush(stdin);
+        fflush(stdout);
+        printf("%s", file_interfaccia); fflush(stdin);
+        fflush(stdout);
+    }
+
+}
+
+
+void cambiare_colore_testo(int valore_colore){
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, valore_colore);
 }

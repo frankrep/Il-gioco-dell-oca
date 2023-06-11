@@ -26,7 +26,7 @@ int main() {
 
     //stampa della schermata con il logo e la richiesta di premere un tasto qualsiasi
 
-    stampare_testo(FILE_INTRO);
+    stampare_intro(FILE_INTRO);
     posizionare_cursore_in_attesa(FILE_INTRO);
     fgetc(stdin);
     fflush(stdout);

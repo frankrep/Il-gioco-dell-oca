@@ -87,7 +87,7 @@ vincitore gestire_partita (partita* partita_attuale) {
         }
         } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale) );
         cancellare_schermata();
-        stampare_testo (FILE_VITTORIA_NOMI);
+        stampare_vittoria(FILE_VITTORIA_NOMI);
         char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
         leggere_nome_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale)), nome_giocatore);
         stampare_valore_testuale(FILE_VITTORIA_NOMI, nome_giocatore, 1);

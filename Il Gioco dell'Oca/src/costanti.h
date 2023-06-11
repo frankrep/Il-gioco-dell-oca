@@ -59,6 +59,7 @@ static const long long DIVISORE = 4294367296;
 #define LUNGHEZZA_SCHERMATA 80
 #define ALTEZZA_SCHERMATA 25
 #define ALTEZZA_MENU_INTERFACCIA_PERCORSO 6
+#define ALTEZZA_TITOLO_GRANDE 8
 #define RISPOSTA_AFFERMATIVA_MAIUSCOLO 'S'
 #define RISPOSTA_AFFERMATIVA_MINUSCOLO 's'
 #define RISPOSTA_NEGATIVA_MAIUSCOLO 'N'
@@ -84,6 +85,26 @@ static const long long DIVISORE = 4294367296;
 #define TASTO_SALVATAGGIO_MINUSCOLO 's'
 #define TASTO_SALVATAGGIO_MAIUSCOLO 'S'
 #define TASTO_INDIETRO '0'
+
+
+//COLORI SCHERMATA
+#define COLORE_PRINCIPALE_SCHERMATA 15
+#define NERO 0
+#define BLU 1
+#define VERDE 2
+#define AZZURRO 3
+#define ROSSO 4
+#define VIOLA 5
+#define ARANCIO 6
+#define GRIGIO_MOLTO_CHIARO 7
+#define GRIGIO 8
+#define BLU_OCEANO 9
+#define VERDE_FLUO 10
+#define CELESTE 11
+#define ROSSO_PALLIDO 12
+#define VIOLETTO 13
+#define GIALLINO 14
+#define BIANCO 15
 
 
 static const char ERRORE_FILE_NON_TROVATO[LUNGHEZZA_SCHERMATA + 1] = "ERRORE! FILE NON TROVATO \0";
@@ -116,6 +137,8 @@ static const char CONTORNO_INFERIORE_CASELLA = '_';
 static const char CARATTERE_PUNTO_FACCIA_DADO = '*';
 static const char CARATTERE_PUNTO_INTERROGATIVO = '?';
 static const char CARATTERE_COPPA = '$';
+static const char CARATTERE_BECCO = '8';
+static const char CARATTERE_SFONDO = '_';
 static const char FILE_CASELLE_SPECIALI [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_caselle_speciali.bin";
 static const char FILE_CLASSIFICA_TOP_10 [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_classifica_top_10.bin";
 static const char FILE_CLASSIFICA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_classifica.txt";

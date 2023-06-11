@@ -19,5 +19,8 @@ void stampare_dado(const char file_interfaccia[], int valore_faccia_dado);
 void cancellare_schermata();
 void stampare_valore_intero(const char file_interfaccia[], int valore, int posizione_valore);
 void stampare_valore_testuale(const char file_interfaccia[], const char stringa[], int posizione_valore);
+void cambiare_colore_testo(int valore_colore);
+void stampare_vittoria (const char file_interfaccia[]);
+void stampare_intro (const char file_interfaccia[]);
 
 #endif /* GESTIRE_STAMPA_H_ */

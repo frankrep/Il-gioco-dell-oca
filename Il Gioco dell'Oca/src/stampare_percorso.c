@@ -218,11 +218,10 @@ void stampare_contenuto_casella(partita* partita_attuale, int numero_casella) {
 
 
 void stampare_giocatori_superiori_casella(partita* partita_attuale, int numero_casella) {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_1)) == numero_casella) {
-        SetConsoleTextAttribute(hConsole, 4);
+        cambiare_colore_testo(ROSSO);
         printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_1)));
-        SetConsoleTextAttribute(hConsole, 7);
+        cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
     }else {
         printf("%c", CARATTERE_SPAZIO);
     }
@@ -232,9 +231,9 @@ void stampare_giocatori_superiori_casella(partita* partita_attuale, int numero_c
         indice_spazio = indice_spazio + 1;
     }
     if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_2)) == numero_casella) {
-        SetConsoleTextAttribute(hConsole, 5);
+        cambiare_colore_testo(BLU);
         printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_2)));
-        SetConsoleTextAttribute(hConsole, 7);
+        cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
     }else {
         printf("%c", CARATTERE_SPAZIO);
     }
@@ -242,12 +241,11 @@ void stampare_giocatori_superiori_casella(partita* partita_attuale, int numero_c
 
 
 void stampare_giocatori_inferiori_casella(partita* partita_attuale, int numero_casella) {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     if (leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)) != FINE_STRINGA) {
         if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)) == numero_casella) {
-            SetConsoleTextAttribute(hConsole, 2);
+            cambiare_colore_testo(VERDE_FLUO);
             printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)));
-            SetConsoleTextAttribute(hConsole, 7);
+            cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
         } else {
             printf("%c", CONTORNO_INFERIORE_CASELLA);
         }
@@ -261,9 +259,9 @@ void stampare_giocatori_inferiori_casella(partita* partita_attuale, int numero_c
     }
     if (leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)) != FINE_STRINGA) {
         if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)) == numero_casella) {
-            SetConsoleTextAttribute(hConsole, 6);
+            cambiare_colore_testo(VIOLETTO);
             printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)));
-            SetConsoleTextAttribute(hConsole, 7);
+            cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
         } else {
             printf("%c", CONTORNO_INFERIORE_CASELLA);
         }
