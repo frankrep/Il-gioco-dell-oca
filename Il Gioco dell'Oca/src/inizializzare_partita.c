@@ -52,7 +52,7 @@ void inizializzare_giocatori (partita *partita_attuale) {
                 }
             } while (indietro != 0);
         }
-    } while (indietro != 1 && leggere_numero_giocatori(*partita_attuale) == 0);
+    } while (indietro != 1 && leggere_lunghezza_percorso (*partita_attuale) == 0);
     return;
 }
 

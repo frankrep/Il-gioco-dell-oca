@@ -35,10 +35,9 @@ int main() {
     int opzione;
     vincitore vincitore_partita;
 
-    int indietro = 0;
 
     do {
-        system("cls");
+        cancellare_schermata();
         opzione = scegliere_opzione_menu();
         
         if (opzione == 1) {
@@ -59,7 +58,7 @@ int main() {
                 }
                 else {
                     if (opzione == 4) {
-                        chiedere_aiuto (opzione);
+                        chiedere_aiuto ();
                     }
                     else {
                         confermare_scelta (&uscita);

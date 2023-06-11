@@ -56,7 +56,7 @@ void salvare_partita (partita* partita_attuale) {
 
 
 void confermare_scelta (char * risposta) {
-    //decidere se stampare da file la frase
+    //decidere se stampare da file la frase così da poterla personalizzare
     printf ("Vuoi confermare? (%c/%c)  ", RISPOSTA_AFFERMATIVA_MAIUSCOLO, RISPOSTA_NEGATIVA_MAIUSCOLO);
     do {
         scanf("%c", risposta);

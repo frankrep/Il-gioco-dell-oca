@@ -4,7 +4,8 @@
 #include "costanti.h"
 #include "gestire_stampa.h"
 //prova commit da cclone
-void chiedere_aiuto (int opzione_scelta) {
+void chiedere_aiuto () {
+    int opzione_scelta;
     do {
         opzione_scelta = scegliere_aiuto();
         int torna_indietro = 1;

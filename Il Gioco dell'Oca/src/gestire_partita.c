@@ -14,6 +14,8 @@
 #include "generare_percorso.h"
 #include "gestire_stampa.h"
 #include "stampare_percorso.h"
+#include "salvare_caricare_partita.h"
+#include "aiuto.h"
 
 
 void scegliere_giocatore(partita* partita_attuale);
@@ -30,6 +32,8 @@ void verificare_casella(partita* partita_attuale);
 void gestire_oca(partita* partita_attuale);
 void impostare_autorizzazioni(partita* partita_attuale, const char nome_casella_attuale[]);
 void gestire_autorizzazione(partita* partita_attuale);
+int scegliere_opzione_menu_di_pausa ();
+int gestire_menu_di_pausa (partita* partita_attuale);
 
 
 
@@ -81,11 +85,14 @@ vincitore gestire_partita (partita* partita_attuale) {
                 //inserire il messaggio per dire di premere un tasto per concludere il turno
             }
             else {
+                scelta = gestire_menu_di_pausa(partita_attuale);
+
+
                 //stampare menu
             }
 
         }
-        } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale) );
+        } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale)  && scelta != 0);
         cancellare_schermata();
         stampare_vittoria(FILE_VITTORIA_NOMI);
         char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
@@ -94,6 +101,61 @@ vincitore gestire_partita (partita* partita_attuale) {
         posizionare_cursore_in_attesa(FILE_SCELTA_G_INIZIALE);
         vincitore vincitore_partita = inizializzare_vincitore (partita_attuale);
         return vincitore_partita;
+}
+
+
+
+int gestire_menu_di_pausa (partita* partita_attuale) {
+    char uscita;
+    int scelta = scegliere_opzione_menu_di_pausa();
+    do {
+        if (scelta == 2) {
+            salvare_partita(partita_attuale);
+        } else {
+            if (scelta == 3) {
+                chiedere_aiuto();
+            } else {
+                if (scelta == 0) {
+                    confermare_scelta(&uscita);
+                    //stampare messaggio del controllo sulla sicurezza del salvataggio
+                    //creare schermata conferma uscita senza salvataggio
+                }
+            }
+        }
+    } while (scelta != 1 && uscita != 0);
+    return scelta;
+}
+
+
+
+int scegliere_opzione_menu_di_pausa () {
+    int scelta;
+    cancellare_schermata();
+    stampare_testo(FILE_MENU_DI_PAUSA);
+
+    do {
+
+
+        //modificare messaggio per coerenza con quello a cui risponde
+        int correttezza_inserimento;
+        do {
+            posizionare_cursore_in_attesa(FILE_MENU_DI_PAUSA);
+            correttezza_inserimento = scanf("&d", &scelta);
+            fflush(stdin);
+            if (correttezza_inserimento == 0) {
+                stampare_messaggio_errore(FILE_MENU_DI_PAUSA);
+            }
+        } while (correttezza_inserimento == 0);
+
+
+        //modificare messaggio per coerenza con quello a cui risponde
+        if ( scelta < 0 || scelta > NUMERO_MASSIMO_OPZIONE_PAUSA ) {
+            stampare_messaggio_errore(FILE_MENU_DI_PAUSA);
+        }
+
+
+    } while (scelta < 0 || scelta > NUMERO_MASSIMO_OPZIONE_PAUSA );
+    return scelta;
 }
 
 
