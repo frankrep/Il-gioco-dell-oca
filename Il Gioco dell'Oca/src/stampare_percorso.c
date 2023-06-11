@@ -12,11 +12,7 @@ void stampare_interfaccia_percorso(partita* partita_attuale, const char file_int
     stampare_percorso(partita_attuale);
     FILE *f_interfaccia = NULL;
     if ((f_interfaccia = fopen(file_interfaccia, "r")) != NULL) {
-        int indice_carattere = 0;
-        while (indice_carattere < (LUNGHEZZA_SCHERMATA * (ALTEZZA_SCHERMATA - ALTEZZA_MENU_INTERFACCIA_PERCORSO))) {
-            fgetc(f_interfaccia);
-            indice_carattere = indice_carattere + 1;
-        }
+        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA - ALTEZZA_MENU_INTERFACCIA_PERCORSO);
         char simbolo_letto;
         int indice_altezza_menu = 0;
         while (indice_altezza_menu < ALTEZZA_MENU_INTERFACCIA_PERCORSO) {
@@ -26,6 +22,16 @@ void stampare_interfaccia_percorso(partita* partita_attuale, const char file_int
                 indice_altezza_menu = indice_altezza_menu + 1;
             }
         }
+        scorrere_righe_file(f_interfaccia, SPIAZZAMENTO_STAMPA_VALORI);
+        int posizione_riga;
+        int posizione_colonna;
+        fscanf (f_interfaccia, "%d ", &posizione_riga);
+        scorrere_righe_file(f_interfaccia, 1);
+        fscanf (f_interfaccia, "%d ", &posizione_colonna);
+        posizionare_cursore (posizione_riga, posizione_colonna);
+        char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+        leggere_nome_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale)), nome_giocatore);
+        printf("%18s", nome_giocatore);
         fclose(f_interfaccia);
     } else {
         printf("%s", ERRORE_FILE_NON_TROVATO);

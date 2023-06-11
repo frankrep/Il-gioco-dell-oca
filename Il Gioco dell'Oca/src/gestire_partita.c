@@ -71,6 +71,12 @@ vincitore gestire_partita (partita* partita_attuale) {
         }
 
         } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale) );
+        cancellare_schermata();
+        stampare_testo (FILE_VITTORIA_NOMI);
+        char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+        leggere_nome_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale)), nome_giocatore);
+        stampare_valore_testuale(FILE_VITTORIA_NOMI, nome_giocatore);
+        posizionare_cursore_in_attesa(FILE_SCELTA_G_INIZIALE);
         vincitore vincitore_partita = inizializzare_vincitore (partita_attuale);
         return vincitore_partita;
 }
@@ -281,8 +287,9 @@ void verificare_casella (partita* partita_attuale) {
         stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
         posizionare_cursore_in_attesa(FILE_PERCORSO);
         fgetc(stdin);
-        leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale))) - 1), nome_casella);
-    }while(nome_casella[0] != FINE_STRINGA);
+        giocatore_attuale = leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale) );
+        leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
+    }while((nome_casella[0] != FINE_STRINGA) && (leggere_autorizzazione(giocatore_attuale) == 0));
     return;
 }
 
@@ -341,6 +348,7 @@ void gestire_autorizzazione (partita* partita_attuale) {
         cancellare_schermata();
         stampare_testo(FILE_SCHERMATA_LOCANDA_TURNO_PASSATO);
         posizionare_cursore_in_attesa(FILE_SCHERMATA_SCHELETRO);
+        fgetc(stdin);
     }
 
     //se il giocatore si trova sulla casella prigione,
@@ -349,9 +357,12 @@ void gestire_autorizzazione (partita* partita_attuale) {
         cancellare_schermata();
         stampare_testo(FILE_SCHERMATA_LANCIO_DADI_PRIGIONE);
         posizionare_cursore_in_attesa(FILE_SCHERMATA_LANCIO_DADI_PRIGIONE);
+        fgetc(stdin);
         lanciare_dadi (partita_attuale);
+        fgetc(stdin);
         //stampare schermata_lancio_dadi_prigione con lancio effettuato e richiedere input
         stampare_dadi_partita(FILE_SCHERMATA_LANCIO_DADI_PRIGIONE, partita_attuale);
+        fgetc(stdin);
         if ( (sommare_dadi (*partita_attuale) == DADO_MINORE_USCITA_PRIGIONE) || (sommare_dadi (*partita_attuale) == DADO_MAGGIORE_USCITA_PRIGIONE) ) {
             scrivere_autorizzazione (&giocatore_attuale, 0);
         }
