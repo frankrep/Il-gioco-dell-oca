@@ -63,10 +63,10 @@ vincitore gestire_partita (partita* partita_attuale) {
                 lanciare_dadi (partita_attuale);
                 incrementare_lanci_effettuati(partita_attuale);
                 stampare_dadi_partita(FILE_PERCORSO, partita_attuale);
-                posizionare_cursore_in_attesa(FILE_PERCORSO);
 
                 //inserire scritta per l'inserimento di A per avanzare
                 do {
+                    posizionare_cursore_in_attesa(FILE_PERCORSO);
                     scanf("%c", &scelta);
                     fflush(stdin);
                     if ( (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) ) {
