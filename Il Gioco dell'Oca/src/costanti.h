@@ -191,8 +191,8 @@ static const char FILE_MESSAGGI[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\i
 static const char FILE_MENU_DI_PAUSA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_menu_di_gioco.txt";
 static const char FILE_CARICAMENTO_FALLITO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_caricamento_fallito.txt";
 static const char FILE_RICHIESTA_USCITA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_richiesta_uscita.txt";
-static const char FILE_CARICAMENTO_RIUSCITA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_caricamento_riuscita.txt";
-
+static const char FILE_CARICAMENTO_RIUSCITO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_caricamento_riuscito.txt";
+static const char FILE_SOVRASCRIVERE [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_sovrascrivere.txt";
 
 
 
