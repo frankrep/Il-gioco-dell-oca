@@ -19,7 +19,7 @@
 |____|____|____|____|____|____|____|____|____|____|____|____|____|____|____|   
                                _____   _____                                   
                               |     | |     |                                  
--M  menu                      |  ?  | |  ?  |      -S  salva partita           
+-M  menu                      |  ?  | |  ?  |                                  
                               |_____| |_____|                                  
                     e' il tuo turno:                                           
                                                                                
@@ -30,11 +30,11 @@
 1 //codice messaggio
 24 // riga inserimento nome giocatore
 1 // colonna inserimento nome giocatore
-21 // riga lancio dadi
-1 // colonna lancio dadi
+22 // riga lancio dadi
+52 // colonna lancio dadi
 9 // codice messaggio
-21 // riga avanza
-1 // colonna avanza
+22 // riga avanza
+52 // colonna avanza
 10 // codice messaggio
 
 
