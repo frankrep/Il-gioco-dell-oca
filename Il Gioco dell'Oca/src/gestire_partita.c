@@ -184,7 +184,7 @@ void scegliere_giocatore (partita* partita_attuale) {
     char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
         cancellare_schermata();
-        stampare_intro(FILE_SCELTA_G_INIZIALE);
+        stampare_testo(FILE_SCELTA_G_INIZIALE);
         leggere_nome_giocatore(leggere_giocatore(*partita_attuale,indice_giocatori),nome_giocatore);
         stampare_valore_testuale_centrato(FILE_SCELTA_G_INIZIALE, nome_giocatore, 1, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
         do{
@@ -220,13 +220,20 @@ vincitore inizializzare_vincitore (partita* partita_attuale) {
 
     cancellare_schermata();
     stampare_vittoria(FILE_VITTORIA_NOMI);
-    char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
-    leggere_nome_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale)), nome_giocatore);
     cambiare_colore_testo(COLORI_GIOCATORI[leggere_turno(*partita_attuale)]);
-    stampare_valore_testuale_centrato(FILE_VITTORIA_NOMI, nome_giocatore, 1, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
+    stampare_valore_testuale_centrato(FILE_VITTORIA_NOMI, nome_vincitore, 1, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
     cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
     posizionare_cursore_in_attesa(FILE_SCELTA_G_INIZIALE);
     fgetc(stdin);
+
+    cancellare_schermata();
+    stampare_vittoria(FILE_DETTAGLI_PARTITA);
+    cambiare_colore_testo(COLORI_GIOCATORI[leggere_turno(*partita_attuale)]);
+    stampare_valore_testuale_centrato(FILE_VITTORIA_NOMI, nome_vincitore, 1, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
+    cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
+    posizionare_cursore_in_attesa(FILE_SCELTA_G_INIZIALE);
+    fgetc(stdin);
+
     //funzione per il campo punteggio
     return vincitore_partita;
 }
