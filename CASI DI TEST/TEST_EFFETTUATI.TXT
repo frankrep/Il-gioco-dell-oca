@@ -1,0 +1,337 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+inizializzare_nomi_giocatori
+
+<TEST NOME GIOCATORE 1
+<<INPUT>>
+nome_giocatore = "A"
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST NOME GIOCATORE 2
+<<INPUT>>
+nome_giocatore = "AAA"
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST NOME GIOCATORE 3
+<<INPUT>>
+nome_giocatore = "AAAAAAAAAAAAAAAAAA"
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST NOME GIOCATORE 4
+<<INPUT>>
+nome_giocatore = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+richiedere_numero_caselle
+
+<TEST LUNGHEZZA PERCORSO 1
+<<INPUT>>
+lunghezza_percorso = 17
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST LUNGHEZZA PERCORSO 2
+<<INPUT>>
+lunghezza_percorso = 5
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST LUNGHEZZA PERCORSO 3
+<<INPUT>>
+lunghezza_percorso = 90
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST LUNGHEZZA PERCORSO 4
+<<INPUT>>
+lunghezza_percorso = 1000
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+spostare_giocatore
+
+<TEST SPOSTARE GIOCATORE 1
+<<INPUT>>
+partita_attuale;
+dadi {6,4}
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+calcolare_caselle_eccesso
+
+<TEST ECCESSO 1
+<<INPUT>>
+posizione_giocatore = {88}
+dadi = {1, 1}
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST ECCESSO 2
+<<INPUT>>
+posizione_giocatore = {88}
+dadi = {6, 6}
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST ECCESSO 3
+<<INPUT>>
+posizione_giocatore = {87}
+dadi = {1, 1}
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+scrivere_nome_partita
+
+<TEST NOME PARTITA 1
+<<INPUT>>
+nome_partita= "A"
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST NOME PARTITA 2
+<<INPUT>>
+nome_partita= "AAA"
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST NOME PARTITA 3
+<<INPUT>>
+nome_partita= "AAAAAAAAAAAAAAAAAA"
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST NOME PARTITA 4
+<<INPUT>>
+nome_partita= "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+incrementare_lanci_effettuati
+
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+impostare_autorizzazioni
+
+<TEST AUTORIZZAZIONE 1
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST AUTORIZZAZIONE 2
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST AUTORIZZAZIONE 3
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+riempire_percorso
+
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+gestire_autorizzazione
+
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+verificare_casella
+
+<TEST VERIFICARE CASELLA 1 (PONTE)
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST VERIFICARE CASELLA 2 (LOCANDA)
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+
+<TEST VERIFICARE CASELLA 3 (SCHELETRO)
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+
+<TEST VERIFICARE CASELLA 4 (LABIRINTO)
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+
+<TEST VERIFICARE CASELLA 5 (POZZO)
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+
+<TEST VERIFICARE CASELLA 6 (PRIGIONE)
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+
+<TEST VERIFICARE CASELLA 7 (OCA)
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+
+<TEST VERIFICARE CASELLA 8 (OCA COME PRIMA CASELLA 3+6)
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+
+<TEST VERIFICARE CASELLA 9 (OCA COME PRIMA CASELLA 4+5)
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+<TEST GESTIRE OCA 1 (OCA)
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST GESTIRE OCA 2 (OCA COME PRIMA CASELLA 3+6)
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST GESTIRE OCA 3 (OCA COME PRIMA CASELLA 4+5)
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+inizializzare_vincitore
+
+<TEST INIZIALIZZARE VINCITORE 1
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST INIZIALIZZARE VINCITORE 2
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+trovare_posizione_massimo
+
+<TEST TROVARE POSIZIONE MASSIMO 1
+<<INPUT>>
+valori = {1, 2, 3, 4, 5, 10}
+dimensione_valori = {6}
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST TROVARE POSIZIONE MASSIMO 2
+<<INPUT>>
+valori = {10, 6, 5, 4, 3, 2, 1}
+dimensione_valori = {7}
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST TROVARE POSIZIONE MASSIMO 3
+<<INPUT>>
+valori = {7, 6, 5, 10, 3, 2, 1}
+dimensione_valori = {7}
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST TROVARE POSIZIONE MASSIMO 4
+<<INPUT>>
+valori = {}
+dimensione_valori = {0}
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST TROVARE POSIZIONE MASSIMO 5
+<<INPUT>>
+valori = {1, 2}
+dimensione_valori = {-57}
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST TROVARE POSIZIONE MASSIMO 6
+<<INPUT>>
+valori = {-3, -2}
+dimensione_valori = {2}
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+somma_dadi
+
+<TEST SOMMARE DADI 1
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST SOMMARE DADI 2
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
+
+<TEST SOMMARE DADI 3
+<<INPUT>>
+partita_attuale
+<<OUTPUT>>
+Corretto! Abbiamo ottenuto l'output atteso.
