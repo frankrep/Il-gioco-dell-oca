@@ -10,13 +10,14 @@ void aggiornare_classifica_top_10(vincitore vincitore_partita) {
     vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI];
     caricare_classifica(vincitori);
     int inserito = FALSO;
-    float rateo_vincitore_partita = leggere_lanci_vincitore(vincitore_partita) / leggere_lunghezza_percorso_vincitore(vincitore_partita);
+    float rateo_vincitore_partita = leggere_lunghezza_percorso_vincitore(vincitore_partita) / leggere_lanci_vincitore(vincitore_partita);
     float rateo_classificato;
+    scrivere_punteggio(&vincitore_partita, rateo_vincitore_partita);
     int indice_vincitori = 0;
     while (indice_vincitori < NUMERO_MASSIMO_CLASSIFICATI) {
         if(leggere_carattere_nome_vincitore(vincitori[indice_vincitori], 0) != FINE_STRINGA){
-            rateo_classificato = leggere_lanci_vincitore(vincitori[indice_vincitori]) / leggere_lunghezza_percorso_vincitore(vincitori[indice_vincitori]);
-            if ((rateo_vincitore_partita < rateo_classificato) && (inserito != VERO)) {
+            rateo_classificato = leggere_punteggio(vincitori[indice_vincitori]);
+            if (((rateo_vincitore_partita < rateo_classificato) || (rateo_classificato == 0.0)) && (inserito != VERO)) {
                 spostamento_destra_vincitori(vincitori, indice_vincitori, vincitore_partita);
                 inserito = VERO;
             }

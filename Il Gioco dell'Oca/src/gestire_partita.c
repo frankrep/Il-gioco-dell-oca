@@ -16,6 +16,7 @@
 #include "stampare_percorso.h"
 #include "salvare_caricare_partita.h"
 #include "aiuto.h"
+#include "classifica.h"
 
 
 void scegliere_giocatore (partita* partita_attuale, int * sale);
@@ -118,6 +119,7 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
     vincitore vincitore_partita;
     if(leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) == leggere_lunghezza_percorso (*partita_attuale)) {
         vincitore_partita = inizializzare_vincitore (partita_attuale, sale);
+        aggiornare_classifica_top_10(vincitore_partita);
     }
     else {
         azzerare_vincitore(&vincitore_partita);
