@@ -51,7 +51,7 @@ void caricare_classifica(vincitore vincitori[]) {
     return;
 }
 
-void stampare_classifica() {
+void stampare_classifica(int * sale) {
     vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI];
     caricare_classifica(vincitori);
     stampare_testo(FILE_CLASSIFICA);
@@ -72,6 +72,7 @@ void stampare_classifica() {
         posizionare_cursore_in_attesa(FILE_CLASSIFICA);
         scanf("%d", &correttezza_inserimento);
         fflush(stdin);
+        *sale = *sale + 1;
         if (correttezza_inserimento != 0) {
         stampare_messaggio_errore(FILE_CLASSIFICA);
         }

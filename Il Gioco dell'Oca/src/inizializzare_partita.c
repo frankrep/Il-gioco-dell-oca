@@ -8,9 +8,9 @@
 #include "gestire_partita.h"
 
 
-void richiedere_numero_caselle (partita* partita_attuale);
-void inizializzare_numero_giocatori (partita* partita_attuale);
-void inizializzare_nomi_giocatori (partita* partita_attuale);
+void richiedere_numero_caselle(partita *partita_attuale, int * sale);
+void inizializzare_numero_giocatori (partita *partita_attuale, int * sale);
+void inizializzare_nomi_giocatori (partita *partita_attuale, int * sale);
 void inizializzare_pedine_giocatori (partita* partita_attuale);
 void rimuovere_carattere_nuova_riga (char stringa[]);
 void inizializzare_autorizzazione_giocatori(partita *partita_attuale);
@@ -19,10 +19,10 @@ void inizializzare_lanci_giocatore(partita *partita_attuale);
 
 
 
-void inizializzare_giocatori (partita *partita_attuale) {
+void inizializzare_giocatori (partita *partita_attuale, int * sale) {
     int indietro = 0;
     do {
-        richiedere_numero_caselle(partita_attuale);
+        richiedere_numero_caselle(partita_attuale, sale);
         if (leggere_lunghezza_percorso (*partita_attuale) == 0) {
             indietro = 1;
         }
@@ -31,12 +31,12 @@ void inizializzare_giocatori (partita *partita_attuale) {
                 if (indietro == 1) {
                     indietro = 0;
                 }
-                inizializzare_numero_giocatori(partita_attuale);
+                inizializzare_numero_giocatori(partita_attuale, sale);
                 if (leggere_numero_giocatori(*partita_attuale) == 0) {
                     indietro = 0;
                 }
                 else {
-                    inizializzare_nomi_giocatori(partita_attuale);
+                    inizializzare_nomi_giocatori(partita_attuale, sale);
                     char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
                     leggere_nome_giocatore(leggere_giocatore(*partita_attuale, 0), nome_giocatore);
                     if (confrontare_stringhe(nome_giocatore, NOME_GIOCATORE_INDIETRO) == VERO) {
@@ -58,7 +58,7 @@ void inizializzare_giocatori (partita *partita_attuale) {
 
 
 
-void richiedere_numero_caselle(partita *partita_attuale) {
+void richiedere_numero_caselle(partita *partita_attuale, int * sale) {
     int dimensione_percorso;
     stampare_testo(FILE_SCELTA_LUNG_PERCO);
     do {
@@ -70,6 +70,7 @@ void richiedere_numero_caselle(partita *partita_attuale) {
             posizionare_cursore_in_attesa(FILE_SCELTA_LUNG_PERCO);
             correttezza_inserimento = scanf("%d", &dimensione_percorso);
             fflush(stdin);
+            *sale = *sale + 1;
             if (correttezza_inserimento == 0) {
                 stampare_messaggio_errore(FILE_SCELTA_LUNG_PERCO);
             }
@@ -91,7 +92,7 @@ void richiedere_numero_caselle(partita *partita_attuale) {
 
 
 
-void inizializzare_numero_giocatori (partita *partita_attuale) {
+void inizializzare_numero_giocatori (partita *partita_attuale, int * sale) {
     int numero_partecipanti;
     stampare_testo(FILE_SCELTA_N_GIOCATORI);
     do {
@@ -102,6 +103,7 @@ void inizializzare_numero_giocatori (partita *partita_attuale) {
             posizionare_cursore_in_attesa(FILE_SCELTA_N_GIOCATORI);
             correttezza_inserimento = scanf("%d", &numero_partecipanti);
             fflush(stdin);
+            *sale = *sale + 1;
             if (correttezza_inserimento == 0) {
                 stampare_messaggio_errore(FILE_SCELTA_N_GIOCATORI);
             }
@@ -121,14 +123,14 @@ void inizializzare_numero_giocatori (partita *partita_attuale) {
 
 
 
-void inizializzare_nomi_giocatori (partita *partita_attuale) {
+void inizializzare_nomi_giocatori (partita *partita_attuale, int * sale) {
     int indice_giocatori = 0;
     char nome_da_inserire[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
-        stampare_testo(FILE_SCELTA_NOMI_GIOCATORI);
+        stampare_testo (FILE_SCELTA_NOMI_GIOCATORI);
         stampare_valore_intero(FILE_SCELTA_NOMI_GIOCATORI, indice_giocatori+1, 1);
         posizionare_cursore_in_attesa (FILE_SCELTA_NOMI_GIOCATORI);
-        richiedere_stringa (FILE_SCELTA_NOMI_GIOCATORI, DIMENSIONE_MINIMA_NOME_GIOCATORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE, nome_da_inserire);
+        richiedere_stringa (FILE_SCELTA_NOMI_GIOCATORI, DIMENSIONE_MINIMA_NOME_GIOCATORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE, nome_da_inserire, sale);
         if (confrontare_stringhe (nome_da_inserire, NOME_GIOCATORE_INDIETRO) == FALSO) {
             giocatore giocatore_attuale = leggere_giocatore(*partita_attuale, indice_giocatori);
             scrivere_nome_giocatore(&giocatore_attuale, nome_da_inserire);
@@ -141,16 +143,16 @@ void inizializzare_nomi_giocatori (partita *partita_attuale) {
             scrivere_giocatore(partita_attuale, giocatore_attuale, 0);
             indice_giocatori = leggere_numero_giocatori (*partita_attuale);
         }
-        cancellare_schermata();
+        system("cls");
     }
     return;
 }
 
 
-void richiedere_stringa (const char file_interfaccia[], int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]) {
+void richiedere_stringa (const char file_interfaccia[], int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[], int * sale) {
     nome_da_inserire[0] = FINE_STRINGA;
     while (nome_da_inserire[0] == FINE_STRINGA) {
-        inserire_stringa (dimensione_minima_stringa, dimensione_massima_stringa, nome_da_inserire);
+        inserire_stringa (dimensione_minima_stringa, dimensione_massima_stringa, nome_da_inserire, sale);
         if (nome_da_inserire[0] == FINE_STRINGA) {
             stampare_messaggio_errore (file_interfaccia);
             posizionare_cursore_in_attesa (FILE_SCELTA_NOMI_GIOCATORI);
@@ -159,9 +161,10 @@ void richiedere_stringa (const char file_interfaccia[], int dimensione_minima_st
 }
 
 
-void inserire_stringa (int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[]) {
+void inserire_stringa (int dimensione_minima_stringa, int dimensione_massima_stringa, char nome_da_inserire[], int * sale) {
     fgets (nome_da_inserire, dimensione_massima_stringa + 1, stdin);
     fflush(stdin);
+    *sale = *sale + 1;
     rimuovere_carattere_nuova_riga (nome_da_inserire);
     if ((calcolare_lunghezza_stringa (nome_da_inserire) < dimensione_minima_stringa) && (confrontare_stringhe (nome_da_inserire, NOME_GIOCATORE_INDIETRO) == FALSO)) {
         nome_da_inserire[0] = FINE_STRINGA;
