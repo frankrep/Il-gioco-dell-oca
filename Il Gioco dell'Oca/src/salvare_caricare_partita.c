@@ -116,7 +116,7 @@ int selezionare_slot (partita elenco_partite[], int * sale) {
             //stampare messaggio errore
         }
 
-    }while ( (slot_scelto < 1) || (slot_scelto > NUMERO_MASSIMO_PARTITE) );
+    }while ( (slot_scelto < 0) || (slot_scelto > NUMERO_MASSIMO_PARTITE) );
     return slot_scelto;
 }
 

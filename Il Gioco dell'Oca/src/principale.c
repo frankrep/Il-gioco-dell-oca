@@ -51,7 +51,9 @@ int main() {
         else {
             if (opzione == 2) {
                 riprendere_partita(&vincitore_partita, &sale);
-                gestire_vincitore (vincitore_partita);
+                if (leggere_lunghezza_percorso_vincitore(vincitore_partita) != 0) {
+                    gestire_vincitore(vincitore_partita);
+                }
             }
             else {
                 if (opzione == 3) {
@@ -129,7 +131,12 @@ void riprendere_partita (vincitore* vincitore_partita, int * sale) {
     //VEDERE SCEGLIERE_PARTITA_DA_CARICARE PER INFORMAZIONI
     partita partita_attuale;
     scegliere_partita_da_caricare(&partita_attuale, sale);
-    *vincitore_partita = gestire_partita (&partita_attuale, sale);
+    if (leggere_carattere_partita(partita_attuale, 0) != FINE_STRINGA) {
+        *vincitore_partita = gestire_partita(&partita_attuale, sale);
+    }
+    else {
+        scrivere_lunghezza_percorso_vincitore(vincitore_partita, 0);
+    }
     return;
 }
 
@@ -141,21 +148,26 @@ void scegliere_partita_da_caricare (partita* partita_attuale, int * sale) {
     caricare_partite (elenco_partite);
     do {
         stampare_testo(FILE_MENU_CARICA_PARTITA);
+        posizionare_cursore_in_attesa(FILE_MENU_CARICA_PARTITA);
         slot_scelto = selezionare_slot(elenco_partite, sale);
-        if (leggere_carattere_partita(elenco_partite[slot_scelto - 1], 0) == FINE_STRINGA) {
-            //stampare messaggio errore
-            posizionare_cursore_in_attesa(FILE_MENU_CARICA_PARTITA);
-            fgetc(stdin);
-            fflush(stdin);
-        }
-        else {
-            if (slot_scelto != 0) {
+        if (slot_scelto != 0) {
+            if (leggere_carattere_partita(elenco_partite[slot_scelto - 1], 0) == FINE_STRINGA) {
+                //stampare messaggio errore
+                posizionare_cursore_in_attesa(FILE_MENU_CARICA_PARTITA);
+                fgetc(stdin);
+                fflush(stdin);
+            }
+            else {
                 *partita_attuale = elenco_partite[slot_scelto - 1];
                 //stampare schermata per confermare il caricamento con 0 per tornare indietro
                 posizionare_cursore_in_attesa(FILE_MENU_CARICA_PARTITA);
                 fgetc(stdin);
                 fflush(stdin);
+                slot_scelto = 0;
             }
+        }
+        else {
+            scrivere_carattere_partita(partita_attuale, 0, FINE_STRINGA);
         }
         cancellare_schermata();
     } while (slot_scelto != 0);
