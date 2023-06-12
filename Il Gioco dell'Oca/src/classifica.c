@@ -71,8 +71,5 @@ void creare_file_classifica_vuoto(vincitore vincitori[]){
         vincitori[indice_vincitori] = vincitore_azzerato;
         indice_vincitori = indice_vincitori + 1;
     }
-    FILE *file_classifica = NULL;
-    if ((file_classifica = fopen(FILE_CLASSIFICA_TOP_10, "r")) == NULL) {
-        fwrite(vincitori, sizeof (vincitore), NUMERO_MASSIMO_CLASSIFICATI, file_classifica);
-    }
+    scrivere_classifica(vincitori);
 }

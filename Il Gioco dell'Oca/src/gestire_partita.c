@@ -293,8 +293,8 @@ void lanciare_dadi (partita* partita_attuale, int sale) {
     int indice_dado = 0;
     int lancio;
     while (indice_dado < NUMERO_DADI) {
-        //scanf("%d", &lancio);
-        lancio = generare_numero(FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO, sale);
+        scanf("%d", &lancio);
+        //lancio = generare_numero(FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO, sale);
         scrivere_dadi (partita_attuale, lancio, indice_dado);
         indice_dado = indice_dado + 1;
     }
