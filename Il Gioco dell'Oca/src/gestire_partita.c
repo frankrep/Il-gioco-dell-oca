@@ -34,6 +34,7 @@ void impostare_autorizzazioni(partita* partita_attuale, const char nome_casella_
 void gestire_autorizzazione(partita* partita_attuale);
 int scegliere_opzione_menu_di_pausa ();
 int gestire_menu_di_pausa (partita* partita_attuale);
+void azzerare_vincitore(vincitore* vincitore_attuale);
 
 
 
@@ -107,13 +108,12 @@ vincitore gestire_partita (partita* partita_attuale) {
 
         }
         } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale)  && (scelta != 0));
-        cancellare_schermata();
-        stampare_vittoria(FILE_VITTORIA_NOMI);
-        char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
-        leggere_nome_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale)), nome_giocatore);
-        stampare_valore_testuale(FILE_VITTORIA_NOMI, nome_giocatore, 1);
-        posizionare_cursore_in_attesa(FILE_SCELTA_G_INIZIALE);
-        vincitore vincitore_partita = inizializzare_vincitore (partita_attuale);
+        vincitore vincitore_partita;
+        if(leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) == leggere_lunghezza_percorso (*partita_attuale)) {
+            vincitore_partita = inizializzare_vincitore (partita_attuale);
+        }else{
+            azzerare_vincitore(&vincitore_partita);
+        }
         return vincitore_partita;
 }
 
@@ -186,7 +186,7 @@ void scegliere_giocatore (partita* partita_attuale) {
         cancellare_schermata();
         stampare_testo (FILE_SCELTA_G_INIZIALE);
         leggere_nome_giocatore(leggere_giocatore(*partita_attuale,indice_giocatori),nome_giocatore);
-        stampare_valore_testuale(FILE_SCELTA_G_INIZIALE, nome_giocatore, 1);
+        stampare_valore_testuale_centrato(FILE_SCELTA_G_INIZIALE, nome_giocatore, 1, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
         do{
             posizionare_cursore_in_attesa (FILE_SCELTA_G_INIZIALE);
             fflush(stdin);
@@ -217,8 +217,28 @@ vincitore inizializzare_vincitore (partita* partita_attuale) {
     scrivere_pedina_vincitore(&vincitore_partita, leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))));
     scrivere_lanci_vincitore(&vincitore_partita, leggere_lanci_effettuati(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))));
     scrivere_lunghezza_percorso_vincitore(&vincitore_partita, leggere_lunghezza_percorso(*partita_attuale));
+
+    cancellare_schermata();
+    stampare_vittoria(FILE_VITTORIA_NOMI);
+    char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    leggere_nome_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale)), nome_giocatore);
+    cambiare_colore_testo(COLORI_GIOCATORI[leggere_turno(*partita_attuale)]);
+    stampare_valore_testuale_centrato(FILE_VITTORIA_NOMI, nome_giocatore, 1, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
+    cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
+    posizionare_cursore_in_attesa(FILE_SCELTA_G_INIZIALE);
+    fgetc(stdin);
     //funzione per il campo punteggio
     return vincitore_partita;
+}
+
+
+
+void azzerare_vincitore(vincitore* vincitore_attuale){
+    scrivere_carattere_nome_vincitore(vincitore_attuale, 0, FINE_STRINGA);
+    scrivere_pedina_vincitore(vincitore_attuale, 0);
+    scrivere_lanci_vincitore(vincitore_attuale, 0);
+    scrivere_lunghezza_percorso_vincitore(vincitore_attuale, 0);
+    scrivere_punteggio(vincitore_attuale, 0.0);
 }
 
 
@@ -253,8 +273,8 @@ void lanciare_dadi (partita* partita_attuale) {
     int indice_dado = 0;
     int lancio;
     while (indice_dado < NUMERO_DADI) {
-        //scanf("%d", &lancio);
-        lancio = generare_numero(FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO);
+        scanf("%d", &lancio);
+        //lancio = generare_numero(FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO);
         scrivere_dadi (partita_attuale, lancio, indice_dado);
         indice_dado = indice_dado + 1;
     }

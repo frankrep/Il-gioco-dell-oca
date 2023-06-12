@@ -5,46 +5,7 @@
 #include "stampare_percorso.h"
 #include "generare_percorso.h"
 #include "gestire_stampa.h"
-#include "windows.h"
 
-
-
-void stampare_interfaccia_percorso(partita* partita_attuale, const char file_interfaccia[]){
-    cancellare_schermata();
-    stampare_percorso(partita_attuale);
-    FILE *f_interfaccia = NULL;
-    if ((f_interfaccia = fopen(file_interfaccia, "r")) != NULL) {
-        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA - ALTEZZA_MENU_INTERFACCIA_PERCORSO);
-        char simbolo_letto;
-        int indice_altezza_menu = 0;
-        while (indice_altezza_menu < ALTEZZA_MENU_INTERFACCIA_PERCORSO) {
-            simbolo_letto = fgetc(f_interfaccia);
-            printf("%c", simbolo_letto);
-            if (simbolo_letto == CARATTERE_A_CAPO) {
-                indice_altezza_menu = indice_altezza_menu + 1;
-            }
-        }
-        scorrere_righe_file(f_interfaccia, SPIAZZAMENTO_STAMPA_VALORI);
-        int posizione_riga;
-        int posizione_colonna;
-        fscanf (f_interfaccia, "%d ", &posizione_riga);
-        scorrere_righe_file(f_interfaccia, 1);
-        fscanf (f_interfaccia, "%d ", &posizione_colonna);
-        posizionare_cursore (posizione_riga, posizione_colonna);
-        char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
-        leggere_nome_giocatore(leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale)), nome_giocatore);
-        printf("%18s", nome_giocatore);
-        fclose(f_interfaccia);
-    } else {
-        printf("%s", ERRORE_FILE_NON_TROVATO);
-        fflush(stdout);
-        printf("%c", CARATTERE_SPAZIO);
-        fflush(stdout);
-        printf("%s", file_interfaccia);
-        fflush(stdout);
-    }
-    stampare_dadi_partita(file_interfaccia, partita_attuale);
-}
 
 void stampare_percorso(partita* partita_attuale) {
 
@@ -219,7 +180,7 @@ void stampare_contenuto_casella(partita* partita_attuale, int numero_casella) {
 
 void stampare_giocatori_superiori_casella(partita* partita_attuale, int numero_casella) {
     if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_1)) == numero_casella) {
-        cambiare_colore_testo(ROSSO);
+        cambiare_colore_testo(COLORI_GIOCATORI[POSIZIONE_GIOCATORE_1]);
         printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_1)));
         cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
     }else {
@@ -231,7 +192,7 @@ void stampare_giocatori_superiori_casella(partita* partita_attuale, int numero_c
         indice_spazio = indice_spazio + 1;
     }
     if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_2)) == numero_casella) {
-        cambiare_colore_testo(BLU);
+        cambiare_colore_testo(COLORI_GIOCATORI[POSIZIONE_GIOCATORE_2]);
         printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_2)));
         cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
     }else {
@@ -243,7 +204,7 @@ void stampare_giocatori_superiori_casella(partita* partita_attuale, int numero_c
 void stampare_giocatori_inferiori_casella(partita* partita_attuale, int numero_casella) {
     if (leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)) != FINE_STRINGA) {
         if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)) == numero_casella) {
-            cambiare_colore_testo(VERDE_FLUO);
+            cambiare_colore_testo(COLORI_GIOCATORI[POSIZIONE_GIOCATORE_3]);
             printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_3)));
             cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
         } else {
@@ -259,7 +220,7 @@ void stampare_giocatori_inferiori_casella(partita* partita_attuale, int numero_c
     }
     if (leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)) != FINE_STRINGA) {
         if (leggere_posizione_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)) == numero_casella) {
-            cambiare_colore_testo(VIOLETTO);
+            cambiare_colore_testo(COLORI_GIOCATORI[POSIZIONE_GIOCATORE_4]);
             printf("%c", leggere_pedina_giocatore(leggere_giocatore(*partita_attuale, POSIZIONE_GIOCATORE_4)));
             cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
         } else {

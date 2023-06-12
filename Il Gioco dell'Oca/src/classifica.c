@@ -60,7 +60,7 @@ void stampare_classifica() {
     int correttezza_inserimento;
     while (indice_vincitori < NUMERO_MASSIMO_CLASSIFICATI) {
         leggere_nome_vincitore(vincitori[indice_vincitori], nome_vincitore);
-        if (nome_vincitore[0] == FINE_STRINGA)) {
+        if (nome_vincitore[0] == FINE_STRINGA) {
             printf("%d ", indice_vincitori);
             printf("%s", nome_vincitore);
             printf("%d", leggere_lanci_vincitore(vincitori[indice_vincitori]));
