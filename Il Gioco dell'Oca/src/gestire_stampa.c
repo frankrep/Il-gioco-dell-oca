@@ -54,7 +54,7 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
                 scorrere_righe_file(f_interfaccia, 1);
 				fscanf(f_interfaccia, "%d ", &posizione_colonna);
                 scorrere_righe_file(f_interfaccia, 1);
-				posizionare_cursore(posizione_riga, posizione_colonna - 1);
+				posizionare_cursore(posizione_riga, posizione_colonna);
 				if (indice_puntini_dado == 1) {
 					if (facce_dadi[indice_dadi] == 6
 							|| (facce_dadi[indice_dadi] == 5)
@@ -301,12 +301,31 @@ void stampare_valore_testuale(const char file_interfaccia[], const char stringa[
 
 
 void stampare_valore_testuale_centrato(const char file_interfaccia[], const char stringa[], int posizione_valore, int spazio_disponibile){
-    int lunghezza_stringa = calcolare_lunghezza_stringa(stringa);
-    int spazio_rimanente = spazio_disponibile - lunghezza_stringa;
-    int spaziatura_iniziale = calcolare_parte_intera(spazio_rimanente / 2);
-    while(spaziatura_iniziale > 0){
-        printf("%c", CARATTERE_SPAZIO);
-        spaziatura_iniziale = spaziatura_iniziale - 1;
+    FILE *f_interfaccia = fopen(file_interfaccia, "r");
+    if (f_interfaccia != NULL) {
+        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_STAMPA_VALORI + ((posizione_valore - 1) * SPIAZZAMENTO_SINGOLO_VALORE));
+        int posizione_riga;
+        int posizione_colonna;
+        fscanf (f_interfaccia, "%d ", &posizione_riga);
+        scorrere_righe_file(f_interfaccia, 1);
+        fscanf (f_interfaccia, "%d ", &posizione_colonna);
+        posizionare_cursore (posizione_riga, posizione_colonna);
+        int lunghezza_stringa = calcolare_lunghezza_stringa(stringa);
+        int spazio_rimanente = spazio_disponibile - lunghezza_stringa;
+        int spaziatura_iniziale = calcolare_parte_intera(spazio_rimanente / 2);
+        while(spaziatura_iniziale > 0){
+            printf("%c", CARATTERE_SPAZIO);
+            spaziatura_iniziale = spaziatura_iniziale - 1;
+        }
+        printf("%s", stringa); fflush(stdin);
+        fclose(f_interfaccia);
+    } else {
+        printf ("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
+        fflush (stdout);
+        printf ("%c", CARATTERE_SPAZIO); fflush(stdin);
+        fflush (stdout);
+        printf ("%s", file_interfaccia); fflush(stdin);
+        fflush (stdout);
     }
     return;
 }

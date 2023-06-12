@@ -184,7 +184,7 @@ void scegliere_giocatore (partita* partita_attuale) {
     char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
         cancellare_schermata();
-        stampare_testo (FILE_SCELTA_G_INIZIALE);
+        stampare_intro(FILE_SCELTA_G_INIZIALE);
         leggere_nome_giocatore(leggere_giocatore(*partita_attuale,indice_giocatori),nome_giocatore);
         stampare_valore_testuale_centrato(FILE_SCELTA_G_INIZIALE, nome_giocatore, 1, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
         do{
