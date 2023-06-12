@@ -28,12 +28,3 @@
 20 //riga errore
 1 //colonna errore
 1 //codice messaggio 
-22 //riga richiesta conferma
-1 //colonna richiesta conferma
-6 // codice messaggio
-23 //riga richiesta 2
-1 // riga richiesta 2
-7 // codice messaggio
-24 // riga s N
-1 // colonna s N
-8 // codice messaggio
