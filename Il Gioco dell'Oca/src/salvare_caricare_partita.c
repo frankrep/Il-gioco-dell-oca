@@ -109,6 +109,7 @@ int selezionare_slot (partita elenco_partite[], int * sale, const char file_inte
             *sale = *sale + 1;
             if (correttezza_inserimento == 0) {
                 stampare_messaggio_errore(file_interfaccia);
+                posizionare_cursore_in_attesa(file_interfaccia);
             }
         } while (correttezza_inserimento == 0);
 

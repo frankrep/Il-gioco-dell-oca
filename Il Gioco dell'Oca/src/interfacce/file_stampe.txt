@@ -7,4 +7,4 @@ Sei sicuro di voler uscire dal gioco?
 Tutte le modifiche non salvate andranno perse
 {S/N} 
 -L lanciare dadi
--A avanza
+-A avanza pedina
