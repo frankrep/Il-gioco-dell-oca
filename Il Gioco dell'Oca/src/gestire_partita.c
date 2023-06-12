@@ -529,6 +529,7 @@ void gestire_autorizzazione (partita* partita_attuale, int * sale) {
         *sale = *sale + 1;
         //stampare schermata_lancio_dadi_prigione con lancio effettuato e richiedere input
         stampare_dadi_partita(FILE_SCHERMATA_LANCIO_DADI_PRIGIONE, partita_attuale);
+        posizionare_cursore_in_attesa(FILE_SCHERMATA_LANCIO_DADI_PRIGIONE);
         fgetc(stdin);
         fflush(stdin);
         *sale = *sale + 1;

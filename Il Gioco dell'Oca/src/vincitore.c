@@ -53,6 +53,7 @@ void scrivere_nome_vincitore (vincitore* vincitore_attuale, char nome_da_inserir
         scrivere_carattere_nome_vincitore(vincitore_attuale, indice_nome, nome_da_inserire[indice_nome]);
         indice_nome = indice_nome + 1;
     }
+    scrivere_carattere_nome_vincitore(vincitore_attuale, indice_nome, FINE_STRINGA);
     return;
 }
 
@@ -62,5 +63,6 @@ void leggere_nome_vincitore (vincitore vincitore_attuale, char nome_letto[]) {
         nome_letto[indice_nome] = leggere_carattere_nome_vincitore(vincitore_attuale, indice_nome);
         indice_nome = indice_nome + 1;
     }
+    nome_letto[indice_nome] = FINE_STRINGA;
     return;
 }
