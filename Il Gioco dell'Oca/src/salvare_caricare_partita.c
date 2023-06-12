@@ -41,6 +41,7 @@ void creare_file_salvataggio() {
 }
 
 
+
 void salvare_partita (partita* partita_attuale, int * sale) {
     int scelta;
     int correttezza_inserimento;
@@ -61,7 +62,7 @@ void salvare_partita (partita* partita_attuale, int * sale) {
             //se il giocatore ha selezionato uno slot per salvare e non ha scelto di tornare al menù precedente . . .
             if (nome_partita_salvata[0] != '0') {
                 scrivere_nome_partita (partita_attuale, nome_partita_salvata);
-                leggere_nome_partita (elenco_partite[slot_scelto], nome_partita_salvata);
+                leggere_nome_partita (elenco_partite[slot_scelto - 1], nome_partita_salvata);
 
                 //. . . verifichiamo se lo slot selezionato è vuoto. Se lo è, salva la partita nello slot . . .
                 if (nome_partita_salvata[0] == FINE_STRINGA) {
