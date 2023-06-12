@@ -519,7 +519,7 @@ void stampare_classifica(int * sale) {
                 posizionare_cursore(posizione_riga_nome_vincitore + indice_vincitori, posizione_colonna_nome_vincitore);
                 printf("%s", nome_vincitore);
                 posizionare_cursore(posizione_riga_rateo_vincitore + indice_vincitori, posizione_colonna_rateo_vincitore);
-                printf("%d", leggere_punteggio(vincitori[indice_vincitori]));
+                printf("%f", leggere_punteggio(vincitori[indice_vincitori]));
             }else{
                 posizionare_cursore(posizione_riga_nome_vincitore, posizione_colonna_nome_vincitore);
                 FILE *f_messaggi = fopen(FILE_MESSAGGI, "r");
