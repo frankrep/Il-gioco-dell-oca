@@ -23,15 +23,15 @@ void caricare_partite (partita elenco_partite[]) {
 
 
 
-void salvare_partita (partita* partita_attuale) {
+void salvare_partita (partita* partita_attuale, int * sale) {
     int slot_scelto;
     int salvato = 0;
     partita elenco_partite [NUMERO_MASSIMO_PARTITE];
     caricare_partite (elenco_partite);
     do {
-        slot_scelto = selezionare_slot (elenco_partite);
+        slot_scelto = selezionare_slot (elenco_partite, sale);
         char nome_partita_salvata [DIMENSIONE_MASSIMA_NOME_PARTITA];
-        inserire_stringa (DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata);
+        inserire_stringa (DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata, sale);
         scrivere_nome_partita (partita_attuale,  nome_partita_salvata);
         leggere_nome_partita (elenco_partite [slot_scelto], nome_partita_salvata);
         if (nome_partita_salvata[0] == FINE_STRINGA) {
@@ -42,7 +42,7 @@ void salvare_partita (partita* partita_attuale) {
         else {
             //stampare messaggio richiesta sovrascrittura
             char sovrascrivere;
-            confermare_scelta (&sovrascrivere);
+            confermare_scelta (&sovrascrivere, sale);
             if ( (sovrascrivere == RISPOSTA_AFFERMATIVA_MAIUSCOLO) || (sovrascrivere = RISPOSTA_AFFERMATIVA_MINUSCOLO) ) {
                 elenco_partite[slot_scelto] = *partita_attuale;
                 scrivere_partite (elenco_partite);
@@ -55,12 +55,13 @@ void salvare_partita (partita* partita_attuale) {
 
 
 
-void confermare_scelta (char * risposta) {
+void confermare_scelta (char * risposta, int * sale) {
     //decidere se stampare da file la frase così da poterla personalizzare
     printf ("Vuoi confermare? (%c/%c)  ", RISPOSTA_AFFERMATIVA_MAIUSCOLO, RISPOSTA_NEGATIVA_MAIUSCOLO);
     do {
         scanf("%c", risposta);
         fflush (stdin);
+        *sale = *sale + 1;
 
         //decidere se stampare da file la frase
         if ( *risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && *risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && *risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && *risposta != RISPOSTA_NEGATIVA_MINUSCOLO )
@@ -90,7 +91,7 @@ void stampare_partite_salvate (partita elenco_partite[]) {
 
 
 
-int selezionare_slot (partita elenco_partite[]) {
+int selezionare_slot (partita elenco_partite[], int * sale) {
     int slot_scelto = 0;
     //interfaccia per la scelta tra le partite salvate (interfaccer muvt!)
     stampare_partite_salvate (elenco_partite);
@@ -102,6 +103,7 @@ int selezionare_slot (partita elenco_partite[]) {
         do {
             correttezza_inserimento = scanf("%d", &slot_scelto);
             fflush(stdin);
+            *sale = *sale + 1;
             if (correttezza_inserimento == 0) {
                 printf("Attenzione: input non valido.");
             }

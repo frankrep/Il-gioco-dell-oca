@@ -10,27 +10,23 @@
 
 
 void caricare_semi (unsigned long long semi[]);
-int calcolare_posizione_seme (unsigned long long semi[]);
-unsigned long long generare_seme (unsigned long long seme);
+int calcolare_posizione_seme (unsigned long long semi[], int sale);
+unsigned long long generare_seme (unsigned long long seme, int sale);
 void scrivere_seme (unsigned long long semi[]);
 int generare_casuale (unsigned long long seme, int numero_massimo, int numero_minimo);
 void creare_file_seme ();
 
 
 
-int generare_numero (int numero_massimo, int numero_minimo) {
+int generare_numero (int numero_massimo, int numero_minimo, int sale) {
     unsigned long long semi [NUMERO_SEMI + 1];
     caricare_semi (semi);
-    int posizione_seme = calcolare_posizione_seme (semi);
-    semi [posizione_seme] = generare_seme(semi [posizione_seme] );
+    int posizione_seme = calcolare_posizione_seme (semi, sale);
+    semi [posizione_seme] = generare_seme(semi [posizione_seme], sale);
     scrivere_seme (semi);
     int numero_casuale;
-    if (posizione_seme < 2) {
-        numero_casuale = generare_casuale(semi[posizione_seme], 3, numero_minimo);
-    }
-    else {
-        numero_casuale = generare_casuale(semi[posizione_seme], 3, 4);
-    }
+    numero_casuale = generare_casuale(semi[posizione_seme], numero_massimo, numero_minimo);
+    numero_casuale = generare_casuale( numero_casuale + sale, numero_massimo, numero_minimo);
     return numero_casuale;
 }
 
@@ -51,16 +47,16 @@ void caricare_semi (unsigned long long semi []) {
 
 
 
-int calcolare_posizione_seme (unsigned long long semi[]) {
-    semi [0] = generare_seme (semi [0]);
+int calcolare_posizione_seme (unsigned long long semi[], int sale) {
+    semi [0] = generare_seme (semi [0], sale);
     int posizione_seme = generare_casuale(semi [0], FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO);
     return posizione_seme;
 }
 
 
 
-unsigned long long generare_seme (unsigned long long seme) {
-    seme = (MOLTIPLICATORE* seme * seme + INCREMENTO) % DIVISORE;
+unsigned long long generare_seme (unsigned long long seme, int sale) {
+    seme = (MOLTIPLICATORE* (seme + sale) * seme + INCREMENTO) % DIVISORE;
     return seme;
 }
 

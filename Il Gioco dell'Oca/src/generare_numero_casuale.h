@@ -7,7 +7,7 @@
 
 
 
-int generare_numero (int numero_massimo, int numero_minimo);
+int generare_numero (int numero_massimo, int numero_minimo, int sale);
 
 
 
