@@ -23,8 +23,8 @@
                                                       |____S...S_______$$$$|   
 <Inserisci la tua scelta:                             |____S...S_______$$$$|   
                                                       |____________________|   
-23 //riga input
-53 //colonna input
+24 //riga input
+26 //colonna input
 25 //riga errore
 1 //colonna errore
 1 //codice messaggio

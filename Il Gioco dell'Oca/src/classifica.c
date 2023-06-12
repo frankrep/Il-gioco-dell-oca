@@ -52,35 +52,6 @@ void caricare_classifica(vincitore vincitori[]) {
 }
 
 
-void stampare_classifica(int * sale) {
-    vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI];
-    caricare_classifica(vincitori);
-    stampare_testo(FILE_CLASSIFICA);
-    char nome_vincitore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
-    int indice_vincitori = 0;
-    int correttezza_inserimento;
-    while (indice_vincitori < NUMERO_MASSIMO_CLASSIFICATI) {
-        leggere_nome_vincitore(vincitori[indice_vincitori], nome_vincitore);
-        if (nome_vincitore[0] == FINE_STRINGA) {
-            printf("%d ", indice_vincitori);
-            printf("%s", nome_vincitore);
-            printf("%d", leggere_lanci_vincitore(vincitori[indice_vincitori]));
-            printf("%d", leggere_lunghezza_percorso_vincitore(vincitori[indice_vincitori]));
-        }
-        indice_vincitori = indice_vincitori + 1;
-    }
-    do {
-        posizionare_cursore_in_attesa(FILE_CLASSIFICA);
-        scanf("%d", &correttezza_inserimento);
-        fflush(stdin);
-        *sale = *sale + 1;
-        if (correttezza_inserimento != 0) {
-        stampare_messaggio_errore(FILE_CLASSIFICA);
-        }
-    } while (correttezza_inserimento != 0);
-}
-
-
 void scrivere_classifica(vincitore elenco_vincitori[]) {
     FILE *file_classifica = fopen(FILE_CLASSIFICA_TOP_10, "wb");
     fwrite(elenco_vincitori, sizeof(vincitore), NUMERO_MASSIMO_CLASSIFICATI, file_classifica);

@@ -11,6 +11,8 @@
 #include "stampare_percorso.h"
 #include "inizializzare_partita.h"
 #include "generare_percorso.h"
+#include "vincitore.h"
+#include "classifica.h"
 
 
 void stampare_dadi_partita(const char file_interfaccia[], partita* partita_attuale){
@@ -344,6 +346,7 @@ void stampare_valore_testuale_centrato(const char file_interfaccia[], const char
 
 
 void stampare_partite_salvate (partita elenco_partite[]) {
+    stampare_testo(FILE_SCELTA_SLOT_SALVARE_PARTITA);
     int indice_partita = 0;
     char nome_partita [DIMENSIONE_MASSIMA_NOME_PARTITA];
     while (indice_partita < NUMERO_MASSIMO_PARTITE) {
@@ -356,6 +359,7 @@ void stampare_partite_salvate (partita elenco_partite[]) {
         }
         indice_partita = indice_partita + 1;
     }
+    posizionare_cursore_in_attesa(FILE_SCELTA_SLOT_SALVARE_PARTITA);
     return;
 }
 
@@ -382,12 +386,7 @@ void stampare_vittoria (const char file_interfaccia[]) {
         }
         fclose(f_interfaccia);
     } else {
-        printf("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
-        fflush(stdout);
-        printf("%c", CARATTERE_SPAZIO); fflush(stdin);
-        fflush(stdout);
-        printf("%s", file_interfaccia); fflush(stdin);
-        fflush(stdout);
+        stampare_errore_apertura_file(file_interfaccia);
     }
     return;
 }
@@ -486,6 +485,35 @@ void stampare_interfaccia_percorso(partita* partita_attuale, const char file_int
     return;
 }
 
+
+
+void stampare_classifica(int * sale) {
+    vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI];
+    caricare_classifica(vincitori);
+    stampare_testo(FILE_CLASSIFICA);
+    char nome_vincitore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    int indice_vincitori = 0;
+    int correttezza_inserimento;
+    while (indice_vincitori < NUMERO_MASSIMO_CLASSIFICATI) {
+        leggere_nome_vincitore(vincitori[indice_vincitori], nome_vincitore);
+        if (nome_vincitore[0] == FINE_STRINGA) {
+            printf("%d ", indice_vincitori);
+            printf("%s", nome_vincitore);
+            printf("%d", leggere_lanci_vincitore(vincitori[indice_vincitori]));
+            printf("%d", leggere_lunghezza_percorso_vincitore(vincitori[indice_vincitori]));
+        }
+        indice_vincitori = indice_vincitori + 1;
+    }
+    do {
+        posizionare_cursore_in_attesa(FILE_CLASSIFICA);
+        scanf("%d", &correttezza_inserimento);
+        fflush(stdin);
+        *sale = *sale + 1;
+        if (correttezza_inserimento != 0) {
+            stampare_messaggio_errore(FILE_CLASSIFICA);
+        }
+    } while (correttezza_inserimento != 0);
+}
 
 
 
