@@ -12,7 +12,6 @@ void creare_file_salvataggio();
 
 
 
-
 void caricare_partite (partita elenco_partite[]) {
     FILE * file_salvataggio = fopen(FILE_SALVATAGGIO, "rb");
     if (file_salvataggio == NULL) {
@@ -49,26 +48,33 @@ void salvare_partita (partita* partita_attuale, int * sale) {
     caricare_partite (elenco_partite);
     do {
         slot_scelto = selezionare_slot (elenco_partite, sale, FILE_SCELTA_SLOT_SALVARE_PARTITA);
-        char nome_partita_salvata [DIMENSIONE_MASSIMA_NOME_PARTITA];
-        inserire_stringa (DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata, sale);
-        scrivere_nome_partita (partita_attuale,  nome_partita_salvata);
-        leggere_nome_partita (elenco_partite [slot_scelto], nome_partita_salvata);
-        if (nome_partita_salvata[0] == FINE_STRINGA) {
-            elenco_partite [slot_scelto] = *partita_attuale;
-            scrivere_partite (elenco_partite);
-            salvato = 1;
-        }
-        else {
-            //stampare messaggio richiesta sovrascrittura
-            char sovrascrivere;
-            confermare_scelta (&sovrascrivere, sale);
-            if ( (sovrascrivere == RISPOSTA_AFFERMATIVA_MAIUSCOLO) || (sovrascrivere = RISPOSTA_AFFERMATIVA_MINUSCOLO) ) {
-                elenco_partite[slot_scelto] = *partita_attuale;
-                scrivere_partite (elenco_partite);
-                salvato = 1;
+        if (slot_scelto != 0) {
+            //interfaccia per richiedere il nome della partita
+            char nome_partita_salvata[DIMENSIONE_MASSIMA_NOME_PARTITA];
+            inserire_stringa(DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata, sale);
+            if (nome_partita_salvata[0] != '0') {
+                scrivere_nome_partita(partita_attuale, nome_partita_salvata);
+                leggere_nome_partita(elenco_partite[slot_scelto], nome_partita_salvata);
+                if (nome_partita_salvata[0] == FINE_STRINGA) {
+                    elenco_partite[slot_scelto - 1] = *partita_attuale;
+                    scrivere_partite(elenco_partite);
+                    salvato = 1;
+                    cancellare_schermata();
+                    stampare_testo(FILE_CONFERMA_SALVATAGGIO);
+                    posizionare_cursore_in_attesa(FILE_CONFERMA_SALVATAGGIO);
+                } else {
+                    //stampare messaggio richiesta sovrascrittura
+                    char sovrascrivere;
+                    confermare_scelta(&sovrascrivere, sale);
+                    if ((sovrascrivere == RISPOSTA_AFFERMATIVA_MAIUSCOLO) || (sovrascrivere = RISPOSTA_AFFERMATIVA_MINUSCOLO)) {
+                        elenco_partite[slot_scelto] = *partita_attuale;
+                        scrivere_partite(elenco_partite);
+                        salvato = 1;
+                    }
+                }
             }
         }
-    } while (salvato != 1);
+    } while (salvato != 1 && slot_scelto != 0);
     return;
 }
 
@@ -114,12 +120,11 @@ int selezionare_slot (partita elenco_partite[], int * sale, const char file_inte
         } while (correttezza_inserimento == 0);
 
 
-        if ( (slot_scelto < 0) || (slot_scelto > NUMERO_MASSIMO_PARTITE) )
-        {
+        if ( (slot_scelto < 0) || (slot_scelto > NUMERO_MASSIMO_PARTITE) ) {
             //stampare messaggio errore
         }
 
-    }while ( (slot_scelto < 0) || (slot_scelto > NUMERO_MASSIMO_PARTITE) );
+    } while ( (slot_scelto < 0) || (slot_scelto > NUMERO_MASSIMO_PARTITE) );
     return slot_scelto;
 }
 

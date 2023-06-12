@@ -77,5 +77,6 @@ void leggere_nome_partita (partita partita_attuale, char nome_letto[]) {
         nome_letto[indice_nome] = leggere_carattere_partita(partita_attuale, indice_nome);
         indice_nome = indice_nome + 1;
     }
+    nome_letto [indice_nome] = FINE_STRINGA;
     return;
 }
