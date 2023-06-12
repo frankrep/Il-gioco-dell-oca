@@ -206,6 +206,11 @@ void inizializzare_pedine_giocatori(partita *partita_attuale) {
         scrivere_giocatore (partita_attuale, giocatore_attuale, indice_pedine);
         indice_pedine = indice_pedine + 1;
     } while (indice_pedine < leggere_numero_giocatori (*partita_attuale) );
+    while (indice_pedine < NUMERO_MASSIMO_GIOCATORI){
+        scrivere_pedina_giocatore (&giocatore_attuale, FINE_STRINGA);
+        scrivere_giocatore (partita_attuale, giocatore_attuale, indice_pedine);
+        indice_pedine = indice_pedine + 1;
+    }
     return;
 }
 

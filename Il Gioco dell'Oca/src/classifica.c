@@ -35,21 +35,18 @@ void spostamento_destra_vincitori(vincitore vincitori[], int posizione_inserimen
     return;
 }
 
+
 void caricare_classifica(vincitore vincitori[]) {
     FILE *file_classifica = NULL;
     if ((file_classifica = fopen(FILE_CLASSIFICA_TOP_10, "r")) == NULL) {
         fread(vincitori, sizeof(vincitore), NUMERO_MASSIMO_CLASSIFICATI, file_classifica);
         fclose(file_classifica);
     } else {
-        printf("%s", ERRORE_FILE_NON_TROVATO);
-        fflush(stdout);
-        printf("%c", CARATTERE_SPAZIO);
-        fflush(stdout);
-        printf("%s", FILE_CLASSIFICA_TOP_10);
-        fflush(stdout);
+        stampare_errore_apertura_file(FILE_CLASSIFICA_TOP_10);
     }
     return;
 }
+
 
 
 void scrivere_classifica(vincitore elenco_vincitori[]) {
@@ -57,4 +54,25 @@ void scrivere_classifica(vincitore elenco_vincitori[]) {
     fwrite(elenco_vincitori, sizeof(vincitore), NUMERO_MASSIMO_CLASSIFICATI, file_classifica);
     fclose(file_classifica);
     return;
+}
+
+
+
+void creare_file_classifica_vuoto(vincitore vincitori[]){
+    vincitore vincitore_azzerato;
+    scrivere_carattere_nome_vincitore(&vincitore_azzerato, 0, FINE_STRINGA);
+    scrivere_pedina_vincitore(&vincitore_azzerato, FINE_STRINGA);
+    scrivere_lanci_vincitore(&vincitore_azzerato, 0);
+    scrivere_lunghezza_percorso_vincitore(&vincitore_azzerato, 0);
+    scrivere_punteggio(&vincitore_azzerato, 0.0);
+
+    int indice_vincitori = 0;
+    while (indice_vincitori < NUMERO_MASSIMO_CLASSIFICATI){
+        vincitori[indice_vincitori] = vincitore_azzerato;
+        indice_vincitori = indice_vincitori + 1;
+    }
+    FILE *file_classifica = NULL;
+    if ((file_classifica = fopen(FILE_CLASSIFICA_TOP_10, "r")) == NULL) {
+        fwrite(vincitori, sizeof (vincitore), NUMERO_MASSIMO_CLASSIFICATI, file_classifica);
+    }
 }
