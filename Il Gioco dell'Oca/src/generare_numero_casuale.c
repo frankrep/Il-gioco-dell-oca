@@ -9,33 +9,41 @@
 
 
 
-void caricare_seme (long long * seme);
-long long generare_seme (long long seme);
-void scrivere_seme (long long * seme);
-long int generare_casuale (long long seme, int numero_massimo, int numero_minimo);
+void caricare_semi (unsigned long long semi[]);
+int calcolare_posizione_seme (unsigned long long semi[]);
+unsigned long long generare_seme (unsigned long long seme);
+void scrivere_seme (unsigned long long semi[]);
+int generare_casuale (unsigned long long seme, int numero_massimo, int numero_minimo);
 void creare_file_seme ();
 
 
 
 int generare_numero (int numero_massimo, int numero_minimo) {
-    long long seme;
-    caricare_seme (&seme);
-    seme = generare_seme (seme);
-    scrivere_seme (&seme);
-    long int numero_casuale = generare_casuale (seme, numero_massimo, numero_minimo);
+    unsigned long long semi [NUMERO_SEMI + 1];
+    caricare_semi (semi);
+    int posizione_seme = calcolare_posizione_seme (semi);
+    semi [posizione_seme] = generare_seme(semi [posizione_seme] );
+    scrivere_seme (semi);
+    int numero_casuale;
+    if (posizione_seme < 2) {
+        numero_casuale = generare_casuale(semi[posizione_seme], 3, numero_minimo);
+    }
+    else {
+        numero_casuale = generare_casuale(semi[posizione_seme], 3, 4);
+    }
     return numero_casuale;
 }
 
 
 
-void caricare_seme (long long * seme) {
+void caricare_semi (unsigned long long semi []) {
     FILE * file_seme = fopen(FILE_SEME, "rb");
     if (file_seme == NULL) {
         creare_file_seme();
-        caricare_seme(seme);
+        caricare_semi(semi);
     }
     else {
-        fread(seme, sizeof(long long), 1, file_seme);
+        fread(semi, sizeof(unsigned long long), NUMERO_SEMI + 1, file_seme);
         fclose(file_seme);
     }
     return;
@@ -43,24 +51,31 @@ void caricare_seme (long long * seme) {
 
 
 
-long long generare_seme (long long seme) {
-    long long nuovo_seme = (MOLTIPLICATORE * seme + INCREMENTO) % DIVISORE;
-    return nuovo_seme;
+int calcolare_posizione_seme (unsigned long long semi[]) {
+    semi [0] = generare_seme (semi [0]);
+    int posizione_seme = generare_casuale(semi [0], FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO);
+    return posizione_seme;
 }
 
 
 
-void scrivere_seme (long long * seme) {
+unsigned long long generare_seme (unsigned long long seme) {
+    seme = (MOLTIPLICATORE* seme * seme + INCREMENTO) % DIVISORE;
+    return seme;
+}
+
+
+void scrivere_seme (unsigned long long semi[]) {
     FILE * file_seme = fopen (FILE_SEME, "wb");
-    fwrite(seme, sizeof(long long), 1, file_seme);
+    fwrite(semi, sizeof(unsigned long long), NUMERO_SEMI + 1, file_seme);
     fclose (file_seme);
     return;
 }
 
 
 
-long int generare_casuale (long long seme, int numero_massimo, int numero_minimo) {
-    long int numero_casuale = (seme % numero_massimo) + numero_minimo;
+int generare_casuale (unsigned long long seme, int numero_massimo, int numero_minimo) {
+    int numero_casuale = (seme % numero_massimo) + numero_minimo;
     return numero_casuale;
 }
 
@@ -68,7 +83,13 @@ long int generare_casuale (long long seme, int numero_massimo, int numero_minimo
 
 void creare_file_seme () {
     FILE * file_seme = fopen(FILE_SEME, "wb");
-    fwrite(&SEME_INIZIALE, sizeof(long long), 1, file_seme);
+    fwrite(&SEME_INIZIALE_1, sizeof(unsigned long long), 1, file_seme);
+    fwrite(&SEME_INIZIALE_1, sizeof(unsigned long long), 1, file_seme);
+    fwrite(&SEME_INIZIALE_2, sizeof(unsigned long long), 1, file_seme);
+    fwrite(&SEME_INIZIALE_3, sizeof(unsigned long long), 1, file_seme);
+    fwrite(&SEME_INIZIALE_4, sizeof(unsigned long long), 1, file_seme);
+    fwrite(&SEME_INIZIALE_5, sizeof(unsigned long long), 1, file_seme);
+    fwrite(&SEME_INIZIALE_6, sizeof(unsigned long long), 1, file_seme);
     fclose(file_seme);
     return;
 }
