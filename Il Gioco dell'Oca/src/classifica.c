@@ -31,7 +31,7 @@ void aggiornare_classifica_top_10(vincitore vincitore_partita) {
 
 
 void spostamento_destra_vincitori(vincitore vincitori[], int posizione_inserimento, vincitore vincitore_partita) {
-    int indice_vincitori = NUMERO_MASSIMO_CLASSIFICATI;
+    int indice_vincitori = NUMERO_MASSIMO_CLASSIFICATI - 1;
     while (indice_vincitori >= posizione_inserimento) {
         vincitori[indice_vincitori] = vincitori[indice_vincitori - 1];
         indice_vincitori = indice_vincitori - 1;
