@@ -39,10 +39,16 @@
 #define DIMENSIONE_MASSIMA_NOME_CASELLA 10
 #define NUMERO_MASSIMO_PARTITE 5
 #define NUMERO_MASSIMO_CLASSIFICATI 10
-static const long long SEME_INIZIALE = 123456789;
-static const long long MOLTIPLICATORE = 1664525;
-static const long long INCREMENTO = 1013904223;
-static const long long DIVISORE = 4294367296;
+#define NUMERO_SEMI 6
+static const unsigned long long SEME_INIZIALE_1 = 123456789;
+static const unsigned long long SEME_INIZIALE_2 = 543210987;
+static const unsigned long long SEME_INIZIALE_3 = 876543210;
+static const unsigned long long SEME_INIZIALE_4 = 135792468;
+static const unsigned long long SEME_INIZIALE_5 = 987654321;
+static const unsigned long long SEME_INIZIALE_6 = 246813579;
+static const unsigned long long MOLTIPLICATORE = 6364136223846793005ULL;
+static const unsigned long long INCREMENTO = 1442695040888963407ULL;
+static const unsigned long long DIVISORE = 9223372036854775808ULL;
 #define BASE 10
 #define UNITA 1
 
