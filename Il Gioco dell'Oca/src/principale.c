@@ -167,7 +167,7 @@ void scegliere_partita_da_caricare (partita* partita_attuale, int * sale) {
                         correttezza_inserimento = scanf("%d", &scelta);
                         fflush(stdin);
                         if (correttezza_inserimento == 0) {
-                            stampare_valore_testuale(FILE_CARICAMENTO_FALLITO, "Input non valido.", 0);
+                            stampare_messaggio_errore(FILE_CARICAMENTO_FALLITO);
                         }
                     } while (correttezza_inserimento == 0);
 
@@ -193,7 +193,7 @@ void scegliere_partita_da_caricare (partita* partita_attuale, int * sale) {
                         correttezza_inserimento = scanf("%d", &scelta);
                         fflush(stdin);
                         if (correttezza_inserimento == 0) {
-                            stampare_valore_testuale(FILE_CARICAMENTO_FALLITO, "Input non valido.", 0);
+                            stampare_messaggio_errore(FILE_CARICAMENTO_FALLITO);
                         }
                     } while (correttezza_inserimento == 0);
 

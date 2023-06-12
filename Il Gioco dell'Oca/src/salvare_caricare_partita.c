@@ -42,6 +42,8 @@ void creare_file_salvataggio() {
 
 
 void salvare_partita (partita* partita_attuale, int * sale) {
+    int scelta;
+    int correttezza_inserimento;
     int slot_scelto;
     int salvato = 0;
     partita elenco_partite [NUMERO_MASSIMO_PARTITE];
@@ -49,26 +51,91 @@ void salvare_partita (partita* partita_attuale, int * sale) {
     do {
         slot_scelto = selezionare_slot (elenco_partite, sale, FILE_SCELTA_SLOT_SALVARE_PARTITA);
         if (slot_scelto != 0) {
-            //interfaccia per richiedere il nome della partita
-            char nome_partita_salvata[DIMENSIONE_MASSIMA_NOME_PARTITA];
+
+            cancellare_schermata();
+            stampare_testo (FILE_SCELTA_NOME_PARTITA);
+            posizionare_cursore_in_attesa(FILE_SCELTA_NOME_PARTITA);
+            char nome_partita_salvata [DIMENSIONE_MASSIMA_NOME_PARTITA];
             inserire_stringa(DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata, sale);
+
+            //se il giocatore ha selezionato uno slot per salvare e non ha scelto di tornare al menù precedente . . .
             if (nome_partita_salvata[0] != '0') {
-                scrivere_nome_partita(partita_attuale, nome_partita_salvata);
-                leggere_nome_partita(elenco_partite[slot_scelto], nome_partita_salvata);
+                scrivere_nome_partita (partita_attuale, nome_partita_salvata);
+                leggere_nome_partita (elenco_partite[slot_scelto], nome_partita_salvata);
+
+                //. . . verifichiamo se lo slot selezionato è vuoto. Se lo è, salva la partita nello slot . . .
                 if (nome_partita_salvata[0] == FINE_STRINGA) {
                     elenco_partite[slot_scelto - 1] = *partita_attuale;
                     scrivere_partite(elenco_partite);
                     salvato = 1;
+
                     cancellare_schermata();
                     stampare_testo(FILE_CONFERMA_SALVATAGGIO);
-                    posizionare_cursore_in_attesa(FILE_CONFERMA_SALVATAGGIO);
-                } else {
+
+                    do {
+
+                        do {
+                            posizionare_cursore_in_attesa(FILE_CONFERMA_SALVATAGGIO);
+                            correttezza_inserimento = scanf("%d", &scelta);
+                            fflush(stdin);
+                            if (correttezza_inserimento == 0) {
+                                stampare_messaggio_errore(FILE_CONFERMA_SALVATAGGIO);
+                            }
+                        } while (correttezza_inserimento == 0);
+
+                        if (scelta != 0) {
+                            stampare_messaggio_errore(FILE_CONFERMA_SALVATAGGIO);
+                        }
+
+                    } while (scelta != 0);
+
+                    *sale = *sale + 1;
+                }
+
+                //. . . altrimenti, se è presente una partita, chiediamo all'utente se vuole sovrascrivere . . .
+                else {
                     //stampare messaggio richiesta sovrascrittura
                     char sovrascrivere;
-                    confermare_scelta(&sovrascrivere, sale);
-                    if ((sovrascrivere == RISPOSTA_AFFERMATIVA_MAIUSCOLO) || (sovrascrivere = RISPOSTA_AFFERMATIVA_MINUSCOLO)) {
-                        elenco_partite[slot_scelto] = *partita_attuale;
+                    cancellare_schermata();
+                    stampare_testo(FILE_SOVRASCRIVERE);
+
+
+                    do {
+                        posizionare_cursore_in_attesa(FILE_SOVRASCRIVERE);
+                        correttezza_inserimento = scanf("%c", &sovrascrivere);
+                        fflush(stdin);
+                        if (sovrascrivere != RISPOSTA_AFFERMATIVA_MINUSCOLO && sovrascrivere != RISPOSTA_AFFERMATIVA_MAIUSCOLO &&sovrascrivere != RISPOSTA_NEGATIVA_MAIUSCOLO &&sovrascrivere != RISPOSTA_NEGATIVA_MINUSCOLO) {
+                            stampare_messaggio_errore(FILE_SOVRASCRIVERE);
+                        }
+                    } while (sovrascrivere != RISPOSTA_AFFERMATIVA_MINUSCOLO && sovrascrivere != RISPOSTA_AFFERMATIVA_MAIUSCOLO &&sovrascrivere != RISPOSTA_NEGATIVA_MAIUSCOLO &&sovrascrivere != RISPOSTA_NEGATIVA_MINUSCOLO);
+                    *sale = *sale + 1;
+
+                    //. . . e, nel caso in cui confermi, sovrascriviamo la partita
+                    if ( (sovrascrivere == RISPOSTA_AFFERMATIVA_MAIUSCOLO) || (sovrascrivere == RISPOSTA_AFFERMATIVA_MINUSCOLO) ) {
+                        elenco_partite[slot_scelto - 1] = *partita_attuale;
                         scrivere_partite(elenco_partite);
+
+                        cancellare_schermata();
+                        stampare_testo(FILE_CONFERMA_SALVATAGGIO);
+
+                        do {
+
+                            do {
+                                posizionare_cursore_in_attesa(FILE_CONFERMA_SALVATAGGIO);
+                                correttezza_inserimento = scanf("%d", &scelta);
+                                fflush(stdin);
+                                if (correttezza_inserimento == 0) {
+                                    stampare_messaggio_errore(FILE_CONFERMA_SALVATAGGIO);
+                                }
+                            } while (correttezza_inserimento == 0);
+
+                            if (scelta != 0) {
+                                stampare_messaggio_errore(FILE_CONFERMA_SALVATAGGIO);
+                            }
+
+                        } while (scelta != 0);
+
+                        *sale = *sale + 1;
                         salvato = 1;
                     }
                 }
@@ -103,25 +170,25 @@ int selezionare_slot (partita elenco_partite[], int * sale, const char file_inte
     //interfaccia per la scelta tra le partite salvate (interfaccer muvt!)
     cancellare_schermata();
     stampare_partite_salvate (file_interfaccia, elenco_partite);
-    posizionare_cursore_in_attesa(file_interfaccia);
     do {
 
 
         //verifica della correttezza del tipo dell'input inserito dall'utente
+
         int correttezza_inserimento;
         do {
+            posizionare_cursore_in_attesa(file_interfaccia);
             correttezza_inserimento = scanf("%d", &slot_scelto);
             fflush(stdin);
             *sale = *sale + 1;
             if (correttezza_inserimento == 0) {
                 stampare_messaggio_errore(file_interfaccia);
-                posizionare_cursore_in_attesa(file_interfaccia);
             }
         } while (correttezza_inserimento == 0);
 
 
         if ( (slot_scelto < 0) || (slot_scelto > NUMERO_MASSIMO_PARTITE) ) {
-            //stampare messaggio errore
+            stampare_messaggio_errore(file_interfaccia);
         }
 
     } while ( (slot_scelto < 0) || (slot_scelto > NUMERO_MASSIMO_PARTITE) );
