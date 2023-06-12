@@ -30,13 +30,13 @@
 1 //codice messaggio
 24 // riga inserimento nome giocatore
 1 // colonna inserimento nome giocatore
+
 22 // riga lancio dadi
 52 // colonna lancio dadi
 9 // codice messaggio
 22 // riga avanza
 52 // colonna avanza
 10 // codice messaggio
-
 
 
 

@@ -53,6 +53,7 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
             stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
 
             do {
+                stampare_messaggio_valore(FILE_PERCORSO, 2);
                 do {
                     posizionare_cursore_in_attesa(FILE_PERCORSO);
                     fflush(stdin);
@@ -70,6 +71,7 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
 
                     do {
                         //inserire scritta per l'inserimento di A per avanzare
+                        stampare_messaggio_valore(FILE_PERCORSO, 3);
                         do {
                             posizionare_cursore_in_attesa(FILE_PERCORSO);
                             scanf("%c", &scelta);
