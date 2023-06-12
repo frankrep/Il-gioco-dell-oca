@@ -132,6 +132,8 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
     return;
 }
 
+
+
 void stampare_testo (const char file_interfaccia[]) {
 
 	FILE * f_interfaccia = fopen(file_interfaccia, "r");
@@ -156,6 +158,8 @@ void stampare_testo (const char file_interfaccia[]) {
 	}
     return;
 }
+
+
 
 void stampare_messaggio_errore (const char file_interfaccia[]) {
 	FILE *f_interfaccia = fopen(file_interfaccia, "r");
@@ -201,6 +205,8 @@ void stampare_messaggio_errore (const char file_interfaccia[]) {
     return;
 }
 
+
+
 void posizionare_cursore(int posizione_riga, int posizione_colonna) {
 	COORD coord;
 	coord.X = posizione_colonna;
@@ -208,6 +214,8 @@ void posizionare_cursore(int posizione_riga, int posizione_colonna) {
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
     return;
 }
+
+
 
 void posizionare_cursore_in_attesa(const char file_interfaccia[]) {
 	FILE *f_interfaccia = fopen(file_interfaccia, "r");
@@ -232,6 +240,7 @@ void posizionare_cursore_in_attesa(const char file_interfaccia[]) {
 }
 
 
+
 void scorrere_righe_file(FILE* file_testo, int numero_righe){
     char riga_letta [LUNGHEZZA_SCHERMATA + 1];
     int indice_riga = 0;
@@ -243,10 +252,12 @@ void scorrere_righe_file(FILE* file_testo, int numero_righe){
 }
 
 
+
 void cancellare_schermata () {
     system("cls");
     return;
 }
+
 
 
 void stampare_valore_intero(const char file_interfaccia[], int valore, int posizione_valore){
@@ -274,8 +285,6 @@ void stampare_valore_intero(const char file_interfaccia[], int valore, int posiz
 
 
 
-
-
 void stampare_valore_testuale(const char file_interfaccia[], const char stringa[], int posizione_valore){
     FILE *f_interfaccia = fopen(file_interfaccia, "r");
     if (f_interfaccia != NULL) {
@@ -298,6 +307,53 @@ void stampare_valore_testuale(const char file_interfaccia[], const char stringa[
     }
     return;
 }
+
+
+
+void stampare_messaggio_valore (const char file_interfaccia[], int) {
+    FILE *f_interfaccia = fopen(file_interfaccia, "r");
+    if (f_interfaccia != NULL) {
+        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_MESSAGGIO_ERRORE);
+        int posizione_riga;
+        int posizione_colonna;
+        int codice_messaggio_errore;
+        fscanf(f_interfaccia, "%d ", &posizione_riga);
+        scorrere_righe_file(f_interfaccia, 1);
+        fscanf(f_interfaccia, "%d ", &posizione_colonna);
+        scorrere_righe_file(f_interfaccia, 1);
+        fscanf(f_interfaccia, "%d ", &codice_messaggio_errore);
+        fclose(f_interfaccia);
+
+
+        posizionare_cursore(posizione_riga, posizione_colonna);
+        FILE *f_messaggi_errore = fopen(FILE_MESSAGGI_ERRORE, "r");
+        if (f_messaggi_errore != NULL) {
+            scorrere_righe_file(f_interfaccia, codice_messaggio_errore - 1);
+            char messaggio_errore[LUNGHEZZA_SCHERMATA + 1];
+            fgets(messaggio_errore, (LUNGHEZZA_SCHERMATA + 1),f_messaggi_errore);
+            fclose(f_messaggi_errore);
+            printf("%s", messaggio_errore);
+            fflush(stdin);
+        } else {
+            printf("%s", ERRORE_FILE_NON_TROVATO);
+            fflush(stdin);
+            printf("%c", CARATTERE_SPAZIO);
+            fflush(stdin);
+            printf("%s", FILE_MESSAGGI_ERRORE);
+            fflush(stdin);
+        }
+
+    } else {
+        printf("%s", ERRORE_FILE_NON_TROVATO);
+        fflush(stdin);
+        printf("%c", CARATTERE_SPAZIO);
+        fflush(stdin);
+        printf("%s", file_interfaccia);
+        fflush(stdin);
+    }
+    return;
+}
+
 
 
 void stampare_valore_testuale_centrato(const char file_interfaccia[], const char stringa[], int posizione_valore, int spazio_disponibile){
@@ -336,6 +392,24 @@ void stampare_valore_testuale_centrato(const char file_interfaccia[], const char
     stampare_valore_testuale(file_interfaccia, stringa, posizione_valore);
     cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
 }*/
+
+
+
+void stampare_partite_salvate (partita elenco_partite[]) {
+    int indice_partita = 0;
+    char nome [DIMENSIONE_MASSIMA_NOME_PARTITA];
+    while (indice_partita < NUMERO_MASSIMO_PARTITE) {
+        leggere_nome_partita (elenco_partite[indice_partita], nome);
+        if (nome[0] == FINE_STRINGA) {
+            //stampare il nome dello slot con il simbolo vuoto
+        }
+        else {
+            //stampare il nome relativo alla partita salvata nella posizione individuata dallo slot
+        }
+        indice_partita = indice_partita + 1;
+    }
+    return;
+}
 
 
 

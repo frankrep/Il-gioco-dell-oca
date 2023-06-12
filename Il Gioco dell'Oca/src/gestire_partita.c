@@ -223,15 +223,17 @@ vincitore inizializzare_vincitore (partita* partita_attuale) {
     cambiare_colore_testo(COLORI_GIOCATORI[leggere_turno(*partita_attuale)]);
     stampare_valore_testuale_centrato(FILE_VITTORIA_NOMI, nome_vincitore, 1, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
     cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
-    posizionare_cursore_in_attesa(FILE_SCELTA_G_INIZIALE);
+    posizionare_cursore_in_attesa(FILE_VITTORIA_NOMI);
     fgetc(stdin);
 
     cancellare_schermata();
     stampare_vittoria(FILE_DETTAGLI_PARTITA);
-    cambiare_colore_testo(COLORI_GIOCATORI[leggere_turno(*partita_attuale)]);
-    stampare_valore_testuale_centrato(FILE_VITTORIA_NOMI, nome_vincitore, 1, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
-    cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
-    posizionare_cursore_in_attesa(FILE_SCELTA_G_INIZIALE);
+    stampare_valore_testuale(FILE_DETTAGLI_PARTITA, nome_vincitore, 1);
+    stampare_valore_intero(FILE_DETTAGLI_PARTITA, leggere_lunghezza_percorso_vincitore(vincitore_partita), 2);
+    stampare_valore_intero(FILE_DETTAGLI_PARTITA, leggere_lanci_vincitore(vincitore_partita), 3);
+    stampare_valore_intero(FILE_DETTAGLI_PARTITA, leggere_punteggio(vincitore_partita), 4);
+    //stampare_valore_intero(FILE_DETTAGLI_PARTITA, posizione_vincitore_classifica, 5);
+    posizionare_cursore_in_attesa(FILE_DETTAGLI_PARTITA);
     fgetc(stdin);
 
     //funzione per il campo punteggio

@@ -4,9 +4,11 @@
 #include "partita.h"
 #include "gestire_partita.h"
 #include "inizializzare_partita.h"
+#include "gestire_stampa.h"
 
 void stampare_partite_salvate (partita elenco_partite[]);
 void scrivere_partite (partita elenco_partite[]);
+
 
 void caricare_partite (partita elenco_partite[]) {
     FILE * file_salvataggio = fopen(FILE_SALVATAGGIO, "rb");
@@ -67,24 +69,6 @@ void confermare_scelta (char * risposta) {
             printf("La scelta inserita non e' valida, riprovare: ");
 
     } while ( *risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && *risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && *risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && *risposta != RISPOSTA_NEGATIVA_MINUSCOLO );
-    return;
-}
-
-
-
-void stampare_partite_salvate (partita elenco_partite[]) {
-    int indice_partita = 0;
-    char nome [DIMENSIONE_MASSIMA_NOME_PARTITA];
-    while (indice_partita < NUMERO_MASSIMO_PARTITE) {
-        leggere_nome_partita (elenco_partite[indice_partita], nome);
-        if (nome[0] == FINE_STRINGA) {
-             //stampare il nome dello slot con il simbolo vuoto
-        }
-        else {
-            //stampare il nome relativo alla partita salvata nella posizione individuata dallo slot
-        }
-        indice_partita = indice_partita + 1;
-    }
     return;
 }
 
