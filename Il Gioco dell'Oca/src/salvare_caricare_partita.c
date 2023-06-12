@@ -66,6 +66,7 @@ void salvare_partita (partita* partita_attuale, int * sale) {
 
                 //. . . verifichiamo se lo slot selezionato è vuoto. Se lo è, salva la partita nello slot . . .
                 if (nome_partita_salvata[0] == FINE_STRINGA) {
+                    scrivere_turno(partita_attuale, leggere_turno(*partita_attuale) - 1);
                     elenco_partite[slot_scelto - 1] = *partita_attuale;
                     scrivere_partite(elenco_partite);
                     salvato = 1;
@@ -113,6 +114,7 @@ void salvare_partita (partita* partita_attuale, int * sale) {
 
                     //. . . e, nel caso in cui confermi, sovrascriviamo la partita
                     if ( (sovrascrivere == RISPOSTA_AFFERMATIVA_MAIUSCOLO) || (sovrascrivere == RISPOSTA_AFFERMATIVA_MINUSCOLO) ) {
+                        scrivere_turno(partita_attuale, leggere_turno(*partita_attuale) - 1);
                         elenco_partite[slot_scelto - 1] = *partita_attuale;
                         scrivere_partite(elenco_partite);
 

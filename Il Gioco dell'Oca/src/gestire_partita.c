@@ -41,7 +41,7 @@ void azzerare_vincitore(vincitore* vincitore_attuale);
 vincitore gestire_partita (partita* partita_attuale, int * sale) {
     int indietro;
     char scelta;
-    if ( leggere_turno (*partita_attuale) == -1 ) {
+    if ( leggere_turno (*partita_attuale) == -2 ) {
         scegliere_giocatore (partita_attuale, sale);
     }
     do{
@@ -139,9 +139,16 @@ int gestire_menu_di_pausa (partita* partita_attuale, int * sale) {
                 chiedere_aiuto(sale);
             } else {
                 if (scelta == 0) {
-                    confermare_scelta(&uscita, sale);
-                    //stampare messaggio del controllo sulla sicurezza del salvataggio
-                    //creare schermata conferma uscita senza salvataggio
+                    stampare_testo(FILE_RICHIESTA_USCITA);
+
+                    do {
+                        posizionare_cursore_in_attesa(FILE_RICHIESTA_USCITA);
+                        scanf("%c", &uscita);
+                        if (uscita != RISPOSTA_NEGATIVA_MINUSCOLO && uscita != RISPOSTA_NEGATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO) {
+                            stampare_messaggio_errore(FILE_RICHIESTA_USCITA);
+                        }
+                    } while (uscita != RISPOSTA_NEGATIVA_MINUSCOLO && uscita != RISPOSTA_NEGATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO);
+
                 }
             }
         }
@@ -479,10 +486,10 @@ void gestire_oca (partita* partita_attuale) {
 void impostare_autorizzazioni(partita* partita_attuale, const char nome_casella_attuale[]){
     giocatore giocatore_attuale;
     int indice_giocatore = 0;
-    while (indice_giocatore < leggere_numero_giocatori(*partita_attuale)){
-        giocatore_attuale = leggere_giocatore(*partita_attuale, indice_giocatore);
+    while ( indice_giocatore < leggere_numero_giocatori (*partita_attuale) ) {
+        giocatore_attuale = leggere_giocatore (*partita_attuale, indice_giocatore);
         char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
-        leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
+        leggere_nome_casella(leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);
         if (confrontare_stringhe (nome_casella, nome_casella_attuale) == VERO){
             //stampare schermata_liberato e attendere input
             scrivere_autorizzazione(&giocatore_attuale, 0);
