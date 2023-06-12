@@ -51,6 +51,7 @@ void caricare_classifica(vincitore vincitori[]) {
     return;
 }
 
+
 void stampare_classifica(int * sale) {
     vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI];
     caricare_classifica(vincitori);
@@ -78,6 +79,7 @@ void stampare_classifica(int * sale) {
         }
     } while (correttezza_inserimento != 0);
 }
+
 
 void scrivere_classifica(vincitore elenco_vincitori[]) {
     FILE *file_classifica = fopen(FILE_CLASSIFICA_TOP_10, "wb");

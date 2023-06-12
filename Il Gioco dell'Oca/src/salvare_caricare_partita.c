@@ -7,7 +7,6 @@
 
 
 
-void stampare_partite_salvate (partita elenco_partite[]);
 void scrivere_partite (partita elenco_partite[]);
 void creare_file_salvataggio();
 
@@ -93,7 +92,7 @@ void confermare_scelta (char * risposta, int * sale) {
 
 
 
-int selezionare_slot (partita elenco_partite[]) {
+int selezionare_slot (partita elenco_partite[], int * sale) {
     int slot_scelto = 0;
     //interfaccia per la scelta tra le partite salvate (interfaccer muvt!)
     stampare_partite_salvate (elenco_partite);

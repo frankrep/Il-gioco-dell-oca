@@ -6,7 +6,6 @@
 void aggiornare_classifica_top_10 (vincitore vincitore_partita);
 void spostamento_destra_vincitori (vincitore vincitori[], int posizione_inserimento, vincitore vincitore_partita);
 void caricare_classifica (vincitore vincitori[]);
-void stampare_classifica(int * sale);
 void scrivere_classifica (vincitore elenco_vincitori[]);
 
 #endif /* classifica_h_ */

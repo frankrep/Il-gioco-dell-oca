@@ -122,12 +122,7 @@ void stampare_dadi(const char file_interfaccia[], const int facce_dadi[]) {
 		}
 		fclose(f_interfaccia);
 	} else {
-		printf("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
-		fflush(stdout);
-		printf("%c", CARATTERE_SPAZIO); fflush(stdin);
-		fflush(stdout);
-		printf("%s", file_interfaccia); fflush(stdin);
-		fflush(stdout);
+        stampare_errore_apertura_file(file_interfaccia);
 	}
     return;
 }
@@ -149,12 +144,7 @@ void stampare_testo (const char file_interfaccia[]) {
 		}
 		fclose(f_interfaccia);
 	} else {
-		printf("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
-		fflush(stdout);
-		printf("%c", CARATTERE_SPAZIO); fflush(stdin);
-		fflush(stdout);
-		printf("%s", file_interfaccia); fflush(stdin);
-		fflush(stdout);
+        stampare_errore_apertura_file(file_interfaccia);
 	}
     return;
 }
@@ -186,21 +176,11 @@ void stampare_messaggio_errore (const char file_interfaccia[]) {
 			printf("%s", messaggio_errore);
 			fflush(stdin);
 		} else {
-			printf("%s", ERRORE_FILE_NON_TROVATO);
-			fflush(stdin);
-			printf("%c", CARATTERE_SPAZIO);
-			fflush(stdin);
-			printf("%s", FILE_MESSAGGI_ERRORE);
-			fflush(stdin);
+            stampare_errore_apertura_file(FILE_MESSAGGI_ERRORE);
 		}
 
 	} else {
-		printf("%s", ERRORE_FILE_NON_TROVATO);
-		fflush(stdin);
-		printf("%c", CARATTERE_SPAZIO);
-		fflush(stdin);
-		printf("%s", file_interfaccia);
-		fflush(stdin);
+        stampare_errore_apertura_file(file_interfaccia);
 	}
     return;
 }
@@ -229,12 +209,7 @@ void posizionare_cursore_in_attesa(const char file_interfaccia[]) {
 		posizionare_cursore (posizione_riga, posizione_colonna);
 		fclose(f_interfaccia);
 	} else {
-		printf ("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
-		fflush (stdout);
-		printf ("%c", CARATTERE_SPAZIO); fflush(stdin);
-		fflush (stdout);
-		printf ("%s", file_interfaccia); fflush(stdin);
-		fflush (stdout);
+        stampare_errore_apertura_file(file_interfaccia);
 	}
     return;
 }
@@ -273,12 +248,7 @@ void stampare_valore_intero(const char file_interfaccia[], int valore, int posiz
         printf("%d", valore); fflush(stdin);
     fclose(f_interfaccia);
     } else {
-    printf ("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
-    fflush (stdout);
-    printf ("%c", CARATTERE_SPAZIO); fflush(stdin);
-    fflush (stdout);
-    printf ("%s", file_interfaccia); fflush(stdin);
-    fflush (stdout);
+        stampare_errore_apertura_file(file_interfaccia);
     }
     return;
 }
@@ -298,58 +268,41 @@ void stampare_valore_testuale(const char file_interfaccia[], const char stringa[
         printf("%s", stringa); fflush(stdin);
         fclose(f_interfaccia);
     } else {
-        printf ("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
-        fflush (stdout);
-        printf ("%c", CARATTERE_SPAZIO); fflush(stdin);
-        fflush (stdout);
-        printf ("%s", file_interfaccia); fflush(stdin);
-        fflush (stdout);
+        stampare_errore_apertura_file(file_interfaccia);
     }
     return;
 }
 
 
 
-void stampare_messaggio_valore (const char file_interfaccia[], int) {
+void stampare_messaggio_valore (const char file_interfaccia[], int posizione_valore) {
     FILE *f_interfaccia = fopen(file_interfaccia, "r");
     if (f_interfaccia != NULL) {
-        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_MESSAGGIO_ERRORE);
+        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_STAMPA_VALORI + ((posizione_valore - 1) * SPIAZZAMENTO_SINGOLO_VALORE));
         int posizione_riga;
         int posizione_colonna;
-        int codice_messaggio_errore;
+        int codice_messaggio;
         fscanf(f_interfaccia, "%d ", &posizione_riga);
         scorrere_righe_file(f_interfaccia, 1);
         fscanf(f_interfaccia, "%d ", &posizione_colonna);
         scorrere_righe_file(f_interfaccia, 1);
-        fscanf(f_interfaccia, "%d ", &codice_messaggio_errore);
+        fscanf(f_interfaccia, "%d ", &codice_messaggio);
         fclose(f_interfaccia);
-
-
         posizionare_cursore(posizione_riga, posizione_colonna);
-        FILE *f_messaggi_errore = fopen(FILE_MESSAGGI_ERRORE, "r");
+        FILE *f_messaggi_errore = fopen(FILE_MESSAGGI, "r");
         if (f_messaggi_errore != NULL) {
-            scorrere_righe_file(f_interfaccia, codice_messaggio_errore - 1);
-            char messaggio_errore[LUNGHEZZA_SCHERMATA + 1];
-            fgets(messaggio_errore, (LUNGHEZZA_SCHERMATA + 1),f_messaggi_errore);
+            scorrere_righe_file(f_interfaccia, codice_messaggio - 1);
+            char messaggio[LUNGHEZZA_SCHERMATA + 1];
+            fgets(messaggio, (LUNGHEZZA_SCHERMATA + 1),f_messaggi_errore);
             fclose(f_messaggi_errore);
-            printf("%s", messaggio_errore);
+            printf("%s", messaggio);
             fflush(stdin);
         } else {
-            printf("%s", ERRORE_FILE_NON_TROVATO);
-            fflush(stdin);
-            printf("%c", CARATTERE_SPAZIO);
-            fflush(stdin);
-            printf("%s", FILE_MESSAGGI_ERRORE);
-            fflush(stdin);
+            stampare_errore_apertura_file(FILE_MESSAGGI_ERRORE);
         }
 
     } else {
-        printf("%s", ERRORE_FILE_NON_TROVATO);
-        fflush(stdin);
-        printf("%c", CARATTERE_SPAZIO);
-        fflush(stdin);
-        printf("%s", file_interfaccia);
-        fflush(stdin);
+        stampare_errore_apertura_file(file_interfaccia);
     }
     return;
 }
@@ -376,12 +329,7 @@ void stampare_valore_testuale_centrato(const char file_interfaccia[], const char
         printf("%s", stringa); fflush(stdin);
         fclose(f_interfaccia);
     } else {
-        printf ("%s", ERRORE_FILE_NON_TROVATO); fflush(stdin);
-        fflush (stdout);
-        printf ("%c", CARATTERE_SPAZIO); fflush(stdin);
-        fflush (stdout);
-        printf ("%s", file_interfaccia); fflush(stdin);
-        fflush (stdout);
+        stampare_errore_apertura_file(file_interfaccia);
     }
     return;
 }
@@ -397,14 +345,14 @@ void stampare_valore_testuale_centrato(const char file_interfaccia[], const char
 
 void stampare_partite_salvate (partita elenco_partite[]) {
     int indice_partita = 0;
-    char nome [DIMENSIONE_MASSIMA_NOME_PARTITA];
+    char nome_partita [DIMENSIONE_MASSIMA_NOME_PARTITA];
     while (indice_partita < NUMERO_MASSIMO_PARTITE) {
-        leggere_nome_partita (elenco_partite[indice_partita], nome);
-        if (nome[0] == FINE_STRINGA) {
-            //stampare il nome dello slot con il simbolo vuoto
+        leggere_nome_partita (elenco_partite[indice_partita], nome_partita);
+        if (nome_partita[0] == FINE_STRINGA) {
+            stampare_messaggio_valore(FILE_SCELTA_SLOT_SALVARE_PARTITA, indice_partita + 1);
         }
         else {
-            //stampare il nome relativo alla partita salvata nella posizione individuata dallo slot
+            stampare_valore_testuale(FILE_SCELTA_SLOT_SALVARE_PARTITA, nome_partita, indice_partita + 1);
         }
         indice_partita = indice_partita + 1;
     }
@@ -536,4 +484,16 @@ void stampare_interfaccia_percorso(partita* partita_attuale, const char file_int
     }
     stampare_dadi_partita(file_interfaccia, partita_attuale);
     return;
+}
+
+
+
+
+void stampare_errore_apertura_file(const char file_interfaccia[]){
+    printf("\n%s", ERRORE_FILE_NON_TROVATO);
+    fflush(stdout);
+    printf("%c", CARATTERE_SPAZIO);
+    fflush(stdout);
+    printf("%s", file_interfaccia);
+    fflush(stdout);
 }
