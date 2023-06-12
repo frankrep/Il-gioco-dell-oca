@@ -23,18 +23,17 @@
 <Inserisci 0 per tornare indietro:                    |____S...S_______$$$$|   
                                                       |____S...S_______$$$$|   
                                                       |____________________|   
-24 //riga input
+23 //riga input
 35 //colonna input
 25 //riga errore
 1 //colonna errore
 1 //codice messaggio
 11 //riga 1^
 4 // colonna 1^
+3 // codice messaggio o nome giocatore
 11 // riga NL/LP 1^
 20 // colonna nl/lp 1^
-11 // linea primo giocatore
-4 // linea primo giocatore
-3 // codice messaggio o nome giocatore
+
 
 
 

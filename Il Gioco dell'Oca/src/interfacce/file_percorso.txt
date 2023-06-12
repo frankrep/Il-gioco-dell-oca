@@ -18,8 +18,8 @@
 | 34 | 33 | 32 |(O) | 30 | 29 | 28 | O  | 26 | 25 | 24 | 23 | 22 | 21 | 20 |   
 |____|____|____|____|____|____|____|____|____|____|____|____|____|____|____|   
                                _____   _____                                   
--L  lancia i dadi;            |     | |     |      -A  avanza;                 
--M  menu;                     |  ?  | |  ?  |      -S  salva partita;          
+                              |     | |     |                                  
+-M  menu                      |  ?  | |  ?  |      -S  salva partita           
                               |_____| |_____|                                  
                     e' il tuo turno:                                           
                                                                                
@@ -30,9 +30,12 @@
 1 //codice messaggio
 24 // riga inserimento nome giocatore
 1 // colonna inserimento nome giocatore
-
-
-
+21 // riga lancio dadi
+1 // colonna lancio dadi
+9 // codice messaggio
+21 // riga avanza
+1 // colonna avanza
+10 // codice messaggio
 
 
 

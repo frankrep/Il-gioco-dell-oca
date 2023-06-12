@@ -30,12 +30,16 @@ __________$$$$$$$$$$$$$$$$$$$$$$___________|__________________________________|
 2 // CODICE MESSAGGIO
 6 //riga NOME
 45 //colonna NOME
+
 10 // riga LP
 45 // colonna LP
+
 14 // riga NL
 45 // colonna NL
+
 18 // riga rateo nl/LP
 45 // colonna rateo nl/LP
+
 22 //riga classifica
 45 // colonna classifica
 4 // cofice messaggio O POSIZIONE 

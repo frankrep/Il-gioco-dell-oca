@@ -30,6 +30,7 @@ __________$$$$$$$$$$$$$$$$$$$$$$___________|
 2 // CODICE MESSAGGIO
 4 // RIGA NOME
 12 // COLONNA NOME
+
 5 // RIGA CLASSIFICA
 19 // COLONNA CLASSIFICA
 5 // MESSAGGIO stampa O POSIZIONE IN CLASSIFICA
