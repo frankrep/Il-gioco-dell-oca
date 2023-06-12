@@ -479,7 +479,7 @@ void gestire_oca (partita* partita_attuale) {
 void impostare_autorizzazioni(partita* partita_attuale, const char nome_casella_attuale[]){
     giocatore giocatore_attuale;
     int indice_giocatore = 0;
-    while (indice_giocatore <= leggere_numero_giocatori(*partita_attuale)){
+    while (indice_giocatore < leggere_numero_giocatori(*partita_attuale)){
         giocatore_attuale = leggere_giocatore(*partita_attuale, indice_giocatore);
         char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
         leggere_nome_casella(leggere_casella_percorso(*partita_attuale, leggere_posizione_giocatore(giocatore_attuale) - 1), nome_casella);
