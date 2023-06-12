@@ -136,16 +136,29 @@ void riprendere_partita (vincitore* vincitore_partita, int * sale) {
 
 
 void scegliere_partita_da_caricare (partita* partita_attuale, int * sale) {
+    int slot_scelto;
     partita elenco_partite [NUMERO_MASSIMO_PARTITE];
-    stampare_testo(FILE_MENU_CARICA_PARTITA);
-    posizionare_cursore_in_attesa(FILE_MENU_CARICA_PARTITA);
-    //AGGIUNGERE CONTROLLO CHE SE IL CAMPO DELLA PARTITA SALVATA è VUOTO ALLORA DEVE DARE ERRORE CHE NON ESISTE NESSUNA PARTITA IN QUELLO SLOT.
     caricare_partite (elenco_partite);
-    //Stampare le partite salvate dal file dove ci sono le partite salvate su video su FILE_MENU_CARICA_PARTITA
-    //AGGIUNGERE CONTROLLO SE SLOT_SCELTO != 1,2,3,4,5 DA ERRORE
-    //AGGIUNGERE CONTROLLO SE SLOT_SCELTO = 0 TORNA AL MENU PRINCIPALE
-    int slot_scelto = selezionare_slot (elenco_partite, sale);
-    *partita_attuale = elenco_partite [slot_scelto];
+    do {
+        stampare_testo(FILE_MENU_CARICA_PARTITA);
+        slot_scelto = selezionare_slot(elenco_partite, sale);
+        if (leggere_carattere_partita(elenco_partite[slot_scelto - 1], 0) == FINE_STRINGA) {
+            //stampare messaggio errore
+            posizionare_cursore_in_attesa(FILE_MENU_CARICA_PARTITA);
+            fgetc(stdin);
+            fflush(stdin);
+        }
+        else {
+            if (slot_scelto != 0) {
+                *partita_attuale = elenco_partite[slot_scelto - 1];
+                //stampare schermata per confermare il caricamento con 0 per tornare indietro
+                posizionare_cursore_in_attesa(FILE_MENU_CARICA_PARTITA);
+                fgetc(stdin);
+                fflush(stdin);
+            }
+        }
+        cancellare_schermata();
+    } while (slot_scelto != 0);
     return;
 }
 

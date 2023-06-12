@@ -2,17 +2,21 @@
 #include "costanti.h"
 #include "salvare_caricare_partita.h"
 #include "partita.h"
-#include "gestire_partita.h"
 #include "inizializzare_partita.h"
+
+
 
 void stampare_partite_salvate (partita elenco_partite[]);
 void scrivere_partite (partita elenco_partite[]);
+void creare_file_salvataggio();
+
+
 
 void caricare_partite (partita elenco_partite[]) {
     FILE * file_salvataggio = fopen(FILE_SALVATAGGIO, "rb");
     if (file_salvataggio == NULL) {
-        //stampare messaggio di errore nell'apertura del file o del file inesistente
-        //gestire l'errore nel caso di apertura, cioè restituisce la funzione
+        creare_file_salvataggio();
+        caricare_partite(elenco_partite);
     }
     else {
         fread(elenco_partite, sizeof(partita), NUMERO_MASSIMO_PARTITE, file_salvataggio);
@@ -21,6 +25,20 @@ void caricare_partite (partita elenco_partite[]) {
     return;
 }
 
+
+
+void creare_file_salvataggio() {
+    FILE * file_salvataggio = fopen(FILE_SALVATAGGIO, "wb");
+    partita partita_attuale;
+    scrivere_carattere_partita(&partita_attuale, 0, FINE_STRINGA);
+    int indice_partita = 0;
+    while (indice_partita < NUMERO_MASSIMO_PARTITE) {
+        fwrite(&partita_attuale, sizeof(partita), 1, file_salvataggio);
+        indice_partita = indice_partita + 1;
+    }
+    fclose(file_salvataggio);
+    return;
+}
 
 
 void salvare_partita (partita* partita_attuale, int * sale) {
