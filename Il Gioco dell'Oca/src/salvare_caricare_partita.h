@@ -6,6 +6,6 @@
 void caricare_partite (partita elenco_partite[]);
 void salvare_partita (partita* partita_attuale, int * sale);
 void confermare_scelta (char * risposta, int * sale);
-int selezionare_slot (partita elenco_partite[], int * sale);
+int selezionare_slot (partita elenco_partite[], int * sale, const char file_interfaccia[]);
 
 #endif /* SALVARE_CARICARE_PARTITA_H_ */

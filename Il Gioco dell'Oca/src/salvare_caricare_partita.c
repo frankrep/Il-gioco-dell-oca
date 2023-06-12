@@ -48,7 +48,7 @@ void salvare_partita (partita* partita_attuale, int * sale) {
     partita elenco_partite [NUMERO_MASSIMO_PARTITE];
     caricare_partite (elenco_partite);
     do {
-        slot_scelto = selezionare_slot (elenco_partite, sale);
+        slot_scelto = selezionare_slot (elenco_partite, sale, FILE_SCELTA_SLOT_SALVARE_PARTITA);
         char nome_partita_salvata [DIMENSIONE_MASSIMA_NOME_PARTITA];
         inserire_stringa (DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata, sale);
         scrivere_nome_partita (partita_attuale,  nome_partita_salvata);
@@ -92,10 +92,12 @@ void confermare_scelta (char * risposta, int * sale) {
 
 
 
-int selezionare_slot (partita elenco_partite[], int * sale) {
+int selezionare_slot (partita elenco_partite[], int * sale, const char file_interfaccia[]) {
     int slot_scelto = 0;
     //interfaccia per la scelta tra le partite salvate (interfaccer muvt!)
-    stampare_partite_salvate (elenco_partite);
+    cancellare_schermata();
+    stampare_partite_salvate (file_interfaccia, elenco_partite);
+    posizionare_cursore_in_attesa(file_interfaccia);
     do {
 
 
@@ -106,7 +108,7 @@ int selezionare_slot (partita elenco_partite[], int * sale) {
             fflush(stdin);
             *sale = *sale + 1;
             if (correttezza_inserimento == 0) {
-                printf("Attenzione: input non valido.");
+                stampare_messaggio_errore(file_interfaccia);
             }
         } while (correttezza_inserimento == 0);
 

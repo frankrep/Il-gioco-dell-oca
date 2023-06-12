@@ -29,7 +29,7 @@ void stampare_interfaccia_percorso(partita* partita_attuale, const char file_int
 void stampare_valore_testuale_centrato(const char file_interfaccia[], const char stringa[], int posizione_valore, int spazio_disponibile);
 void stampare_errore_apertura_file(const char file_interfaccia[]);
 void stampare_messaggio_valore (const char file_interfaccia[], int posizione_valore);
-void stampare_partite_salvate (partita elenco_partite[]);
+void stampare_partite_salvate (const char file_interfaccia[], partita elenco_partite[]);
 void stampare_classifica(int * sale);
 
 

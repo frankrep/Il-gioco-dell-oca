@@ -147,9 +147,8 @@ void scegliere_partita_da_caricare (partita* partita_attuale, int * sale) {
     partita elenco_partite [NUMERO_MASSIMO_PARTITE];
     caricare_partite (elenco_partite);
     do {
-        stampare_testo(FILE_MENU_CARICA_PARTITA);
         posizionare_cursore_in_attesa(FILE_MENU_CARICA_PARTITA);
-        slot_scelto = selezionare_slot(elenco_partite, sale);
+        slot_scelto = selezionare_slot(elenco_partite, sale, FILE_MENU_CARICA_PARTITA);
         if (slot_scelto != 0) {
             if (leggere_carattere_partita(elenco_partite[slot_scelto - 1], 0) == FINE_STRINGA) {
                 //stampare messaggio errore

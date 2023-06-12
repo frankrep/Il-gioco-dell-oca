@@ -345,21 +345,21 @@ void stampare_valore_testuale_centrato(const char file_interfaccia[], const char
 
 
 
-void stampare_partite_salvate (partita elenco_partite[]) {
-    stampare_testo(FILE_SCELTA_SLOT_SALVARE_PARTITA);
+void stampare_partite_salvate (const char file_interfaccia[], partita elenco_partite[]) {
+    stampare_testo(file_interfaccia);
     int indice_partita = 0;
     char nome_partita [DIMENSIONE_MASSIMA_NOME_PARTITA];
     while (indice_partita < NUMERO_MASSIMO_PARTITE) {
         leggere_nome_partita (elenco_partite[indice_partita], nome_partita);
         if (nome_partita[0] == FINE_STRINGA) {
-            stampare_messaggio_valore(FILE_SCELTA_SLOT_SALVARE_PARTITA, indice_partita + 1);
+            stampare_messaggio_valore(file_interfaccia, indice_partita + 1);
         }
         else {
-            stampare_valore_testuale(FILE_SCELTA_SLOT_SALVARE_PARTITA, nome_partita, indice_partita + 1);
+            stampare_valore_testuale(file_interfaccia, nome_partita, indice_partita + 1);
         }
         indice_partita = indice_partita + 1;
     }
-    posizionare_cursore_in_attesa(FILE_SCELTA_SLOT_SALVARE_PARTITA);
+    posizionare_cursore_in_attesa(file_interfaccia);
     return;
 }
 
