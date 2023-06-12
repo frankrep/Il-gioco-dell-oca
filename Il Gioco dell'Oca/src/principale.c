@@ -143,28 +143,72 @@ void riprendere_partita (vincitore* vincitore_partita, int * sale) {
 
 
 void scegliere_partita_da_caricare (partita* partita_attuale, int * sale) {
+    int correttezza_inserimento;
     int slot_scelto;
     partita elenco_partite [NUMERO_MASSIMO_PARTITE];
     caricare_partite (elenco_partite);
     do {
         posizionare_cursore_in_attesa(FILE_MENU_CARICA_PARTITA);
         slot_scelto = selezionare_slot(elenco_partite, sale, FILE_MENU_CARICA_PARTITA);
+
+        //se il giocatore ha deciso di caricare una partita, viene verificata la sua esistenza . . .
         if (slot_scelto != 0) {
+            int scelta;
+            cancellare_schermata();
+
+            //se il giocatore ha scelto uno slot, verifica se al suo interno non vi è una partita da caricare . . .
             if (leggere_carattere_partita(elenco_partite[slot_scelto - 1], 0) == FINE_STRINGA) {
-                //stampare messaggio errore
-                posizionare_cursore_in_attesa(FILE_MENU_CARICA_PARTITA);
-                fgetc(stdin);
-                fflush(stdin);
+                stampare_testo(FILE_CARICAMENTO_FALLITO);
+
+                do {
+
+                    do {
+                        posizionare_cursore_in_attesa(FILE_CARICAMENTO_FALLITO);
+                        correttezza_inserimento = scanf("%d", &scelta);
+                        fflush(stdin);
+                        if (correttezza_inserimento == 0) {
+                            stampare_valore_testuale(FILE_CARICAMENTO_FALLITO, "Input non valido.", 0);
+                        }
+                    } while (correttezza_inserimento == 0);
+
+                    if (scelta != 0) {
+                        stampare_messaggio_errore(FILE_CARICAMENTO_FALLITO);
+                    }
+
+                }while (scelta != 0);
+
+                *sale = *sale + 1;
             }
+
+            //. . . altrimenti carica la partita presente nello slot
             else {
                 *partita_attuale = elenco_partite[slot_scelto - 1];
                 //stampare schermata per confermare il caricamento con 0 per tornare indietro
-                posizionare_cursore_in_attesa(FILE_MENU_CARICA_PARTITA);
-                fgetc(stdin);
-                fflush(stdin);
+                stampare_testo(FILE_CARICAMENTO_RIUSCITO);
+
+                do {
+
+                    do {
+                        posizionare_cursore_in_attesa(FILE_CARICAMENTO_RIUSCITO);
+                        correttezza_inserimento = scanf("%d", &scelta);
+                        fflush(stdin);
+                        if (correttezza_inserimento == 0) {
+                            stampare_valore_testuale(FILE_CARICAMENTO_FALLITO, "Input non valido.", 0);
+                        }
+                    } while (correttezza_inserimento == 0);
+
+                    if (scelta != 0) {
+                        stampare_messaggio_errore(FILE_CARICAMENTO_FALLITO);
+                    }
+
+                }while (scelta != 0);
+
+                *sale = *sale + 1;
                 slot_scelto = 0;
             }
         }
+
+        //. . . altrimenti si torna al menù precedente
         else {
             scrivere_carattere_partita(partita_attuale, 0, FINE_STRINGA);
         }

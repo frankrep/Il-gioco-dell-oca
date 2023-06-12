@@ -39,6 +39,7 @@ void azzerare_vincitore(vincitore* vincitore_attuale);
 
 
 vincitore gestire_partita (partita* partita_attuale, int * sale) {
+    int indietro;
     char scelta;
     if ( leggere_turno (*partita_attuale) == -1 ) {
         scegliere_giocatore (partita_attuale, sale);
@@ -99,27 +100,29 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
                             //inserire il messaggio per dire di premere un tasto per concludere il turno
                         }
                         else {
-                            scelta = gestire_menu_di_pausa(partita_attuale, sale);
+                            indietro = gestire_menu_di_pausa(partita_attuale, sale);
                             stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
                         }
-                    } while (scelta == 1);
+                    } while (indietro == 1);
                 }
                 else {
-                    scelta = gestire_menu_di_pausa(partita_attuale, sale);
+                    indietro = gestire_menu_di_pausa(partita_attuale, sale);
                     stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
                     //stampare menu
                 }
-            } while (scelta == 1);
+            } while (indietro == 1);
 
         }
-        } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale)  && (scelta != 0));
-        vincitore vincitore_partita;
-        if(leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) == leggere_lunghezza_percorso (*partita_attuale)) {
-            vincitore_partita = inizializzare_vincitore (partita_attuale, sale);
-        }else{
-            azzerare_vincitore(&vincitore_partita);
-        }
-        return vincitore_partita;
+
+    } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale)  && (indietro != 0));
+    vincitore vincitore_partita;
+    if(leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) == leggere_lunghezza_percorso (*partita_attuale)) {
+        vincitore_partita = inizializzare_vincitore (partita_attuale, sale);
+    }
+    else {
+        azzerare_vincitore(&vincitore_partita);
+    }
+    return vincitore_partita;
 }
 
 
@@ -142,7 +145,7 @@ int gestire_menu_di_pausa (partita* partita_attuale, int * sale) {
                 }
             }
         }
-    } while (scelta != 1 && uscita != 0);
+    } while (scelta != 1 && (uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO) );
     cancellare_schermata();
     return scelta;
 }
@@ -253,7 +256,7 @@ vincitore inizializzare_vincitore (partita* partita_attuale, int * sale) {
 
 
 
-void azzerare_vincitore(vincitore* vincitore_attuale){
+void azzerare_vincitore (vincitore* vincitore_attuale) {
     scrivere_carattere_nome_vincitore(vincitore_attuale, 0, FINE_STRINGA);
     scrivere_pedina_vincitore(vincitore_attuale, 0);
     scrivere_lanci_vincitore(vincitore_attuale, 0);
