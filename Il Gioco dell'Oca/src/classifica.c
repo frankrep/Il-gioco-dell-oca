@@ -10,15 +10,20 @@ void aggiornare_classifica_top_10(vincitore vincitore_partita) {
     vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI];
     caricare_classifica(vincitori);
     int inserito = FALSO;
-    float rateo_vincitore_partita = leggere_lunghezza_percorso_vincitore(vincitore_partita) / leggere_lanci_vincitore(vincitore_partita);
+    float rateo_vincitore_partita = leggere_lanci_vincitore(vincitore_partita) / leggere_lunghezza_percorso_vincitore(vincitore_partita);
     float rateo_classificato;
     scrivere_punteggio(&vincitore_partita, rateo_vincitore_partita);
     int indice_vincitori = 0;
     while (indice_vincitori < NUMERO_MASSIMO_CLASSIFICATI) {
         if(leggere_carattere_nome_vincitore(vincitori[indice_vincitori], 0) != FINE_STRINGA){
             rateo_classificato = leggere_punteggio(vincitori[indice_vincitori]);
-            if (((rateo_vincitore_partita < rateo_classificato) || (rateo_classificato == 0.0)) && (inserito != VERO)) {
+            if ((rateo_vincitore_partita < rateo_classificato) && (inserito != VERO)) {
                 spostamento_destra_vincitori(vincitori, indice_vincitori, vincitore_partita);
+                inserito = VERO;
+            }
+        }else{
+            if(inserito != VERO){
+                vincitori[indice_vincitori] = vincitore_partita;
                 inserito = VERO;
             }
         }
@@ -43,8 +48,8 @@ void spostamento_destra_vincitori(vincitore vincitori[], int posizione_inserimen
 
 
 void caricare_classifica(vincitore vincitori[]) {
-    FILE *file_classifica = NULL;
-    if ((file_classifica = fopen(FILE_CLASSIFICA_TOP_10, "rb")) != NULL) {
+    FILE * file_classifica = fopen(FILE_CLASSIFICA_TOP_10, "rb");
+    if (file_classifica != NULL) {
         fread(vincitori, sizeof(vincitore), NUMERO_MASSIMO_CLASSIFICATI, file_classifica);
         fclose(file_classifica);
     } else {
@@ -59,10 +64,11 @@ void caricare_classifica(vincitore vincitori[]) {
 void scrivere_classifica(vincitore elenco_vincitori[]) {
     FILE *file_classifica = fopen(FILE_CLASSIFICA_TOP_10, "wb");
     int indice_partita = 0;
-    while (indice_partita < NUMERO_MASSIMO_CLASSIFICATI) {
+    /*while (indice_partita < NUMERO_MASSIMO_CLASSIFICATI) {
         fwrite(&elenco_vincitori[indice_partita], sizeof(vincitore), 1, file_classifica);
         indice_partita = indice_partita + 1;
-    }
+    }*/
+    fwrite(elenco_vincitori, sizeof(vincitore), NUMERO_MASSIMO_CLASSIFICATI, file_classifica);
     fclose(file_classifica);
     return;
 }
