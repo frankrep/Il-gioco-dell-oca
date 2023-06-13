@@ -4,13 +4,15 @@
 #include "costanti.h"
 #include "gestire_partita.h"
 #include "gestire_stampa.h"
+#include "generare_percorso.h"
 
 
 void aggiornare_classifica_top_10(vincitore vincitore_partita) {
     vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI];
     caricare_classifica(vincitori);
     int inserito = FALSO;
-    float rateo_vincitore_partita = leggere_lanci_vincitore(vincitore_partita) / leggere_lunghezza_percorso_vincitore(vincitore_partita);
+    //float rateo_vincitore_partita = calcolare_divisione_decimale(leggere_lanci_vincitore(vincitore_partita), leggere_lunghezza_percorso_vincitore(vincitore_partita), 6);
+    float rateo_vincitore_partita = (float)leggere_lanci_vincitore(vincitore_partita) / (float)leggere_lunghezza_percorso_vincitore(vincitore_partita);
     float rateo_classificato;
     scrivere_punteggio(&vincitore_partita, rateo_vincitore_partita);
     int indice_vincitori = 0;
@@ -88,3 +90,39 @@ void creare_classifica_vuota(vincitore vincitori[]){
         indice_vincitori = indice_vincitori + 1;
     }
 }
+
+
+
+/*float calcolare_divisione_decimale(int divisore, int dividendo, int precisione){
+
+    float risultato_intermedio = divisore / dividendo;
+    int resto = calcolare_resto(divisore, dividendo);
+    float risultato_finale = risultato_intermedio;
+    float moltiplicatore = 0.1f;
+    int indice_precisione = 0;
+    while (indice_precisione < precisione){
+
+        risultato_finale = risultato_finale + (risultato_intermedio * moltiplicatore);
+        moltiplicatore = moltiplicatore / 10;
+        indice_precisione = indice_precisione + 1;
+    }
+    return risultato_finale;
+}
+
+
+10/8
+
+1
+
+2*10
+
+20/8
+
+2
+
+4 * 10
+
+40/8
+
+5
+*/
