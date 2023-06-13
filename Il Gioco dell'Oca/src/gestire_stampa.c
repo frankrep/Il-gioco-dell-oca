@@ -384,7 +384,6 @@ void stampare_valore_testuale_centrato (const char file_interfaccia [], const ch
 
 
 void stampare_partite_salvate (const char file_interfaccia [], partita elenco_partite []) {
-    cancellare_schermata();
     stampare_testo (file_interfaccia);
     int indice_partita = 0;
     char nome_partita [DIMENSIONE_MASSIMA_NOME_PARTITA];
@@ -616,7 +615,6 @@ void stampare_errore_apertura_file (const char file_interfaccia [] ) {
 
 
 void stampare_crediti (int * sale) {
-    cancellare_schermata ();
     stampare_testo (FILE_CREDITI);
     attendere_tasto_zero(FILE_CREDITI, sale);
     return;
@@ -627,7 +625,6 @@ void stampare_crediti (int * sale) {
 void stampare_schermata_cambio_turno (partita partita_attuale) {
     char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     int turno = leggere_turno (partita_attuale);
-    cancellare_schermata ();
     stampare_testo (FILE_CAMBIO_TURNO);
     leggere_nome_giocatore (leggere_giocatore (partita_attuale, turno), nome_giocatore);
     cambiare_colore_testo (COLORI_GIOCATORI [turno]);

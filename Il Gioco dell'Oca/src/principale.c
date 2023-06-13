@@ -10,7 +10,7 @@
 #include "aiuto.h"
 #include "salvare_caricare_partita.h"
 #include "gestire_stampa.h"
-#include "stampare_percorso.h"
+
 
 
 int scegliere_opzione_menu (int * sale);
@@ -136,7 +136,6 @@ void scegliere_partita_da_caricare (partita* partita_attuale, int * sale) {
 
         //se il giocatore ha deciso di caricare una partita, viene verificata la sua esistenza . . .
         if (slot_scelto != 0) {
-            cancellare_schermata ();
 
             //se il giocatore ha scelto uno slot, verifica se al suo interno non vi è una partita da caricare . . .
             if (leggere_carattere_partita (elenco_partite [slot_scelto - 1], 0) == FINE_STRINGA) {
@@ -166,7 +165,6 @@ void scegliere_partita_da_caricare (partita* partita_attuale, int * sale) {
 
 
 void confermare_uscita (char * conferma, int * sale) {
-    cancellare_schermata ();
     stampare_testo (FILE_USCITA_GIOCO);
     attendere_simbolo_risposta (FILE_USCITA_GIOCO, conferma, sale);
     return;

@@ -69,7 +69,6 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
 
         //Verifica che il giocatore di turno sia autorizzato a lanciare i dadi
         if (leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) == AUTORIZZATO_A_LANCIARE_DADI) {
-            cancellare_schermata ();
             stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
             do {
 
@@ -102,7 +101,6 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
                             spostare_giocatore (partita_attuale);
 
                             //Stampa il percorso con la pedina spostata
-                            cancellare_schermata ();
                             stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
                             posizionare_cursore_in_attesa (FILE_PERCORSO);
                             fgetc (stdin);
@@ -183,7 +181,6 @@ int gestire_menu_di_pausa (partita* partita_attuale, int * sale) {
 
 int scegliere_opzione_menu_di_pausa (int * sale) {
     int scelta;
-    cancellare_schermata ();
     stampare_testo (FILE_MENU_DI_PAUSA);
     do {
         verificare_correttezza_inserimento (FILE_MENU_DI_PAUSA, &scelta, sale);
@@ -202,7 +199,6 @@ void scegliere_giocatore_iniziale (partita* partita_attuale, int * sale) {
     int indice_giocatori = 0;
     char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
-        cancellare_schermata ();
         stampare_testo (FILE_SCELTA_G_INIZIALE);
         leggere_nome_giocatore (leggere_giocatore (*partita_attuale,indice_giocatori), nome_giocatore);
         //Stampa il nome del giocatore centrato nella schermata del lancio dei dadi
@@ -370,33 +366,33 @@ void verificare_casella (partita* partita_attuale, int * sale) {
         giocatore_attuale = leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) );
         leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);
         if (confrontare_stringhe (nome_casella, NOME_OCA) == VERO) {
-            cancellare_schermata ();
+
             stampare_testo (FILE_SCHERMATA_OCA);
             attendere_tasto_zero (FILE_SCHERMATA_OCA, sale);
             gestire_oca (partita_attuale);
         } else if (confrontare_stringhe (nome_casella, NOME_PONTE) == VERO) {
-            cancellare_schermata ();
+
             stampare_testo (FILE_SCHERMATA_PONTE);
             attendere_tasto_zero (FILE_SCHERMATA_PONTE, sale);
             spostare_giocatore (partita_attuale);
         } else if (confrontare_stringhe(nome_casella, NOME_LOCANDA) == VERO) {
-            cancellare_schermata ();
+
             stampare_testo(FILE_SCHERMATA_LOCANDA);
             attendere_tasto_zero (FILE_SCHERMATA_LOCANDA, sale);
             scrivere_autorizzazione (&giocatore_attuale, TURNI_ATTESA_LOCANDA);
             scrivere_giocatore ( partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
         } else if (confrontare_stringhe (nome_casella, NOME_POZZO) == VERO) {
-            cancellare_schermata ();
+
             stampare_testo (FILE_SCHERMATA_POZZO);
             attendere_tasto_zero (FILE_SCHERMATA_POZZO, sale);
             impostare_autorizzazioni (partita_attuale, NOME_POZZO);
         } else if (confrontare_stringhe (nome_casella, NOME_PRIGIONE) == VERO) {
-            cancellare_schermata ();
+
             stampare_testo (FILE_SCHERMATA_PRIGIONE);
             attendere_tasto_zero (FILE_SCHERMATA_PRIGIONE, sale);
             impostare_autorizzazioni (partita_attuale, NOME_PRIGIONE);
         } else if (confrontare_stringhe (nome_casella, NOME_LABIRINTO) == VERO) {
-            cancellare_schermata ();
+
             stampare_testo (FILE_SCHERMATA_LABIRINTO);
             stampare_valore_intero(FILE_SCHERMATA_LABIRINTO, calcolare_proporzione (*partita_attuale, CASELLA_ARRIVO_LABIRINTO), PRIMO_VALORE);
             attendere_tasto_zero (FILE_SCHERMATA_LABIRINTO, sale);
@@ -408,7 +404,6 @@ void verificare_casella (partita* partita_attuale, int * sale) {
             }
             scrivere_giocatore (partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
         } else if (confrontare_stringhe (nome_casella, NOME_SCHELETRO) == VERO ) {
-            cancellare_schermata ();
             stampare_testo (FILE_SCHERMATA_SCHELETRO);
             posizionare_cursore_in_attesa (FILE_SCHERMATA_SCHELETRO);
             fgetc (stdin);
@@ -481,7 +476,6 @@ void gestire_autorizzazione (partita* partita_attuale, int * sale) {
     //Se il giocatore si trova sulla casella locanda, decrementa l'autorizzazione di 1
     if (confrontare_stringhe (nome_casella, NOME_LOCANDA) == VERO) {
         //Stampa la schermata della locanda che mostra il turno passato e attende l'input dell'utente
-        cancellare_schermata ();
         stampare_testo (FILE_SCHERMATA_LOCANDA_TURNO_PASSATO);
         stampare_valore_intero (FILE_SCHERMATA_LOCANDA_TURNO_PASSATO, leggere_autorizzazione (giocatore_attuale), PRIMO_VALORE);
         posizionare_cursore_in_attesa (FILE_SCHERMATA_LOCANDA_TURNO_PASSATO);
@@ -491,7 +485,6 @@ void gestire_autorizzazione (partita* partita_attuale, int * sale) {
         scrivere_autorizzazione (&giocatore_attuale, leggere_autorizzazione (giocatore_attuale) - 1);
     } else if (confrontare_stringhe (nome_casella, NOME_PRIGIONE) == VERO) { //Se il giocatore si trova sulla casella prigione, lancia i dadi
         //Stampa la schermata della prigione che mostra il lancio dei dadi e attende l'input dell'utente
-        cancellare_schermata ();
         stampare_testo (FILE_SCHERMATA_LANCIO_DADI_PRIGIONE);
         posizionare_cursore_in_attesa (FILE_SCHERMATA_LANCIO_DADI_PRIGIONE);
         fgetc (stdin);
@@ -510,7 +503,6 @@ void gestire_autorizzazione (partita* partita_attuale, int * sale) {
         //Se la somma dei dadi coincide con quella per l'uscita dalla prigione
         if ( (sommare_dadi (*partita_attuale) == DADO_MINORE_USCITA_PRIGIONE) || (sommare_dadi (*partita_attuale) == DADO_MAGGIORE_USCITA_PRIGIONE) ) {
             //Stampa la schermata dell'uscita di prigione
-            cancellare_schermata ();
             stampare_testo (FILE_SCHERMATA_LIBERATO);
             posizionare_cursore_in_attesa (FILE_SCHERMATA_LIBERATO);
             fgetc (stdin);
@@ -520,7 +512,6 @@ void gestire_autorizzazione (partita* partita_attuale, int * sale) {
         }
     } else if (confrontare_stringhe (nome_casella, NOME_POZZO) == VERO) {//Se il giocatore si trova sulla casella pozzo
         //Stampa la schermata che ricorda al giocatore che si trova nel pozzo
-        cancellare_schermata ();
         stampare_testo (FILE_SCHERMATA_PERM_POZZO);
         posizionare_cursore_in_attesa (FILE_SCHERMATA_PERM_POZZO);
         fgetc (stdin);
@@ -567,13 +558,12 @@ int verificare_nomi_speciali (partita* partita_attuale) {
 
 
 void gestire_nome_speciale (partita* partita_attuale, int indice_nome_speciale, int * sale) {
-    cancellare_schermata ();
     stampare_testo(FILE_EASTEREGG1);
     attendere_tasto_zero(FILE_EASTEREGG1, sale);
-    cancellare_schermata ();
+
     stampare_testo(FILE_EASTEREGG2);
     attendere_tasto_zero(FILE_EASTEREGG2, sale);
-    cancellare_schermata ();
+
     stampare_vittoria (FILE_VITTORIA_NOMI);
     char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     leggere_nome_giocatore (leggere_giocatore (*partita_attuale, indice_nome_speciale), nome_giocatore);
@@ -582,7 +572,7 @@ void gestire_nome_speciale (partita* partita_attuale, int indice_nome_speciale, 
     stampare_valore_testuale_centrato (FILE_VITTORIA_NOMI, nome_giocatore, PRIMO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
     cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
     attendere_tasto_zero (FILE_VITTORIA_NOMI, sale);
-    cancellare_schermata ();
+
     stampare_testo(FILE_CREDITI);
     attendere_tasto_zero(FILE_CREDITI, sale);
     cancellare_schermata ();

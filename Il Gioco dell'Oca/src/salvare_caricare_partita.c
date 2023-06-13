@@ -50,7 +50,6 @@ void salvare_partita (partita* partita_attuale, int * sale) {
     do {
         slot_scelto = selezionare_slot (elenco_partite, sale, FILE_SCELTA_SLOT_SALVARE_PARTITA);
         if (slot_scelto != 0) {
-            cancellare_schermata ();
             stampare_testo (FILE_SCELTA_NOME_PARTITA);
             char nome_partita_salvata [DIMENSIONE_MASSIMA_NOME_PARTITA + 1];
 
@@ -84,7 +83,6 @@ void salvare_partita (partita* partita_attuale, int * sale) {
 
                     //stampare messaggio richiesta sovrascrittura
                     char sovrascrivere;
-                    cancellare_schermata();
                     stampare_testo(FILE_SOVRASCRIVERE);
                     attendere_simbolo_risposta (FILE_SOVRASCRIVERE, &sovrascrivere, sale);
 
@@ -131,7 +129,6 @@ void effettuare_salvataggio (partita * partita_attuale, partita elenco_partite [
     scrivere_turno (partita_attuale, leggere_turno(*partita_attuale) - 1);
     elenco_partite [slot_scelto - 1] = *partita_attuale;
     scrivere_partite(elenco_partite);
-    cancellare_schermata();
     stampare_testo (FILE_CONFERMA_SALVATAGGIO);
     attendere_tasto_zero (FILE_CONFERMA_SALVATAGGIO, sale);
     return;
