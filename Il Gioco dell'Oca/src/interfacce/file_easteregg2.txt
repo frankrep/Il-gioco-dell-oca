@@ -22,8 +22,8 @@
            \    \      \     \     |:          |             \                 
            /`---';      `----'     | \         |             /                 
           (     /                  |  `.     .' \          .'                  
-           `---'                   |<PREMERE UN TASTO PER CONTINUARE:          
+           `---'                   |<PREMERE UN TASTO PER CONTINUARE:           
 25 //RIGA INPUT
-70 //COLONNA INPUT
+71 //COLONNA INPUT
 
 
