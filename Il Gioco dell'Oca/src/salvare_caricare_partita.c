@@ -8,7 +8,7 @@
 
 
 void scrivere_partite (partita elenco_partite[]);
-void creare_file_salvataggio();
+void creare_file_salvataggio ();
 void effettuare_salvataggio (partita * partita_attuale, partita elenco_partite [], int slot_scelto, const char interfaccia [], int * sale);
 
 

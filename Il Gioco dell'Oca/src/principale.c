@@ -1,4 +1,4 @@
-#include <stdlib.h>
+
 #include <stdio.h>
 #include "partita.h"
 #include "generare_percorso.h"
@@ -17,7 +17,7 @@ int scegliere_opzione_menu (int * sale);
 void iniziare_nuova_partita (vincitore* vincitore_partita, int * sale);
 void riprendere_partita (vincitore* vincitore_partita, int * sale);
 void scegliere_partita_da_caricare (partita* partita_attuale, int * sale);
-void gestire_vincitore (vincitore vincitore_partita);
+void gestire_vincitore (vincitore vincitore_partita, int * sale);
 void confermare_uscita (char * conferma, int * sale);
 
 
@@ -45,14 +45,14 @@ int main() {
         if (opzione == 1) {
             iniziare_nuova_partita (&vincitore_partita, &sale);
             if (leggere_lunghezza_percorso_vincitore(vincitore_partita) != 0) {
-                gestire_vincitore(vincitore_partita);
+                gestire_vincitore (vincitore_partita, &sale);
             }
         }
         else {
             if (opzione == 2) {
                 riprendere_partita(&vincitore_partita, &sale);
                 if (leggere_lunghezza_percorso_vincitore(vincitore_partita) != 0) {
-                    gestire_vincitore(vincitore_partita);
+                    gestire_vincitore (vincitore_partita, &sale);
                 }
             }
             else {
