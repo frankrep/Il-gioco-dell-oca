@@ -16,6 +16,7 @@
 #include "stampare_percorso.h"
 #include "salvare_caricare_partita.h"
 #include "aiuto.h"
+#include "classifica.h"
 
 
 void scegliere_giocatore (partita* partita_attuale, int * sale);
@@ -118,6 +119,7 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
     vincitore vincitore_partita;
     if(leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) == leggere_lunghezza_percorso (*partita_attuale)) {
         vincitore_partita = inizializzare_vincitore (partita_attuale, sale);
+        aggiornare_classifica_top_10(vincitore_partita);
     }
     else {
         azzerare_vincitore(&vincitore_partita);
@@ -536,6 +538,7 @@ void gestire_autorizzazione (partita* partita_attuale, int * sale) {
         *sale = *sale + 1;
         //stampare schermata_lancio_dadi_prigione con lancio effettuato e richiedere input
         stampare_dadi_partita(FILE_SCHERMATA_LANCIO_DADI_PRIGIONE, partita_attuale);
+        posizionare_cursore_in_attesa(FILE_SCHERMATA_LANCIO_DADI_PRIGIONE);
         fgetc(stdin);
         fflush(stdin);
         *sale = *sale + 1;

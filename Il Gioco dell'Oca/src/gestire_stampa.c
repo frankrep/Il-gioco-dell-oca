@@ -491,28 +491,65 @@ void stampare_classifica(int * sale) {
     vincitore vincitori[NUMERO_MASSIMO_CLASSIFICATI];
     caricare_classifica(vincitori);
     stampare_testo(FILE_CLASSIFICA);
-    char nome_vincitore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
-    int indice_vincitori = 0;
-    int correttezza_inserimento;
-    while (indice_vincitori < NUMERO_MASSIMO_CLASSIFICATI) {
-        leggere_nome_vincitore(vincitori[indice_vincitori], nome_vincitore);
-        if (nome_vincitore[0] == FINE_STRINGA) {
-            printf("%d ", indice_vincitori);
-            printf("%s", nome_vincitore);
-            printf("%d", leggere_lanci_vincitore(vincitori[indice_vincitori]));
-            printf("%d", leggere_lunghezza_percorso_vincitore(vincitori[indice_vincitori]));
+    FILE * f_interfaccia = fopen(FILE_CLASSIFICA, "r");
+    if (f_interfaccia != NULL) {
+        int posizione_riga_nome_vincitore;
+        int posizione_colonna_nome_vincitore;
+        int codice_messaggio;
+        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_STAMPA_VALORI);
+        fscanf(f_interfaccia, "%d ", &posizione_riga_nome_vincitore);
+        scorrere_righe_file(f_interfaccia, 1);
+        fscanf(f_interfaccia, "%d ", &posizione_colonna_nome_vincitore);
+        scorrere_righe_file(f_interfaccia, 1);
+        fscanf(f_interfaccia, "%d ", &codice_messaggio);
+        scorrere_righe_file(f_interfaccia, 1);
+        int posizione_riga_rateo_vincitore;
+        int posizione_colonna_rateo_vincitore;
+        fscanf(f_interfaccia, "%d ", &posizione_riga_rateo_vincitore);
+        scorrere_righe_file(f_interfaccia, 1);
+        fscanf(f_interfaccia, "%d ", &posizione_colonna_rateo_vincitore);
+        fclose(f_interfaccia);
+
+        char nome_vincitore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+        int indice_vincitori = 0;
+        int correttezza_inserimento;
+        while (indice_vincitori < NUMERO_MASSIMO_CLASSIFICATI) {
+            leggere_nome_vincitore(vincitori[indice_vincitori], nome_vincitore);
+            if (nome_vincitore[0] != FINE_STRINGA) {
+                posizionare_cursore(posizione_riga_nome_vincitore + indice_vincitori, posizione_colonna_nome_vincitore);
+                printf("%s", nome_vincitore);
+                posizionare_cursore(posizione_riga_rateo_vincitore + indice_vincitori, posizione_colonna_rateo_vincitore);
+                printf("%f", leggere_punteggio(vincitori[indice_vincitori]));
+            }else{
+                posizionare_cursore(posizione_riga_nome_vincitore + indice_vincitori, posizione_colonna_nome_vincitore);
+                FILE *f_messaggi = fopen(FILE_MESSAGGI, "r");
+                if (f_messaggi != NULL) {
+                    scorrere_righe_file(f_interfaccia, codice_messaggio - 1);
+                    char messaggio[LUNGHEZZA_SCHERMATA + 1];
+                    fgets(messaggio, (LUNGHEZZA_SCHERMATA + 1),f_messaggi);
+                    fclose(f_messaggi);
+                    printf("%s", messaggio);
+                    fflush(stdin);
+                } else {
+                    stampare_errore_apertura_file(FILE_MESSAGGI);
+                }
+            }
+            indice_vincitori = indice_vincitori + 1;
         }
-        indice_vincitori = indice_vincitori + 1;
+        do {
+            posizionare_cursore_in_attesa(FILE_CLASSIFICA);
+            scanf("%d", &correttezza_inserimento);
+            fflush(stdin);
+            *sale = *sale + 1;
+            if (correttezza_inserimento != 0) {
+                stampare_messaggio_errore(FILE_CLASSIFICA);
+            }
+        } while (correttezza_inserimento != 0);
+    }else{
+        stampare_errore_apertura_file(FILE_CLASSIFICA);
     }
-    do {
-        posizionare_cursore_in_attesa(FILE_CLASSIFICA);
-        scanf("%d", &correttezza_inserimento);
-        fflush(stdin);
-        *sale = *sale + 1;
-        if (correttezza_inserimento != 0) {
-            stampare_messaggio_errore(FILE_CLASSIFICA);
-        }
-    } while (correttezza_inserimento != 0);
+
+
 }
 
 
