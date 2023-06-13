@@ -65,11 +65,6 @@ void caricare_classifica(vincitore vincitori[]) {
 
 void scrivere_classifica(vincitore elenco_vincitori[]) {
     FILE *file_classifica = fopen(FILE_CLASSIFICA_TOP_10, "wb");
-    int indice_partita = 0;
-    /*while (indice_partita < NUMERO_MASSIMO_CLASSIFICATI) {
-        fwrite(&elenco_vincitori[indice_partita], sizeof(vincitore), 1, file_classifica);
-        indice_partita = indice_partita + 1;
-    }*/
     fwrite(elenco_vincitori, sizeof(vincitore), NUMERO_MASSIMO_CLASSIFICATI, file_classifica);
     fclose(file_classifica);
     return;
