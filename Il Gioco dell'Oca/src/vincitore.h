@@ -10,13 +10,13 @@
 
 typedef struct
 {
-    char nome_vincitore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    char nome_vincitore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     char pedina_vincitore;
     int lanci_vincitore;
     int lunghezza_percorso_vincitore;
     float punteggio;
 
-}vincitore;
+} vincitore;
 
 void scrivere_carattere_nome_vincitore (vincitore* vincitore_attuale, int posizione, char simbolo);
 char leggere_carattere_nome_vincitore (vincitore vincitore_attuale, int posizione);
