@@ -9,6 +9,5 @@ void inserire_simbolo (const char interfaccia [], char * simbolo, int * sale);
 void attendere_simbolo_risposta (const char interfaccia [], char * risposta, int * sale);
 void attendere_tasto_zero (const char interfaccia [], int * sale);
 void verificare_correttezza_inserimento (const char file_interfaccia [], int * input, int * sale);
-void attendere_tasto_zero (const char interfaccia [], int * sale);
 
 #endif /* SALVARE_CARICARE_PARTITA_H_ */

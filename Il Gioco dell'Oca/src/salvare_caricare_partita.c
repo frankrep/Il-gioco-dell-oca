@@ -9,13 +9,7 @@
 
 void scrivere_partite (partita elenco_partite[]);
 void creare_file_salvataggio();
-
-
-
-//da verificare dove tenerle
-void inserire_simbolo (char interfaccia [], char * simbolo, int * sale);
-void attendere_simbolo_risposta (const char interfaccia [], char * risposta, int * sale);
-void effettuare_salvataggio (partita * partita_attuale, partita elenco_partite [], int slot_scelto, char interfaccia [], int * sale);
+void effettuare_salvataggio (partita * partita_attuale, partita elenco_partite [], int slot_scelto, const char interfaccia [], int * sale);
 
 
 

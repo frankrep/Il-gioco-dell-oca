@@ -1,14 +1,15 @@
-#include <stdio.h>
 #include "partita.h"
 #include "generare_percorso.h"
 #include "casella.h"
 #include "costanti.h"
 
+
+
 void creare_percorso_con_oche (partita* partita_attuale);
 void inserire_casella (partita* partita_attuale, int posizione_percorso);
 void creare_casella (casella* casella_attuale, int indice_partita);
 void posizionare_caselle_speciali (partita* partita_attuale);
-void proporzionare_caselle_speciali(partita* partita_attuale, casella caselle_speciali[]);
+void proporzionare_caselle_speciali (partita* partita_attuale, casella caselle_speciali[]);
 int trovare_divisore_massimo_decimale (float valore_reale);
 int calcolare_parte_intera_unita (float valore_reale, int divisore);
 
@@ -44,12 +45,12 @@ void inserire_casella (partita* partita_attuale, int posizione_percorso) {
 
 
 void creare_casella (casella* casella_attuale, int indice_partita) {
-    if ( calcolare_resto (indice_partita + 1, DISTANZA_OCHE) != DISTANZA_OCHE ) {
+    if (calcolare_resto (indice_partita + 1, DISTANZA_OCHE) != DISTANZA_OCHE) {
         scrivere_carattere_casella (casella_attuale, 0, FINE_STRINGA);
         scrivere_carattere_simbolo (casella_attuale, 0, FINE_STRINGA);
     }
     else {
-        scrivere_nome_casella (casella_attuale, NOME_OCA );
+        scrivere_nome_casella (casella_attuale, NOME_OCA);
         scrivere_simbolo (casella_attuale, SIMBOLO_OCA);
     }
     scrivere_numero_casella (casella_attuale, indice_partita + 1);
@@ -60,26 +61,26 @@ void creare_casella (casella* casella_attuale, int indice_partita) {
 
 void posizionare_caselle_speciali (partita* partita_attuale) {
     casella caselle_speciali [NUMERO_CASELLE_SPECIALI];
-    //passare l'array caselle speciali a proprzionare
     proporzionare_caselle_speciali (partita_attuale, caselle_speciali);
     int indice_speciali = 0;
     while (indice_speciali < NUMERO_CASELLE_SPECIALI - 1) {
         if ( calcolare_resto (leggere_numero_casella (caselle_speciali [indice_speciali] ), DISTANZA_OCHE) == DISTANZA_OCHE){
-            scrivere_numero_casella(&caselle_speciali[indice_speciali], leggere_numero_casella (caselle_speciali[indice_speciali]) - 1);
+            scrivere_numero_casella(&caselle_speciali [indice_speciali], leggere_numero_casella (caselle_speciali[indice_speciali]) - 1);
             }
-        scrivere_casella_percorso (partita_attuale, caselle_speciali[indice_speciali], leggere_numero_casella (caselle_speciali [indice_speciali] ) - 1);
+        scrivere_casella_percorso (partita_attuale, caselle_speciali [indice_speciali], leggere_numero_casella (caselle_speciali [indice_speciali] ) - 1);
         indice_speciali = indice_speciali + 1;
     }
-    scrivere_casella_percorso (partita_attuale, caselle_speciali[indice_speciali], leggere_numero_casella (caselle_speciali [indice_speciali] ) - 1);
+    scrivere_casella_percorso (partita_attuale, caselle_speciali [indice_speciali], leggere_numero_casella (caselle_speciali [indice_speciali] ) - 1);
     return;
 }
 
 
-void riempire_restante_percorso(partita* partita_attuale, int indice_ultima_casella){
+
+void riempire_restante_percorso (partita* partita_attuale, int indice_ultima_casella) {
     casella casella_attuale;
-    scrivere_numero_casella(&casella_attuale, 0);
-    scrivere_carattere_casella(&casella_attuale, 0, FINE_STRINGA);
-    scrivere_carattere_simbolo(&casella_attuale, 0, FINE_STRINGA);
+    scrivere_numero_casella (&casella_attuale, 0);
+    scrivere_carattere_casella (&casella_attuale, 0, FINE_STRINGA);
+    scrivere_carattere_simbolo (&casella_attuale, 0, FINE_STRINGA);
     while (indice_ultima_casella < DIMENSIONE_MASSIMA_PERCORSO) {
         scrivere_casella_percorso (partita_attuale, casella_attuale, indice_ultima_casella);
         indice_ultima_casella = indice_ultima_casella + 1;
@@ -87,11 +88,11 @@ void riempire_restante_percorso(partita* partita_attuale, int indice_ultima_case
 }
 
 
-void proporzionare_caselle_speciali( partita* partita_attuale, casella caselle_speciali[]) {
-    inizializzare_caselle_speciali(caselle_speciali);
+void proporzionare_caselle_speciali ( partita* partita_attuale, casella caselle_speciali []) {
+    inizializzare_caselle_speciali (caselle_speciali);
     int indice_speciali = 0;
     while (indice_speciali < NUMERO_CASELLE_SPECIALI) {
-        scrivere_numero_casella(&caselle_speciali[indice_speciali], calcolare_proporzione(*partita_attuale, leggere_numero_casella (caselle_speciali[indice_speciali])));
+        scrivere_numero_casella (&caselle_speciali[indice_speciali], calcolare_proporzione (*partita_attuale, leggere_numero_casella (caselle_speciali [indice_speciali]) ) );
         indice_speciali = indice_speciali + 1;
     }
     return;
@@ -100,29 +101,27 @@ void proporzionare_caselle_speciali( partita* partita_attuale, casella caselle_s
 
 
 void inizializzare_caselle_speciali (casella caselle_speciali[]) {
-
-scrivere_nome_casella (&caselle_speciali[0], NOME_PONTE);
-scrivere_simbolo (&caselle_speciali[0], SIMBOLO_PONTE);
-scrivere_numero_casella(&caselle_speciali[0], 6);
-scrivere_nome_casella (&caselle_speciali[1], NOME_LOCANDA);
-scrivere_simbolo (&caselle_speciali[1], SIMBOLO_LOCANDA);
-scrivere_numero_casella(&caselle_speciali[1], 19);
-scrivere_nome_casella (&caselle_speciali[2], NOME_POZZO);
-scrivere_simbolo (&caselle_speciali[2], SIMBOLO_POZZO);
-scrivere_numero_casella(&caselle_speciali[2], 31);
-scrivere_nome_casella (&caselle_speciali[3], NOME_LABIRINTO);
-scrivere_simbolo (&caselle_speciali[3], SIMBOLO_LABIRINTO);
-scrivere_numero_casella(&caselle_speciali[3], 42);
-scrivere_nome_casella (&caselle_speciali[4], NOME_PRIGIONE);
-scrivere_simbolo (&caselle_speciali[4], SIMBOLO_PRIGIONE);
-scrivere_numero_casella(&caselle_speciali[4], 52);
-scrivere_nome_casella (&caselle_speciali[5], NOME_SCHELETRO);
-scrivere_simbolo (&caselle_speciali[5], SIMBOLO_SCHELETRO);
-scrivere_numero_casella(&caselle_speciali[5], 58);
-scrivere_nome_casella (&caselle_speciali[6], NOME_VITTORIA);
-scrivere_simbolo (&caselle_speciali[6], SIMBOLO_VITTORIA);
-scrivere_numero_casella(&caselle_speciali[6], 90);
-
+    scrivere_nome_casella (&caselle_speciali[0], NOME_PONTE);
+    scrivere_simbolo (&caselle_speciali[0], SIMBOLO_PONTE);
+    scrivere_numero_casella(&caselle_speciali[0], 6);
+    scrivere_nome_casella (&caselle_speciali[1], NOME_LOCANDA);
+    scrivere_simbolo (&caselle_speciali[1], SIMBOLO_LOCANDA);
+    scrivere_numero_casella(&caselle_speciali[1], 19);
+    scrivere_nome_casella (&caselle_speciali[2], NOME_POZZO);
+    scrivere_simbolo (&caselle_speciali[2], SIMBOLO_POZZO);
+    scrivere_numero_casella(&caselle_speciali[2], 31);
+    scrivere_nome_casella (&caselle_speciali[3], NOME_LABIRINTO);
+    scrivere_simbolo (&caselle_speciali[3], SIMBOLO_LABIRINTO);
+    scrivere_numero_casella(&caselle_speciali[3], 42);
+    scrivere_nome_casella (&caselle_speciali[4], NOME_PRIGIONE);
+    scrivere_simbolo (&caselle_speciali[4], SIMBOLO_PRIGIONE);
+    scrivere_numero_casella(&caselle_speciali[4], 52);
+    scrivere_nome_casella (&caselle_speciali[5], NOME_SCHELETRO);
+    scrivere_simbolo (&caselle_speciali[5], SIMBOLO_SCHELETRO);
+    scrivere_numero_casella(&caselle_speciali[5], 58);
+    scrivere_nome_casella (&caselle_speciali[6], NOME_VITTORIA);
+    scrivere_simbolo (&caselle_speciali[6], SIMBOLO_VITTORIA);
+    scrivere_numero_casella(&caselle_speciali[6], 90);
 }
 
 
