@@ -61,7 +61,7 @@ void inizializzare_giocatori (partita *partita_attuale, int * sale) {
 
 void richiedere_numero_caselle (partita *partita_attuale, int * sale) {
     int dimensione_percorso;
-    cancellare_schermata();
+    cancellare_schermata ();
     stampare_testo(FILE_SCELTA_LUNG_PERCO);
     do {
         verificare_correttezza_inserimento (FILE_SCELTA_LUNG_PERCO, &dimensione_percorso, sale);
@@ -77,7 +77,7 @@ void richiedere_numero_caselle (partita *partita_attuale, int * sale) {
 
 void inizializzare_numero_giocatori (partita *partita_attuale, int * sale) {
     int numero_partecipanti;
-    cancellare_schermata();
+    cancellare_schermata ();
     stampare_testo(FILE_SCELTA_N_GIOCATORI);
     do {
         verificare_correttezza_inserimento (FILE_SCELTA_N_GIOCATORI, &numero_partecipanti, sale);
@@ -93,9 +93,9 @@ void inizializzare_numero_giocatori (partita *partita_attuale, int * sale) {
 
 void inizializzare_nomi_giocatori (partita *partita_attuale, int * sale) {
     int indice_giocatori = 0;
-    char nome_da_inserire[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    char nome_da_inserire [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
-        cancellare_schermata();
+        cancellare_schermata ();
         stampare_testo (FILE_SCELTA_NOMI_GIOCATORI);
         stampare_valore_intero (FILE_SCELTA_NOMI_GIOCATORI, indice_giocatori+1, 1);
         richiedere_stringa (FILE_SCELTA_NOMI_GIOCATORI, DIMENSIONE_MINIMA_NOME_GIOCATORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE, nome_da_inserire, sale);
