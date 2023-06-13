@@ -565,7 +565,7 @@ void gestire_nome_speciale (partita* partita_attuale, int indice_nome_speciale, 
     attendere_tasto_zero(FILE_EASTEREGG1, sale);
     cancellare_schermata ();
     stampare_testo(FILE_EASTEREGG2);
-    attendere_tasto_zero(FILE_EASTEREGG1, sale);
+    attendere_tasto_zero(FILE_EASTEREGG2, sale);
     cancellare_schermata ();
     stampare_vittoria (FILE_VITTORIA_NOMI);
     char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
