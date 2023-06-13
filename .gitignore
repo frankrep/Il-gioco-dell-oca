@@ -54,3 +54,4 @@ dkms.conf
 #Folder
 *cmake-build-debug/
 *seme.bin
+Il Gioco dell'Oca/src/sound/Partita.wav
