@@ -1,10 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "classifica.h"
 #include "costanti.h"
-#include "gestire_partita.h"
-#include "gestire_stampa.h"
-#include "generare_percorso.h"
+
 
 
 int aggiornare_classifica_top_10 (vincitore vincitore_partita) {
@@ -21,17 +18,14 @@ int aggiornare_classifica_top_10 (vincitore vincitore_partita) {
         if ( leggere_carattere_nome_vincitore (vincitori [indice_vincitori], 0) != FINE_STRINGA ) {
             rateo_classificato = leggere_punteggio (vincitori [indice_vincitori]);
             if ( (rateo_vincitore_partita < rateo_classificato) && (inserito != VERO) ) {
-                spostamento_destra_vincitori(vincitori, indice_vincitori, vincitore_partita);
+                spostamento_destra_vincitori (vincitori, indice_vincitori, vincitore_partita);
                 posizione_classificato = indice_vincitori + 1;
                 inserito = VERO;
             }
-        } 
-        else {
-            if (inserito != VERO) {
-                vincitori[indice_vincitori] = vincitore_partita;
-                posizione_classificato = indice_vincitori + 1;
-                inserito = VERO;
-            }
+        } else if (inserito != VERO) {
+            vincitori [indice_vincitori] = vincitore_partita;
+            posizione_classificato = indice_vincitori + 1;
+            inserito = VERO;
         }
         indice_vincitori = indice_vincitori + 1;
     }
