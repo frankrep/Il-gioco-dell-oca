@@ -22,8 +22,11 @@
            \    \      \     \     |:          |             \                 
            /`---';      `----'     | \         |             /                 
           (     /                  |  `.     .' \          .'                  
-           `---'                   |<PREMERE UN TASTO PER CONTINUARE:          
+           `---'                   |<PREMERE 0 PER CONTINUARE:                 
 25 //RIGA INPUT
 71 //COLONNA INPUT
+25 // RIGA ERRORE
+1 // COLONNA ERRORE
+2 // CODICE MESSAGGIO
 
 

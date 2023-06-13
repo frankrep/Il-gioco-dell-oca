@@ -112,7 +112,24 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
                             stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
                             posizionare_cursore_in_attesa (FILE_PERCORSO);
                             //Stampa il messaggio per passare il turno al giocatore successivo
-
+                            char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+                            int turno = leggere_turno(*partita_attuale);
+                            cancellare_schermata ();
+                            stampare_testo (FILE_CAMBIO_TURNO);
+                            leggere_nome_giocatore(leggere_giocatore(*partita_attuale, turno), nome_giocatore);
+                            cambiare_colore_testo (COLORI_GIOCATORI [turno]);
+                            stampare_valore_testuale_centrato(FILE_CAMBIO_TURNO, nome_giocatore, PRIMO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
+                            cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
+                            turno = turno + 1;
+                            if ( turno >= leggere_numero_giocatori (*partita_attuale) ) {
+                                turno = 0;
+                            }
+                            leggere_nome_giocatore (leggere_giocatore(*partita_attuale, turno), nome_giocatore);
+                            cambiare_colore_testo (COLORI_GIOCATORI [turno]);
+                            stampare_valore_testuale_centrato (FILE_CAMBIO_TURNO, nome_giocatore, SECONDO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
+                            cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
+                            posizionare_cursore_in_attesa(FILE_CAMBIO_TURNO);
+                            attendere_tasto_zero(FILE_CAMBIO_TURNO, sale);
                         }
                         else {
                             indietro = gestire_menu_di_pausa (partita_attuale, sale);
@@ -392,6 +409,7 @@ void verificare_casella (partita* partita_attuale, int * sale) {
         } else if (confrontare_stringhe (nome_casella, NOME_LABIRINTO) == VERO) {
             cancellare_schermata ();
             stampare_testo (FILE_SCHERMATA_LABIRINTO);
+            stampare_valore_intero(FILE_SCHERMATA_LABIRINTO, calcolare_proporzione (*partita_attuale, CASELLA_ARRIVO_LABIRINTO), PRIMO_VALORE);
             attendere_tasto_zero (FILE_SCHERMATA_LABIRINTO, sale);
             scrivere_posizione_giocatore (&giocatore_attuale, calcolare_proporzione (*partita_attuale, CASELLA_ARRIVO_LABIRINTO) );
             leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);

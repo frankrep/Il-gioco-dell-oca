@@ -10,7 +10,7 @@
                                                       |___SSSS_____________|   
                                                       |__8.()..S___________|   
 Inserisci il numero dei giocatori che giocheranno:    |_88.....S___________|   
-                                                      |888....S_____$$$$s__|   
+(prego inserire un valore compreso tra 2 e 4)         |888....S_____$$$$s__|   
                                                       |____S...S___80_)$$$_|   
                                                       |_____S..S__88$$$$$$_|   
 0)Tornare indietro                                    |_____S..S_8888$$$$$_|   

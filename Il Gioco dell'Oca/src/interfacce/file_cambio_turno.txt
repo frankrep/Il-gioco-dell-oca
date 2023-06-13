@@ -21,7 +21,7 @@
                   `-..__ '"---..._;"   ";_...---"' __..-`                      
                         """"----'         '----""""                            
                                                                                
-Premere 0 per cambiare il turno:                                                
+Premere 0 per cambiare il turno:                                               
                                                                                
 24 // riga input
 33 // colonna input 

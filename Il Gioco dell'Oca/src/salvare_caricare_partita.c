@@ -52,7 +52,7 @@ void salvare_partita (partita* partita_attuale, int * sale) {
         if (slot_scelto != 0) {
             cancellare_schermata ();
             stampare_testo (FILE_SCELTA_NOME_PARTITA);
-            char nome_partita_salvata [DIMENSIONE_MASSIMA_NOME_PARTITA];
+            char nome_partita_salvata [DIMENSIONE_MASSIMA_NOME_PARTITA + 1];
 
 
             //verifico se l'utente inserisce un nome per la partita da salvare o vuole tornare indietro . . .
