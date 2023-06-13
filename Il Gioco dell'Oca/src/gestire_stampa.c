@@ -382,15 +382,8 @@ void stampare_partite_salvate (const char file_interfaccia [], partita elenco_pa
 
 
 
-<<<<<<< HEAD
-void stampare_vittoria (const char file_interfaccia[]) {
-    cancellare_schermata();
-    FILE * f_interfaccia = fopen(file_interfaccia, "r");
-=======
 void stampare_vittoria (const char file_interfaccia []) {
-
     FILE * f_interfaccia = fopen (file_interfaccia, "r");
->>>>>>> 8d453e94083422204b77053ac6d89610a7bb06a0
     if (f_interfaccia != NULL) {
         char simbolo_letto;
         int indice_nuova_riga = 0;
