@@ -12,6 +12,14 @@ void creare_file_salvataggio();
 
 
 
+//da verificare dove tenerle
+void inserire_simbolo (char interfaccia [], char * simbolo, int * sale);
+void attendere_simbolo_risposta (const char interfaccia [], char * risposta, int * sale);
+void effettuare_salvataggio (partita * partita_attuale, partita elenco_partite [], int slot_scelto, char interfaccia [], int * sale);
+void attendere_tasto_zero (const char interfaccia [], int * sale);
+
+
+
 void caricare_partite (partita elenco_partite[]) {
     FILE * file_salvataggio = fopen (FILE_SALVATAGGIO, "rb");
     if (file_salvataggio == NULL) {
@@ -79,14 +87,13 @@ void salvare_partita (partita* partita_attuale, int * sale) {
                     salvato = 1;
                 }
 
-                //. . . altrimenti, se è presente una partita, chiediamo all'utente se vuole sovrascrivere . . .
+                    //. . . altrimenti, se è presente una partita, chiediamo all'utente se vuole sovrascrivere . . .
                 else {
                     //stampare messaggio richiesta sovrascrittura
                     char sovrascrivere;
                     cancellare_schermata();
                     stampare_testo(FILE_SOVRASCRIVERE);
                     attendere_simbolo_risposta (FILE_SOVRASCRIVERE, &sovrascrivere, sale);
-                        
                     //. . . e, nel caso in cui confermi, sovrascriviamo la partita
                     if ( (sovrascrivere == RISPOSTA_AFFERMATIVA_MAIUSCOLO) || (sovrascrivere == RISPOSTA_AFFERMATIVA_MINUSCOLO) ) {
                         effettuare_salvataggio (partita_attuale, elenco_partite, slot_scelto, FILE_CONFERMA_SALVATAGGIO, sale);
@@ -111,7 +118,7 @@ void inserire_simbolo (char interfaccia [], char * simbolo, int * sale) {
 
 
 
-void verificare_correttezza_inserimento (char file_interfaccia[], int * input, int * sale) {
+void verificare_correttezza_inserimento (const char file_interfaccia [], int * input, int * sale) {
     int correttezza_inserimento;
     do {
         posizionare_cursore_in_attesa (file_interfaccia);
@@ -138,7 +145,7 @@ void effettuare_salvataggio (partita * partita_attuale, partita elenco_partite [
 
 
 //attende che l'utente prema il tasto zero
-void attendere_tasto_zero (char interfaccia [], int * sale) {
+void attendere_tasto_zero (const char interfaccia [], int * sale) {
     int scelta;
     do {
         verificare_correttezza_inserimento (FILE_CONFERMA_SALVATAGGIO, &scelta, sale);
@@ -151,11 +158,11 @@ void attendere_tasto_zero (char interfaccia [], int * sale) {
 
 
 
-void attendere_simbolo_risposta (char interfaccia [], char * risposta, int * sale) {
+void attendere_simbolo_risposta (const char interfaccia [], char * risposta, int * sale) {
     do {
         inserire_simbolo (interfaccia, risposta, sale);
         if ( *risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && *risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && *risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && *risposta != RISPOSTA_NEGATIVA_MINUSCOLO )
-           stampare_messaggio_errore (interfaccia);
+            stampare_messaggio_errore (interfaccia);
 
     } while ( *risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && *risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && *risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && *risposta != RISPOSTA_NEGATIVA_MINUSCOLO );
     return;
