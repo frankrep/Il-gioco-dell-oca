@@ -18,6 +18,7 @@ void iniziare_nuova_partita (vincitore* vincitore_partita, int * sale);
 void riprendere_partita (vincitore* vincitore_partita, int * sale);
 void scegliere_partita_da_caricare (partita* partita_attuale, int * sale);
 void gestire_vincitore (vincitore vincitore_partita);
+void confermare_uscita (char * conferma, int * sale);
 
 
 
@@ -63,7 +64,7 @@ int main() {
                         chiedere_aiuto (&sale);
                     }
                     else {
-                        confermare_scelta (&uscita, &sale);
+                        confermare_uscita(&uscita, &sale);
                     }
                 }
             }
