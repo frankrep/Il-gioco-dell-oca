@@ -10,7 +10,7 @@
 
 typedef struct
 {
-    char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     int posizione_giocatore;
     char pedina_giocatore;
     int lanci_effettuati;
@@ -28,7 +28,7 @@ void scrivere_lanci_effettuati (giocatore* giocatore_attuale, int lanci);
 int leggere_lanci_effettuati (giocatore giocatore_attuale);
 void scrivere_autorizzazione (giocatore* giocatore_attuale, int autorizzazione_da_inserire);
 int leggere_autorizzazione (giocatore giocatore_attuale);
-void scrivere_nome_giocatore (giocatore* giocatore_attuale, char nome_da_inserire[]);
-void leggere_nome_giocatore (giocatore giocatore_attuale, char nome_letto[]);
+void scrivere_nome_giocatore (giocatore* giocatore_attuale, char nome_da_inserire []);
+void leggere_nome_giocatore (giocatore giocatore_attuale, char nome_letto []);
 
 #endif /* GIOCATORE_H_ */

@@ -116,13 +116,13 @@ static const unsigned long long DIVISORE = 9223372036854775808ULL;
 #define VIOLETTO 13
 #define GIALLINO 14
 #define BIANCO 15
-static const int COLORI_GIOCATORI[NUMERO_MASSIMO_GIOCATORI] = {ROSSO, BLU, VERDE_FLUO, VIOLETTO};
+static const int COLORI_GIOCATORI [NUMERO_MASSIMO_GIOCATORI] = {ROSSO, BLU, VERDE_FLUO, VIOLETTO};
 
 
 
 //Nomi illegali
 #define NUMERO_NOMI_SPECIALI 4
-static const char NOMI_SPECIALI[NUMERO_NOMI_SPECIALI][DIMENSIONE_MASSIMA_NOME_GIOCATORE] = {
+static const char NOMI_SPECIALI [NUMERO_NOMI_SPECIALI] [DIMENSIONE_MASSIMA_NOME_GIOCATORE] = {
         {102, 97, 98, 105, 111, 32, 97, 98, 98, 97, 116, 116, 105, 115, 116, 97, 0},
         {97, 98, 98, 97, 116, 116, 105, 115, 116, 97, 0},
         {102, 97, 98, 105, 111, 0},
@@ -130,29 +130,29 @@ static const char NOMI_SPECIALI[NUMERO_NOMI_SPECIALI][DIMENSIONE_MASSIMA_NOME_GI
 };
 
 
-static const char ERRORE_FILE_NON_TROVATO[LUNGHEZZA_SCHERMATA + 1] = "ERRORE! FILE NON TROVATO \0";
+static const char ERRORE_FILE_NON_TROVATO [LUNGHEZZA_SCHERMATA + 1] = "ERRORE! FILE NON TROVATO \0";
 static const char FINE_STRINGA = '\0';
 static const char CARATTERE_A_CAPO = '\n';
 static const char NOME_GIOCATORE_INDIETRO [2] = "0\0";
-static const char PEDINE_DISPONIBILI[NUMERO_MASSIMO_GIOCATORI] = "#$%&";
-static const char NOME_OCA[DIMENSIONE_MASSIMA_NOME_CASELLA] = "OCA\0";
-static const char NOME_PRIGIONE[DIMENSIONE_MASSIMA_NOME_CASELLA] = "PRIGIONE\0";
-static const char NOME_PONTE[DIMENSIONE_MASSIMA_NOME_CASELLA] = "PONTE\0";
-static const char NOME_LABIRINTO[DIMENSIONE_MASSIMA_NOME_CASELLA] = "LABIRINTO\0";
-static const char NOME_LOCANDA[DIMENSIONE_MASSIMA_NOME_CASELLA] = "LOCANDA\0";
-static const char NOME_POZZO[DIMENSIONE_MASSIMA_NOME_CASELLA] = "POZZO\0";
-static const char NOME_SCHELETRO[DIMENSIONE_MASSIMA_NOME_CASELLA] = "SCHELETRO\0";
-static const char NOME_VITTORIA[DIMENSIONE_MASSIMA_NOME_CASELLA] = "VITTORIA\0";
-static const char SIMBOLO_PONTE[DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = " == \0";
-static const char SIMBOLO_PRIGIONE[DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = "[#] \0";
-static const char SIMBOLO_LABIRINTO[DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = " @  \0";
-static const char SIMBOLO_VITTORIA[DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = " W  \0";
-static const char SIMBOLO_POZZO[DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = "(O) \0";
-static const char SIMBOLO_SCHELETRO[DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = " xx \0";
-static const char SIMBOLO_OCA[DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = " O  \0";
-static const char SIMBOLO_LOCANDA[DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = " ^^ \0";
-static const char SIMBOLO_VUOTO[DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = "    \0";
-static const char TITOLO_PERCORSO[LUNGHEZZA_SCHERMATA + 1] = " ___________________________<IL GIOCO DELL'OCA>____________________________ \0";
+static const char PEDINE_DISPONIBILI [NUMERO_MASSIMO_GIOCATORI] = "#$%&";
+static const char NOME_OCA [DIMENSIONE_MASSIMA_NOME_CASELLA] = "OCA\0";
+static const char NOME_PRIGIONE [DIMENSIONE_MASSIMA_NOME_CASELLA] = "PRIGIONE\0";
+static const char NOME_PONTE [DIMENSIONE_MASSIMA_NOME_CASELLA] = "PONTE\0";
+static const char NOME_LABIRINTO [DIMENSIONE_MASSIMA_NOME_CASELLA] = "LABIRINTO\0";
+static const char NOME_LOCANDA [DIMENSIONE_MASSIMA_NOME_CASELLA] = "LOCANDA\0";
+static const char NOME_POZZO [DIMENSIONE_MASSIMA_NOME_CASELLA] = "POZZO\0";
+static const char NOME_SCHELETRO [DIMENSIONE_MASSIMA_NOME_CASELLA] = "SCHELETRO\0";
+static const char NOME_VITTORIA [DIMENSIONE_MASSIMA_NOME_CASELLA] = "VITTORIA\0";
+static const char SIMBOLO_PONTE [DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = " == \0";
+static const char SIMBOLO_PRIGIONE [DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = "[#] \0";
+static const char SIMBOLO_LABIRINTO [DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = " @  \0";
+static const char SIMBOLO_VITTORIA [DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = " W  \0";
+static const char SIMBOLO_POZZO [DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = "(O) \0";
+static const char SIMBOLO_SCHELETRO [DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = " xx \0";
+static const char SIMBOLO_OCA [DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = " O  \0";
+static const char SIMBOLO_LOCANDA [DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = " ^^ \0";
+static const char SIMBOLO_VUOTO [DIMENSIONE_MASSIMA_SIMBOLO_CASELLA] = "    \0";
+static const char TITOLO_PERCORSO [LUNGHEZZA_SCHERMATA + 1] = " ___________________________<IL GIOCO DELL'OCA>____________________________ \0";
 static const char CONTORNO_LATERALE_CASELLA = '|';
 static const char CONTORNO_SUPERIORE_CASELLA = '_';
 static const char CONTORNO_INFERIORE_CASELLA = '_';
@@ -162,45 +162,45 @@ static const char CARATTERE_COPPA = '$';
 static const char CARATTERE_BECCO = '8';
 static const char CARATTERE_SFONDO = '_';
 static const char FILE_CLASSIFICA_TOP_10 [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\filebin\\file_classifica_top_10.bin";
-static const char FILE_CLASSIFICA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_classifica.txt";
-static const char FILE_CREDITI[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_crediti.txt";
+static const char FILE_CLASSIFICA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_classifica.txt";
+static const char FILE_CREDITI [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_crediti.txt";
 static const char FILE_SEME [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\filebin\\seme.bin";
-static const char FILE_MENU_AIUTO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_menu_aiuto.txt";
-static const char FILE_MANUALE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_manuale.txt";
-static const char FILE_MENU_REGOLAMENTO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_menu_regolamento.txt";
-static const char FILE_PERCORSO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_percorso.txt";
-static const char FILE_REGOLE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_regole.txt";
-static const char FILE_MENU_CARICA_PARTITA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_menu_carica_partita.txt";
-static const char FILE_SCELTA_G_INIZIALE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_scelta_g_iniziale.txt";
-static const char FILE_SCELTA_LUNG_PERCO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_scelta_lung_perco.txt";
-static const char FILE_SCELTA_N_GIOCATORI[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_scelta_n_giocatori.txt";
-static const char FILE_SCELTA_NOMI_GIOCATORI[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_scelta_nomi_giocatori.txt";
-static const char FILE_MENU_PRINCIPALE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_menu_principale.txt";
-static const char FILE_SCELTA_NOME_PARTITA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_scelta_nome_partita.txt";
-static const char FILE_SCELTA_SLOT_SALVARE_PARTITA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_scelta_slot_salvare_partita.txt";
-static const char FILE_DETTAGLI_PARTITA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_dettagli_partita.txt";
-static const char FILE_VITTORIA_NOMI[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_vittoria_nomi.txt";
-static const char FILE_INTRO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_intro.txt";
-static const char FILE_EASTEREGG1[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_easteregg1.txt";
-static const char FILE_EASTEREGG2[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_easteregg2.txt";
+static const char FILE_MENU_AIUTO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_menu_aiuto.txt";
+static const char FILE_MANUALE [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_manuale.txt";
+static const char FILE_MENU_REGOLAMENTO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_menu_regolamento.txt";
+static const char FILE_PERCORSO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_percorso.txt";
+static const char FILE_REGOLE [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_regole.txt";
+static const char FILE_MENU_CARICA_PARTITA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_menu_carica_partita.txt";
+static const char FILE_SCELTA_G_INIZIALE [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_scelta_g_iniziale.txt";
+static const char FILE_SCELTA_LUNG_PERCO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_scelta_lung_perco.txt";
+static const char FILE_SCELTA_N_GIOCATORI [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_scelta_n_giocatori.txt";
+static const char FILE_SCELTA_NOMI_GIOCATORI [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_scelta_nomi_giocatori.txt";
+static const char FILE_MENU_PRINCIPALE [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_menu_principale.txt";
+static const char FILE_SCELTA_NOME_PARTITA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_scelta_nome_partita.txt";
+static const char FILE_SCELTA_SLOT_SALVARE_PARTITA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_scelta_slot_salvare_partita.txt";
+static const char FILE_DETTAGLI_PARTITA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_dettagli_partita.txt";
+static const char FILE_VITTORIA_NOMI [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_vittoria_nomi.txt";
+static const char FILE_INTRO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_intro.txt";
+static const char FILE_EASTEREGG1 [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_easteregg1.txt";
+static const char FILE_EASTEREGG2 [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_easteregg2.txt";
 static const char FILE_SALVATAGGIO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\filebin\\file_salvataggio.bin";
-static const char FILE_SCHERMATA_LABIRINTO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_labirinto.txt";
-static const char FILE_SCHERMATA_LANCIO_DADI_PRIGIONE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_lancio_dadi_prigione.txt";
-static const char FILE_SCHERMATA_LIBERATO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_liberato.txt";
-static const char FILE_SCHERMATA_LOCANDA_TURNO_PASSATO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_locanda_turno_passato.txt";
-static const char FILE_SCHERMATA_LOCANDA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_locanda.txt";
-static const char FILE_SCHERMATA_OCA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_oca.txt";
-static const char FILE_SCHERMATA_PERM_POZZO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_perm_pozzo.txt";
-static const char FILE_SCHERMATA_PONTE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_ponte.txt";
-static const char FILE_SCHERMATA_POZZO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_pozzo.txt";
-static const char FILE_SCHERMATA_PRIGIONE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_prigione.txt";
-static const char FILE_SCHERMATA_SCHELETRO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_scheletro.txt";
-static const char FILE_CONFERMA_INSERIMENTO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_conferma_inserimento.txt";
-static const char FILE_CONFERMA_SALVATAGGIO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_conferma_salvataggio.txt";
-static const char FILE_RICHIESTA_C_INSERIMENTO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_richiesta_c_inserimento.txt";
-static const char FILE_RICHIESTA_C_SALVATAGGIO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_richiesta_c_salvataggio.txt";
-static const char FILE_MESSAGGI_ERRORE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_stampe.txt";
-static const char FILE_MESSAGGI[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_stampe.txt";
+static const char FILE_SCHERMATA_LABIRINTO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_labirinto.txt";
+static const char FILE_SCHERMATA_LANCIO_DADI_PRIGIONE [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_lancio_dadi_prigione.txt";
+static const char FILE_SCHERMATA_LIBERATO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_liberato.txt";
+static const char FILE_SCHERMATA_LOCANDA_TURNO_PASSATO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_locanda_turno_passato.txt";
+static const char FILE_SCHERMATA_LOCANDA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_locanda.txt";
+static const char FILE_SCHERMATA_OCA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_oca.txt";
+static const char FILE_SCHERMATA_PERM_POZZO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_perm_pozzo.txt";
+static const char FILE_SCHERMATA_PONTE [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_ponte.txt";
+static const char FILE_SCHERMATA_POZZO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_pozzo.txt";
+static const char FILE_SCHERMATA_PRIGIONE [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_prigione.txt";
+static const char FILE_SCHERMATA_SCHELETRO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_schermata_scheletro.txt";
+static const char FILE_CONFERMA_INSERIMENTO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_conferma_inserimento.txt";
+static const char FILE_CONFERMA_SALVATAGGIO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_conferma_salvataggio.txt";
+static const char FILE_RICHIESTA_C_INSERIMENTO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_richiesta_c_inserimento.txt";
+static const char FILE_RICHIESTA_C_SALVATAGGIO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_richiesta_c_salvataggio.txt";
+static const char FILE_MESSAGGI_ERRORE [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_stampe.txt";
+static const char FILE_MESSAGGI [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_stampe.txt";
 static const char FILE_MENU_DI_PAUSA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_menu_di_gioco.txt";
 static const char FILE_CARICAMENTO_FALLITO [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_caricamento_fallito.txt";
 static const char FILE_RICHIESTA_USCITA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_richiesta_uscita.txt";

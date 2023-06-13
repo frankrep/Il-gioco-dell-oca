@@ -11,13 +11,13 @@
 #include "costanti.h"
 
 typedef struct {
-    char nome_partita[DIMENSIONE_MASSIMA_NOME_PARTITA];
+    char nome_partita [DIMENSIONE_MASSIMA_NOME_PARTITA];
     int numero_giocatori;
     int lunghezza_percorso;
-    casella percorso[DIMENSIONE_MASSIMA_PERCORSO];
-    giocatore giocatori[NUMERO_MASSIMO_GIOCATORI];
+    casella percorso [DIMENSIONE_MASSIMA_PERCORSO];
+    giocatore giocatori [NUMERO_MASSIMO_GIOCATORI];
     int turno;
-    int dadi[NUMERO_DADI];
+    int dadi [NUMERO_DADI];
 } partita;
 
 void scrivere_carattere_partita (partita* partita_attuale, int posizione, char simbolo);
@@ -34,7 +34,7 @@ void scrivere_dadi (partita* partita_attuale, int faccia_dado, int posizione_dad
 int leggere_dadi (partita partita_attuale, int posizione_dado);
 void scrivere_giocatore (partita* partita_attuale, giocatore giocatore_attuale, int posizione_elenco_giocatori);
 giocatore leggere_giocatore (partita partita_attuale, int posizione_elenco_giocatori);
-void scrivere_nome_partita (partita* partita_attuale, char nome_da_inserire[]);
-void leggere_nome_partita (partita partita_attuale, char nome_letto[]);
+void scrivere_nome_partita (partita* partita_attuale, char nome_da_inserire []);
+void leggere_nome_partita (partita partita_attuale, char nome_letto []);
 
 #endif /* PARTITA_H_ */

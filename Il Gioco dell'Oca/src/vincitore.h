@@ -28,7 +28,7 @@ void scrivere_lanci_vincitore (vincitore* vincitore_attuale, int lanci);
 int leggere_lanci_vincitore (vincitore vincitore_attuale);
 void scrivere_punteggio (vincitore* vincitore_attuale, float punteggio_vincitore);
 float leggere_punteggio (vincitore vincitore_attuale);
-void scrivere_nome_vincitore (vincitore* vincitore_attuale, char nome_da_inserire[]);
-void leggere_nome_vincitore (vincitore vincitore_attuale, char nome_letto[]);
+void scrivere_nome_vincitore (vincitore* vincitore_attuale, char nome_da_inserire []);
+void leggere_nome_vincitore (vincitore vincitore_attuale, char nome_letto []);
 
 #endif /* VINCITORE_H_ */
