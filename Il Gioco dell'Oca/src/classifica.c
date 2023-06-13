@@ -7,9 +7,10 @@
 #include "generare_percorso.h"
 
 
-void aggiornare_classifica_top_10 (vincitore vincitore_partita) {
+int aggiornare_classifica_top_10 (vincitore vincitore_partita) {
     vincitore vincitori [NUMERO_MASSIMO_CLASSIFICATI];
     caricare_classifica (vincitori);
+    int posizione_classificato;
     int inserito = FALSO;
     //float rateo_vincitore_partita = calcolare_divisione_decimale(leggere_lanci_vincitore(vincitore_partita), leggere_lunghezza_percorso_vincitore(vincitore_partita), 6);
     float rateo_vincitore_partita = (float) leggere_lanci_vincitore (vincitore_partita) / (float) leggere_lunghezza_percorso_vincitore (vincitore_partita);
@@ -17,23 +18,25 @@ void aggiornare_classifica_top_10 (vincitore vincitore_partita) {
     scrivere_punteggio (&vincitore_partita, rateo_vincitore_partita);
     int indice_vincitori = 0;
     while (indice_vincitori < NUMERO_MASSIMO_CLASSIFICATI) {
-        if (leggere_carattere_nome_vincitore (vincitori [indice_vincitori], 0) != FINE_STRINGA) {
+        if ( leggere_carattere_nome_vincitore (vincitori [indice_vincitori], 0) != FINE_STRINGA ) {
             rateo_classificato = leggere_punteggio (vincitori [indice_vincitori]);
             if ( (rateo_vincitore_partita < rateo_classificato) && (inserito != VERO) ) {
                 spostamento_destra_vincitori(vincitori, indice_vincitori, vincitore_partita);
+                posizione_classificato = indice_vincitori + 1;
                 inserito = VERO;
             }
         } 
         else {
             if (inserito != VERO) {
                 vincitori[indice_vincitori] = vincitore_partita;
+                posizione_classificato = indice_vincitori + 1;
                 inserito = VERO;
             }
         }
         indice_vincitori = indice_vincitori + 1;
     }
     scrivere_classifica (vincitori);
-    return;
+    return posizione_classificato;
 }
 
 

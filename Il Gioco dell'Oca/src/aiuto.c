@@ -44,6 +44,7 @@ void chiedere_aiuto (int * sale) {
 }
 
 int scegliere_aiuto (int * sale) {
+    cancellare_schermata();
     stampare_testo (FILE_MENU_AIUTO);
     int opzione_scelta;
     do {
@@ -54,7 +55,6 @@ int scegliere_aiuto (int * sale) {
         if ( (opzione_scelta < 0) || (opzione_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO) ) {
             stampare_messaggio_errore (FILE_MENU_AIUTO);
         }
-    } while ( (opzione_scelta < 0) || (opzione_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO) );
-    cancellare_schermata ();
+    } while ( (opzione_scelta < 0 ) || (opzione_scelta > NUMERO_MASSIMO_OPZIONI_AIUTO) );
     return opzione_scelta;
 }

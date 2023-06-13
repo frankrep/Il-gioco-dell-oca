@@ -18,8 +18,7 @@ typedef struct {
     giocatore giocatori[NUMERO_MASSIMO_GIOCATORI];
     int turno;
     int dadi[NUMERO_DADI];
-
-}partita;
+} partita;
 
 void scrivere_carattere_partita (partita* partita_attuale, int posizione, char simbolo);
 char leggere_carattere_partita (partita partita_attuale, int posizione);
