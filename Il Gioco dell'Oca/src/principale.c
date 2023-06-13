@@ -136,7 +136,6 @@ void scegliere_partita_da_caricare (partita* partita_attuale, int * sale) {
 
         //se il giocatore ha deciso di caricare una partita, viene verificata la sua esistenza . . .
         if (slot_scelto != 0) {
-            int scelta;
             cancellare_schermata ();
 
             //se il giocatore ha scelto uno slot, verifica se al suo interno non vi è una partita da caricare . . .
