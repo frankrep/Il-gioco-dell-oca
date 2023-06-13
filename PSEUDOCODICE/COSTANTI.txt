@@ -18,15 +18,6 @@ NOME_LOCANDA, il nome della casella locanda, Array a una dimensione di caratteri
 NOME_POZZO, il nome della casella pozzo, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "POZZO\0"
 NOME_SCHELETRO, il nome della casella scheletro, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "SCHELETRO\0"
 NOME_VITTORIA, il nome della casella vittoria, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "VITTORIA\0"
-SIMBOLO_PONTE, il simbolo della casella ponte, Array a una dimensione di caratteri di dimensione ()
-SIMBOLO_PRIGIONE, il simbolo della casella prigione,
-SIMBOLO_LABIRINTO, il simbolo della casella labirinto,
-SIMBOLO_VITTORIA, il simbolo della casella vittoria,
-SIMBOLO_POZZO, il simbolo della casella pozzo,
-SIMBOLO_SCHELETRO, il simbolo della casella scheletro,
-SIMBOLO_OCA, il simbolo della casella oca,
-SIMBOLO_LOCANDA, il simbolo della casella locanda,
-
 NUMERO_MASSIMO_CARATTERI_SIMBOLO, numero di caratteri massimo concessi per il simbolo rappresentante una casella, intero, = 5
 
 ALTEZZA_DISEGNO_CASELLA, il numero di strati in cui è suddiviso il disegno della casella, Intero, = 3
@@ -88,7 +79,7 @@ RISPOSTA_NEGATIVA_MINUSCOLO, il carattere in minuscolo indicante la risposta neg
 
 TASTO_LANCIO_DADI, il carattere indicante la scelta di voler lanciare i dadi, Carattere, = 'L'
 TASTO_USCITA, il carattere indicante la scelta di voler terminare l'esecuzione del programma, Carattere, = '0'
-TASTO_CONFERMA, il carattere indicante la scelta di voler tornare al menù precedente, Carattere, = '0'
+TASTO_INDIETRO, il carattere indicante la scelta di voler tornare al menù precedente, Carattere, = '0'
 SPIAZZAMENTO_DADO, il numero di righe successive ad ALTEZZA_SCHERMATA per poter raggiungere le coordinate per la stampa del dado, Intero, = 5
 SPIAZZAMENTO_MESSAGGIO_ERRORE, il numero di righe successive ad ALTEZZA_SCHERMATA per poter raggiungere le informazioni relative alla stampa del messaggio di errore, Intero, = 2
 CARATTERE_PUNTO_FACCIA_DADO, il carattere utilizzato per rappresentare i punti indicanti il numero sulla faccia di un dado, Carattere, = '*'

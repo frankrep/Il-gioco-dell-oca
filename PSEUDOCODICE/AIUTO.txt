@@ -1,44 +1,5 @@
 
-chiedere_aiuto
 
-DATI DI INPUT
-file_regole, file contenente le regole del gioco, file di testo
-file_manuale, file contenente il manuale di gioco, file di testo
-opzione_scelta, scelta effettuata dal giocatore, intero, >= 0, <= NUMERO_MASSIMO_OPZIONI_AIUTO
-
-DATI DI OUTPUT
-nessuno, è una stampa
-
-DATI DI LAVORO 
-torna_indietro, indica la volontà di far tornare il giocatore al menu precedente (Se vale 0 torna indietro, altrimenti rimane nel menu corrente), Intero 
-ALGORITMO
-ESEGUI
-	opzione_scelta = scegliere_aiuto ()
-	torna_indietro = 1
-	SE (opzione_scelta = 1)
-	ALLORA	
-		stampare_testo(file_regole)
-		ESEGUI
-			torna_indietro = leggere_da_tastiera()
-			SE (torna_indietro != 0)
-			ALLORA
-				stampare_messaggio_errore(file_regole)
-			FINE
-		FINCHE'(torna_indietro != 0)
-	ALTRIMENTI	
-		SE (opzione_scelta = 2)
-		ALLORA	
-			stampare_testo(file_manuale)
-			ESEGUI
-			torna_indietro = leggere_da_tastiera()
-			SE (torna_indietro != 0)
-			ALLORA
-				stampare_messaggio_errore(file_regole)
-			FINE
-		FINCHE'(torna_indietro != 0)
-		FINE
-	FINE
-FINCHE' (opzione_scelta != 0)
 
 scegliere_aiuto
 
@@ -62,3 +23,24 @@ FINCHE’ ( (opzione_scelta < 0) OR (opzione_scelta > NUMERO_MASSIMO_OPZIONI_AIU
 
 
 
+chiedere_aiuto
+
+DATI DI INPUT
+file_regole, file contenente le regole del gioco, file di testo
+file_manuale, file contenente il manuale di gioco, file di testo
+opzione_scelta, scelta effettuata dal giocatore, intero, >= 0, <= NUMERO_MASSIMO_OPZIONI_AIUTO
+
+DATI DI OUTPUT
+nessuno, è una stampa
+
+ALGORITMO
+opzione_scelta = scegliere_aiuto ()
+SE (opzione_scelta = 1)
+ALLORA	
+	stampare_da_file(file_regole)
+ALTRIMENTI	
+	SE (opzione_scelta = 2)
+	ALLORA	
+		stampare_da_file(file_manuale)
+	FINE
+FINE
