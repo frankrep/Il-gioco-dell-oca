@@ -8,3 +8,4 @@ Tutte le modifiche non salvate andranno perse
 {S/N} 
 -L lanciare dadi
 -A avanza pedina
+-Invio per continuare
