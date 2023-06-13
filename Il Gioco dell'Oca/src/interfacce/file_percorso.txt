@@ -37,9 +37,9 @@
 22 // riga avanza
 52 // colonna avanza
 10 // codice messaggio
-
-
-
+22 // riga invio
+52 //colonna invio
+11 // codice messsaggio
 
 
 21 //RIGA ALTO SINISTRA DADO1
