@@ -55,11 +55,23 @@ void salvare_partita (partita* partita_attuale, int * sale) {
 
             cancellare_schermata();
             stampare_testo (FILE_SCELTA_NOME_PARTITA);
-            posizionare_cursore_in_attesa(FILE_SCELTA_NOME_PARTITA);
             char nome_partita_salvata [DIMENSIONE_MASSIMA_NOME_PARTITA];
-            inserire_stringa(DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata, sale);
 
-            //se il giocatore ha selezionato uno slot per salvare e non ha scelto di tornare al menù precedente . . .
+
+            //verifico se l'utente inserisce un nome per la partita da salvare o vuole tornare indietro . . .
+            do {
+                posizionare_cursore_in_attesa(FILE_SCELTA_NOME_PARTITA);
+                inserire_stringa(DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata,
+                                 sale);
+
+                //verifico se l'utente non ha inserito alcun carattere e ha confermato
+                if (nome_partita_salvata[0] == FINE_STRINGA) {
+                    stampare_messaggio_errore(FILE_SCELTA_NOME_PARTITA);
+                }
+            }while (nome_partita_salvata[0] == FINE_STRINGA);
+
+
+            //. . . se il giocatore ha selezionato uno slot per salvare e non ha scelto di tornare al menù precedente . . .
             if (nome_partita_salvata[0] != '0') {
                 scrivere_nome_partita (partita_attuale, nome_partita_salvata);
                 leggere_nome_partita (elenco_partite[slot_scelto - 1], nome_partita_salvata);
