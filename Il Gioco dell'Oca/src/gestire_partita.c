@@ -577,7 +577,7 @@ void gestire_nome_speciale (partita* partita_attuale, int indice_nome_speciale, 
     attendere_tasto_zero (FILE_VITTORIA_NOMI, sale);
     cancellare_schermata ();
     stampare_testo(FILE_CREDITI);
-    attendere_tasto_zero(FILE_EASTEREGG1, sale);
+    attendere_tasto_zero(FILE_CREDITI, sale);
     cancellare_schermata ();
     return;
 }

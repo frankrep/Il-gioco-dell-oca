@@ -268,6 +268,26 @@ void stampare_valore_intero (const char file_interfaccia [], int valore, int pos
 }
 
 
+void stampare_valore_decimale (const char file_interfaccia [], float valore, int posizione_valore) {
+    FILE *f_interfaccia = fopen (file_interfaccia, "r");
+    if (f_interfaccia != NULL) {
+        scorrere_righe_file (f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_STAMPA_VALORI + ( (posizione_valore - 1) * SPIAZZAMENTO_SINGOLO_VALORE ) );
+        int posizione_riga;
+        int posizione_colonna;
+        fscanf (f_interfaccia, "%d ", &posizione_riga);
+        scorrere_righe_file (f_interfaccia, 1);
+        fscanf (f_interfaccia, "%d ", &posizione_colonna);
+        posizionare_cursore (posizione_riga, posizione_colonna);
+        printf ("%f", valore); 
+        fflush (stdin);
+    fclose (f_interfaccia);
+    } 
+    else {
+        stampare_errore_apertura_file (file_interfaccia);
+    }
+    return;
+}
+
 
 void stampare_valore_testuale (const char file_interfaccia [], const char stringa [], int posizione_valore) {
     FILE *f_interfaccia = fopen (file_interfaccia, "r");

@@ -9,9 +9,9 @@
 #include "costanti.h"
 
 typedef struct {
-    char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
+    char nome_casella [DIMENSIONE_MASSIMA_NOME_CASELLA];
     int numero_casella;
-    char simbolo[NUMERO_MASSIMO_CARATTERI_SIMBOLO];
+    char simbolo [NUMERO_MASSIMO_CARATTERI_SIMBOLO];
 } casella;
 
 void scrivere_carattere_casella (casella* casella_attuale, int posizione, char simbolo);

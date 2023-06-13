@@ -185,8 +185,8 @@ void gestire_vincitore (vincitore vincitore_partita, int* sale) {
         stampare_valore_testuale (FILE_DETTAGLI_PARTITA, nome_vincitore_partita, PRIMO_VALORE);
         stampare_valore_intero (FILE_DETTAGLI_PARTITA, leggere_lunghezza_percorso_vincitore(vincitore_partita), SECONDO_VALORE);
         stampare_valore_intero (FILE_DETTAGLI_PARTITA, leggere_lanci_vincitore(vincitore_partita), TERZO_VALORE);
-        stampare_valore_intero (FILE_DETTAGLI_PARTITA, leggere_punteggio(vincitore_partita), QUARTO_VALORE);
-        stampare_valore_intero (FILE_DETTAGLI_PARTITA, ( (float) leggere_lanci_vincitore (vincitore_partita) / (float) leggere_lunghezza_percorso_vincitore (vincitore_partita) ), QUINTO_VALORE);
+        stampare_valore_decimale (FILE_DETTAGLI_PARTITA, ( (float) leggere_lanci_vincitore (vincitore_partita) / (float) leggere_lunghezza_percorso_vincitore (vincitore_partita) ), QUARTO_VALORE);
+        stampare_valore_intero (FILE_DETTAGLI_PARTITA, posizione_classifica, QUINTO_VALORE);
         attendere_tasto_zero (FILE_DETTAGLI_PARTITA, sale);
     }
     return;
