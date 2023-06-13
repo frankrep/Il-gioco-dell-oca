@@ -47,7 +47,6 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
         scegliere_giocatore (partita_attuale, sale);
     }
     do{
-
         cambiare_turno (partita_attuale);
         if ( leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) > 0) {
             gestire_autorizzazione(partita_attuale, sale);
