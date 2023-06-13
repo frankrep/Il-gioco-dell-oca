@@ -621,3 +621,25 @@ void stampare_crediti (int * sale) {
     attendere_tasto_zero(FILE_CREDITI, sale);
     return;
 }
+
+
+
+void stampare_schermata_cambio_turno (partita partita_attuale) {
+    char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    int turno = leggere_turno (partita_attuale);
+    cancellare_schermata ();
+    stampare_testo (FILE_CAMBIO_TURNO);
+    leggere_nome_giocatore (leggere_giocatore (partita_attuale, turno), nome_giocatore);
+    cambiare_colore_testo (COLORI_GIOCATORI [turno]);
+    stampare_valore_testuale_centrato (FILE_CAMBIO_TURNO, nome_giocatore, PRIMO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
+    cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
+    turno = turno + 1;
+    if ( turno >= leggere_numero_giocatori (partita_attuale) ) {
+        turno = 0;
+    }
+    leggere_nome_giocatore (leggere_giocatore (partita_attuale, turno), nome_giocatore);
+    cambiare_colore_testo (COLORI_GIOCATORI [turno]);
+    stampare_valore_testuale_centrato (FILE_CAMBIO_TURNO, nome_giocatore, SECONDO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
+    cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
+    return;
+}

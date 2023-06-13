@@ -33,6 +33,7 @@ void stampare_messaggio_valore (const char file_interfaccia [], int posizione_va
 void stampare_partite_salvate (const char file_interfaccia [], partita elenco_partite []);
 void stampare_classifica (int * sale);
 void stampare_crediti (int * sale);
+void stampare_schermata_cambio_turno (partita partita_attuale);
 
 
 #endif /* GESTIRE_STAMPA_H_ */

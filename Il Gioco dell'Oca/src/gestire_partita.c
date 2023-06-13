@@ -112,24 +112,12 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
                             stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
                             posizionare_cursore_in_attesa (FILE_PERCORSO);
                             //Stampa il messaggio per passare il turno al giocatore successivo
-                            char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
-                            int turno = leggere_turno(*partita_attuale);
-                            cancellare_schermata ();
-                            stampare_testo (FILE_CAMBIO_TURNO);
-                            leggere_nome_giocatore(leggere_giocatore(*partita_attuale, turno), nome_giocatore);
-                            cambiare_colore_testo (COLORI_GIOCATORI [turno]);
-                            stampare_valore_testuale_centrato(FILE_CAMBIO_TURNO, nome_giocatore, PRIMO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
-                            cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
-                            turno = turno + 1;
-                            if ( turno >= leggere_numero_giocatori (*partita_attuale) ) {
-                                turno = 0;
+
+                            if ( ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale) ) ) ) !=
+                                 leggere_lunghezza_percorso (*partita_attuale) ) {
+                                stampare_schermata_cambio_turno (*partita_attuale);
+                                attendere_tasto_zero(FILE_CAMBIO_TURNO, sale);
                             }
-                            leggere_nome_giocatore (leggere_giocatore(*partita_attuale, turno), nome_giocatore);
-                            cambiare_colore_testo (COLORI_GIOCATORI [turno]);
-                            stampare_valore_testuale_centrato (FILE_CAMBIO_TURNO, nome_giocatore, SECONDO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
-                            cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
-                            posizionare_cursore_in_attesa(FILE_CAMBIO_TURNO);
-                            attendere_tasto_zero(FILE_CAMBIO_TURNO, sale);
                         }
                         else {
                             indietro = gestire_menu_di_pausa (partita_attuale, sale);
@@ -264,7 +252,7 @@ vincitore inizializzare_vincitore (partita* partita_attuale, int * sale) {
     attendere_tasto_zero (FILE_VITTORIA_NOMI, sale);
     //Stampa la schermata dei crediti
     stampare_testo(FILE_CREDITI);
-    attendere_tasto_zero (FILE_VITTORIA_NOMI, sale);
+    attendere_tasto_zero (FILE_CREDITI, sale);
     return vincitore_partita;
 }
 
@@ -310,7 +298,8 @@ void lanciare_dadi (partita* partita_attuale, int sale) {
     int indice_dado = 0;
     int lancio;
     while (indice_dado < NUMERO_DADI) {
-        lancio = generare_numero (FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO, sale);
+        scanf("%d", &lancio);
+        //lancio = generare_numero (FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO, sale);
         scrivere_dadi (partita_attuale, lancio, indice_dado);
         indice_dado = indice_dado + 1;
     }
