@@ -47,7 +47,7 @@ void inizializzare_giocatori (partita *partita_attuale, int * sale) {
                         inizializzare_autorizzazione_giocatori(partita_attuale);
                         inizializzare_posizione_giocatori(partita_attuale);
                         inizializzare_lanci_giocatore(partita_attuale);
-                        scrivere_turno(partita_attuale, -2);
+                        scrivere_turno(partita_attuale, TURNO_PARTITA_NON_INIZIATA);
                     }
                 }
             } while (indietro != 0);

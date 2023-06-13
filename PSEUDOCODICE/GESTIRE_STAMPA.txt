@@ -160,3 +160,32 @@ MENTRE (indice_nuova_riga < ALTEZZA_SCHERMATA)
 		ALLORA	indice_nuova_riga = indice_nuova_riga + 1
 	FINE
 FINE
+
+stampare_classifica
+
+DATI DI INPUT
+file_classifica_top_10, contiene record di tipo giocatore corrispondenti ai dieci migliori giocatori di sempre, file di tipo binario
+file_classifica, il file contenente la rappresentazione della schermata della classifica, file di testo
+NUMERO_MASSIMO_CLASSIFICATI, il numero massimo dei giocatori in classifica, Intero, = 10
+
+DATI DI OUTPUT
+nessuno, sarà una stampa
+
+DATI DI LAVORO
+vincitori, l'elenco dei vincitori presenti in file_classifica_top_10, Array ad una dimensione (NUMERO_MASSIMO_CLASSIFICATI) di vincitore
+indice_vincitore, indica lo spostamento all'interno di vincitori, intero, > 0, <= NUMERO_MASSIMO_CLASSIFICATI
+
+ALGORITMO
+vincitori = caricare_classifica(file_classifica_top_10)
+stampare_testo(file_classifica)
+indice_vincitori = 1
+MENTRE (indice_vincitori <= NUMERO_MASSIMO_CLASSIFICATI)
+    SE (confrontare_stringhe(leggere_nome_vincitore(Elemento in posizione indice_vincitori di vincitori), FINE_STRINGA))
+    ALLORA
+        stampare_a_video(indice_vincitori)
+        stampare_a_video(leggere_nome_vincitore(Elemento in posizione indice_vincitori di vincitori))
+        stampare_a_video(leggere_numero_lanci_vincitore(Elemento in posizione indice_vincitori di vincitori))
+        stampare_a_video(leggere_lunghezza_percorso_vincitore(Elemento in posizione indice_vincitori di vincitori))
+    FINE
+    indice_vincitori = indice_vincitori + 1
+FINE

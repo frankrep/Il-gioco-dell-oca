@@ -20,48 +20,60 @@
 
 
 
-void scegliere_giocatore (partita* partita_attuale, int * sale);
+void scegliere_giocatore_iniziale (partita* partita_attuale, int * sale);
 vincitore inizializzare_vincitore (partita* partita_attuale, int * sale);
-int trovare_posizione_massimo(const int valori[], int dimensione_valori);
-void cambiare_turno(partita* partita_attuale);
-void lanciare_dadi(partita* partita_attuale, int sale);
-void incrementare_lanci_effettuati(partita* partita_attuale);
-void spostare_giocatore(partita* partita_attuale);
-void sommare_lancio_posizione(partita* partita_attuale);
-void calcolare_caselle_eccesso(partita* partita_attuale);
+int trovare_posizione_massimo (const int valori[], int dimensione_valori);
+void cambiare_turno (partita* partita_attuale);
+void lanciare_dadi (partita* partita_attuale, int sale);
+void incrementare_lanci_effettuati (partita* partita_attuale);
+void spostare_giocatore (partita* partita_attuale);
+void sommare_lancio_posizione (partita* partita_attuale);
+void calcolare_caselle_eccesso (partita* partita_attuale);
 int sommare_dadi (partita partita_attuale);
 void verificare_casella (partita* partita_attuale, int * sale);
-void gestire_oca(partita* partita_attuale);
-void impostare_autorizzazioni(partita* partita_attuale, const char nome_casella_attuale[]);
+void gestire_oca (partita* partita_attuale);
+void impostare_autorizzazioni (partita* partita_attuale, const char nome_casella_attuale[]);
 void gestire_autorizzazione (partita* partita_attuale, int * sale);
 int scegliere_opzione_menu_di_pausa (int * sale);
 int gestire_menu_di_pausa (partita* partita_attuale, int * sale);
-void azzerare_vincitore(vincitore* vincitore_attuale);
+void azzerare_vincitore (vincitore* vincitore_attuale);
 
 
 
+/*
+gestire_partita: 
+si occupa della gestione di una partita inizializzata, ovvero di una partita avente i campi
+numero_giocatori, lunghezza_percorso, percorso, giocatori inizializzati
+
+restituisce il vincitore della partita gestita
+
+se si esce dalla partita prima che questa termini, verrà restituito un vincitore avente il campo
+nome_vincitore inizializzato a FINE_STRINGA
+*/
 vincitore gestire_partita (partita* partita_attuale, int * sale) {
     int indietro;
     char scelta;
-    if ( leggere_turno (*partita_attuale) == -2 ) {
-        scegliere_giocatore (partita_attuale, sale);
-    }
-    do{
 
+    //Verifica il turno della partita per vedere se la partita non è iniziata
+    if (leggere_turno (*partita_attuale) == TURNO_PARTITA_NON_INIZIATA ) {
+        scegliere_giocatore_iniziale (partita_attuale, sale);
+    }
+    do {
         cambiare_turno (partita_attuale);
-        if ( leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) > 0) {
+        if (leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale))) > 0) {
             gestire_autorizzazione(partita_attuale, sale);
         }
-        if ( leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) == 0 ) {
-            cancellare_schermata();
-            stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
-
+        //Verifica che il giocatore di turno sia autorizzato a lanciare i dadi
+        if (leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale))) == 0) {
+            cancellare_schermata ();
+            stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
             do {
-                stampare_messaggio_valore(FILE_PERCORSO, 2);
+                //Stampa l'opzione del menu di gioco per lanciare i dadi
+                stampare_messaggio_valore (FILE_PERCORSO, SECONDO_VALORE);
                 do {
-                    posizionare_cursore_in_attesa(FILE_PERCORSO);
-                    fflush(stdin);
-                    scelta = fgetc(stdin);
+                    posizionare_cursore_in_attesa (FILE_PERCORSO);
+                    fflush (stdin);
+                    scelta = fgetc (stdin);
                     *sale = *sale + 1;
                     if ((scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO)) {
                         stampare_messaggio_errore(FILE_PERCORSO);
@@ -69,17 +81,17 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
                 } while ((scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO));
 
                 if ((scelta == TASTO_LANCIO_DADI_MAIUSCOLO) || (scelta == TASTO_LANCIO_DADI_MINUSCOLO)) {
-                    lanciare_dadi(partita_attuale, *sale);
-                    incrementare_lanci_effettuati(partita_attuale);
-                    stampare_dadi_partita(FILE_PERCORSO, partita_attuale);
+                    lanciare_dadi (partita_attuale, *sale);
+                    incrementare_lanci_effettuati (partita_attuale);
+                    stampare_dadi_partita (FILE_PERCORSO, partita_attuale);
 
                     do {
-                        //inserire scritta per l'inserimento di A per avanzare
-                        stampare_messaggio_valore(FILE_PERCORSO, 3);
+                        //Stampa l'opzione del menu di gioco per far avanzare la pedina
+                        stampare_messaggio_valore (FILE_PERCORSO, TERZO_VALORE);
                         do {
-                            posizionare_cursore_in_attesa(FILE_PERCORSO);
-                            scanf("%c", &scelta);
-                            fflush(stdin);
+                            posizionare_cursore_in_attesa (FILE_PERCORSO);
+                            scanf ("%c", &scelta);
+                            fflush (stdin);
                             *sale = *sale + 1;
                             if ((scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO)) {
                                 stampare_messaggio_errore(FILE_PERCORSO);
@@ -87,44 +99,46 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
                         } while ((scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO));
 
                         if ((scelta == TASTO_AVANZAMENTO_MAIUSCOLO) || (scelta == TASTO_AVANZAMENTO_MINUSCOLO)) {
-                            spostare_giocatore(partita_attuale);
-                            //stampare percorso con input utente per proseguire con l'effetto
-                            cancellare_schermata();
-                            stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
-                            posizionare_cursore_in_attesa(FILE_PERCORSO);
-                            fgetc(stdin);
-                            fflush(stdin);
+                            spostare_giocatore (partita_attuale);
+                            //Stampa il percorso con la pedina spostata
+                            cancellare_schermata ();
+                            stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
+                            posizionare_cursore_in_attesa (FILE_PERCORSO);
+                            fgetc (stdin);
+                            fflush (stdin);
                             *sale = *sale + 1;
-                            verificare_casella(partita_attuale, sale);
 
+                            verificare_casella (partita_attuale, sale);
 
-                            stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
-                            posizionare_cursore_in_attesa(FILE_PERCORSO);
-                            //inserire il messaggio per dire di premere un tasto per concludere il turno
+                            stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
+                            posizionare_cursore_in_attesa (FILE_PERCORSO);
+                            //Stampa il messaggio per passare il turno al giocatore successivo
+
                         }
                         else {
-                            indietro = gestire_menu_di_pausa(partita_attuale, sale);
-                            stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
+                            indietro = gestire_menu_di_pausa (partita_attuale, sale);
+                            stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
                         }
                     } while (indietro == 1);
                 }
                 else {
-                    indietro = gestire_menu_di_pausa(partita_attuale, sale);
-                    stampare_interfaccia_percorso(partita_attuale, FILE_PERCORSO);
-                    //stampare menu
+                    indietro = gestire_menu_di_pausa (partita_attuale, sale);
+                    stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
                 }
             } while (indietro == 1);
 
         }
 
-    } while ( leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale)  && (indietro != 0));
+    } while (leggere_posizione_giocatore (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale))) != leggere_lunghezza_percorso (*partita_attuale)  && (indietro != 0));
+    
+    
     vincitore vincitore_partita;
-    if(leggere_posizione_giocatore (leggere_giocatore (*partita_attuale,leggere_turno (*partita_attuale) ) ) == leggere_lunghezza_percorso (*partita_attuale)) {
+    if (leggere_posizione_giocatore (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale))) == leggere_lunghezza_percorso (*partita_attuale)) {
         vincitore_partita = inizializzare_vincitore (partita_attuale, sale);
-        aggiornare_classifica_top_10(vincitore_partita);
+        aggiornare_classifica_top_10 (vincitore_partita);
     }
     else {
-        azzerare_vincitore(&vincitore_partita);
+        azzerare_vincitore (&vincitore_partita);
     }
     return vincitore_partita;
 }
@@ -135,69 +149,61 @@ int gestire_menu_di_pausa (partita* partita_attuale, int * sale) {
     char uscita;
     int scelta;
     do {
-        scelta = scegliere_opzione_menu_di_pausa(sale);
+        scelta = scegliere_opzione_menu_di_pausa (sale);
         if (scelta == 2) {
             salvare_partita (partita_attuale, sale);
         } else {
             if (scelta == 3) {
-                chiedere_aiuto(sale);
+                chiedere_aiuto (sale);
             } else {
                 if (scelta == 0) {
-                    stampare_testo(FILE_RICHIESTA_USCITA);
+                    stampare_testo (FILE_RICHIESTA_USCITA);
 
                     do {
-                        posizionare_cursore_in_attesa(FILE_RICHIESTA_USCITA);
-                        scanf("%c", &uscita);
-                        if (uscita != RISPOSTA_NEGATIVA_MINUSCOLO && uscita != RISPOSTA_NEGATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO) {
-                            stampare_messaggio_errore(FILE_RICHIESTA_USCITA);
+                        posizionare_cursore_in_attesa (FILE_RICHIESTA_USCITA);
+                        scanf ("%c", &uscita);
+                        if ((uscita != RISPOSTA_NEGATIVA_MINUSCOLO) && (uscita != RISPOSTA_NEGATIVA_MAIUSCOLO) && (uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO) && (uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO)) {
+                            stampare_messaggio_errore (FILE_RICHIESTA_USCITA);
                         }
-                    } while (uscita != RISPOSTA_NEGATIVA_MINUSCOLO && uscita != RISPOSTA_NEGATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO);
+                    } while ((uscita != RISPOSTA_NEGATIVA_MINUSCOLO) && (uscita != RISPOSTA_NEGATIVA_MAIUSCOLO) && (uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO) && (uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO));
 
                 }
             }
         }
-    } while (scelta != 1 && (uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO) );
-    cancellare_schermata();
+    } while ((scelta != 1) && (uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO) && (uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO));
+    cancellare_schermata ();
     return scelta;
 }
+
 
 
 
 int scegliere_opzione_menu_di_pausa (int * sale) {
     int scelta;
-    cancellare_schermata();
-    stampare_testo(FILE_MENU_DI_PAUSA);
+    cancellare_schermata ();
+    stampare_testo (FILE_MENU_DI_PAUSA);
 
     do {
 
 
         //modificare messaggio per coerenza con quello a cui risponde
-        int correttezza_inserimento;
-        do {
-            posizionare_cursore_in_attesa(FILE_MENU_DI_PAUSA);
-            correttezza_inserimento = scanf("%d", &scelta);
-            fflush(stdin);
-            *sale = *sale + 1;
-            if (correttezza_inserimento == 0) {
-                stampare_messaggio_errore(FILE_MENU_DI_PAUSA);
-            }
-        } while (correttezza_inserimento == 0);
+        verificare_correttezza_inserimento(FILE_MENU_DI_PAUSA, &scelta, sale);
 
 
         //modificare messaggio per coerenza con quello a cui risponde
-        if ( scelta < 0 || scelta > NUMERO_MASSIMO_OPZIONE_PAUSA ) {
-            stampare_messaggio_errore(FILE_MENU_DI_PAUSA);
+        if ((scelta < 0) || (scelta > NUMERO_MASSIMO_OPZIONE_PAUSA)) {
+            stampare_messaggio_errore (FILE_MENU_DI_PAUSA);
         }
 
 
-    } while (scelta < 0 || scelta > NUMERO_MASSIMO_OPZIONE_PAUSA );
-    cancellare_schermata();
+    } while ((scelta < 0) || (scelta > NUMERO_MASSIMO_OPZIONE_PAUSA));
+    cancellare_schermata ();
     return scelta;
 }
 
 
 
-void scegliere_giocatore (partita* partita_attuale, int * sale) {
+void scegliere_giocatore_iniziale (partita* partita_attuale, int * sale) {
     char scelta;
     int estrazioni [NUMERO_MASSIMO_GIOCATORI];
     int indice_giocatori = 0;
@@ -307,8 +313,8 @@ void lanciare_dadi (partita* partita_attuale, int sale) {
     int indice_dado = 0;
     int lancio;
     while (indice_dado < NUMERO_DADI) {
-        scanf("%d", &lancio);
-        //lancio = generare_numero(FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO, sale);
+        //scanf("%d", &lancio);
+        lancio = generare_numero(FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO, sale);
         scrivere_dadi (partita_attuale, lancio, indice_dado);
         indice_dado = indice_dado + 1;
     }

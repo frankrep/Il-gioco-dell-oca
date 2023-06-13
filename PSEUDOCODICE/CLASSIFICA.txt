@@ -1,6 +1,5 @@
 
 
-
 aggiornare_classifica_top_10
 
 DATI DI INPUT
@@ -20,23 +19,27 @@ rateo_classificato, rapporto tra i lanci dei dadi e la lunghezza del percorso de
 ALGORITTMO
 vincitori = caricare_classifica (file_classifica_top_10)
 inserito = FALSO
+rateo_vincitore_partita = leggere_lanci_vincitore(vincitore_partita)  / leggere_lunghezza_percorso_vincitore(vincitore_partita)
 indice_vincitori = 1               
 rateo_vincitore_partita = leggere_numero_lanci_vincitore(vincitore_partita) / leggere_lunghezza_percorso_vincitore(vincitore_partita)
 MENTRE ( indice_vincitori <= NUMERO_MASSIMO_CLASSIFICATI )
-    rateo_classificato = leggere_numero_lanci_vincitore(Elemento in posizione indice_vincitori di vincitori) / leggere_lunghezza_percorso_vincitore(Elemento in posizione indice_vincitori di vincitori)
-    SE (rateo_vincitore_partita <= rateo_classificato) AND (inserito != VERO)
+    SE (leggere_carattere_nome_vincitore(Elemento di vincitori in posizione indice_vincitori, 0) != FINE_STRINGA)
     ALLORA
-        vincitori = spostamento_destra_vincitori(vincitori, indice_vincitori, vincitore_partita)
-        inserito = VERO                
-    FINE
+        rateo_classificato = leggere_numero_lanci_vincitore(Elemento in posizione indice_vincitori di vincitori) / leggere_lunghezza_percorso_vincitore(Elemento in posizione indice_vincitori di vincitori)
+        SE ((rateo_vincitore_partita <= rateo_classificato) AND (inserito != VERO))
+        ALLORA
+            vincitori = spostamento_destra_vincitori(vincitori, indice_vincitori, vincitore_partita)
+            inserito = VERO                
+        FINE
+    ALTRIMENTI
+        SE (inserito != VERO) 
+        ALLORA
+            Elemento di vincitori in posizione indice_vincitori = vincitore_partita
+            inserito = VERO
+        FINE
+FINE
     indice_vincitori = indice_vincitori + 1
-FINE
-indice_vincitori = 1
-MENTRE (indice_vincitori <= NUMERO_MASSIMO_CLASSIFICATI)
-    file_classifica_top_10 = scrivere_su_file(file_classifica_top_10, Elemento in posizione indice_vincitori di vincitori)
-    indice_vincitori = indice_vincitore + 1
-FINE
-
+file_classifica_top_10  = scrivere_classifica(vincitori)
 
 
 spostamento_destra_vincitori
@@ -55,7 +58,7 @@ vincitore_salvato, contiene il prossimo vincitore da inserire variabile di appog
 vincitore_attuale, contiene il vincitore 
 indice_vincitori,
 ALGORITMO
-indice_vincitori = NUMERO_MASSIMO_CLASSIFICATI
+indice_vincitori = NUMERO_MASSIMO_CLASSIFICATI - 1
 MENTRE (indice_vincitori >= posizione_inserimento)
     Elemento in posizione indice_vincitori di vincitori = Elemento in posizione (indice_vincitori - 1) di vincitori
     indice_vincitori = indice_vincitori - 1
@@ -86,31 +89,23 @@ FINE
 
 
 
-stampare_classifica
+scrivere_classifica
 
 DATI DI INPUT
-file_classifica_top_10, contiene record di tipo giocatore corrispondenti ai dieci migliori giocatori di sempre, file di tipo binario
-file_classifica, il file contenente la rappresentazione della schermata della classifica, file di testo
-NUMERO_MASSIMO_CLASSIFICATI, il numero massimo dei giocatori in classifica, Intero, = 10
 
 DATI DI OUTPUT
-nessuno, sarà una stampa
 
 DATI DI LAVORO
-vincitori, l'elenco dei vincitori presenti in file_classifica_top_10, Array ad una dimensione (NUMERO_MASSIMO_CLASSIFICATI) di vincitore
-indice_vincitore, indica lo spostamento all'interno di vincitori, intero, > 0, <= NUMERO_MASSIMO_CLASSIFICATI
 
 ALGORITMO
-vincitori = caricare_classifica(file_classifica_top_10)
-stampare_testo(file_classifica)
-indice_vincitori = 1
-MENTRE (indice_vincitori <= NUMERO_MASSIMO_CLASSIFICATI)
-    SE (confrontare_stringhe(leggere_nome_vincitore(Elemento in posizione indice_vincitori di vincitori), FINE_STRINGA))
-    ALLORA
-        stampare_a_video(indice_vincitori)
-        stampare_a_video(leggere_nome_vincitore(Elemento in posizione indice_vincitori di vincitori))
-        stampare_a_video(leggere_numero_lanci_vincitore(Elemento in posizione indice_vincitori di vincitori))
-        stampare_a_video(leggere_lunghezza_percorso_vincitore(Elemento in posizione indice_vincitori di vincitori))
-    FINE
-    indice_vincitori = indice_vincitori + 1
-FINE
+
+
+creare_classifica_vuota
+
+DATI DI INPUT
+
+DATI DI OUTPUT
+
+DATI DI LAVORO
+
+ALGORITMO
