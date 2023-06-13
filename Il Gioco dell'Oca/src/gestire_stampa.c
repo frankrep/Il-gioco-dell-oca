@@ -13,6 +13,7 @@
 #include "generare_percorso.h"
 #include "vincitore.h"
 #include "classifica.h"
+#include "salvare_caricare_partita.h"
 
 
 void stampare_dadi_partita (const char file_interfaccia [], partita* partita_attuale) {
@@ -588,5 +589,14 @@ void stampare_errore_apertura_file (const char file_interfaccia [] ) {
     fflush (stdout);
     printf ("%s", file_interfaccia);
     fflush (stdout);
+    return;
+}
+
+
+
+void stampare_crediti (int * sale) {
+    cancellare_schermata ();
+    stampare_testo (FILE_CREDITI);
+    attendere_tasto_zero(FILE_CREDITI, sale);
     return;
 }

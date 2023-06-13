@@ -31,6 +31,7 @@ void stampare_errore_apertura_file(const char file_interfaccia[]);
 void stampare_messaggio_valore (const char file_interfaccia[], int posizione_valore);
 void stampare_partite_salvate (const char file_interfaccia[], partita elenco_partite[]);
 void stampare_classifica(int * sale);
+void stampare_crediti (int * sale);
 
 
 #endif /* GESTIRE_STAMPA_H_ */

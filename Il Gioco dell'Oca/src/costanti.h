@@ -56,7 +56,7 @@ static const unsigned long long DIVISORE = 9223372036854775808ULL;
 
 #define NUMERO_MASSIMO_CARATTERI_PERCORSO 256
 #define CARATTERE_SPAZIO ' '
-#define NUMERO_MASSIMO_OPZIONI_PRINCIPALE  4
+#define NUMERO_MASSIMO_OPZIONI_PRINCIPALE 5
 #define NUMERO_MASSIMO_OPZIONE_PAUSA 3
 #define NUMERO_MASSIMO_OPZIONI_AIUTO  2
 #define POSIZIONE_GIOCATORE_1 0
@@ -92,7 +92,7 @@ static const unsigned long long DIVISORE = 9223372036854775808ULL;
 #define TASTO_MENU_MAIUSCOLO 'M'
 #define TASTO_AVANZAMENTO_MINUSCOLO 'a'
 #define TASTO_AVANZAMENTO_MAIUSCOLO 'A'
-#define TASTO_CONFERMA '0'
+#define TASTO_CONFERMA 0
 #define RISPOSTA_AFFERMATIVA_MAIUSCOLO 'S'
 #define RISPOSTA_AFFERMATIVA_MINUSCOLO 's'
 #define RISPOSTA_NEGATIVA_MAIUSCOLO 'N'
@@ -163,7 +163,7 @@ static const char CARATTERE_BECCO = '8';
 static const char CARATTERE_SFONDO = '_';
 static const char FILE_CLASSIFICA_TOP_10 [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\filebin\\file_classifica_top_10.bin";
 static const char FILE_CLASSIFICA[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_classifica.txt";
-static const char FILE_CREDITI[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\crediti.txt";
+static const char FILE_CREDITI[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_crediti.txt";
 static const char FILE_SEME [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\filebin\\seme.bin";
 static const char FILE_MENU_AIUTO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_menu_aiuto.txt";
 static const char FILE_MANUALE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_manuale.txt";

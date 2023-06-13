@@ -142,9 +142,9 @@ void effettuare_salvataggio (partita * partita_attuale, partita elenco_partite [
 void attendere_tasto_zero (const char interfaccia [], int * sale) {
     int scelta;
     do {
-        verificare_correttezza_inserimento (FILE_CONFERMA_SALVATAGGIO, &scelta, sale);
+        verificare_correttezza_inserimento (interfaccia, &scelta, sale);
         if (scelta != TASTO_CONFERMA) {
-            stampare_messaggio_errore (FILE_CONFERMA_SALVATAGGIO);
+            stampare_messaggio_errore (interfaccia);
         }
     } while (scelta != TASTO_CONFERMA);
     return;

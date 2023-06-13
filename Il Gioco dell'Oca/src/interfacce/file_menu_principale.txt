@@ -15,15 +15,15 @@
                                                       |_____S..S__88$$$$$$_|   
 4) Aiuto                                              |_____S..S_8888$$$$$_|   
                                                       |_____S..S_____$$$$$s|   
-0) Esci dal gioco                                     |_____S..S______$$$$$|   
+5) Crediti                                            |_____S..S______$$$$$|
                                                       |_____S..S_______$$$$|   
-<Inserisci la tua scelta:                             |_____S..S_______$$$$|   
+0) Esci dal gioco                                     |_____S..S_______$$$$|
                                                       |_____S..S_______$$$$|   
-                                                      |_____S..S_______$$$$|   
+<Inserisci la tua scelta:                             |_____S..S_______$$$$|
                                                       |____S...S_______$$$$|   
                                                       |____S...S_______$$$$|   
                                                       |____________________|   
-20 //riga input
+22 //riga input
 26 //colonna input
 22 //riga errore
 1 //colonna errore
