@@ -6,6 +6,7 @@
 #ifndef GESTIRE_STAMPA_H_
 #define GESTIRE_STAMPA_H_
 
+#include <stdio.h>
 #include "partita.h"
 
 void cancellare_schermata ();

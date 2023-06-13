@@ -3,5 +3,4 @@
 
 void chiedere_aiuto (int * sale);
 
-
 #endif /* AIUTO_H_ */
