@@ -120,6 +120,16 @@ static const int COLORI_GIOCATORI[NUMERO_MASSIMO_GIOCATORI] = {ROSSO, BLU, VERDE
 
 
 
+//Nomi illegali
+#define NUMERO_NOMI_SPECIALI 4
+static const char NOMI_SPECIALI[NUMERO_NOMI_SPECIALI][DIMENSIONE_MASSIMA_NOME_GIOCATORE] = {
+        {102, 97, 98, 105, 111, 32, 97, 98, 98, 97, 116, 116, 105, 115, 116, 97, 0},
+        {97, 98, 98, 97, 116, 116, 105, 115, 116, 97, 0},
+        {102, 97, 98, 105, 111, 0},
+        {97, 98, 98, 97, 0}
+};
+
+
 static const char ERRORE_FILE_NON_TROVATO[LUNGHEZZA_SCHERMATA + 1] = "ERRORE! FILE NON TROVATO \0";
 static const char FINE_STRINGA = '\0';
 static const char CARATTERE_A_CAPO = '\n';
@@ -189,7 +199,6 @@ static const char FILE_CONFERMA_INSERIMENTO[NUMERO_MASSIMO_CARATTERI_PERCORSO] =
 static const char FILE_CONFERMA_SALVATAGGIO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_conferma_salvataggio.txt";
 static const char FILE_RICHIESTA_C_INSERIMENTO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_richiesta_c_inserimento.txt";
 static const char FILE_RICHIESTA_C_SALVATAGGIO[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_richiesta_c_salvataggio.txt";
-static const char FILE_STAMPE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\stampe.txt";
 static const char FILE_MESSAGGI_ERRORE[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_stampe.txt";
 static const char FILE_MESSAGGI[NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_stampe.txt";
 static const char FILE_MENU_DI_PAUSA [NUMERO_MASSIMO_CARATTERI_PERCORSO] = "..\\src\\interfacce\\file_menu_di_gioco.txt";

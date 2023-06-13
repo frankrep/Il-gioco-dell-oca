@@ -4,6 +4,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include "casella.h"
 #include "giocatore.h"
 #include "partita.h"
@@ -36,7 +37,8 @@ void gestire_autorizzazione (partita* partita_attuale, int * sale);
 int scegliere_opzione_menu_di_pausa (int * sale);
 int gestire_menu_di_pausa (partita* partita_attuale, int * sale);
 void azzerare_vincitore (vincitore* vincitore_attuale);
-
+int verificare_nomi_speciali (partita* partita_attuale);
+void gestire_nome_speciale (partita* partita_attuale, int indice_nome_speciale, int* seme);
 
 
 /*
@@ -52,87 +54,96 @@ nome_vincitore inizializzato a FINE_STRINGA
 vincitore gestire_partita (partita* partita_attuale, int * sale) {
     int indietro;
     char scelta;
-
+    vincitore vincitore_partita;
     //Verifica il turno della partita per vedere se la partita non è iniziata
     if (leggere_turno (*partita_attuale) == TURNO_PARTITA_NON_INIZIATA ) {
         scegliere_giocatore_iniziale (partita_attuale, sale);
     }
-    do {//
-        cambiare_turno (partita_attuale);
-        if (leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) > AUTORIZZATO_A_LANCIARE_DADI) {
-            gestire_autorizzazione (partita_attuale, sale);
-        }
+    int nome_speciale = verificare_nomi_speciali (partita_attuale);
+    if (nome_speciale == 0) {
+        do {
+            cambiare_turno (partita_attuale);
+            if ( leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) > AUTORIZZATO_A_LANCIARE_DADI) {
+                gestire_autorizzazione (partita_attuale, sale);
+            }
 
-        //Verifica che il giocatore di turno sia autorizzato a lanciare i dadi
-        if (leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) == AUTORIZZATO_A_LANCIARE_DADI) {
-            cancellare_schermata ();
-            stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
-            do {
-
-                //Stampa l'opzione del menu di gioco per lanciare i dadi
-                stampare_messaggio_valore (FILE_PERCORSO, SECONDO_VALORE);
+            //Verifica che il giocatore di turno sia autorizzato a lanciare i dadi
+            if (leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) == AUTORIZZATO_A_LANCIARE_DADI) {
+                cancellare_schermata ();
+                stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
                 do {
-                    inserire_simbolo (FILE_PERCORSO, &scelta, sale);
-                    if ( (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) ) {
-                        stampare_messaggio_errore(FILE_PERCORSO);
-                    }
-                } while ( (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) );
 
-                if ( (scelta == TASTO_LANCIO_DADI_MAIUSCOLO) || (scelta == TASTO_LANCIO_DADI_MINUSCOLO) ) {
-                    lanciare_dadi (partita_attuale, *sale);
-                    incrementare_lanci_effettuati (partita_attuale);
-                    stampare_dadi_partita (FILE_PERCORSO, partita_attuale);
+                    //Stampa l'opzione del menu di gioco per lanciare i dadi
+                    stampare_messaggio_valore (FILE_PERCORSO, SECONDO_VALORE);
                     do {
+                        inserire_simbolo (FILE_PERCORSO, &scelta, sale);
+                        if ((scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO)) {
+                            stampare_messaggio_errore (FILE_PERCORSO);
+                        }
+                    } while ( (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO));
 
-                        //Stampa l'opzione del menu di gioco per far avanzare la pedina
-                        stampare_messaggio_valore (FILE_PERCORSO, TERZO_VALORE);
+                    if ((scelta == TASTO_LANCIO_DADI_MAIUSCOLO) || (scelta == TASTO_LANCIO_DADI_MINUSCOLO)) {
+                        lanciare_dadi(partita_attuale, *sale);
+                        incrementare_lanci_effettuati(partita_attuale);
+                        stampare_dadi_partita(FILE_PERCORSO, partita_attuale);
                         do {
-                            inserire_simbolo(FILE_PERCORSO, &scelta, sale);
-                            if ( (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) ) {
-                                stampare_messaggio_errore(FILE_PERCORSO);
+
+                            //Stampa l'opzione del menu di gioco per far avanzare la pedina
+                            stampare_messaggio_valore(FILE_PERCORSO, TERZO_VALORE);
+                            do {
+                                inserire_simbolo(FILE_PERCORSO, &scelta, sale);
+                                if ((scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO)) {
+                                    stampare_messaggio_errore(FILE_PERCORSO);
+                                }
+                            } while ( (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) &&
+                                     (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) &&
+                                     (scelta != TASTO_MENU_MINUSCOLO) );
+
+                            //Verifica se si è premuto il tasto avanza
+                            if ( (scelta == TASTO_AVANZAMENTO_MAIUSCOLO) || (scelta == TASTO_AVANZAMENTO_MINUSCOLO) ) {
+                                spostare_giocatore(partita_attuale);
+
+                                //Stampa il percorso con la pedina spostata
+                                cancellare_schermata ();
+                                stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
+                                posizionare_cursore_in_attesa (FILE_PERCORSO);
+                                fgetc (stdin);
+                                fflush (stdin);
+                                *sale = *sale + 1;
+                                verificare_casella (partita_attuale, sale);
+                                stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
+                                posizionare_cursore_in_attesa (FILE_PERCORSO);
+                                //Stampa il messaggio per passare il turno al giocatore successivo
+
+                            } else {
+                                indietro = gestire_menu_di_pausa(partita_attuale, sale);
+                                stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
                             }
-                        } while ( (scelta != TASTO_AVANZAMENTO_MAIUSCOLO) && (scelta != TASTO_AVANZAMENTO_MINUSCOLO) && (scelta != TASTO_MENU_MAIUSCOLO) && (scelta != TASTO_MENU_MINUSCOLO) );
+                        } while (indietro == 1);
+                    } else {
+                        indietro = gestire_menu_di_pausa(partita_attuale, sale);
+                        stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
+                    }
+                } while (indietro == 1);
 
-                        //Verifica se si è premuto il tasto avanza
-                        if ( (scelta == TASTO_AVANZAMENTO_MAIUSCOLO) || (scelta == TASTO_AVANZAMENTO_MINUSCOLO) ) {
-                            spostare_giocatore (partita_attuale);
+            }
 
-                            //Stampa il percorso con la pedina spostata
-                            cancellare_schermata ();
-                            stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
-                            posizionare_cursore_in_attesa (FILE_PERCORSO);
-                            fgetc (stdin);
-                            fflush (stdin);
-                            *sale = *sale + 1;
-                            verificare_casella (partita_attuale, sale);
-                            stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
-                            posizionare_cursore_in_attesa (FILE_PERCORSO);
-                            //Stampa il messaggio per passare il turno al giocatore successivo
+        } while (leggere_posizione_giocatore (leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))) !=
+                 leggere_lunghezza_percorso (*partita_attuale) && (indietro != 0));
 
-                        }
-                        else {
-                            indietro = gestire_menu_di_pausa (partita_attuale, sale);
-                            stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
-                        }
-                    } while (indietro == 1);
-                }
-                else {
-                    indietro = gestire_menu_di_pausa (partita_attuale, sale);
-                    stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
-                }
-            } while (indietro == 1);
+        //Verifica se un giocatore ha vinto oppure se si desidera tornare indietro
 
+        if (leggere_posizione_giocatore (leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))) ==
+            leggere_lunghezza_percorso (*partita_attuale)) {
+            vincitore_partita = inizializzare_vincitore(partita_attuale, sale);
+        } else {
+            azzerare_vincitore (&vincitore_partita);
         }
-
-    } while (leggere_posizione_giocatore (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) != leggere_lunghezza_percorso (*partita_attuale)  && (indietro != 0) );
-    //Verifica se un giocatore ha vinto oppure se si desidera tornare indietro
-    vincitore vincitore_partita;
-    if (leggere_posizione_giocatore (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale))) == leggere_lunghezza_percorso (*partita_attuale)) {
-        vincitore_partita = inizializzare_vincitore (partita_attuale, sale);
-    }
-    else {
+    }else{
+        gestire_nome_speciale (partita_attuale, nome_speciale, sale);
         azzerare_vincitore (&vincitore_partita);
     }
+
     return vincitore_partita;
 }
 
@@ -223,7 +234,7 @@ vincitore inizializzare_vincitore (partita* partita_attuale, int * sale) {
     scrivere_pedina_vincitore (&vincitore_partita, leggere_pedina_giocatore(leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale))));
     scrivere_lanci_vincitore (&vincitore_partita, leggere_lanci_effettuati(leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale))));
     scrivere_lunghezza_percorso_vincitore (&vincitore_partita, leggere_lunghezza_percorso (*partita_attuale));
-    cancellare_schermata ();
+    //Stampa la schermata della vittoria
     stampare_vittoria (FILE_VITTORIA_NOMI);
     char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     leggere_nome_giocatore (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale)), nome_giocatore);
@@ -231,6 +242,9 @@ vincitore inizializzare_vincitore (partita* partita_attuale, int * sale) {
     cambiare_colore_testo (COLORI_GIOCATORI [leggere_turno (*partita_attuale)]);
     stampare_valore_testuale_centrato (FILE_VITTORIA_NOMI, nome_vincitore, PRIMO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
     cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
+    attendere_tasto_zero (FILE_VITTORIA_NOMI, sale);
+    //Stampa la schermata dei crediti
+    stampare_testo(FILE_CREDITI);
     attendere_tasto_zero (FILE_VITTORIA_NOMI, sale);
     return vincitore_partita;
 }
@@ -518,4 +532,44 @@ int confrontare_stringhe (const char stringa_1 [], const char stringa_2 []) {
         indice_stringa = indice_stringa + 1;
     }
     return esito;
+}
+
+
+int verificare_nomi_speciali (partita* partita_attuale) {
+    char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    int giocatore_con_nome_speciale = 0;
+    int indice_nomi_speciali;
+    int indice_giocatori = 0;
+    while ( (indice_giocatori < leggere_numero_giocatori (*partita_attuale)) && (giocatore_con_nome_speciale == 0) ) {
+        leggere_nome_giocatore(leggere_giocatore(*partita_attuale, indice_giocatori), nome_giocatore);
+        strlwr(nome_giocatore);
+        indice_nomi_speciali = 0;
+        while ( (indice_nomi_speciali < NUMERO_NOMI_SPECIALI)  && (giocatore_con_nome_speciale == 0) ) {
+            if ( (confrontare_stringhe (nome_giocatore, NOMI_SPECIALI[indice_nomi_speciali]) == VERO) && (giocatore_con_nome_speciale == 0) ) {
+                giocatore_con_nome_speciale = indice_giocatori;
+            }
+            indice_nomi_speciali = indice_nomi_speciali + 1;
+        }
+        indice_giocatori = indice_giocatori + 1;
+    }
+
+}
+
+
+
+void gestire_nome_speciale (partita* partita_attuale, int indice_nome_speciale, int* sale){
+    stampare_testo(FILE_EASTEREGG1);
+    attendere_tasto_zero(FILE_EASTEREGG1, &sale);
+    stampare_testo(FILE_EASTEREGG2);
+    attendere_tasto_zero(FILE_EASTEREGG1, &sale);
+    stampare_vittoria (FILE_VITTORIA_NOMI);
+    char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    leggere_nome_giocatore (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale)), nome_giocatore);
+    //Stampa il nome del vincitore colorato e centrato sulla raffigurazione della coppa
+    cambiare_colore_testo (VIOLETTO);
+    stampare_valore_testuale_centrato (FILE_VITTORIA_NOMI, nome_giocatore, PRIMO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
+    cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
+    attendere_tasto_zero (FILE_VITTORIA_NOMI, sale);
+    stampare_testo(FILE_CREDITI);
+    attendere_tasto_zero(FILE_EASTEREGG1, &sale);
 }

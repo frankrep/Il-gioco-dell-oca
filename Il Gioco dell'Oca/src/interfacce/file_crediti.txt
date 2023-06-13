@@ -25,7 +25,9 @@
 ========================================<Premi 0 per proseguire:               
 25 //INPUT RIGA
 65 //INPUT COLONNA 
-
+25 // RIGA ERRORE
+1 // COLONNA ERRORE
+2 // CODICE MESSAGGIO
 
 
 
