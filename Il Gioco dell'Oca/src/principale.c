@@ -17,7 +17,7 @@ int scegliere_opzione_menu (int * sale);
 void iniziare_nuova_partita (vincitore* vincitore_partita, int * sale);
 void riprendere_partita (vincitore* vincitore_partita, int * sale);
 void scegliere_partita_da_caricare (partita* partita_attuale, int * sale);
-//void gestire_vincitore (vincitore vincitore_partita);
+void gestire_vincitore (vincitore vincitore_partita);
 
 
 
@@ -43,11 +43,16 @@ int main() {
         
         if (opzione == 1) {
             iniziare_nuova_partita (&vincitore_partita, &sale);
-            //inserire fine stringa come nome di vincitore_attuale nel caso in cui si interrompe la partita (stessa cosa per riprendere_partita)
+            if (leggere_lunghezza_percorso_vincitore(vincitore_partita) != 0) {
+                gestire_vincitore(vincitore_partita);
+            }
         }
         else {
             if (opzione == 2) {
                 riprendere_partita(&vincitore_partita, &sale);
+                if (leggere_lunghezza_percorso_vincitore(vincitore_partita) != 0) {
+                    gestire_vincitore(vincitore_partita);
+                }
             }
             else {
                 if (opzione == 3) {
@@ -213,11 +218,19 @@ void scegliere_partita_da_caricare (partita* partita_attuale, int * sale) {
 
 
 
-/*void gestire_vincitore (vincitore vincitore_partita) {
+void gestire_vincitore (vincitore vincitore_partita, int* sale) {
     char nome_vincitore_partita [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     leggere_nome_vincitore (vincitore_partita, nome_vincitore_partita);
     if (nome_vincitore_partita[0] != FINE_STRINGA) {
         aggiornare_classifica_top_10 (vincitore_partita);
+        cancellare_schermata();
+        stampare_vittoria(FILE_DETTAGLI_PARTITA);
+        stampare_valore_testuale(FILE_DETTAGLI_PARTITA, nome_vincitore_partita, 1);
+        stampare_valore_intero(FILE_DETTAGLI_PARTITA, leggere_lunghezza_percorso_vincitore(vincitore_partita), 2);
+        stampare_valore_intero(FILE_DETTAGLI_PARTITA, leggere_lanci_vincitore(vincitore_partita), 3);
+        stampare_valore_intero(FILE_DETTAGLI_PARTITA, leggere_punteggio(vincitore_partita), 4);
+        //stampare_valore_intero(FILE_DETTAGLI_PARTITA, posizione_vincitore_classifica, 5);
+        attendere_tasto_zero(FILE_DETTAGLI_PARTITA, sale);
     }
     return;
-}*/
+}

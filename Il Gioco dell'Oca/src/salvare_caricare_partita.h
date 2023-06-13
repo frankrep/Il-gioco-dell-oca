@@ -8,5 +8,6 @@ void salvare_partita (partita* partita_attuale, int * sale);
 void confermare_scelta (char * risposta, int * sale);
 int selezionare_slot (partita elenco_partite[], int * sale, const char file_interfaccia[]);
 void verificare_correttezza_inserimento (const char file_interfaccia [], int * input, int * sale);
+void attendere_tasto_zero (const char interfaccia [], int * sale);
 
 #endif /* SALVARE_CARICARE_PARTITA_H_ */
