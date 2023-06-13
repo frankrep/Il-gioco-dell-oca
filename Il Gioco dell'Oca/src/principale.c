@@ -77,33 +77,13 @@ int main() {
 
 int scegliere_opzione_menu (int * sale) {
     int opzione;
-    int correttezza_inserimento;
     stampare_testo(FILE_MENU_PRINCIPALE);
-
     do {
-
-
-        //richiediamo l'opzione e verifichiamo che l'imput immesso sia del tipo consentito
-        do {
-            posizionare_cursore_in_attesa(FILE_MENU_PRINCIPALE);
-            correttezza_inserimento = scanf("%d", &opzione);
-            fflush(stdin);
-            *sale = *sale + 1;
-            if (correttezza_inserimento == 0) {
-                stampare_messaggio_errore(FILE_MENU_PRINCIPALE);
-            }
-        } while (correttezza_inserimento == 0);
-
-
-
-        //verifichiamo se l'imput immesso sia consentito all'interno dei vincoli
+        verificare_correttezza_inserimento(FILE_MENU_PRINCIPALE, &opzione, sale);
         if ( (opzione < 0) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE) ) {
             stampare_messaggio_errore (FILE_MENU_PRINCIPALE);
         }
-
-
     } while ( (opzione < 0) || (opzione > NUMERO_MASSIMO_OPZIONI_PRINCIPALE) );
-
     if (opzione != 0) {
         cancellare_schermata();
     }
@@ -128,7 +108,6 @@ void iniziare_nuova_partita (vincitore* vincitore_partita, int * sale) {
 
 
 void riprendere_partita (vincitore* vincitore_partita, int * sale) {
-    //VEDERE SCEGLIERE_PARTITA_DA_CARICARE PER INFORMAZIONI
     partita partita_attuale;
     scegliere_partita_da_caricare(&partita_attuale, sale);
     if (leggere_carattere_partita(partita_attuale, 0) != FINE_STRINGA) {
