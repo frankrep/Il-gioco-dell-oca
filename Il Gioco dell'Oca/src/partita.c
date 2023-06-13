@@ -69,6 +69,7 @@ void scrivere_nome_partita (partita* partita_attuale, char nome_da_inserire[]) {
         indice_nome = indice_nome + 1;
     }
     scrivere_carattere_partita(partita_attuale, indice_nome, FINE_STRINGA);
+    scrivere_carattere_partita(partita_attuale, indice_nome, FINE_STRINGA);
     return;
 }
 
