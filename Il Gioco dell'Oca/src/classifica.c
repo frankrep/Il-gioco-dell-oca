@@ -103,21 +103,4 @@ void creare_classifica_vuota(vincitore vincitori[]){
     }
     return risultato_finale;
 }
-
-
-10/8
-
-1
-
-2*10
-
-20/8
-
-2
-
-4 * 10
-
-40/8
-
-5
 */

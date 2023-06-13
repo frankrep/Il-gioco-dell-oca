@@ -15,7 +15,7 @@ indice_vincitori, indice di spostamento all'interno l'array di vincitori, intero
 vincitori, elenco dei dieci migliori giocatori di partite , array a una dimensione (NUMERO_MASSIMO_CLASSIFICATI) di vincitore
 rateo_vincitore_partita, rapporto tra i lanci dei dadi e la lunghezza del percorso del vincitore della partita, intero
 rateo_classificato, rapporto tra i lanci dei dadi e la lunghezza del percorso del vincitore già presente già in classifica, intero
-
+NUMERO_MASSIMO_CLASSIFICATI, numero massimo di giocatori di cui è composta la classifica, intero, = 10
 ALGORITTMO
 vincitori = caricare_classifica (file_classifica_top_10)
 inserito = FALSO
@@ -54,9 +54,8 @@ DATI DI OUTPUT
 vincitori, elenco spostato verso destra in posizione_inserimento, Array ad una dimensione (NUMERO_MASSIMO_CLASSIFICATI) di vincitore
 
 DATI DI LAVORO
-vincitore_salvato, contiene il prossimo vincitore da inserire variabile di appoggio, record di tipo vincitore
-vincitore_attuale, contiene il vincitore 
-indice_vincitori,
+indice_vincitori, indice di scorrimento nell'array di tipo vincitori, intero 
+
 ALGORITMO
 indice_vincitori = NUMERO_MASSIMO_CLASSIFICATI - 1
 MENTRE (indice_vincitori >= posizione_inserimento)
@@ -92,20 +91,45 @@ FINE
 scrivere_classifica
 
 DATI DI INPUT
+file_classifica_top_10, contiene record di tipo giocatore corrispondenti ai dieci migliori giocatori di sempre, file di tipo binario
+elenco_classificati, l'elenco dei classificati da salvare in file_classifica_top_10, Array ad una dimensione (NUMERO_MASSIMO_CLASSIFICATI) di vincitore
+NUMERO_MASSIMO_CLASSIFICATI, numero massimo di giocatori di cui è composta la classifica, intero, = 10
 
 DATI DI OUTPUT
+file_classifica_top_10, il file della classifica con 
 
 DATI DI LAVORO
 
+
 ALGORITMO
+indice_classificati  = 1
+MENTRE (indice_partita <= NUMERO_MASSIMO_CLASSIFICATI)
+    file_classifica_top_10 = scrivere_su_file (file_classifica_top_10, Elemento in posizione indice_classificati di elenco_partite)
+    indice_classificati = indice_classificati + 1
+FINE
+
 
 
 creare_classifica_vuota
 
 DATI DI INPUT
+vincitori, elenco dei dieci migliori giocatori di partite, Array ad una dimensione (NUMERO_MASSIMO_CLASSIFICATI) di vincitore
+NUMERO_MASSIMO_CLASSIFICATI, numero massimo di giocatori di cui è composta la classifica, intero, = 10
 
 DATI DI OUTPUT
+vincitori, elenco dei dieci migliori giocatori di partite vuoto, Array ad una dimensione (NUMERO_MASSIMO_CLASSIFICATI) di vincitore
 
 DATI DI LAVORO
+vincitore_azzerato, il vincitore con i campi azzerati, record di tipo vincitore
 
 ALGORITMO
+vincitore_azzerato = scrivere_carattere_nome_vincitore (vincitore_azzerato, 0 , FINE_STRINGA)
+vincitore_azzerato = scrivere_pedina_vincitore (vincitore_azzerato, FINE_STRINGA)
+vincitore_azzerato = scrivere_lanci_vincitore(vincitore_azzerato, 0)
+vincitore_azzerato = scrivere_lunghezza_percorso_vincitore(vincitore_azzerato, 0)
+vincitore_azzerato = scrivere_punteggio(vincitore_azzerato, 0.0)
+indice_vincitori = 1;
+MENTRE (indice_vincitori < NUMERO_MASSIMO_CLASSIFICATI)
+        Elemento di vincitori in posizione indice_vincitori = vincitore_azzerato
+        indice_vincitori = indice_vincitori + 1
+FINE

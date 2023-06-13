@@ -58,7 +58,7 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
     if (leggere_turno (*partita_attuale) == TURNO_PARTITA_NON_INIZIATA ) {
         scegliere_giocatore_iniziale (partita_attuale, sale);
     }
-    do {
+    do {//
         cambiare_turno (partita_attuale);
         if (leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale))) > 0) {
             gestire_autorizzazione(partita_attuale, sale);
@@ -187,7 +187,7 @@ int scegliere_opzione_menu_di_pausa (int * sale) {
 
 
         //modificare messaggio per coerenza con quello a cui risponde
-        verificare_correttezza_inserimento(FILE_MENU_DI_PAUSA, &scelta, sale);
+        verificare_correttezza_inserimento (FILE_MENU_DI_PAUSA, &scelta, sale);
 
 
         //modificare messaggio per coerenza con quello a cui risponde
@@ -219,10 +219,10 @@ void scegliere_giocatore_iniziale (partita* partita_attuale, int * sale) {
             scelta = fgetc(stdin);
             fflush(stdin);
             *sale = *sale + 1;
-            if((scelta != TASTO_INDIETRO) && (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO)){
+            if((scelta != TASTO_CONFERMA) && (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO)){
                 stampare_messaggio_errore(FILE_SCELTA_G_INIZIALE);
             }
-        } while ((scelta != TASTO_INDIETRO) && (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO));
+        } while ((scelta != TASTO_CONFERMA) && (scelta != TASTO_LANCIO_DADI_MAIUSCOLO) && (scelta != TASTO_LANCIO_DADI_MINUSCOLO));
 
         estrazioni [indice_giocatori] = generare_numero (FACCIA_MASSIMA_DADO, FACCIA_MINIMA_DADO, *sale);
         stampare_dado(FILE_SCELTA_G_INIZIALE, estrazioni [indice_giocatori]);

@@ -29,7 +29,7 @@ MENTRE (indice_percorso < leggere_lunghezza_percorso(partita_attuale))
    partita_attuale = inserire_casella (partita_attuale, indice_percorso)
    indice_percorso = indice_percorso + 1
 FINE
-
+partita_attuale = riempire_restante_percorso(partita_attuale,indice_percorso)
 
 
 inserire_casella
@@ -44,7 +44,8 @@ partita_attuale, record con la casella_attuale di tipo partita
 DATI DI LAVORO
 casella_attuale, contiene le informazioni già inserite della casella da inserire nel percorso di partita_attuale, record di tipo casella
 
-casella_attuale = creare_casella(posizione_percorso)
+ALGORITMO
+casella_attuale = creare_casella(casella_attuale,posizione_percorso)
 partita_attuale = scrivere_casella_percorso (partita_attuale, casella_attuale, posizione_percorso)
 
 
@@ -56,14 +57,17 @@ posizione_percorso, la posizione della casella all'interno del percorso, Intero,
 file_oca, contiene un record di tipo casella "oca", file di tipo binario
 DISTANZA_OCHE, la distanza nel percorso tra le oche, Intero, = 9
 FINE_STRINGA, il carattere utilizzato come fine stringa, Carattere, = '\0'
+indice_partita, indica dove inserire casella_attuale all'interno del percorso di partita_attuale, intero, > 0, <= leggere_lunghezza_percorso (partita_attuale)
 
 DATI DI OUTPUT
 casella_attuale, la casella con la posizione inserita e i campi nome descrizione e simbolo inizializzati, record di tipo casella
 
 ALGORITMO
-SE (calcolare_resto(indice_partita, DISTANZA_OCHE) = 0)
+SE (calcolare_resto(indice_partita, DISTANZA_OCHE) != DISTANZA_OCHE)
 ALLORA
-   casella_attuale = leggere_da_file(casella, 1, file_oca)
+   casella_attuale = scrivere_nome_casella (casella_attuale, 0 , FINE_STRINGA)
+   casella_attuale = scrivere_simbolo (casella_attuale, 0 , FINE_STRINGA)
+   casella_attuale = leggere_da_file(file_oca)
 ALTRIMENTI
    casella_attuale = scrivere_nome_casella(casella_attuale, FINE_STRINGA)
    casella_attuale = scrivere_simbolo(casella_attuale, FINE_STRINGA)
@@ -72,8 +76,49 @@ casella_attuale = scrivere_numero_casella(casella_attuale, indice_partita)
 
 
 
-calcolare_proporzione
+inizializzare_caselle_speciali
+DATI DI INPUT
+caselle_speciali, le caselle speciali da inserire nel percorso in partita_attuale, Array ad una dimensione (NUMERO_CASELLE_SPECIALI) di casella
+NOME_OCA, il nome della casella oca, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "OCA\0"
+NOME_PRIGIONE, il nome della casella prigione, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "PRIGIONE\0"
+NOME_PONTE, il nome della casella ponte, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "PONTE\0"
+NOME_LABIRINTO, il nome della casella labirinto, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "LABIRINTO\0"
+NOME_LOCANDA, il nome della casella locanda, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "LOCANDA\0"
+NOME_POZZO, il nome della casella pozzo, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "POZZO\0"
+NOME_SCHELETRO, il nome della casella scheletro, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "SCHELETRO\0"
+NOME_VITTORIA, il nome della casella vittoria, Array a una dimensione di caratteri (terminante con FINE_STRINGA), = "VITTORIA\0"
 
+DATI DI OUTPUT
+caselle_speciali, le caselle speciali inizializzate nel percorso in partita_attuale, Array ad una dimensione (NUMERO_CASELLE_SPECIALI) di casella
+
+ALGORITMO
+caselle_speciali = scrivere_nome_casella (Elemento in posizione 0 di caselle_speciali, NOME_PONTE)
+caselle_speciali = scrivere_simbolo (Elemento in posizione 0 di caselle_speciali, SIMBOLO_PONTE)
+caselle_speciali = scrivere_numero_casella(Elemento in posizione 0 di caselle_speciali, 6)
+caselle_speciali = scrivere_nome_casella (Elemento in posizione 1 di caselle_speciali, NOME_LOCANDA)
+caselle_speciali = scrivere_simbolo (Elemento in posizione 1 di caselle_speciali, SIMBOLO_LOCANDA)
+caselle_speciali = scrivere_numero_casella(Elemento in posizione 1 di caselle_speciali, 19)
+caselle_speciali = scrivere_nome_casella (Elemento in posizione 2 di caselle_speciali, NOME_POZZO)
+caselle_speciali = scrivere_simbolo (Elemento in posizione 2 di caselle_speciali, SIMBOLO_POZZO)
+caselle_speciali = scrivere_numero_casella(&Elemento in posizione 2 di caselle_speciali, 31)
+caselle_speciali = scrivere_nome_casella (Elemento in posizione 3 di caselle_speciali, NOME_LABIRINTO)
+caselle_speciali = scrivere_simbolo (Elemento in posizione 3 di caselle_speciali, SIMBOLO_LABIRINTO)
+caselle_speciali = scrivere_numero_casella(Elemento in posizione 3 di caselle_speciali, 42)
+caselle_speciali = scrivere_nome_casella (Elemento in posizione 4 di caselle_speciali, NOME_PRIGIONE)
+caselle_speciali = scrivere_simbolo (Elemento in posizione 4 di caselle_speciali, SIMBOLO_PRIGIONE)
+caselle_speciali = scrivere_numero_casella(Elemento in posizione 4 di caselle_speciali, 52);
+caselle_speciali = scrivere_nome_casella (Elemento in posizione 5 di caselle_speciali, NOME_SCHELETRO)
+caselle_speciali = scrivere_simbolo (Elemento in posizione 5 di caselle_speciali, SIMBOLO_SCHELETRO)
+caselle_speciali = scrivere_numero_casella(Elemento in posizione 5 di caselle_speciali, 58)
+caselle_speciali = scrivere_nome_casella (Elemento in posizione 6 di caselle_speciali, NOME_VITTORIA)
+caselle_speciali = scrivere_simbolo (Elemento in posizione 6 di caselle_speciali, SIMBOLO_VITTORIA)
+caselle_speciali = scrivere_numero_casella(Elemento in posizione 6 di caselle_speciali, 90)
+
+
+
+
+
+calcolare_proporzione
 DATI DI INPUT
 partita_attuale, la partita di cui calcolare la proporzione della casella individuata dalla posizione data, record di tipo partita
 posizione_originale, la posizione di una casella relativa a DIMENSIONE_MASSIMA_PERCORSO, Intero, > 0, <= DIMENSIONE_MASSIMA_PERCORSO
@@ -91,6 +136,25 @@ posizione_ricavata = calcolare_parte_intera(valore_proporzione)
 
 
 
+riempire_restante_percorso
+DATI DI INPUT
+partita_attuale, la partita di cui creare il percorso con le oche posizionate, record di tipo partita
+indice_ultima_casella, la posizione raggiunta all'interno del percorso di partita_attuale, Intero, > 0
+DIMENSIONE_MASSIMA_PERCORSO, la dimensione massima che il percorso può assumere, Intero, = 90
+DATI DI OUTPUT
+partita_attuale, record con il percorso su cui si svolgerà la partita inserito, record di tipo partita
+DATI DI LAVORO
+casella_attuale, 
+
+ALGORITMO
+casella_attuale = scrivere_numero_casella(casella_attuale, 0)
+casella_attuale = scrivere_nome_casella(casella_attuale, 0, FINE_STRINGA)
+casella_attuale = scrivere_simbolo(casella_attuale, 0, FINE_STRINGA)
+MENTRE (indice_ultima_casella <= DIMENSIONE_MASSIMA_PERCORSO)
+        scrivere_casella_percorso (partita_attuale, casella_attuale, indice_ultima_casella)
+        indice_ultima_casella = indice_ultima_casella + 1
+FINE
+
 posizionare_caselle_speciali
 
 DATI DI INPUT
@@ -105,7 +169,7 @@ indice_speciali, la posizione raggiunta in caselle_speciali, Intero, > 0
 caselle_speciali, le caselle speciali da inserire nel percorso in partita_attuale, Array ad una dimensione (NUMERO_CASELLE_SPECIALI) di casella
 
 ALGORITMO
-caselle_speciali = proporzionare_caselle_speciali(partita_attuale)
+caselle_speciali = proporzionare_caselle_speciali(partita_attuale,caselle_speciali)
 indice_speciali = 1
 MENTRE (indice_speciali <= NUMERO_CASELLE_SPECIALI)
    partita_attuale = scrivere_casella_percorso(partita_attuale, Elemento in posizione indice_speciali di caselle_speciali, indice_speciali)
@@ -126,6 +190,7 @@ caselle_speciali, le caselle speciali con il relativo numero identificativo prop
 
 ALGORITMO
 caselle_speciali = leggere_da_file(casella, NUMERO_CASELLE_SPECIALI, file_caselle_speciali)
+caselle_speciali = inizializzare_caselle_speciali(caselle_speciali)
 indice_speciali = 1
 MENTRE (indice_speciali <= NUMERO_CASELLE_SPECIALI)
    Elemento in posizione indice_speciali di caselle_speciali = scrivere_numero_casella (Elemento in posizione indice_speciali di caselle_speciali, calcolare_proporzione (partita_attuale, leggere_numero_casella (Elemento in posizione indice_speciali di caselle_speciali) ) )
@@ -144,18 +209,16 @@ OUTPUT
 parte_intera_numero, risultato dell'operazione di floor di valore_reale, intero, >= 0
 
 DATI DI LAVORO
-numero, contiene la copia di valore_reale, reale, > 0.0
 divisore, divisore massimo di numero e multiplo di BASE, intero, > 0
 parte_intera_cifra, contiene il risultato della funzione parte intera realtivo alla singola cifra, intero, >= 0 
 
 ALGORITMO
-numero = valore_reale
 parte_intera_numero = 0
-divisore = trovare_divisore_massimo_decimale(numero)
+divisore = trovare_divisore_massimo_decimale(valore_reale)
 MENTRE (divisore >= 1)
-   parte_intera_cifra = calcolare_parte_intera_unita(numero, divisore)
+   parte_intera_cifra = calcolare_parte_intera_unita(valore_reale, divisore)
    parte_intera_numero = parte_intera_numero + (parte_intera_cifra * divisore)
-   numero = numero - (parte_intera_cifra * divisore)
+   valore_reale = valore_reale - (parte_intera_cifra * divisore)
    divisore = divisore / BASE
 FINE
 
@@ -164,7 +227,7 @@ FINE
 trovare_divisore_massimo_decimale
 
 DATI DI INPUT
-numero, il numero di cui trovare il divisore massimo nella base numerica BASE, reale, > 0.0
+valore_reale, il numero di cui trovare il divisore massimo nella base numerica BASE, reale, > 0.0
 BASE, la base numerica della funzione di parte intera, Intero, = 10
 
 DATI DI OUTPUT
@@ -172,7 +235,7 @@ divisore, il divisore più alto di numero nella base numerica BASE, Intero, > 0
 
 ALGORITMO
 divisore = 1
-MENTRE ((numero/divisore) >= BASE)
+MENTRE ((valore_reale/divisore) >= BASE)
    divisore = divisore * BASE
 FINE
 
@@ -181,7 +244,7 @@ FINE
 calcolare_parte_intera_unita
 
 DATI DI INPUT
-numero, il numero di cui calcolare la parte intera della cifra, Reale, >= 0.0
+valore_reale, il numero di cui calcolare la parte intera della cifra, Reale, >= 0.0
 divisore, la posizione della cifra di cui si desidera calcolare la parte intera, Intero, > 0
 
 DATI DI OUTPUT
@@ -191,8 +254,21 @@ DATI DI LAVORO
 cifra_del_numero, la cifra del numero individuata dal divisore, Reale, >= 0.0
 
 ALGORITMO
-cifra_del_numero = numero/divisore
-MENTRE (cifra_del_numero >= UNITA')
-	cifra_del_numero = cifra_del_numero - UNITA'
-	parte_intera = parte_intera + UNITA'
+cifra_del_numero = valore_reale/divisore
+parte_intera = 0
+MENTRE (cifra_del_numero >= UNITA)
+	cifra_del_numero = cifra_del_numero - UNITA
+	parte_intera = parte_intera + UNITA
+FINE
+
+calcolare_resto 
+DATI DI INPUT
+dividendo, il dividendo della divisione, intero
+divisore, il divisore della divisione, Intero
+DATI DI OUTPUT
+resto, resto della divisione
+ALGORITMO
+resto = dividendo
+MENTRE (resto > divisore)
+   resto = resto - divisore
 FINE
