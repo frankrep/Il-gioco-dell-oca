@@ -542,12 +542,12 @@ int verificare_nomi_speciali (partita* partita_attuale) {
     int giocatore_con_nome_speciale = -1;
     int indice_nomi_speciali;
     int indice_giocatori = 0;
-    while ( (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) && (giocatore_con_nome_speciale == 0) ) {
+    while ( (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) && (giocatore_con_nome_speciale == -1) ) {
         leggere_nome_giocatore (leggere_giocatore (*partita_attuale, indice_giocatori), nome_giocatore);
         strlwr(nome_giocatore);
         indice_nomi_speciali = 0;
-        while ( (indice_nomi_speciali < NUMERO_NOMI_SPECIALI) && (giocatore_con_nome_speciale == 0) ) {
-            if ( (confrontare_stringhe (nome_giocatore, NOMI_SPECIALI[indice_nomi_speciali]) == VERO) && (giocatore_con_nome_speciale == 0) ) {
+        while ( (indice_nomi_speciali < NUMERO_NOMI_SPECIALI) && (giocatore_con_nome_speciale == -1) ) {
+            if ( (confrontare_stringhe (nome_giocatore, NOMI_SPECIALI[indice_nomi_speciali]) == VERO) && (giocatore_con_nome_speciale == -1) ) {
                 giocatore_con_nome_speciale = indice_giocatori;
             }
             indice_nomi_speciali = indice_nomi_speciali + 1;

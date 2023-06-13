@@ -139,7 +139,7 @@ void stampare_dadi (const char file_interfaccia [], const int facce_dadi []) {
 
 
 void stampare_testo (const char file_interfaccia []) {
-    
+    cancellare_schermata ();
 	FILE * f_interfaccia = fopen (file_interfaccia, "r");
 	if (f_interfaccia != NULL) {
 		char simbolo_letto;
