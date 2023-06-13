@@ -234,6 +234,7 @@ void scegliere_giocatore_iniziale (partita* partita_attuale, int * sale) {
 
 
 vincitore inizializzare_vincitore (partita* partita_attuale, int * sale) {
+    //Converte il vincitore della partita
     vincitore vincitore_partita;
     char nome_vincitore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     leggere_nome_giocatore (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale)), nome_vincitore);
@@ -362,7 +363,7 @@ int sommare_dadi (partita partita_attuale) {
 
 void verificare_casella (partita* partita_attuale, int * sale) {
     giocatore giocatore_attuale;
-    char nome_casella[DIMENSIONE_MASSIMA_NOME_CASELLA];
+    char nome_casella [DIMENSIONE_MASSIMA_NOME_CASELLA];
     do{
         giocatore_attuale = leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale));
         leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);
@@ -429,12 +430,12 @@ void verificare_casella (partita* partita_attuale, int * sale) {
             fflush (stdin);
             *sale = *sale + 1;
             scrivere_posizione_giocatore (&giocatore_attuale, CASELLA_ARRIVO_SCHELETRO);
-            scrivere_giocatore (partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale));
+            scrivere_giocatore (partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
         }
         //stampare percorso e aspettare input
         giocatore_attuale = leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) );
         leggere_nome_casella(leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);
-    }while((nome_casella [0] != FINE_STRINGA) && (leggere_autorizzazione (giocatore_attuale) == 0) && (leggere_posizione_giocatore (giocatore_attuale) != leggere_lunghezza_percorso (*partita_attuale)));
+    } while ( (nome_casella [0] != FINE_STRINGA) && (leggere_autorizzazione (giocatore_attuale) == 0) && (leggere_posizione_giocatore (giocatore_attuale) != leggere_lunghezza_percorso (*partita_attuale) ) );
     return;
 }
 
