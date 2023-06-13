@@ -219,6 +219,15 @@ void scegliere_partita_da_caricare (partita* partita_attuale, int * sale) {
 
 
 
+void confermare_uscita (char * conferma, int * sale) {
+    cancellare_schermata();
+    stampare_testo(FILE_USCITA_GIOCO);
+    attendere_simbolo_risposta(FILE_USCITA_GIOCO, conferma, sale);
+    return;
+}
+
+
+
 void gestire_vincitore (vincitore vincitore_partita, int* sale) {
     char nome_vincitore_partita [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
     leggere_nome_vincitore (vincitore_partita, nome_vincitore_partita);
