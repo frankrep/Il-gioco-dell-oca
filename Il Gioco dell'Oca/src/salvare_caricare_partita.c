@@ -8,15 +8,8 @@
 
 
 void scrivere_partite (partita elenco_partite[]);
-void creare_file_salvataggio();
-
-
-
-//da verificare dove tenerle
-void inserire_simbolo (char interfaccia [], char * simbolo, int * sale);
-void attendere_simbolo_risposta (const char interfaccia [], char * risposta, int * sale);
-void effettuare_salvataggio (partita * partita_attuale, partita elenco_partite [], int slot_scelto, char interfaccia [], int * sale);
-void attendere_tasto_zero (const char interfaccia [], int * sale);
+void creare_file_salvataggio ();
+void effettuare_salvataggio (partita * partita_attuale, partita elenco_partite [], int slot_scelto, const char interfaccia [], int * sale);
 
 
 
@@ -51,14 +44,13 @@ void creare_file_salvataggio () {
 
 void salvare_partita (partita* partita_attuale, int * sale) {
     int slot_scelto;
-    int salvato = 0;
+    int salvato = FALSO;
     partita elenco_partite [NUMERO_MASSIMO_PARTITE];
     caricare_partite (elenco_partite);
     do {
         slot_scelto = selezionare_slot (elenco_partite, sale, FILE_SCELTA_SLOT_SALVARE_PARTITA);
         if (slot_scelto != 0) {
-
-            cancellare_schermata();
+            cancellare_schermata ();
             stampare_testo (FILE_SCELTA_NOME_PARTITA);
             char nome_partita_salvata [DIMENSIONE_MASSIMA_NOME_PARTITA];
 
@@ -87,13 +79,15 @@ void salvare_partita (partita* partita_attuale, int * sale) {
                     salvato = 1;
                 }
 
-                    //. . . altrimenti, se è presente una partita, chiediamo all'utente se vuole sovrascrivere . . .
+                //. . . altrimenti, se è presente una partita, chiediamo all'utente se vuole sovrascrivere . . .
                 else {
+
                     //stampare messaggio richiesta sovrascrittura
                     char sovrascrivere;
                     cancellare_schermata();
                     stampare_testo(FILE_SOVRASCRIVERE);
                     attendere_simbolo_risposta (FILE_SOVRASCRIVERE, &sovrascrivere, sale);
+
                     //. . . e, nel caso in cui confermi, sovrascriviamo la partita
                     if ( (sovrascrivere == RISPOSTA_AFFERMATIVA_MAIUSCOLO) || (sovrascrivere == RISPOSTA_AFFERMATIVA_MINUSCOLO) ) {
                         effettuare_salvataggio (partita_attuale, elenco_partite, slot_scelto, FILE_CONFERMA_SALVATAGGIO, sale);
@@ -102,13 +96,13 @@ void salvare_partita (partita* partita_attuale, int * sale) {
                 }
             }
         }
-    } while (salvato != 1 && slot_scelto != 0);
+    } while (salvato != VERO && slot_scelto != 0);
     return;
 }
 
 
 
-void inserire_simbolo (char interfaccia [], char * simbolo, int * sale) {
+void inserire_simbolo (const char interfaccia [], char * simbolo, int * sale) {
     posizionare_cursore_in_attesa (interfaccia);
     scanf("%c", simbolo);
     fflush(stdin);
@@ -125,15 +119,15 @@ void verificare_correttezza_inserimento (const char file_interfaccia [], int * i
         correttezza_inserimento = scanf ("%d", input);
         fflush (stdin);
         *sale = *sale + 1;
-        if (correttezza_inserimento == 0) {
+        if (correttezza_inserimento == FALSO) {
             stampare_messaggio_errore (file_interfaccia);
         }
-    } while (correttezza_inserimento == 0);
+    } while (correttezza_inserimento == FALSO);
 }
 
 
 
-void effettuare_salvataggio (partita * partita_attuale, partita elenco_partite [], int slot_scelto, char interfaccia [], int * sale) {
+void effettuare_salvataggio (partita * partita_attuale, partita elenco_partite [], int slot_scelto, const char interfaccia [], int * sale) {
     scrivere_turno (partita_attuale, leggere_turno(*partita_attuale) - 1);
     elenco_partite [slot_scelto - 1] = *partita_attuale;
     scrivere_partite(elenco_partite);
@@ -161,9 +155,9 @@ void attendere_tasto_zero (const char interfaccia [], int * sale) {
 void attendere_simbolo_risposta (const char interfaccia [], char * risposta, int * sale) {
     do {
         inserire_simbolo (interfaccia, risposta, sale);
-        if ( *risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && *risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && *risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && *risposta != RISPOSTA_NEGATIVA_MINUSCOLO )
-            stampare_messaggio_errore (interfaccia);
-
+        if ( *risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && *risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && *risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && *risposta != RISPOSTA_NEGATIVA_MINUSCOLO ) {
+            stampare_messaggio_errore(interfaccia);
+        }
     } while ( *risposta != RISPOSTA_AFFERMATIVA_MAIUSCOLO && *risposta != RISPOSTA_AFFERMATIVA_MINUSCOLO && *risposta != RISPOSTA_NEGATIVA_MAIUSCOLO && *risposta != RISPOSTA_NEGATIVA_MINUSCOLO );
     return;
 }
@@ -172,30 +166,13 @@ void attendere_simbolo_risposta (const char interfaccia [], char * risposta, int
 
 int selezionare_slot (partita elenco_partite[], int * sale, const char file_interfaccia[]) {
     int slot_scelto = 0;
-    //interfaccia per la scelta tra le partite salvate (interfaccer muvt!)
     cancellare_schermata();
     stampare_partite_salvate (file_interfaccia, elenco_partite);
     do {
-
-
-        //verifica della correttezza del tipo dell'input inserito dall'utente
-
-        int correttezza_inserimento;
-        do {
-            posizionare_cursore_in_attesa(file_interfaccia);
-            correttezza_inserimento = scanf("%d", &slot_scelto);
-            fflush(stdin);
-            *sale = *sale + 1;
-            if (correttezza_inserimento == 0) {
-                stampare_messaggio_errore(file_interfaccia);
-            }
-        } while (correttezza_inserimento == 0);
-
-
+        verificare_correttezza_inserimento (file_interfaccia, &slot_scelto, sale);
         if ( (slot_scelto < 0) || (slot_scelto > NUMERO_MASSIMO_PARTITE) ) {
             stampare_messaggio_errore(file_interfaccia);
         }
-
     } while ( (slot_scelto < 0) || (slot_scelto > NUMERO_MASSIMO_PARTITE) );
     return slot_scelto;
 }
