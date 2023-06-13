@@ -139,7 +139,7 @@ void stampare_dadi (const char file_interfaccia [], const int facce_dadi []) {
 
 
 void stampare_testo (const char file_interfaccia []) {
-
+    
 	FILE * f_interfaccia = fopen (file_interfaccia, "r");
 	if (f_interfaccia != NULL) {
 		char simbolo_letto;
@@ -364,6 +364,7 @@ void stampare_valore_testuale_centrato (const char file_interfaccia [], const ch
 
 
 void stampare_partite_salvate (const char file_interfaccia [], partita elenco_partite []) {
+    cancellare_schermata();
     stampare_testo (file_interfaccia);
     int indice_partita = 0;
     char nome_partita [DIMENSIONE_MASSIMA_NOME_PARTITA];

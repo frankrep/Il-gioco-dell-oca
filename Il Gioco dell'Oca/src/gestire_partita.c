@@ -56,11 +56,11 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
     char scelta;
     vincitore vincitore_partita;
     //Verifica il turno della partita per vedere se la partita non è iniziata
-    if (leggere_turno (*partita_attuale) == TURNO_PARTITA_NON_INIZIATA ) {
+    if ( leggere_turno (*partita_attuale) == TURNO_PARTITA_NON_INIZIATA ) {
         scegliere_giocatore_iniziale (partita_attuale, sale);
     }
     int nome_speciale = verificare_nomi_speciali (partita_attuale);
-    if (nome_speciale == 0) {
+    if (nome_speciale == -1) {
         do {
             cambiare_turno (partita_attuale);
             if ( leggere_autorizzazione (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) > AUTORIZZATO_A_LANCIARE_DADI) {
@@ -136,10 +136,12 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
         if (leggere_posizione_giocatore (leggere_giocatore(*partita_attuale, leggere_turno(*partita_attuale))) ==
             leggere_lunghezza_percorso (*partita_attuale)) {
             vincitore_partita = inizializzare_vincitore(partita_attuale, sale);
-        } else {
+        } 
+        else {
             azzerare_vincitore (&vincitore_partita);
         }
-    }else{
+    } 
+    else {
         gestire_nome_speciale (partita_attuale, nome_speciale, sale);
         azzerare_vincitore (&vincitore_partita);
     }
@@ -499,7 +501,7 @@ void gestire_autorizzazione (partita* partita_attuale, int * sale) {
         fflush (stdin);
         *sale = *sale + 1;
         //Se la somma dei dadi coincide con quella per l'uscita dalla prigione
-        if ((sommare_dadi (*partita_attuale) == DADO_MINORE_USCITA_PRIGIONE) || (sommare_dadi (*partita_attuale) == DADO_MAGGIORE_USCITA_PRIGIONE)) {
+        if ( (sommare_dadi (*partita_attuale) == DADO_MINORE_USCITA_PRIGIONE) || (sommare_dadi (*partita_attuale) == DADO_MAGGIORE_USCITA_PRIGIONE) ) {
             //Stampa la schermata dell'uscita di prigione
             cancellare_schermata ();
             stampare_testo (FILE_SCHERMATA_LIBERATO);
@@ -509,7 +511,7 @@ void gestire_autorizzazione (partita* partita_attuale, int * sale) {
             *sale = *sale + 1;
             scrivere_autorizzazione (&giocatore_attuale, AUTORIZZATO_A_LANCIARE_DADI);
         }
-    }else if (confrontare_stringhe (nome_casella, NOME_POZZO) == VERO){//Se il giocatore si trova sulla casella pozzo
+    } else if (confrontare_stringhe (nome_casella, NOME_POZZO) == VERO) {//Se il giocatore si trova sulla casella pozzo
         //Stampa la schermata che ricorda al giocatore che si trova nel pozzo
         cancellare_schermata ();
         stampare_testo (FILE_SCHERMATA_PERM_POZZO);
@@ -518,7 +520,7 @@ void gestire_autorizzazione (partita* partita_attuale, int * sale) {
         fflush (stdin);
         *sale = *sale + 1;
     }
-    scrivere_giocatore (partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale));
+    scrivere_giocatore ( partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
     return;
 }
 
@@ -537,14 +539,14 @@ int confrontare_stringhe (const char stringa_1 [], const char stringa_2 []) {
 
 int verificare_nomi_speciali (partita* partita_attuale) {
     char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
-    int giocatore_con_nome_speciale = 0;
+    int giocatore_con_nome_speciale = -1;
     int indice_nomi_speciali;
     int indice_giocatori = 0;
-    while ( (indice_giocatori < leggere_numero_giocatori (*partita_attuale)) && (giocatore_con_nome_speciale == 0) ) {
-        leggere_nome_giocatore(leggere_giocatore(*partita_attuale, indice_giocatori), nome_giocatore);
+    while ( (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) && (giocatore_con_nome_speciale == 0) ) {
+        leggere_nome_giocatore (leggere_giocatore (*partita_attuale, indice_giocatori), nome_giocatore);
         strlwr(nome_giocatore);
         indice_nomi_speciali = 0;
-        while ( (indice_nomi_speciali < NUMERO_NOMI_SPECIALI)  && (giocatore_con_nome_speciale == 0) ) {
+        while ( (indice_nomi_speciali < NUMERO_NOMI_SPECIALI) && (giocatore_con_nome_speciale == 0) ) {
             if ( (confrontare_stringhe (nome_giocatore, NOMI_SPECIALI[indice_nomi_speciali]) == VERO) && (giocatore_con_nome_speciale == 0) ) {
                 giocatore_con_nome_speciale = indice_giocatori;
             }
@@ -552,24 +554,30 @@ int verificare_nomi_speciali (partita* partita_attuale) {
         }
         indice_giocatori = indice_giocatori + 1;
     }
-
+    return giocatore_con_nome_speciale;
 }
 
 
 
-void gestire_nome_speciale (partita* partita_attuale, int indice_nome_speciale, int * sale){
+void gestire_nome_speciale (partita* partita_attuale, int indice_nome_speciale, int * sale) {
+    cancellare_schermata ();
     stampare_testo(FILE_EASTEREGG1);
     attendere_tasto_zero(FILE_EASTEREGG1, sale);
+    cancellare_schermata ();
     stampare_testo(FILE_EASTEREGG2);
     attendere_tasto_zero(FILE_EASTEREGG1, sale);
+    cancellare_schermata ();
     stampare_vittoria (FILE_VITTORIA_NOMI);
     char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
-    leggere_nome_giocatore (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale)), nome_giocatore);
+    leggere_nome_giocatore (leggere_giocatore (*partita_attuale, indice_nome_speciale), nome_giocatore);
     //Stampa il nome del vincitore colorato e centrato sulla raffigurazione della coppa
     cambiare_colore_testo (VIOLETTO);
     stampare_valore_testuale_centrato (FILE_VITTORIA_NOMI, nome_giocatore, PRIMO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
     cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
     attendere_tasto_zero (FILE_VITTORIA_NOMI, sale);
+    cancellare_schermata ();
     stampare_testo(FILE_CREDITI);
     attendere_tasto_zero(FILE_EASTEREGG1, sale);
+    cancellare_schermata ();
+    return;
 }

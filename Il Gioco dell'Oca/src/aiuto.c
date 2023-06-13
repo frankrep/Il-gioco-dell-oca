@@ -44,7 +44,7 @@ void chiedere_aiuto (int * sale) {
 }
 
 int scegliere_aiuto (int * sale) {
-    cancellare_schermata();
+    cancellare_schermata ();
     stampare_testo (FILE_MENU_AIUTO);
     int opzione_scelta;
     do {
