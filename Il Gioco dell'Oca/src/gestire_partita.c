@@ -356,40 +356,40 @@ void verificare_casella (partita* partita_attuale, int * sale) {
             stampare_testo (FILE_SCHERMATA_OCA);
             attendere_tasto_zero (FILE_SCHERMATA_OCA, sale);
             gestire_oca (partita_attuale);
-        } else if (confrontare_stringhe (nome_casella, NOME_PONTE) == VERO) {
-            stampare_testo (FILE_SCHERMATA_PONTE);
-            attendere_tasto_zero (FILE_SCHERMATA_PONTE, sale);
-            spostare_giocatore (partita_attuale);
-        } else if (confrontare_stringhe(nome_casella, NOME_LOCANDA) == VERO) {
-            stampare_testo(FILE_SCHERMATA_LOCANDA);
-            attendere_tasto_zero (FILE_SCHERMATA_LOCANDA, sale);
-            scrivere_autorizzazione (&giocatore_attuale, TURNI_ATTESA_LOCANDA);
-            scrivere_giocatore ( partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
-        } else if (confrontare_stringhe (nome_casella, NOME_POZZO) == VERO) {
-            stampare_testo (FILE_SCHERMATA_POZZO);
-            attendere_tasto_zero (FILE_SCHERMATA_POZZO, sale);
-            impostare_autorizzazioni (partita_attuale, NOME_POZZO);
-        } else if (confrontare_stringhe (nome_casella, NOME_PRIGIONE) == VERO) {
-            stampare_testo (FILE_SCHERMATA_PRIGIONE);
-            attendere_tasto_zero (FILE_SCHERMATA_PRIGIONE, sale);
-            impostare_autorizzazioni (partita_attuale, NOME_PRIGIONE);
-        } else if (confrontare_stringhe (nome_casella, NOME_LABIRINTO) == VERO) {
-            scrivere_posizione_giocatore (&giocatore_attuale, calcolare_proporzione (*partita_attuale, CASELLA_ARRIVO_LABIRINTO) );
-            leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);
-            while (nome_casella[0] != FINE_STRINGA){
-                leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);
-                scrivere_posizione_giocatore (&giocatore_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1);
-            }
-            scrivere_giocatore (partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
-            stampare_testo (FILE_SCHERMATA_LABIRINTO);
-            stampare_valore_intero(FILE_SCHERMATA_LABIRINTO, leggere_posizione_giocatore(giocatore_attuale), PRIMO_VALORE);
-            attendere_tasto_zero (FILE_SCHERMATA_LABIRINTO, sale);
-        } else if (confrontare_stringhe (nome_casella, NOME_SCHELETRO) == VERO ) {
-            stampare_testo (FILE_SCHERMATA_SCHELETRO);
-            attendere_tasto_zero(FILE_SCHERMATA_SCHELETRO, sale);
-            scrivere_posizione_giocatore (&giocatore_attuale, CASELLA_ARRIVO_SCHELETRO);
-            scrivere_giocatore (partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
-        }
+        } else  if (confrontare_stringhe (nome_casella, NOME_PONTE) == VERO) {
+                    stampare_testo (FILE_SCHERMATA_PONTE);
+                    attendere_tasto_zero (FILE_SCHERMATA_PONTE, sale);
+                    spostare_giocatore (partita_attuale);
+                } else  if (confrontare_stringhe(nome_casella, NOME_LOCANDA) == VERO) {
+                            stampare_testo(FILE_SCHERMATA_LOCANDA);
+                            attendere_tasto_zero (FILE_SCHERMATA_LOCANDA, sale);
+                            scrivere_autorizzazione (&giocatore_attuale, TURNI_ATTESA_LOCANDA);
+                            scrivere_giocatore ( partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
+                        } else  if (confrontare_stringhe (nome_casella, NOME_POZZO) == VERO) {
+                                    stampare_testo (FILE_SCHERMATA_POZZO);
+                                    attendere_tasto_zero (FILE_SCHERMATA_POZZO, sale);
+                                    impostare_autorizzazioni (partita_attuale, NOME_POZZO);
+                                } else  if (confrontare_stringhe (nome_casella, NOME_PRIGIONE) == VERO) {
+                                            stampare_testo (FILE_SCHERMATA_PRIGIONE);
+                                            attendere_tasto_zero (FILE_SCHERMATA_PRIGIONE, sale);
+                                            impostare_autorizzazioni (partita_attuale, NOME_PRIGIONE);
+                                        } else  if (confrontare_stringhe (nome_casella, NOME_LABIRINTO) == VERO) {
+                                                    scrivere_posizione_giocatore (&giocatore_attuale, calcolare_proporzione (*partita_attuale, CASELLA_ARRIVO_LABIRINTO) );
+                                                    leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);
+                                                    while (nome_casella[0] != FINE_STRINGA){
+                                                        leggere_nome_casella (leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);
+                                                        scrivere_posizione_giocatore (&giocatore_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1);
+                                                    }
+                                                    scrivere_giocatore (partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
+                                                    stampare_testo (FILE_SCHERMATA_LABIRINTO);
+                                                    stampare_valore_intero(FILE_SCHERMATA_LABIRINTO, leggere_posizione_giocatore(giocatore_attuale), PRIMO_VALORE);
+                                                    attendere_tasto_zero (FILE_SCHERMATA_LABIRINTO, sale);
+                                                } else if (confrontare_stringhe (nome_casella, NOME_SCHELETRO) == VERO ) {
+                                                            stampare_testo (FILE_SCHERMATA_SCHELETRO);
+                                                            attendere_tasto_zero(FILE_SCHERMATA_SCHELETRO, sale);
+                                                            scrivere_posizione_giocatore (&giocatore_attuale, CASELLA_ARRIVO_SCHELETRO);
+                                                            scrivere_giocatore (partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
+                                                        }
         //stampare percorso e aspettare input
         giocatore_attuale = leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) );
         leggere_nome_casella(leggere_casella_percorso (*partita_attuale, leggere_posizione_giocatore (giocatore_attuale) - 1), nome_casella);
