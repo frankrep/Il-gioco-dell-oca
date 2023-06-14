@@ -57,3 +57,4 @@ dkms.conf
 Il Gioco dell'Oca/src/sound/Partita.wav
 .idea/workspace.xml
 Il Gioco dell'Oca/src/filebin/file_classifica_top_10.bin
+Il Gioco dell'Oca/src/filebin/file_salvataggio.bin
