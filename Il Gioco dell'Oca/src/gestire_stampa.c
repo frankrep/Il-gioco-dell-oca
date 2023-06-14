@@ -68,63 +68,63 @@ void stampare_dadi (const char file_interfaccia [], const int facce_dadi []) {
 						printf ("%c", CARATTERE_SPAZIO); 
                         fflush (stdin);
 					}
-				} else if (indice_puntini_dado == 2) {
-					if (facce_dadi [indice_dadi] == 6) {
-						printf ("%c", CARATTERE_PUNTO_FACCIA_DADO);
-					} 
-                    else {
-						printf ("%c", CARATTERE_SPAZIO); 
-                        fflush (stdin);
-					}
-				} else if (indice_puntini_dado == 3) {
-					if ( facce_dadi [indice_dadi] == 6 || (facce_dadi[indice_dadi] == 5) || (facce_dadi[indice_dadi] == 4) || (facce_dadi[indice_dadi] == 3) || (facce_dadi[indice_dadi] == 2) ) {
-						printf ("%c", CARATTERE_PUNTO_FACCIA_DADO); 
-                        fflush (stdin);
-					} 
-                    else {
-						printf ("%c", CONTORNO_INFERIORE_CASELLA); 
-                        fflush (stdin);
-					}
-				} else if (indice_puntini_dado == 4) {
-					if ( facce_dadi [indice_dadi] == 5 || (facce_dadi [indice_dadi] == 3) || (facce_dadi [indice_dadi] == 1) ) {
-						printf ("%c", CARATTERE_PUNTO_FACCIA_DADO); 
-                        fflush (stdin);
-					} else if ( (facce_dadi [indice_dadi] == 6) || (facce_dadi [indice_dadi] == 4) || (facce_dadi [indice_dadi] == 2) ) {
-                        printf ("%c", CARATTERE_SPAZIO); 
-                        fflush (stdin);
-                    }
-                    else {
-                        printf ("%c", CARATTERE_PUNTO_INTERROGATIVO); 
-                        fflush (stdin);
-                    }
-				} else if (indice_puntini_dado == 5) {
-					if ( facce_dadi [indice_dadi] == 6 || (facce_dadi [indice_dadi] == 5) || (facce_dadi [indice_dadi] == 4) || (facce_dadi [indice_dadi] == 3) || (facce_dadi[indice_dadi] == 2) ) {
-						printf ("%c", CARATTERE_PUNTO_FACCIA_DADO); 
-                        fflush (stdin);
-					} 
-                    else {
-						printf ("%c", CARATTERE_SPAZIO); 
-                        fflush
-                        (stdin);
-					}
-				} else if (indice_puntini_dado == 6) {
-					if (facce_dadi [indice_dadi] == 6) {
-						printf ("%c", CARATTERE_PUNTO_FACCIA_DADO); 
-                        fflush (stdin);
-					} 
-                    else {
-						printf ("%c", CARATTERE_SPAZIO); 
-                        fflush (stdin);
-					}
-				} else if (indice_puntini_dado == 7) {
-					if ( (facce_dadi [indice_dadi] == 6) || (facce_dadi [indice_dadi] == 5) || (facce_dadi [indice_dadi] == 4) ) {
-						printf ("%c", CARATTERE_PUNTO_FACCIA_DADO); fflush (stdin);
-					} 
-                    else {
-						printf ("%c", CONTORNO_INFERIORE_CASELLA); 
-                        fflush (stdin);
-					}
-				}
+                } else  if (indice_puntini_dado == 2) {
+                            if (facce_dadi [indice_dadi] == 6) {
+                                printf ("%c", CARATTERE_PUNTO_FACCIA_DADO);
+                            }
+                            else {
+                                printf ("%c", CARATTERE_SPAZIO);
+                                fflush (stdin);
+                            }
+                        } else  if (indice_puntini_dado == 3) {
+                                    if ( facce_dadi [indice_dadi] == 6 || (facce_dadi[indice_dadi] == 5) || (facce_dadi[indice_dadi] == 4) || (facce_dadi[indice_dadi] == 3) || (facce_dadi[indice_dadi] == 2) ) {
+                                        printf ("%c", CARATTERE_PUNTO_FACCIA_DADO);
+                                        fflush (stdin);
+                                    }
+                                    else {
+                                        printf ("%c", CONTORNO_INFERIORE_CASELLA);
+                                        fflush (stdin);
+                                    }
+				                } else  if (indice_puntini_dado == 4) {
+                                            if ( facce_dadi [indice_dadi] == 5 || (facce_dadi [indice_dadi] == 3) || (facce_dadi [indice_dadi] == 1) ) {
+                                                printf ("%c", CARATTERE_PUNTO_FACCIA_DADO);
+                                                fflush (stdin);
+                                            } else  if ( (facce_dadi [indice_dadi] == 6) || (facce_dadi [indice_dadi] == 4) || (facce_dadi [indice_dadi] == 2) ) {
+                                                        printf ("%c", CARATTERE_SPAZIO);
+                                                        fflush (stdin);
+                                                    }
+                                                    else {
+                                                        printf ("%c", CARATTERE_PUNTO_INTERROGATIVO);
+                                                        fflush (stdin);
+                                                    }
+                                        } else  if (indice_puntini_dado == 5) {
+                                                    if ( facce_dadi [indice_dadi] == 6 || (facce_dadi [indice_dadi] == 5) || (facce_dadi [indice_dadi] == 4) || (facce_dadi [indice_dadi] == 3) || (facce_dadi[indice_dadi] == 2) ) {
+                                                        printf ("%c", CARATTERE_PUNTO_FACCIA_DADO);
+                                                        fflush (stdin);
+                                                    }
+                                                    else {
+                                                        printf ("%c", CARATTERE_SPAZIO);
+                                                        fflush
+                                                        (stdin);
+                                                    }
+                                                } else  if (indice_puntini_dado == 6) {
+                                                            if (facce_dadi [indice_dadi] == 6) {
+                                                                printf ("%c", CARATTERE_PUNTO_FACCIA_DADO);
+                                                                fflush (stdin);
+                                                            }
+                                                            else {
+                                                                printf ("%c", CARATTERE_SPAZIO);
+                                                                fflush (stdin);
+                                                            }
+                                                        } else  if (indice_puntini_dado == 7) {
+                                                                    if ( (facce_dadi [indice_dadi] == 6) || (facce_dadi [indice_dadi] == 5) || (facce_dadi [indice_dadi] == 4) ) {
+                                                                        printf ("%c", CARATTERE_PUNTO_FACCIA_DADO); fflush (stdin);
+                                                                    }
+                                                                    else {
+                                                                        printf ("%c", CONTORNO_INFERIORE_CASELLA);
+                                                                        fflush (stdin);
+                                                                    }
+				                                                }
 				indice_puntini_dado = indice_puntini_dado + 1;
 			}
 			indice_dadi = indice_dadi + 1;
@@ -443,16 +443,16 @@ void stampare_intro (const char file_interfaccia []) {
             simbolo_letto = fgetc (f_interfaccia);
             if (simbolo_letto == CARATTERE_BECCO) {
                 cambiare_colore_testo (ARANCIO);
-            } else if (simbolo_letto == CARATTERE_SFONDO) {
-                cambiare_colore_testo (CELESTE);
-            }
+            } else  if (simbolo_letto == CARATTERE_SFONDO) {
+                        cambiare_colore_testo (CELESTE);
+                    }
             printf ("%c", simbolo_letto); 
             fflush (stdin);
             if (simbolo_letto == CARATTERE_BECCO) {
                 cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
-            } else if (simbolo_letto == CARATTERE_SFONDO) {
-                cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
-            }
+            } else  if (simbolo_letto == CARATTERE_SFONDO) {
+                        cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
+                    }
             if (simbolo_letto == CARATTERE_A_CAPO) {
                 indice_nuova_riga = indice_nuova_riga + 1;
             }

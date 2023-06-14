@@ -21,8 +21,10 @@ void chiedere_aiuto (int * sale) {
             attendere_tasto_zero(FILE_MANUALE, sale);
         }
     } while (opzione_scelta != 0);
-    return ;
+    return;
 }
+
+
 
 int scegliere_aiuto (int * sale) {
     stampare_testo (FILE_MENU_AIUTO);
