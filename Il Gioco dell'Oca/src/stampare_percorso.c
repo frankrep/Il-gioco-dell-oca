@@ -104,7 +104,6 @@ int stampare_superiore_sinistra (partita* partita_attuale, int numero_colonne, i
 }
 
 int stampare_inferiore_sinistra (partita* partita_attuale, int numero_colonne, int contatore, int strato) {
-//il problema è qui perchè il numero che si sottrae sta nella stampa, non nel dato
     int ultima_casella_stampata = ( (LARGHEZZA_TABELLONE - ( 1 + ( 2 * ( numero_colonne - contatore - 1 ) ) ) ) * 2 )  + ( ( ALTEZZA_TABELLONE - ( 1 + ( 2 * ( numero_colonne - contatore - 1 ) ) ) ) * 2 );
 
     if ( (numero_colonne - contatore) > 1 ) {
@@ -146,17 +145,18 @@ int stampare_parte_centrale_decremento (partita* partita_attuale, int valore_ini
 
 void stampare_casella (partita* partita_attuale, int ultima_casella_stampata, int strato) {
     if (strato == 1) {
-        printf("%c", CONTORNO_LATERALE_CASELLA);
+        printf ("%c", CONTORNO_LATERALE_CASELLA);
         stampare_giocatori_superiori_casella (partita_attuale, ultima_casella_stampata);
     } else if (strato == 2) {
-        printf("%c", CONTORNO_LATERALE_CASELLA);
+        printf ("%c", CONTORNO_LATERALE_CASELLA);
         stampare_contenuto_casella (partita_attuale,ultima_casella_stampata);
     } else if (strato == 3) {
-        printf("%c", CONTORNO_LATERALE_CASELLA);
+        printf ("%c", CONTORNO_LATERALE_CASELLA);
         stampare_giocatori_inferiori_casella (partita_attuale,ultima_casella_stampata);
     }
     return;
 }
+
 
 
 void stampare_contenuto_casella (partita* partita_attuale, int numero_casella) {
@@ -183,6 +183,8 @@ void stampare_contenuto_casella (partita* partita_attuale, int numero_casella) {
 }
 
 
+
+//Stampa i giocatori nella parte superirore di una casella
 void stampare_giocatori_superiori_casella (partita* partita_attuale, int numero_casella) {
     if ( leggere_posizione_giocatore ( leggere_giocatore ( *partita_attuale, POSIZIONE_GIOCATORE_1 ) ) == numero_casella ) {
         cambiare_colore_testo ( COLORI_GIOCATORI [POSIZIONE_GIOCATORE_1] );
@@ -209,6 +211,8 @@ void stampare_giocatori_superiori_casella (partita* partita_attuale, int numero_
 }
 
 
+
+//Stampa i giocatori nella parte inferiore di una casella
 void stampare_giocatori_inferiori_casella (partita* partita_attuale, int numero_casella) {
     if ( leggere_pedina_giocatore ( leggere_giocatore ( *partita_attuale, POSIZIONE_GIOCATORE_3 ) ) != FINE_STRINGA ) {
         if ( leggere_posizione_giocatore ( leggere_giocatore ( *partita_attuale, POSIZIONE_GIOCATORE_3 ) ) == numero_casella ) {
@@ -239,7 +243,7 @@ void stampare_giocatori_inferiori_casella (partita* partita_attuale, int numero_
         }
     }
     else {
-        printf("%c", CONTORNO_INFERIORE_CASELLA);
+        printf ("%c", CONTORNO_INFERIORE_CASELLA);
     }
     return;
 }
