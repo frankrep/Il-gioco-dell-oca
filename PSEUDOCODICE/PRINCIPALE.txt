@@ -27,7 +27,7 @@ ESEGUI
 	opzione = scegliere_opzione_menu ()
 	SE (opzione = 1)
 	ALLORA
-		vincitore_partita = iniziare_nuova_partita ()	//inserire fine stringa come nome nel caso in cui si interrompe la partita (stessa cosa per riprendere_partita)
+		vincitore_partita = iniziare_nuova_partita ()
 		SE (leggere_nome_vincitore (vincitore_partita) != FINE_STRINGA)
         ALLORA
 			file_classifica_top_10 = aggiornare_classifica_top_10 (file_classifica_top_10, vincitore_partita)

@@ -160,3 +160,43 @@ MENTRE (indice_nuova_riga < ALTEZZA_SCHERMATA)
 		ALLORA	indice_nuova_riga = indice_nuova_riga + 1
 	FINE
 FINE
+
+
+
+stampare_messaggio_errore
+
+DATI DI INPUT
+testo, elenco di caratteri da stampare, file di testo
+messaggi_errore, elenco di messaggi di errori da stampare, file di testo
+ALTEZZA_SCHERMATA, il numero di caratteri rappresentabili in una colonna dello schermo, Intero, = 25
+SPIAZZAMENTO_MESSAGGIO_ERRORE, il numero di righe dopo la rappresentazione della schermata nel file da cui iniziare a leggere le coordinate del messaggio di errore, Intero, = 2
+CARATTERE_A_CAPO, indica lo spostamento su una nuova riga per la stampa a video, carattere, = ‘\n’
+
+DATI DI OUTPUT
+nessuno, sarà una stampa
+
+DATI DI LAVORO
+simbolo_letto, il simbolo letto da file, Carattere
+indice_nuova_riga, indica lo scorrimento all'interno delle righe, intero, > 0, <= (ALTEZZA_SCHERMATA + SPIAZZAMENTO_MESSAGGIO_ERRORE)
+codice_messaggio_errore, il codice del messaggio di errore, intero
+
+ALGORITMO
+indice_nuova_riga = 1
+MENTRE (indice_nuova_riga <= (ALTEZZA_SCHERMATA + SPIAZZAMENTO_MESSAGGIO_ERRORE))
+	simbolo_letto = leggere_da_file (testo)
+	SE (simbolo_letto = CARATTERE_A_CAPO)
+		ALLORA	indice_nuova_riga = indice_nuova_riga + 1
+	FINE
+FINE
+codice_messaggio_errore = convertire_carattere_in_intero(leggere_da_file(testo))
+indice_nuova_riga = 1
+MENTRE (indice_nuova_riga <= codice_messaggio_errore)
+	simbolo_letto = leggere_da_file (messaggi_errore)
+	SE (simbolo_letto = CARATTERE_A_CAPO)
+		ALLORA	indice_nuova_riga = indice_nuova_riga + 1
+	FINE
+FINE
+ESEGUI
+    simbolo_letto = leggere_da_file (messaggi_errore)
+    stampare_a_video(simbolo_letto)
+FINCHE’ (simbolo_letto != CARATTERE_A_CAPO)
