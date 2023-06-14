@@ -29,7 +29,7 @@ void creare_percorso_con_oche (partita* partita_attuale) {
         inserire_casella (partita_attuale, indice_percorso);
         indice_percorso = indice_percorso + 1;
     }
-    riempire_restante_percorso(partita_attuale, indice_percorso);
+    riempire_restante_percorso (partita_attuale, indice_percorso);
     return;
 }
 
@@ -122,6 +122,7 @@ void inizializzare_caselle_speciali (casella caselle_speciali[]) {
     scrivere_nome_casella (&caselle_speciali[6], NOME_VITTORIA);
     scrivere_simbolo (&caselle_speciali[6], SIMBOLO_VITTORIA);
     scrivere_numero_casella(&caselle_speciali[6], 90);
+    return;
 }
 
 
