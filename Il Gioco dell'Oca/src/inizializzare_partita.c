@@ -39,7 +39,7 @@ void inizializzare_giocatori (partita *partita_attuale, int * sale) {
                 else {
                     inizializzare_nomi_giocatori (partita_attuale, sale);
                     char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
-                    leggere_nome_giocatore (leggere_giocatore(*partita_attuale, 0), nome_giocatore);
+                    leggere_nome_giocatore (leggere_giocatore (*partita_attuale, 0), nome_giocatore);
                     if (confrontare_stringhe (nome_giocatore, NOME_GIOCATORE_INDIETRO) == VERO) {
                         indietro = VERO;
                     }
@@ -214,7 +214,7 @@ void inizializzare_lanci_giocatore(partita *partita_attuale) {
     giocatore giocatore_attuale;
     do {
         giocatore_attuale = leggere_giocatore (*partita_attuale, indice_giocatori);
-        scrivere_lanci_effettuati(&giocatore_attuale, 0);
+        scrivere_lanci_effettuati (&giocatore_attuale, 0);
         scrivere_giocatore (partita_attuale, giocatore_attuale, indice_giocatori);
         indice_giocatori = indice_giocatori + 1;
     } while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) );
