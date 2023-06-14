@@ -10,7 +10,7 @@
 
 typedef struct
 {
-    char nome_vincitore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    char nome_vincitore [DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
     char pedina_vincitore;
     int lanci_vincitore;
     int lunghezza_percorso_vincitore;

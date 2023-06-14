@@ -190,7 +190,7 @@ void scegliere_giocatore_iniziale (partita* partita_attuale, int * sale) {
     char scelta;
     int estrazioni [NUMERO_MASSIMO_GIOCATORI];
     int indice_giocatori = 0;
-    char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
     while (indice_giocatori < leggere_numero_giocatori (*partita_attuale) ) {
         stampare_testo (FILE_SCELTA_G_INIZIALE);
         leggere_nome_giocatore (leggere_giocatore (*partita_attuale,indice_giocatori), nome_giocatore);
@@ -218,7 +218,7 @@ void scegliere_giocatore_iniziale (partita* partita_attuale, int * sale) {
 vincitore inizializzare_vincitore (partita* partita_attuale, int * sale) {
     //Converte il vincitore della partita
     vincitore vincitore_partita;
-    char nome_vincitore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    char nome_vincitore [DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
     leggere_nome_giocatore (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale)), nome_vincitore);
     scrivere_nome_vincitore (&vincitore_partita, nome_vincitore);
     scrivere_pedina_vincitore (&vincitore_partita, leggere_pedina_giocatore (leggere_giocatore (*partita_attuale, leggere_turno (*partita_attuale) ) ) );
@@ -226,7 +226,7 @@ vincitore inizializzare_vincitore (partita* partita_attuale, int * sale) {
     scrivere_lunghezza_percorso_vincitore (&vincitore_partita, leggere_lunghezza_percorso (*partita_attuale) );
     cancellare_schermata ();
     stampare_vittoria (FILE_VITTORIA_NOMI);
-    char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
     leggere_nome_giocatore (leggere_giocatore ( *partita_attuale, leggere_turno (*partita_attuale) ), nome_giocatore);
     //Stampa il nome del vincitore colorato e centrato sulla raffigurazione della coppa
     cambiare_colore_testo (COLORI_GIOCATORI [leggere_turno (*partita_attuale)] );
@@ -513,7 +513,7 @@ int confrontare_stringhe (const char stringa_1 [], const char stringa_2 []) {
 
 
 int verificare_nomi_speciali (partita* partita_attuale) {
-    char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    char nome_giocatore[DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
     int giocatore_con_nome_speciale = -1;
     int indice_nomi_speciali;
     int indice_giocatori = 0;
@@ -542,7 +542,7 @@ void gestire_nome_speciale (partita* partita_attuale, int indice_nome_speciale, 
     attendere_tasto_zero(FILE_EASTEREGG2, sale);
 
     stampare_vittoria (FILE_VITTORIA_NOMI);
-    char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
     leggere_nome_giocatore (leggere_giocatore (*partita_attuale, indice_nome_speciale), nome_giocatore);
     //Stampa il nome del vincitore colorato e centrato sulla raffigurazione della coppa
     cambiare_colore_testo (VIOLETTO);

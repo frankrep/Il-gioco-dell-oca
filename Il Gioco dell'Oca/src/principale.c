@@ -157,7 +157,7 @@ void confermare_uscita (char * conferma, int * sale) {
 
 
 void gestire_vincitore (vincitore vincitore_partita, int* sale) {
-    char nome_vincitore_partita [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    char nome_vincitore_partita [DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
     leggere_nome_vincitore (vincitore_partita, nome_vincitore_partita);
     if (nome_vincitore_partita[0] != FINE_STRINGA) {
         int posizione_classifica = aggiornare_classifica_top_10 (vincitore_partita);

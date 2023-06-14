@@ -380,7 +380,7 @@ void stampare_valore_testuale_centrato (const char file_interfaccia [], const ch
 void stampare_partite_salvate (const char file_interfaccia [], partita elenco_partite []) {
     stampare_testo (file_interfaccia);
     int indice_partita = 0;
-    char nome_partita [DIMENSIONE_MASSIMA_NOME_PARTITA];
+    char nome_partita [DIMENSIONE_MASSIMA_NOME_PARTITA + 1];
     while (indice_partita < NUMERO_MASSIMO_PARTITE) {
         leggere_nome_partita (elenco_partite [indice_partita], nome_partita);
         if (nome_partita [0] == FINE_STRINGA) {
@@ -505,7 +505,7 @@ void stampare_interfaccia_percorso (partita* partita_attuale, const char file_in
         scorrere_righe_file (f_interfaccia, 1);
         fscanf (f_interfaccia, "%d ", &posizione_colonna);
         posizionare_cursore (posizione_riga, posizione_colonna);
-        char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+        char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
         leggere_nome_giocatore (leggere_giocatore ( *partita_attuale, leggere_turno(*partita_attuale) ), nome_giocatore);
         cambiare_colore_testo (COLORI_GIOCATORI [leggere_turno (*partita_attuale)] );
         printf ("%18s", nome_giocatore);
@@ -549,7 +549,7 @@ void stampare_classifica (int * sale) {
         fscanf (f_interfaccia, "%d ", &posizione_colonna_rateo_vincitore);
         fclose (f_interfaccia);
 
-        char nome_vincitore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+        char nome_vincitore [DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
         int indice_vincitori = 0;
         while (indice_vincitori < NUMERO_MASSIMO_CLASSIFICATI) {
             leggere_nome_vincitore (vincitori [indice_vincitori], nome_vincitore);
@@ -607,7 +607,7 @@ void stampare_crediti (int * sale) {
 
 
 void stampare_schermata_cambio_turno (partita partita_attuale) {
-    char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+    char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
     int turno = leggere_turno (partita_attuale);
     stampare_testo (FILE_CAMBIO_TURNO);
     leggere_nome_giocatore (leggere_giocatore (partita_attuale, turno), nome_giocatore);

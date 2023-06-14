@@ -11,7 +11,7 @@
 #include "costanti.h"
 
 typedef struct {
-    char nome_partita [DIMENSIONE_MASSIMA_NOME_PARTITA];
+    char nome_partita [DIMENSIONE_MASSIMA_NOME_PARTITA + 1];
     int numero_giocatori;
     int lunghezza_percorso;
     casella percorso [DIMENSIONE_MASSIMA_PERCORSO];
