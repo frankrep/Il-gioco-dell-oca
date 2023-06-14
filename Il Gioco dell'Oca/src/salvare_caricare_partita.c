@@ -18,7 +18,8 @@ void caricare_partite (partita elenco_partite[]) {
     if (file_salvataggio == NULL) {
         creare_file_salvataggio ();
         caricare_partite (elenco_partite);
-    } else {
+    }
+    else {
         fread (elenco_partite, sizeof(partita), NUMERO_MASSIMO_PARTITE, file_salvataggio);
         fclose (file_salvataggio);
     }
@@ -56,9 +57,8 @@ void salvare_partita (partita* partita_attuale, int * sale) {
 
             //verifico se l'utente inserisce un nome per la partita da salvare o vuole tornare indietro . . .
             do {
-                posizionare_cursore_in_attesa(FILE_SCELTA_NOME_PARTITA);
-                inserire_stringa(DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata,
-                                 sale);
+                posizionare_cursore_in_attesa (FILE_SCELTA_NOME_PARTITA);
+                inserire_stringa(DIMENSIONE_MINIMA_NOME_PARTITA, DIMENSIONE_MASSIMA_NOME_PARTITA, nome_partita_salvata, sale);
 
                 //verifico se l'utente non ha inserito alcun carattere e ha confermato
                 if (nome_partita_salvata[0] == FINE_STRINGA) {
@@ -83,7 +83,7 @@ void salvare_partita (partita* partita_attuale, int * sale) {
 
                     //stampare messaggio richiesta sovrascrittura
                     char sovrascrivere;
-                    stampare_testo(FILE_SOVRASCRIVERE);
+                    stampare_testo (FILE_SOVRASCRIVERE);
                     attendere_simbolo_risposta (FILE_SOVRASCRIVERE, &sovrascrivere, sale);
 
                     //. . . e, nel caso in cui confermi, sovrascriviamo la partita
@@ -163,7 +163,6 @@ void attendere_simbolo_risposta (const char interfaccia [], char * risposta, int
 
 int selezionare_slot (partita elenco_partite[], int * sale, const char file_interfaccia[]) {
     int slot_scelto = 0;
-    cancellare_schermata();
     stampare_partite_salvate (file_interfaccia, elenco_partite);
     do {
         verificare_correttezza_inserimento (file_interfaccia, &slot_scelto, sale);

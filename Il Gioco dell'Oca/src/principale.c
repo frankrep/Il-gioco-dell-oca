@@ -27,10 +27,10 @@ int main() {
 
     //stampa della schermata con il logo e la richiesta di premere un tasto qualsiasi
 
-    stampare_intro(FILE_INTRO);
-    posizionare_cursore_in_attesa(FILE_INTRO);
-    fgetc(stdin);
-    fflush(stdout);
+    stampare_intro (FILE_INTRO);
+    posizionare_cursore_in_attesa (FILE_INTRO);
+    fgetc (stdin);
+    fflush (stdout);
 
     uscita = RISPOSTA_NEGATIVA_MAIUSCOLO;
     int opzione;
@@ -39,41 +39,27 @@ int main() {
     int sale = 0;
 
     do {
-        cancellare_schermata();
-        opzione = scegliere_opzione_menu(&sale);
-        
+        opzione = scegliere_opzione_menu (&sale);
         if (opzione == 1) {
             iniziare_nuova_partita (&vincitore_partita, &sale);
             if (leggere_lunghezza_percorso_vincitore(vincitore_partita) != 0) {
                 gestire_vincitore (vincitore_partita, &sale);
             }
-        }
-        else {
-            if (opzione == 2) {
-                riprendere_partita(&vincitore_partita, &sale);
-                if (leggere_lunghezza_percorso_vincitore(vincitore_partita) != 0) {
-                    gestire_vincitore (vincitore_partita, &sale);
-                }
+        } else if (opzione == 2) {
+            riprendere_partita (&vincitore_partita, &sale);
+            if (leggere_lunghezza_percorso_vincitore (vincitore_partita) != 0) {
+                gestire_vincitore (vincitore_partita, &sale);
             }
-            else {
-                if (opzione == 3) {
-                    stampare_classifica (&sale);
-                }
-                else {
-                    if (opzione == 4) {
-                        chiedere_aiuto (&sale);
-                    }
-                    else {
-                        if (opzione == 5) {
-                            stampare_crediti (&sale);
-                        }
-                        else {
-                            confermare_uscita(&uscita, &sale);
-                        }
-                    }
-                }
-            }
-        }
+            } else  if (opzione == 3) {
+                        stampare_classifica (&sale);
+                    } else  if (opzione == 4) {
+                                chiedere_aiuto (&sale);
+                            } else  if (opzione == 5) {
+                                        stampare_crediti (&sale);
+                                    }
+                                    else {
+                                        confermare_uscita (&uscita, &sale);
+                                    }
     } while (uscita != RISPOSTA_AFFERMATIVA_MAIUSCOLO && uscita != RISPOSTA_AFFERMATIVA_MINUSCOLO);
     return 0;
 }
@@ -131,7 +117,6 @@ void scegliere_partita_da_caricare (partita* partita_attuale, int * sale) {
     partita elenco_partite [NUMERO_MASSIMO_PARTITE];
     caricare_partite (elenco_partite);
     do {
-        posizionare_cursore_in_attesa (FILE_MENU_CARICA_PARTITA);
         slot_scelto = selezionare_slot( elenco_partite, sale, FILE_MENU_CARICA_PARTITA);
 
         //se il giocatore ha deciso di caricare una partita, viene verificata la sua esistenza . . .
@@ -157,7 +142,6 @@ void scegliere_partita_da_caricare (partita* partita_attuale, int * sale) {
         else {
             scrivere_carattere_partita (partita_attuale, 0, FINE_STRINGA);
         }
-        cancellare_schermata ();
     } while (slot_scelto != 0);
     return;
 }
