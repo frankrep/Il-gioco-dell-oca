@@ -12,8 +12,6 @@
 void cancellare_schermata ();
 void cambiare_colore_testo (int valore_colore);
 void posizionare_cursore (int posizione_riga, int posizione_colonna);
-
-
 void stampare_dadi (const char file_interfaccia [], const int facce_dadi []);
 void stampare_testo (const char file_interfaccia []);
 void stampare_messaggio_errore (const char file_interfaccia []);

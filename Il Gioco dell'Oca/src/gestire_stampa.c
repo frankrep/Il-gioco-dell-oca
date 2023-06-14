@@ -16,6 +16,7 @@
 #include "salvare_caricare_partita.h"
 
 
+
 void stampare_dadi_partita (const char file_interfaccia [], partita* partita_attuale) {
     int dadi_da_stampare [NUMERO_DADI];
     int indice_dadi = 0;
@@ -45,7 +46,7 @@ void stampare_dadi (const char file_interfaccia [], const int facce_dadi []) {
 
 	FILE *f_interfaccia = fopen (file_interfaccia, "r");
 	if (f_interfaccia != NULL) {
-        scorrere_righe_file(f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_DADO);
+        scorrere_righe_file (f_interfaccia, ALTEZZA_SCHERMATA + SPIAZZAMENTO_DADO);
 		int posizione_riga;
 		int posizione_colonna;
         int indice_puntini_dado;
@@ -259,7 +260,7 @@ void stampare_valore_intero (const char file_interfaccia [], int valore, int pos
         posizionare_cursore (posizione_riga, posizione_colonna);
         printf ("%d", valore); 
         fflush (stdin);
-    fclose (f_interfaccia);
+        fclose (f_interfaccia);
     } 
     else {
         stampare_errore_apertura_file (file_interfaccia);
@@ -280,7 +281,7 @@ void stampare_valore_decimale (const char file_interfaccia [], float valore, int
         posizionare_cursore (posizione_riga, posizione_colonna);
         printf ("%f", valore); 
         fflush (stdin);
-    fclose (f_interfaccia);
+        fclose (f_interfaccia);
     } 
     else {
         stampare_errore_apertura_file (file_interfaccia);
@@ -432,7 +433,6 @@ void stampare_vittoria (const char file_interfaccia []) {
 
 
 void stampare_intro (const char file_interfaccia []) {
-
     FILE * f_interfaccia = fopen (file_interfaccia, "r");
     if (f_interfaccia != NULL) {
         char simbolo_letto;
@@ -556,9 +556,8 @@ void stampare_classifica (int * sale) {
         fscanf (f_interfaccia, "%d ", &posizione_colonna_rateo_vincitore);
         fclose (f_interfaccia);
 
-        char nome_vincitore[DIMENSIONE_MASSIMA_NOME_GIOCATORE];
+        char nome_vincitore [DIMENSIONE_MASSIMA_NOME_GIOCATORE];
         int indice_vincitori = 0;
-        int correttezza_inserimento;
         while (indice_vincitori < NUMERO_MASSIMO_CLASSIFICATI) {
             leggere_nome_vincitore (vincitori [indice_vincitori], nome_vincitore);
             if (nome_vincitore [0] != FINE_STRINGA) {
@@ -584,15 +583,7 @@ void stampare_classifica (int * sale) {
             }
             indice_vincitori = indice_vincitori + 1;
         }
-        do {
-            posizionare_cursore_in_attesa (FILE_CLASSIFICA);
-            scanf ("%d", &correttezza_inserimento);
-            fflush (stdin);
-            *sale = *sale + 1;
-            if (correttezza_inserimento != 0) {
-                stampare_messaggio_errore (FILE_CLASSIFICA);
-            }
-        } while (correttezza_inserimento != 0);
+        attendere_tasto_zero (FILE_CLASSIFICA, sale);
     }
     else {
         stampare_errore_apertura_file (FILE_CLASSIFICA);
