@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include "vincitore.h"
 
+
+
 void scrivere_carattere_nome_vincitore (vincitore* vincitore_attuale, int posizione, char simbolo) {
 	vincitore_attuale->nome_vincitore [posizione] = simbolo;
     return;
@@ -14,7 +16,7 @@ void scrivere_carattere_nome_vincitore (vincitore* vincitore_attuale, int posizi
 
 
 char leggere_carattere_nome_vincitore (vincitore vincitore_attuale, int posizione) {
-    char simbolo = vincitore_attuale.nome_vincitore[posizione];
+    char simbolo = vincitore_attuale.nome_vincitore [posizione];
     return simbolo;
 }
 
@@ -72,22 +74,22 @@ float leggere_punteggio (vincitore vincitore_attuale) {
 
 
 
-void scrivere_nome_vincitore (vincitore* vincitore_attuale, char nome_da_inserire[]) {
+void scrivere_nome_vincitore (vincitore* vincitore_attuale, char nome_da_inserire []) {
     int indice_nome = 0;
     while (nome_da_inserire [indice_nome] != FINE_STRINGA) {
-        scrivere_carattere_nome_vincitore(vincitore_attuale, indice_nome, nome_da_inserire[indice_nome]);
+        scrivere_carattere_nome_vincitore (vincitore_attuale, indice_nome, nome_da_inserire [indice_nome]);
         indice_nome = indice_nome + 1;
     }
-    scrivere_carattere_nome_vincitore(vincitore_attuale, indice_nome, FINE_STRINGA);
+    scrivere_carattere_nome_vincitore (vincitore_attuale, indice_nome, FINE_STRINGA);
     return;
 }
 
 
 
-void leggere_nome_vincitore (vincitore vincitore_attuale, char nome_letto[]) {
+void leggere_nome_vincitore (vincitore vincitore_attuale, char nome_letto []) {
     int indice_nome = 0;
-    while(leggere_carattere_nome_vincitore (vincitore_attuale, indice_nome) != FINE_STRINGA){
-        nome_letto [indice_nome] = leggere_carattere_nome_vincitore(vincitore_attuale, indice_nome);
+    while (leggere_carattere_nome_vincitore (vincitore_attuale, indice_nome) != FINE_STRINGA){
+        nome_letto [indice_nome] = leggere_carattere_nome_vincitore (vincitore_attuale, indice_nome);
         indice_nome = indice_nome + 1;
     }
     nome_letto [indice_nome] = FINE_STRINGA;
