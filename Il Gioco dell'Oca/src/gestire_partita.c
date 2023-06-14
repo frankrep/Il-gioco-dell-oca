@@ -52,7 +52,7 @@ se si esce dalla partita prima che questa termini, verrà restituito un vincitor
 nome_vincitore inizializzato a FINE_STRINGA
 */
 vincitore gestire_partita (partita* partita_attuale, int * sale) {
-    int indietro;
+    int indietro = -1;
     char scelta;
     vincitore vincitore_partita;
     //Verifica il turno della partita per vedere se la partita non è iniziata
@@ -102,6 +102,7 @@ vincitore gestire_partita (partita* partita_attuale, int * sale) {
 
                             //Stampa il percorso con la pedina spostata
                             stampare_interfaccia_percorso (partita_attuale, FILE_PERCORSO);
+                            stampare_messaggio_valore (FILE_PERCORSO, QUARTO_VALORE);
                             posizionare_cursore_in_attesa (FILE_PERCORSO);
                             fgetc (stdin);
                             fflush (stdin);
@@ -534,12 +535,11 @@ int verificare_nomi_speciali (partita* partita_attuale) {
 
 
 void gestire_nome_speciale (partita* partita_attuale, int indice_nome_speciale, int * sale) {
-    stampare_testo(FILE_EASTEREGG1);
-    attendere_tasto_zero(FILE_EASTEREGG1, sale);
-
-    stampare_testo(FILE_EASTEREGG2);
-    attendere_tasto_zero(FILE_EASTEREGG2, sale);
-
+    stampare_testo (FILE_EASTEREGG1);
+    attendere_tasto_zero (FILE_EASTEREGG1, sale);
+    stampare_testo (FILE_EASTEREGG2);
+    attendere_tasto_zero (FILE_EASTEREGG2, sale);
+    cancellare_schermata ();
     stampare_vittoria (FILE_VITTORIA_NOMI);
     char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
     leggere_nome_giocatore (leggere_giocatore (*partita_attuale, indice_nome_speciale), nome_giocatore);
@@ -548,7 +548,6 @@ void gestire_nome_speciale (partita* partita_attuale, int indice_nome_speciale, 
     stampare_valore_testuale_centrato (FILE_VITTORIA_NOMI, nome_giocatore, PRIMO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
     cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
     attendere_tasto_zero (FILE_VITTORIA_NOMI, sale);
-
     stampare_testo(FILE_CREDITI);
     attendere_tasto_zero(FILE_CREDITI, sale);
     cancellare_schermata ();

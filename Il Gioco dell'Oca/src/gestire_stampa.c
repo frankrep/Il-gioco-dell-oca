@@ -76,7 +76,7 @@ void stampare_dadi (const char file_interfaccia [], const int facce_dadi []) {
                                 printf ("%c", CARATTERE_SPAZIO);
                                 fflush (stdin);
                             }
-                        } else  if (indice_puntini_dado == 3) {
+                        } else if (indice_puntini_dado == 3) {
                                     if ( facce_dadi [indice_dadi] == 6 || (facce_dadi[indice_dadi] == 5) || (facce_dadi[indice_dadi] == 4) || (facce_dadi[indice_dadi] == 3) || (facce_dadi[indice_dadi] == 2) ) {
                                         printf ("%c", CARATTERE_PUNTO_FACCIA_DADO);
                                         fflush (stdin);

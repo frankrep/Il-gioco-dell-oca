@@ -7,7 +7,7 @@
 int aggiornare_classifica_top_10 (vincitore vincitore_partita) {
     vincitore vincitori [NUMERO_MASSIMO_CLASSIFICATI];
     caricare_classifica (vincitori);
-    int posizione_classificato;
+    int posizione_classificato = -1;
     int inserito = FALSO;
     float rateo_vincitore_partita = (float) leggere_lanci_vincitore (vincitore_partita) / (float) leggere_lunghezza_percorso_vincitore (vincitore_partita);
     float rateo_classificato;
