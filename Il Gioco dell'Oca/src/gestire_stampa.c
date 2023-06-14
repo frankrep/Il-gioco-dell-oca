@@ -376,13 +376,6 @@ void stampare_valore_testuale_centrato (const char file_interfaccia [], const ch
 }
 
 
-/*void stampare_valore_testuale_colorato(const char file_interfaccia[], const char stringa[], int posizione_valore, int valore_colore){
-    cambiare_colore_testo(valore_colore);
-    stampare_valore_testuale(file_interfaccia, stringa, posizione_valore);
-    cambiare_colore_testo(COLORE_PRINCIPALE_SCHERMATA);
-}*/
-
-
 
 void stampare_partite_salvate (const char file_interfaccia [], partita elenco_partite []) {
     stampare_testo (file_interfaccia);

@@ -8,6 +8,5 @@ void spostamento_destra_vincitori (vincitore vincitori [], int posizione_inserim
 void caricare_classifica (vincitore vincitori []);
 void scrivere_classifica (vincitore elenco_vincitori []);
 void creare_classifica_vuota (vincitore vincitori []);
-//float calcolare_divisione_decimale(int divisore, int dividendo, int precisione);
 
 #endif /* classifica_h_ */
