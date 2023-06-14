@@ -5,7 +5,7 @@ _________________________________________
 |.-(   )-.'--../________\..--'.      __)|Hey Psss! Psss! Come va la permanenza 
 |      .'--.._/__________\_..--'.  __)-'|li sotto? spero che la temperatura    
 |`-( .'--..__/____________\__..--'._'   |dell'acqua di quella splendida fonte  
-| *.'--..___/______________\___..--'. * |termale sia di tuo gradimento...      
+| *.'--..__                  __..--'. * |termale sia di tuo gradimento...      
 | '========'================'========'  |qui fuori non si vede proprio nessuno 
 |*      [_|__]            [_|__]    *   |mi sa che la tua vacanzina durera'    
 |    * =[__|_]=====""=====[__|_]==.   * |ancora un po'.                        
@@ -28,3 +28,5 @@ _________________________________________
 24 //riga errore
 42 //colonna errore 
 2 //CM
+8 // riga nome
+11 // colonna nome

@@ -455,13 +455,22 @@ void gestire_autorizzazione (partita* partita_attuale, int * sale) {
     if (confrontare_stringhe (nome_casella, NOME_LOCANDA) == VERO) {
         //Stampa la schermata della locanda che mostra il turno passato e attende l'input dell'utente
         stampare_testo (FILE_SCHERMATA_LOCANDA_TURNO_PASSATO);
-        stampare_valore_intero (FILE_SCHERMATA_LOCANDA_TURNO_PASSATO, leggere_autorizzazione (giocatore_attuale), PRIMO_VALORE);
+        stampare_valore_intero (FILE_SCHERMATA_LOCANDA_TURNO_PASSATO, leggere_autorizzazione (giocatore_attuale) - 1, PRIMO_VALORE);
+        char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
+        leggere_nome_giocatore (leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale)), nome_giocatore);
+        cambiare_colore_testo (COLORI_GIOCATORI [leggere_turno(*partita_attuale)]);
+        stampare_valore_testuale_centrato (FILE_SCHERMATA_LOCANDA_TURNO_PASSATO, nome_giocatore, SECONDO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
+        cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
         attendere_tasto_zero(FILE_SCHERMATA_LOCANDA_TURNO_PASSATO, sale);
         scrivere_autorizzazione (&giocatore_attuale, leggere_autorizzazione (giocatore_attuale) - 1);
     } else if (confrontare_stringhe (nome_casella, NOME_PRIGIONE) == VERO) { //Se il giocatore si trova sulla casella prigione, lancia i dadi
         //Stampa la schermata della prigione che mostra il lancio dei dadi e attende l'input dell'utente
         stampare_testo (FILE_SCHERMATA_LANCIO_DADI_PRIGIONE);
-
+        char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
+        leggere_nome_giocatore (leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale)), nome_giocatore);
+        cambiare_colore_testo (COLORI_GIOCATORI [leggere_turno(*partita_attuale)]);
+        stampare_valore_testuale_centrato (FILE_SCHERMATA_LANCIO_DADI_PRIGIONE, nome_giocatore, PRIMO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
+        cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
         char scelta;
         do {
             inserire_simbolo (FILE_SCHERMATA_LANCIO_DADI_PRIGIONE, &scelta, sale);
@@ -493,6 +502,11 @@ void gestire_autorizzazione (partita* partita_attuale, int * sale) {
     } else if (confrontare_stringhe (nome_casella, NOME_POZZO) == VERO) {//Se il giocatore si trova sulla casella pozzo
         //Stampa la schermata che ricorda al giocatore che si trova nel pozzo
         stampare_testo (FILE_SCHERMATA_PERM_POZZO);
+        char nome_giocatore [DIMENSIONE_MASSIMA_NOME_GIOCATORE + 1];
+        leggere_nome_giocatore (leggere_giocatore (*partita_attuale, leggere_turno(*partita_attuale)), nome_giocatore);
+        cambiare_colore_testo (COLORI_GIOCATORI [leggere_turno(*partita_attuale)]);
+        stampare_valore_testuale_centrato (FILE_SCHERMATA_PERM_POZZO, nome_giocatore, PRIMO_VALORE, DIMENSIONE_MASSIMA_NOME_GIOCATORE);
+        cambiare_colore_testo (COLORE_PRINCIPALE_SCHERMATA);
         attendere_tasto_zero(FILE_SCHERMATA_PERM_POZZO, sale);
     }
     scrivere_giocatore ( partita_attuale, giocatore_attuale, leggere_turno (*partita_attuale) );
